@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -16,71 +17,74 @@ export default function App() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          element={
-            <Layout
-              isBojankaOpen={isBojankaOpen}
-              setIsBojankaOpen={setIsBojankaOpen}
-              isAdminOpen={isAdminOpen}
-              setIsAdminOpen={setIsAdminOpen}
-            />
-          }
-        >
-          {/* Main Home Route */}
+    <>
+      <BrowserRouter>
+        <Routes>
           <Route
-            path="/"
             element={
-              <HomePage
-                onOpenBojanka={() => setIsBojankaOpen(true)}
-                onOpenAdmin={() => setIsAdminOpen(true)}
+              <Layout
+                isBojankaOpen={isBojankaOpen}
+                setIsBojankaOpen={setIsBojankaOpen}
+                isAdminOpen={isAdminOpen}
+                setIsAdminOpen={setIsAdminOpen}
               />
             }
-          />
+          >
+            {/* Main Home Route */}
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  onOpenBojanka={() => setIsBojankaOpen(true)}
+                  onOpenAdmin={() => setIsAdminOpen(true)}
+                />
+              }
+            />
 
-          {/* O Nama / About Company & Video Presentations */}
-          <Route path="/o-nama" element={<AboutPage />} />
-          <Route path="/about" element={<Navigate to="/o-nama" replace />} />
+            {/* O Nama / About Company & Video Presentations */}
+            <Route path="/o-nama" element={<AboutPage />} />
+            <Route path="/about" element={<Navigate to="/o-nama" replace />} />
 
-          {/* BH Digital Tools & Services */}
-          <Route
-            path="/alati"
-            element={<ToolsPage onOpenBojanka={() => setIsBojankaOpen(true)} />}
-          />
-          <Route path="/usluge" element={<Navigate to="/alati" replace />} />
-          <Route path="/digitalni-alati" element={<Navigate to="/alati" replace />} />
+            {/* BH Digital Tools & Services */}
+            <Route
+              path="/alati"
+              element={<ToolsPage onOpenBojanka={() => setIsBojankaOpen(true)} />}
+            />
+            <Route path="/usluge" element={<Navigate to="/alati" replace />} />
+            <Route path="/digitalni-alati" element={<Navigate to="/alati" replace />} />
 
-          {/* SCENA+ Magazine */}
-          <Route path="/scena-magazin" element={<ScenaPage />} />
-          <Route path="/scena" element={<Navigate to="/scena-magazin" replace />} />
+            {/* SCENA+ Magazine */}
+            <Route path="/scena-magazin" element={<ScenaPage />} />
+            <Route path="/scena" element={<Navigate to="/scena-magazin" replace />} />
 
-          {/* News & CMS */}
-          <Route
-            path="/novosti"
-            element={<NewsPage onOpenAdmin={() => setIsAdminOpen(true)} />}
-          />
+            {/* News & CMS */}
+            <Route
+              path="/novosti"
+              element={<NewsPage onOpenAdmin={() => setIsAdminOpen(true)} />}
+            />
 
-          {/* Projects Seeking Partners & Kids Coloring Book */}
-          <Route
-            path="/projekti"
-            element={<ProjectsPage onOpenBojanka={() => setIsBojankaOpen(true)} />}
-          />
+            {/* Projects Seeking Partners & Kids Coloring Book */}
+            <Route
+              path="/projekti"
+              element={<ProjectsPage onOpenBojanka={() => setIsBojankaOpen(true)} />}
+            />
 
-          {/* Shop & Education Center */}
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/edukacija" element={<Navigate to="/shop" replace />} />
+            {/* Shop & Education Center */}
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/edukacija" element={<Navigate to="/shop" replace />} />
 
-          {/* Instagram Social Community */}
-          <Route path="/zajednica" element={<CommunityPage />} />
+            {/* Instagram Social Community */}
+            <Route path="/zajednica" element={<CommunityPage />} />
 
-          {/* Contact & Impressum */}
-          <Route path="/kontakt" element={<ContactPage />} />
+            {/* Contact & Impressum */}
+            <Route path="/kontakt" element={<ContactPage />} />
 
-          {/* Catch-all route */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            {/* Catch-all route */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <Analytics />
+    </>
   );
 }
