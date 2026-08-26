@@ -23,6 +23,36 @@ export function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event
 
 export const INITIAL_NEWS: NewsArticle[] = [
   {
+    id: "news-monday-com",
+    title: "JESTE LI PROBALI MONDAY.COM?! Vodeća platforma za upravljanje projektima i timovima",
+    slug: "jeste-li-probali-monday-com-work-os",
+    category: "IT & Produktivnost",
+    date: "26. August 2026. 🔥",
+    author: "B&H Assistant Redakcija",
+    excerpt: "Monday.com je jedna od vodećih svjetskih Work OS platformi za vizuelno upravljanje zadacima, planiranje projekata, automatizaciju procesa i besprijekornu timsku saradnju. Isprobajte besplatno putem našeg partnerskog linka!",
+    content: `JESTE LI PROBALI MONDAY.COM?
+
+Monday.com je jedna od najpopularnijih i najmoćnijih svjetskih Work OS platformi koja omogućava timovima i kompanijama svih veličina da kreiraju prilagođene radne tokove, efikasno prate projekte i automatizuju svakodnevne poslovne procese.
+
+Bilo da vodite IT razvoj, marketinšku agenciju, operativni sektor, prodaju ili građevinske projekte, monday.com pruža fleksibilno, intuitivno i pregledno radno okruženje prilagođeno Vašim specifičnim potrebama.
+
+Glavne prednosti i funkcionalnosti:
+• 📊 Pregledne vizuelne Kanban table, Gantogrami i vremenske linije za jasan uvid u sve faze projekta
+• ⚡ Moćne automatizacije: automatsko delegiranje zadataka, slanje notifikacija i promjena statusa
+• 🔗 Više od 200+ gotovih integracija (Slack, Google Workspace, Zoom, Jira, Microsoft Teams, Gmail)
+• 📈 Analitika i prilagodljivi kontrolni dashboardi u realnom vremenu za donošenje pametnih odluka
+• 📱 Dostupnost na svim uređajima (Web, iOS, Android) za efikasan timski rad bilo kada i bilo gdje
+
+👉 Isprobajte Monday.com besplatno i unaprijedite poslovanje svog tima putem našeg zvaničnog partnerskog linka:
+https://try.monday.com/rzwizf4pspzc`,
+    imageUrl: IMAGES.mondayLogo,
+    videoUrl: "https://www.youtube.com/watch?v=_z1ssf9ycqA",
+    externalUrl: "https://try.monday.com/rzwizf4pspzc",
+    hasVideo: true,
+    published: true,
+    tags: ["monday.com", "Work OS", "Produktivnost", "Upravljanje Projektima", "Affiliate", "Timski Rad", "Automatizacija"]
+  },
+  {
     id: "news-bh-konver-glavna",
     title: "BH KONVER – Autorski softver za brze konverzije i pravne izjave u BiH",
     slug: "bh-konver-autorski-softver-pravne-izjave",
@@ -257,14 +287,16 @@ export const getStoredNews = (): NewsArticle[] => {
         a.id !== 'news-4' && 
         a.id !== 'news-1' &&
         a.id !== 'news-3' &&
-        !a.title.toLowerCase().includes('gummi učenje je zabava')
+        !a.title.toLowerCase().includes('gummi učenje je zabava') &&
+        // Filter out old or duplicate monday.com articles from localStorage so only one canonical exists
+        !(a.id !== 'news-monday-com' && (a.title.toLowerCase().includes('monday.com') || a.title.toLowerCase().includes('monday')))
       );
       const parsedIds = new Set(filteredParsed.map(a => a.id));
       const missingInitial = INITIAL_NEWS.filter(a => !parsedIds.has(a.id));
       const combined = [...missingInitial, ...filteredParsed];
 
       // Always synchronize and ensure valid image paths
-      return combined.map(art => {
+      const cleaned = combined.map(art => {
         const initialMatch = INITIAL_NEWS.find(i => i.id === art.id);
         if (initialMatch) {
           return {
@@ -277,6 +309,20 @@ export const getStoredNews = (): NewsArticle[] => {
           imageUrl: normalizeImageUrl(art.imageUrl)
         };
       });
+
+      // Deduplicate by ID and slug to guarantee single articles
+      const seenIds = new Set<string>();
+      const deduped: NewsArticle[] = [];
+      for (const art of cleaned) {
+        if (!seenIds.has(art.id)) {
+          seenIds.add(art.id);
+          deduped.push(art);
+        }
+      }
+
+      // Persist deduplicated list back to storage
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(deduped));
+      return deduped;
     }
   } catch (e) {
     console.error("Greška pri učitavanju novosti iz local storage:", e);

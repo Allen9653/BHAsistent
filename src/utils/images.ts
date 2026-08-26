@@ -67,6 +67,7 @@ export const REMOTE_ROCKET_LOGO = 'https://i.imgur.com/XZpyxty.jpg';
 export const ALISON_LOGO = 'https://i.imgur.com/qb26j1I.jpg';
 export const CLOUDTALK_BANNER = 'https://i.imgur.com/5rTpp9F.jpg';
 export const TRYHACKME_BANNER = 'https://i.imgur.com/7GCX5oO.jpg';
+export const MONDAY_LOGO = 'https://i.ytimg.com/vi/_z1ssf9ycqA/maxresdefault.jpg';
 
 // Full Structured Dictionary for easy property lookup
 export const IMAGES = {
@@ -116,6 +117,7 @@ export const IMAGES = {
   alisonLogo: 'https://i.imgur.com/qb26j1I.jpg',
   cloudtalkBanner: 'https://i.imgur.com/5rTpp9F.jpg',
   tryhackmeBanner: 'https://i.imgur.com/7GCX5oO.jpg',
+  mondayLogo: 'https://i.ytimg.com/vi/_z1ssf9ycqA/maxresdefault.jpg',
 } as const;
 
 export type ImageKey = keyof typeof IMAGES;

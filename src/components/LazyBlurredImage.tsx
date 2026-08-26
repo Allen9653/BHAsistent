@@ -48,6 +48,14 @@ const CANVA_TO_LOCAL_MAP: Record<string, string[]> = {
   'vxekpnx0ow1xvt9': ['https://i.imgur.com/jf337m3.jpg', '/images/scena_cover.jpg'],
 };
 
+const POSTIMG_MAP: Record<string, string[]> = {
+  'cStfPQP': [
+    'https://i.ytimg.com/vi/_z1ssf9ycqA/maxresdefault.jpg',
+    'https://img.youtube.com/vi/_z1ssf9ycqA/hqdefault.jpg',
+    'https://i.imgur.com/cXebP1B.jpg'
+  ]
+};
+
 function getCandidateUrls(rawSrc: string): string[] {
   if (!rawSrc) return [];
   const trimmed = rawSrc.trim();
@@ -58,6 +66,20 @@ function getCandidateUrls(rawSrc: string): string[] {
       candidates.push(url);
     }
   };
+
+  // Postimages / Postimg URLs
+  if (trimmed.includes('postimg.cc') || trimmed.includes('postimages.org')) {
+    const galleryMatch = trimmed.match(/postimg\.cc\/(?:gallery\/)?([a-zA-Z0-9]+)/);
+    if (galleryMatch && POSTIMG_MAP[galleryMatch[1]]) {
+      POSTIMG_MAP[galleryMatch[1]].forEach(addCandidate);
+    }
+    addCandidate('https://i.ytimg.com/vi/_z1ssf9ycqA/maxresdefault.jpg');
+    addCandidate('https://img.youtube.com/vi/_z1ssf9ycqA/hqdefault.jpg');
+    if (trimmed.match(/\.(png|jpg|jpeg|webp|gif)$/i)) {
+      addCandidate(trimmed);
+    }
+    return candidates;
+  }
 
   // Canva URLs
   const canvaMatch = trimmed.match(/https?:\/\/(?:www\.)?canva\.link\/([a-zA-Z0-9]+)/);

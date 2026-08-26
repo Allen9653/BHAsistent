@@ -240,6 +240,22 @@ export const DEVELOPMENT_PROJECTS: DevelopmentProject[] = [
 
 export const AFFILIATE_COURSES: AffiliateCourse[] = [
   {
+    id: "monday-com",
+    title: "Monday.com - Vodeći Work OS & Upravljanje Projektima",
+    provider: "monday.com Work OS Global Platform",
+    badge: "WORK OS & PRODUKTIVNOST",
+    description: "Jeste li probali monday.com?! Vodeća platforma za upravljanje projektima, zadacima, Kanban tablama i automatizaciju procesa za moderne timove.",
+    bullets: [
+      "Vizuelne Kanban table, vremenske linije i gantogrami",
+      "Automatizacija radnih tokova i 200+ gotovih integracija (Slack, Teams, Google)",
+      "Isprobajte besplatno putem našeg zvaničnog partnerskog linka"
+    ],
+    affiliateUrl: "https://try.monday.com/rzwizf4pspzc",
+    category: "IT & Veb Dizajn",
+    featured: true,
+    image: IMAGES.mondayLogo
+  },
+  {
     id: "remote-rocketship",
     title: "Remote Rocketship - Remote Poslovi u BiH",
     provider: "Remote Rocketship Global Network",

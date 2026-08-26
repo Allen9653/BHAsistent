@@ -203,11 +203,15 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                   <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#0A1628]/90 backdrop-blur-md border border-[#00C9A7]/40 text-[10px] font-syne font-bold text-[#00C9A7] uppercase z-10">
                     {article.category}
                   </div>
-                  {(article.hasVideo || article.id === 'news-1') && (
+                  {(article.hasVideo || article.id === 'news-1' || article.videoUrl) && (
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        setIsVideoModalOpen(true);
+                        if (article.videoUrl || article.id === 'news-monday-com') {
+                          setActiveArticle(article);
+                        } else {
+                          setIsVideoModalOpen(true);
+                        }
                       }}
                       className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-[11px] flex items-center gap-1.5 shadow-lg shadow-[#00C9A7]/30 transition-transform hover:scale-105"
                       title="Pogledajte priloženi video"
@@ -233,7 +237,10 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                       </span>
                     </div>
 
-                    <h3 className="font-syne font-bold text-lg text-[#F5F0E8] group-hover:text-[#00C9A7] transition-colors leading-snug line-clamp-2">
+                    <h3 
+                      onClick={() => setActiveArticle(article)}
+                      className="font-syne font-bold text-lg text-[#F5F0E8] group-hover:text-[#00C9A7] transition-colors leading-snug line-clamp-2 cursor-pointer"
+                    >
                       {article.title}
                     </h3>
 
@@ -243,26 +250,25 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                   </div>
 
                   {/* Actions Bar */}
-                  <div className="pt-4 border-t border-[#1A3152] flex items-center justify-between">
-                    {article.externalUrl ? (
+                  <div className="pt-4 border-t border-[#1A3152] flex items-center justify-between gap-2">
+                    <button
+                      onClick={() => setActiveArticle(article)}
+                      className="text-xs font-syne font-bold text-[#00C9A7] hover:text-[#00E5BE] flex items-center gap-1 transition-colors"
+                    >
+                      <span>Pročitaj članak</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+
+                    {article.externalUrl && (
                       <a
                         href={article.externalUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-syne font-bold text-[#00C9A7] hover:text-[#00E5BE] flex items-center gap-1.5 transition-colors group/btn"
-                        title="Pročitaj cijeli članak na Canva platformi"
+                        className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-[#C9A84C]/10 border border-[#C9A84C]/40 text-[#C9A84C] hover:bg-[#C9A84C]/20 flex items-center gap-1 transition-colors"
+                        title="Zvanični partnerski / eksterni link"
                       >
-                        <span>Pročitaj cijeli članak</span>
-                        <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                        <span>{article.externalUrl.includes('monday') ? 'monday.com ↗' : 'Vanjski Link ↗'}</span>
                       </a>
-                    ) : (
-                      <button
-                        onClick={() => setActiveArticle(article)}
-                        className="text-xs font-syne font-bold text-[#00C9A7] hover:text-[#00E5BE] flex items-center gap-1 transition-colors"
-                      >
-                        <span>Pročitaj cijeli članak</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
                     )}
 
                     <div className="flex items-center gap-1">
@@ -348,18 +354,26 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                   {activeArticle.content}
                 </div>
 
-                {/* External Canva / Web Link CTA */}
+                {/* External / Affiliate Link CTA Box */}
                 {activeArticle.externalUrl && (
-                  <div className="p-4 rounded-2xl bg-gradient-to-r from-[#0A1628] via-[#0F2038] to-[#0A1628] border border-[#00C9A7]/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg my-4">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-syne font-bold text-[#F5F0E8]">Cijeli Članak & E-Izdanje:</span>
+                  <div className={`p-5 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl my-4 ${
+                    activeArticle.externalUrl.includes('monday')
+                      ? 'bg-gradient-to-r from-[#0F2038] via-[#162C4E] to-[#0F2038] border-[#00C9A7]/60'
+                      : 'bg-gradient-to-r from-[#0A1628] via-[#0F2038] to-[#0A1628] border-[#00C9A7]/40'
+                  }`}>
+                    <div className="space-y-1 text-center sm:text-left">
+                      <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                        <span className="text-xs font-syne font-bold text-[#F5F0E8]">
+                          {activeArticle.externalUrl.includes('monday') ? 'Zvanični Partnerski Link:' : 'Zvanični Link Članka:'}
+                        </span>
                         <span className="px-2.5 py-0.5 rounded-full bg-[#00C9A7]/20 border border-[#00C9A7]/40 text-[#00C9A7] font-mono text-[11px] font-bold">
-                          Canva Reader
+                          {activeArticle.externalUrl.includes('monday') ? 'monday.com Free Trial' : 'Vanjski Izvor'}
                         </span>
                       </div>
-                      <p className="text-xs text-[#F5F0E8]/75 font-sans">
-                        Pristupite kompletnom vizuelnom članku i originalnom izdanju na zvaničnoj Canva platformi.
+                      <p className="text-xs text-[#F5F0E8]/80 font-sans">
+                        {activeArticle.externalUrl.includes('monday')
+                          ? 'Isprobajte Monday.com besplatno, kreirajte svoje prilagođene radne tokove i ubrzajte poslovanje.'
+                          : 'Pristupite kompletnom vizuelnom članku i originalnom izdanju na partnerskoj platformi.'}
                       </p>
                     </div>
 
@@ -367,9 +381,9 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                       href={activeArticle.externalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-[#00C9A7]/20 transition-all hover:scale-105 shrink-0"
+                      className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-[#00C9A7]/30 transition-all hover:scale-105 shrink-0"
                     >
-                      <span>Otvori na Canva Linku</span>
+                      <span>{activeArticle.externalUrl.includes('monday') ? 'Isprobaj Monday.com Besplatno' : 'Otvori Vanjski Link'}</span>
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
@@ -562,7 +576,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="article-image-url-input" className="block text-[11px] font-mono text-[#C9A84C] uppercase mb-1">URL Slike Članka (Opcionalno)</label>
+                  <label htmlFor="article-image-url-input" className="block text-[11px] font-mono text-[#C9A84C] uppercase mb-1">URL Slike / Logotipa (Opcionalno)</label>
                   <input
                     id="article-image-url-input"
                     name="articleImageUrl"
@@ -571,6 +585,38 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                     onChange={(e) => setEditingArticle({ ...editingArticle, imageUrl: e.target.value })}
                     placeholder="https:// ili /images/..."
                     className="w-full px-4 py-2.5 rounded-xl bg-[#0A1628] border border-[#1A3152] focus:border-[#00C9A7] outline-none text-[#F5F0E8]"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="article-external-url-input" className="block text-[11px] font-mono text-[#C9A84C] uppercase mb-1">Affiliate / Vanjski URL (Opcionalno)</label>
+                  <input
+                    id="article-external-url-input"
+                    name="articleExternalUrl"
+                    type="text"
+                    value={editingArticle.externalUrl || ''}
+                    onChange={(e) => setEditingArticle({ ...editingArticle, externalUrl: e.target.value })}
+                    placeholder="https://try.monday.com/..."
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#0A1628] border border-[#1A3152] focus:border-[#00C9A7] outline-none text-[#F5F0E8]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="article-video-url-input" className="block text-[11px] font-mono text-[#00C9A7] uppercase mb-1">YouTube Video URL</label>
+                  <input
+                    id="article-video-url-input"
+                    name="articleVideoUrl"
+                    type="text"
+                    value={editingArticle.videoUrl || ''}
+                    onChange={(e) => setEditingArticle({
+                      ...editingArticle,
+                      videoUrl: e.target.value,
+                      hasVideo: Boolean(e.target.value || editingArticle.videoFileName)
+                    })}
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#0A1628] border border-[#00C9A7]/40 focus:border-[#00C9A7] outline-none text-[#F5F0E8]"
                   />
                 </div>
 
@@ -584,7 +630,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                     onChange={(e) => setEditingArticle({
                       ...editingArticle,
                       videoFileName: e.target.value,
-                      hasVideo: Boolean(e.target.value)
+                      hasVideo: Boolean(e.target.value || editingArticle.videoUrl)
                     })}
                     placeholder="Primjer: BH.KONVER.VIDEO.pokaz.mp4"
                     className="w-full px-4 py-2.5 rounded-xl bg-[#0A1628] border border-[#00C9A7]/40 focus:border-[#00C9A7] outline-none text-[#F5F0E8]"
