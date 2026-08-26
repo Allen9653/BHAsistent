@@ -1,0 +1,6 @@
+{
+  "name": "B&H Assistant d.o.o.",
+  "description": "Zvanična web platforma IT firme B&H Assistant d.o.o. Zenica. Slogan: SPAJAMO KULTURE - STVARAMO ŠANSE. Digitalni alati, projekti, magazin SCENA+ i partnerstva.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
