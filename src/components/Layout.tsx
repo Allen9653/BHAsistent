@@ -8,6 +8,7 @@ import { ReturnButton } from './ReturnButton';
 import { ScrollToTop } from './ScrollToTop';
 import { usePullToRefresh } from '../hooks/usePullToRefresh';
 import { PullToRefreshIndicator } from './PullToRefreshIndicator';
+import { MetaTagManager } from './MetaTagManager';
 import { COMPANY_INFO } from '../data/companyData';
 import { CompanyDetails } from '../types';
 
@@ -55,6 +56,9 @@ export const Layout: React.FC<LayoutProps> = ({
   return (
     <div className="min-h-screen flex flex-col bg-[var(--brand-navy,#0A1628)] text-[var(--brand-text,#F5F0E8)] font-sans overflow-x-hidden selection:bg-[var(--brand-teal,#00C9A7)] selection:text-[#0A1628]">
       
+      {/* Dynamic SEO Meta Tags Generator */}
+      <MetaTagManager />
+
       {/* Automatically reset window scroll on every route transition */}
       <ScrollToTop />
 

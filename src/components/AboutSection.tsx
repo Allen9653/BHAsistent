@@ -168,8 +168,9 @@ export const AboutSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-2 text-[11px] text-[#F5F0E8]/60 font-sans text-center">
-                {t('about.verifiedNote', 'Svi podaci su verificirani u skladu sa zvaničnim registrima firmi u Bosni i Hercegovini.')}
+              <div className="pt-2 text-[11px] text-[#F5F0E8]/60 font-sans text-center flex items-center justify-center gap-2">
+                <span>{t('about.verifiedNote', 'Svi podaci su verificirani u skladu sa zvaničnim registrima firmi u Bosni i Hercegovini.')}</span>
+                <span className="font-mono text-[9px] text-[#00C9A7]/70 bg-[#0A1628] px-2 py-0.5 rounded border border-[#1A3152]">&gt;bd0c&lt;</span>
               </div>
             </div>
 
