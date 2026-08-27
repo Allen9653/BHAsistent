@@ -17,6 +17,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('Sve');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const { t } = useLanguage();
   
   // Modals
@@ -29,6 +30,19 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
   useEffect(() => {
     setArticles(getStoredNews());
   }, []);
+
+  const handleCategorySelect = (cat: string) => {
+    if (cat === selectedCategory) return;
+    setIsTransitioning(true);
+    setSelectedCategory(cat);
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 220);
+  };
+
+  const handleSearchChange = (val: string) => {
+    setSearchQuery(val);
+  };
 
   const handleSaveArticle = (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,7 +158,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => handleCategorySelect(cat)}
                 className={`px-3.5 py-2 rounded-xl text-xs font-syne font-bold transition-all whitespace-nowrap min-h-[40px] ${
                   selectedCategory === cat
                     ? 'bg-[#00C9A7] text-[#0A1628] shadow-md shadow-[#00C9A7]/20'
@@ -164,7 +178,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
               aria-label="Pretraži članke"
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Pretraži članke..."
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0A1628] border border-[#1A3152] focus:border-[#00C9A7] text-[#F5F0E8] text-xs outline-none font-sans"
             />
@@ -177,8 +191,34 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
           </div>
         </div>
 
-        {/* Articles Grid */}
-        {filteredArticles.length === 0 ? (
+        {/* Articles Grid with Shimmer Effect */}
+        {isTransitioning ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((n) => (
+              <div
+                key={n}
+                className="rounded-2xl bg-[#0F2038] border border-[#1A3152] overflow-hidden shadow-xl p-0 flex flex-col relative"
+              >
+                {/* Shimmer Skeleton Header */}
+                <div className="aspect-[16/9] w-full bg-[#0A1628] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full animate-shimmer" />
+                </div>
+                {/* Shimmer Skeleton Body */}
+                <div className="p-6 space-y-4 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent -translate-x-full animate-shimmer" />
+                  <div className="h-4 bg-[#1A3152]/60 rounded-md w-1/3" />
+                  <div className="h-6 bg-[#1A3152]/80 rounded-md w-3/4" />
+                  <div className="h-3 bg-[#1A3152]/50 rounded-md w-full" />
+                  <div className="h-3 bg-[#1A3152]/50 rounded-md w-2/3" />
+                  <div className="pt-4 border-t border-[#1A3152] flex justify-between">
+                    <div className="h-4 bg-[#1A3152]/60 rounded-md w-24" />
+                    <div className="h-4 bg-[#1A3152]/60 rounded-md w-16" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : filteredArticles.length === 0 ? (
           <div className="text-center py-16 rounded-3xl bg-[#0F2038] border border-[#1A3152] p-8">
             <Newspaper className="w-12 h-12 text-[#F5F0E8]/30 mx-auto mb-3" />
             <h3 className="font-syne font-bold text-lg text-[#F5F0E8]">Nema pronađenih članaka</h3>
@@ -189,10 +229,15 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
             {filteredArticles.map((article) => (
               <article
                 key={article.id}
-                className="group rounded-2xl bg-[#0F2038] border border-[#1A3152] hover:border-[#00C9A7]/50 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1"
+                className="group rounded-2xl bg-[#0F2038] border border-[#1A3152] hover:border-[#00C9A7]/50 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1 relative"
               >
+                {/* Subtle Shimmer Loading Effect Layer */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl z-0">
+                  <div className="w-full h-full bg-gradient-to-r from-transparent via-white/[0.035] to-transparent -translate-x-full animate-shimmer" />
+                </div>
+
                 {/* Image Header */}
-                <div className="aspect-[16/9] w-full bg-[#0A1628] relative overflow-hidden">
+                <div className="aspect-[16/9] w-full bg-[#0A1628] relative overflow-hidden z-10">
                   <SafeImage
                     src={normalizeImageUrl(article.imageUrl)}
                     alt={article.title}
@@ -223,7 +268,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                 </div>
 
                 {/* Body Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4 relative z-10">
                   <div className="space-y-2.5">
                     <div className="flex items-center gap-3 text-[11px] font-mono text-[#F5F0E8]/60">
                       <span className="flex items-center gap-1">

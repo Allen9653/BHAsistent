@@ -23,6 +23,35 @@ export function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event
 
 export const INITIAL_NEWS: NewsArticle[] = [
   {
+    id: "news-touch-ecommerce",
+    title: "TOUCH (touch.com.ua) – Novi zvanični partner B&H Assistant d.o.o. za pametne telefone, računare i elektroniku",
+    slug: "touch-com-ua-novi-partner-tehnika-elektronika",
+    category: "E-Commerce & Tehnika",
+    date: "27. August 2026. 🔥",
+    author: "B&H Assistant Redakcija",
+    excerpt: "TOUCH (touch.com.ua) je popularna ukrajinska internet-trgovina (e-commerce platforma) specijalizirana za prodaju pametnih telefona, računara, savremene elektronike, kućnih aparata i raznih tehnoloških gadgeta.",
+    content: `TOUCH (touch.com.ua) JE NOVI ZVANIČNI PARTNER B&H ASSISTANT d.o.o.
+
+TOUCH (touch.com.ua) je popularna ukrajinska internet-trgovina (e-commerce platforma) specijalizirana za prodaju pametnih telefona, računara, savremene elektronike, kućnih aparata i raznih tehnoloških gadgeta.
+
+Glavne karakteristike i ponuda ove firme uključuju:
+
+• 📱 Širok asortiman tehnike: U ponudi imaju pametne telefone vodećih brendova (Apple iPhone, Samsung, Xiaomi, Google Pixel, OnePlus itd.), laptope (Apple MacBook, Lenovo, Asus, Acer), tablete, pametne satove i fitnes narukvice.
+• 🍏 Apple i Xiaomi ekosistemi: Posebno su fokusirani na originalnu Apple opremu (iPhone, iPad, AirPods, Apple Watch) te kompletan asortiman Xiaomi uređaja i pametne kućne opreme.
+• ⚡ Oprema za autonomiju i energiju: Zbog specifične situacije u Ukrajini posljednjih godina, ponuda obuhvata i veliki izbor opreme za alternativno napajanje električnom energijom – prijenosne baterije (Power Bank), solarne i inverter generatore (EcoFlow, Bluetti) te opremu za internet i Wi-Fi rutere.
+• 🎧 Audio, gejming i periferija: Slušalice, zvučnici, gejming periferija (miševi, tastature, konzole), kao i oprema za pametne domove.
+• 🏷️ Polovna i outlet roba: U ponudi imaju i sekciju provjerene polovne (b/u) tehnike, kao i uređaje sa sniženom cijenom (уцінена техніка).
+
+Ukratko, riječ je o velikom online retaileru potrošačke elektronike u Ukrajini.
+
+👉 Posjetite našeg novog partnera TOUCH i iskoristite ekskluzivne pogodnosti:
+https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/`,
+    imageUrl: IMAGES.touchBanner,
+    externalUrl: "https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/",
+    published: true,
+    tags: ["TOUCH", "touch.com.ua", "E-Commerce", "Smartphones", "Apple", "Xiaomi", "EcoFlow", "Tehnika", "Partneri", "Affiliate"]
+  },
+  {
     id: "news-monday-com",
     title: "JESTE LI PROBALI MONDAY.COM?! Vodeća platforma za upravljanje projektima i timovima",
     slug: "jeste-li-probali-monday-com-work-os",

@@ -112,6 +112,23 @@ function getCandidateUrls(rawSrc: string): string[] {
     const directUrl = trimmed.includes('/details/')
       ? trimmed.replace('/details/', '/download/')
       : trimmed;
+    
+    // If it points to an item without specific file extension
+    const hasExtension = /\.(png|jpe?g|webp|gif|svg)$/i.test(directUrl);
+    if (!hasExtension) {
+      const parts = directUrl.split('/');
+      const itemId = parts[parts.length - 1] || parts[parts.length - 2];
+      if (itemId) {
+        addCandidate(`${directUrl}/${itemId}.png`);
+        addCandidate(`${directUrl}/${itemId}.jpg`);
+        addCandidate(`${directUrl}/${itemId}.jpeg`);
+        addCandidate(`${directUrl}/touch_logo_promo_banner.png`);
+        addCandidate(`${directUrl}/touch_logo_promo_banner.jpg`);
+      }
+      addCandidate(`${directUrl}.png`);
+      addCandidate(`${directUrl}.jpg`);
+    }
+
     addCandidate(directUrl);
     addCandidate(trimmed);
     return candidates;

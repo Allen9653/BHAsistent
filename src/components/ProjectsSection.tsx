@@ -114,6 +114,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenBojanka 
               {/* Corner Glow Accent */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#00C9A7]/10 to-transparent rounded-bl-full pointer-events-none group-hover:from-[#00C9A7]/25 transition-all duration-500" />
 
+              {/* Subtle Shimmer Loading Effect Layer */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-0">
+                <div className="w-full h-full bg-gradient-to-r from-transparent via-white/[0.035] to-transparent -translate-x-full animate-shimmer" />
+              </div>
+
               {/* Floating Social Media Share Bar */}
               <div
                 className="absolute top-6 right-6 z-20 flex items-center gap-1.5 p-1.5 rounded-2xl bg-[#0A1628]/90 border border-[#1A3152] backdrop-blur-md shadow-lg shadow-black/40"

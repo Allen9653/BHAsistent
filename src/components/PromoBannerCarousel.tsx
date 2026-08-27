@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Pause, Play, Sparkles, ExternalLink, MessageSquare, Download, Layers, Briefcase, Plus, Image as ImageIcon, Globe, PhoneCall, Bot } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pause, Play, Sparkles, ExternalLink, MessageSquare, Download, Layers, Briefcase, Plus, Image as ImageIcon, Globe, PhoneCall, Bot, Smartphone } from 'lucide-react';
 import { SafeImage } from './SafeImage';
 import { useLanguage } from '../context/LanguageContext';
 import { IMAGES } from '../utils/images';
@@ -91,6 +91,23 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
       accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
       icon: Sparkles,
       bannerImage: IMAGES.bravoWinner
+    },
+    {
+      id: 'touch-ecommerce-partner',
+      badgeKey: 'banner.touch.badge',
+      badgeDefault: 'NOVI E-COMMERCE PARTNER 📱',
+      titleKey: 'banner.touch.title',
+      titleDefault: 'TOUCH (touch.com.ua) – Pametni Telefoni, Računari, Gadgeti i Autonomno Napajanje',
+      descKey: 'banner.touch.desc',
+      descDefault: 'Popularna ukrajinska e-commerce platforma sa širokim asortimanom originalne tehnike (Apple, Xiaomi, Samsung), alternativnog napajanja (EcoFlow, Bluetti generatori) i provjerene outlet tehnike.',
+      btnKey: 'banner.touch.btn',
+      btnDefault: 'Posjeti TOUCH Trgovinu',
+      btnUrl: 'https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/',
+      isExternal: true,
+      tagColor: 'bg-gradient-to-r from-[#FF7A00] via-[#FFA500] to-[#00C9A7] text-[#0A1628] font-extrabold',
+      accentBg: 'from-[#0F2038] via-[#2A1A10] to-[#0A1628]',
+      icon: Smartphone,
+      bannerImage: IMAGES.touchBanner
     },
     {
       id: 'mitgo-xpuvo-deals',

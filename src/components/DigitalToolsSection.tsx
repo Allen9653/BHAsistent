@@ -98,6 +98,11 @@ export const DigitalToolsSection: React.FC<DigitalToolsSectionProps> = ({
               {/* Card Top Accent Bar */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00C9A7] via-[#C9A84C] to-[#00C9A7] opacity-60 group-hover:opacity-100 transition-opacity" />
 
+              {/* Subtle Shimmer Loading Effect Layer */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-0">
+                <div className="w-full h-full bg-gradient-to-r from-transparent via-white/[0.04] to-transparent -translate-x-full animate-shimmer" />
+              </div>
+
               <div>
                 {/* Badge & Icon Header */}
                 <div className="flex items-center justify-between gap-2 mb-4">

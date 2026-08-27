@@ -253,6 +253,16 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'shop.remote.desc': 'Pretražite stotine provjerenih remote pozicija u IT-ju, marketingu, dizajnu i podršci. Prilagođeno za stručnjake i kandidate iz Bosne i Hercegovine i dijaspore sa mogućnošću rada za kompanije iz EU i SAD.',
     'shop.remote.btn': 'Otvori Remote Rocketship Poslove',
 
+    'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
+    'shop.touch.title': 'TOUCH - Pametni Telefoni, Računari & Autonomno Napajanje',
+    'shop.touch.desc': 'Popularna ukrajinska e-commerce platforma sa širokim asortimanom originalnih pametnih telefona (Apple, Xiaomi, Samsung), opreme za alternativno napajanje (EcoFlow, Bluetti generatori, Power Bank) i provjerene outlet tehnike.',
+    'shop.touch.btn': 'Posjeti TOUCH Trgovinu',
+
+    'banner.touch.badge': 'NOVI E-COMMERCE PARTNER 📱',
+    'banner.touch.title': 'TOUCH (touch.com.ua) – Pametni Telefoni, Računari, Gadgeti i Autonomno Napajanje',
+    'banner.touch.desc': 'Popularna ukrajinska e-commerce platforma sa širokim asortimanom originalne tehnike (Apple, Xiaomi, Samsung), alternativnog napajanja (EcoFlow, Bluetti generatori) i provjerene outlet tehnike.',
+    'banner.touch.btn': 'Posjeti TOUCH Trgovinu',
+
     'shop.atoms.badge': 'AI & TECH PLATFORMA',
     'shop.atoms.title': 'Atoms - Pretvori Ideju u Realnost',
     'shop.atoms.desc': 'Izgradite, testirajte i skalirajte napredne AI agente i moderne veb aplikacije u rekordnom roku. Prevorite svaku ideju u stvarni, operativni softverski proizvod uz podršku B&H Assistant partnerstva.',
@@ -572,6 +582,16 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'shop.remote.title': 'Best Platform for Remote Jobs in B&H!',
     'shop.remote.desc': 'Explore hundreds of verified remote positions in IT, marketing, design, and customer support with flexible hours for B&H talent.',
     'shop.remote.btn': 'Open Remote Rocketship Jobs',
+
+    'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
+    'shop.touch.title': 'TOUCH - Smartphones, Computers & Power Equipment',
+    'shop.touch.desc': 'Popular Ukrainian e-commerce platform offering a wide selection of genuine smartphones (Apple, Xiaomi, Samsung), autonomous power equipment (EcoFlow, Bluetti power stations, Power Banks), and certified outlet electronics.',
+    'shop.touch.btn': 'Visit TOUCH Store',
+
+    'banner.touch.badge': 'NEW E-COMMERCE PARTNER 📱',
+    'banner.touch.title': 'TOUCH (touch.com.ua) – Smartphones, Laptops, Gadgets & Autonomous Power',
+    'banner.touch.desc': 'Popular Ukrainian e-commerce store with genuine electronics (Apple, Xiaomi, Samsung), power stations (EcoFlow, Bluetti), and certified outlet gear.',
+    'banner.touch.btn': 'Visit TOUCH Store',
 
     'shop.atoms.badge': 'AI & TECH PLATFORM',
     'shop.atoms.title': 'Atoms - Turn Ideas into Reality',
@@ -893,6 +913,16 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'shop.remote.desc': 'Durchsuchen Sie hunderte geprüfte Homeoffice-Stellen in IT, Marketing, Design und Support für B&H Talenten.',
     'shop.remote.btn': 'Remote Rocketship Jobs Öffnen',
 
+    'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
+    'shop.touch.title': 'TOUCH - Smartphones, Computer & Autonome Stromversorgung',
+    'shop.touch.desc': 'Beliebter ukrainischer E-Commerce-Shop für Original-Smartphones (Apple, Xiaomi, Samsung), Laptops, Powerstations (EcoFlow, Bluetti) und geprüfte Outlet-Elektronik.',
+    'shop.touch.btn': 'TOUCH Shop Besuchen',
+
+    'banner.touch.badge': 'NEUER E-COMMERCE PARTNER 📱',
+    'banner.touch.title': 'TOUCH (touch.com.ua) – Smartphones, Laptops, Gadgets & Notstromtechnik',
+    'banner.touch.desc': 'Beliebter ukrainischer Online-Händler für Unterhaltungselektronik, Apple/Xiaomi Ökosysteme und EcoFlow/Bluetti Generatoren.',
+    'banner.touch.btn': 'TOUCH Shop Besuchen',
+
     'shop.atoms.badge': 'KI & TECH PLATTFORM',
     'shop.atoms.title': 'Atoms - Ideen in Realität Verwandeln',
     'shop.atoms.desc': 'Bauen, testen und skalieren Sie fortschrittliche KI-Agenten und Web-Apps in Rekordzeit mit B&H Assistant Partnervorteilen.',
@@ -1212,6 +1242,16 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'shop.remote.title': 'Bosna Hersek\'te Uzaktan Çalışma İçin En İyi Portal!',
     'shop.remote.desc': 'BT, pazarlama, tasarım ve destek alanlarında doğrulanmış yüzlerce uzaktan çalışma pozisyonunu inceleyin.',
     'shop.remote.btn': 'Remote Rocketship İşlerini Aç',
+
+    'shop.touch.badge': 'TOP E-TİCARET TEKNOLOJİ 📱',
+    'shop.touch.title': 'TOUCH - Akıllı Telefonlar, Bilgisayarlar & Güç İstasyonları',
+    'shop.touch.desc': 'Orijinal akıllı telefonlar (Apple, Xiaomi, Samsung), dizüstü bilgisayarlar, alternatif güç kaynakları (EcoFlow, Bluetti jeneratörler) ve garantili outlet elektronik konusunda uzmanlaşmış popüler Ukrayna e-ticaret platformu.',
+    'shop.touch.btn': 'TOUCH Mağazasını Ziyaret Et',
+
+    'banner.touch.badge': 'YENİ E-TİCARET ORTAĞI 📱',
+    'banner.touch.title': 'TOUCH (touch.com.ua) – Akıllı Telefonlar, Bilgisayarlar, Gadgetlar ve Güç Sistemleri',
+    'banner.touch.desc': 'Orijinal teknoloji ürünleri (Apple, Xiaomi, Samsung), güç istasyonları (EcoFlow, Bluetti) ve outlet fırsatlarıyla popüler Ukrayna e-ticaret mağazası.',
+    'banner.touch.btn': 'TOUCH Mağazasını Ziyaret Et',
 
     'shop.atoms.badge': 'YAPAY ZEKA VE TEKNOLOJİ PLATFORMU',
     'shop.atoms.title': 'Atoms - Fikirleri Gerçeğe Dönüştürün',

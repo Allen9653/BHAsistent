@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { AFFILIATE_COURSES } from '../data/companyData';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
-import { ExternalLink, Sparkles, GraduationCap, Award, BookOpen, CheckCircle, Search, Zap, ShieldAlert, ShoppingBag, ChevronLeft, ChevronRight, Briefcase, Cpu, PhoneCall, Globe, Terminal, Database, Radio, Layers, Camera, Image as ImageIcon } from 'lucide-react';
+import { ExternalLink, Sparkles, GraduationCap, Award, BookOpen, CheckCircle, Search, Zap, ShieldAlert, ShoppingBag, ChevronLeft, ChevronRight, Briefcase, Cpu, PhoneCall, Globe, Terminal, Database, Radio, Layers, Camera, Smartphone, Image as ImageIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const ShopAffiliateSection: React.FC = () => {
@@ -11,9 +11,19 @@ export const ShopAffiliateSection: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const { t } = useLanguage();
 
-  const categories = ['Sve', 'Remote Poslovi', 'Online Edukacija', 'IT & Veb Dizajn', 'Jezici & Poslovanje', 'Fotografija & Umjetnost'];
+  const handleCategorySelect = (cat: string) => {
+    if (cat === selectedCategory) return;
+    setIsTransitioning(true);
+    setSelectedCategory(cat);
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 200);
+  };
+
+  const categories = ['Sve', 'Elektronika & Tehnika', 'Remote Poslovi', 'Online Edukacija', 'IT & Veb Dizajn', 'Jezici & Poslovanje', 'Fotografija & Umjetnost'];
 
   const affiliateSlides = [
     {
@@ -36,9 +46,28 @@ export const ShopAffiliateSection: React.FC = () => {
       ]
     },
     {
+      id: 'touch-ecommerce',
+      badge: 'TOP E-COMMERCE TECH 📱',
+      shortName: '02. TOUCH Tech',
+      tagColor: 'bg-gradient-to-r from-[#FF7A00] via-[#FFA500] to-[#00C9A7] text-[#0A1628] font-extrabold',
+      title: 'TOUCH (touch.com.ua) – Pametni Telefoni, Računari i Elektronika',
+      subtitle: 'Popularna ukrajinska e-commerce platforma i novi partner B&H Assistant d.o.o.',
+      description: 'Veliki online retailer potrošačke elektronike specijaliziran za pametne telefone (Apple, Samsung, Xiaomi), laptope, Apple/Xiaomi ekosisteme, alternativno napajanje (EcoFlow, Bluetti generatori, Power Bank) i provjerenu outlet tehniku.',
+      url: 'https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/',
+      buttonText: 'Posjeti TOUCH Trgovinu',
+      bannerImg: IMAGES.touchBanner,
+      icon: Smartphone,
+      bullets: [
+        'Širok asortiman vodećih brendova: Apple iPhone, Samsung, Xiaomi, Pixel',
+        'Fokus na originalni Apple & Xiaomi ekosistem i pametne domove',
+        'Oprema za autonomiju i energiju: EcoFlow, Bluetti solarni/inverter generatori',
+        'Audio, gejming oprema i provjerena outlet/polovna tehnika'
+      ]
+    },
+    {
       id: 'bh-papirfinder-atoms',
       badge: 'ATOMS & E-UPRAVA',
-      shortName: '02. PapirFinder',
+      shortName: '03. PapirFinder',
       tagColor: 'bg-gradient-to-r from-[#C9A84C] via-[#FFD700] to-[#00C9A7] text-[#0A1628] font-extrabold',
       title: 'BH PapirFinder – Više Ne Ganjate Papire, Oni Dolaze Vama!',
       subtitle: 'E-Uprava i administrativni asistent na domenu https://bhpapirfinder.atoms.world',
@@ -423,7 +452,7 @@ export const ShopAffiliateSection: React.FC = () => {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => handleCategorySelect(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-syne font-bold transition-all ${
                   selectedCategory === cat
                     ? 'bg-[#00C9A7] text-[#0A1628]'
@@ -452,38 +481,68 @@ export const ShopAffiliateSection: React.FC = () => {
 
         </div>
 
-        {/* Courses Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filteredCourses.map((course) => {
-            const isGuruShots = course.id === 'gurushots-yusufowych';
-
-            return (
-              <motion.div
-                key={course.id}
-                whileHover={{
-                  y: -6,
-                  scale: 1.02,
-                  boxShadow: isGuruShots 
-                    ? "0 0 35px -5px rgba(201, 168, 76, 0.35)" 
-                    : "0 0 35px -5px rgba(0, 201, 167, 0.3)",
-                  borderColor: isGuruShots ? "rgba(201, 168, 76, 0.8)" : "rgba(0, 201, 167, 0.7)",
-                }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                onClick={() => {
-                  if (course.affiliateUrl) {
-                    window.open(course.affiliateUrl, '_blank', 'noopener,noreferrer');
-                  }
-                }}
-                className={`rounded-3xl bg-[#0F2038] border ${
-                  isGuruShots ? 'border-[#C9A84C]/50' : 'border-[#1A3152]'
-                } p-6 flex flex-col justify-between shadow-xl transition-all group cursor-pointer relative overflow-hidden`}
+        {/* Courses Cards Grid with Shimmer */}
+        {isTransitioning ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((n) => (
+              <div
+                key={n}
+                className="rounded-3xl bg-[#0F2038] border border-[#1A3152] p-6 flex flex-col justify-between shadow-xl relative overflow-hidden space-y-4"
               >
-                {/* Subtle Glow Corner */}
-                <div
-                  className={`absolute top-0 right-0 w-28 h-28 ${
-                    isGuruShots ? 'bg-gradient-to-bl from-[#C9A84C]/15' : 'bg-gradient-to-bl from-[#00C9A7]/10'
-                  } to-transparent rounded-bl-full pointer-events-none group-hover:opacity-100 transition-opacity`}
-                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent -translate-x-full animate-shimmer" />
+                <div className="flex justify-between items-center">
+                  <div className="h-5 bg-[#1A3152]/60 rounded-full w-24" />
+                  <div className="h-4 bg-[#1A3152]/40 rounded-full w-20" />
+                </div>
+                <div className="h-28 bg-[#0A1628] rounded-2xl relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full animate-shimmer" />
+                </div>
+                <div className="h-6 bg-[#1A3152]/70 rounded-md w-3/4" />
+                <div className="h-4 bg-[#1A3152]/40 rounded-md w-full" />
+                <div className="h-4 bg-[#1A3152]/40 rounded-md w-2/3" />
+                <div className="pt-4 border-t border-[#1A3152]">
+                  <div className="h-10 bg-[#1A3152]/60 rounded-xl w-full" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {filteredCourses.map((course) => {
+              const isGuruShots = course.id === 'gurushots-yusufowych';
+
+              return (
+                <motion.div
+                  key={course.id}
+                  whileHover={{
+                    y: -6,
+                    scale: 1.02,
+                    boxShadow: isGuruShots 
+                      ? "0 0 35px -5px rgba(201, 168, 76, 0.35)" 
+                      : "0 0 35px -5px rgba(0, 201, 167, 0.3)",
+                    borderColor: isGuruShots ? "rgba(201, 168, 76, 0.8)" : "rgba(0, 201, 167, 0.7)",
+                  }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  onClick={() => {
+                    if (course.affiliateUrl) {
+                      window.open(course.affiliateUrl, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
+                  className={`rounded-3xl bg-[#0F2038] border ${
+                    isGuruShots ? 'border-[#C9A84C]/50' : 'border-[#1A3152]'
+                  } p-6 flex flex-col justify-between shadow-xl transition-all group cursor-pointer relative overflow-hidden`}
+                >
+                  {/* Subtle Shimmer Loading Effect Layer */}
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-0">
+                    <div className="w-full h-full bg-gradient-to-r from-transparent via-white/[0.035] to-transparent -translate-x-full animate-shimmer" />
+                  </div>
+
+                  {/* Subtle Glow Corner */}
+                  <div
+                    className={`absolute top-0 right-0 w-28 h-28 ${
+                      isGuruShots ? 'bg-gradient-to-bl from-[#C9A84C]/15' : 'bg-gradient-to-bl from-[#00C9A7]/10'
+                    } to-transparent rounded-bl-full pointer-events-none group-hover:opacity-100 transition-opacity`}
+                  />
 
                 <div className="space-y-4 relative z-10">
                   <div className="flex items-center justify-between gap-2">
@@ -561,6 +620,7 @@ export const ShopAffiliateSection: React.FC = () => {
             );
           })}
         </div>
+        )}
 
       </div>
     </section>

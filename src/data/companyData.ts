@@ -353,6 +353,23 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
     image: IMAGES.tryhackmeBanner
   },
   {
+    id: "touch-ecommerce-partner",
+    title: "TOUCH (touch.com.ua) - Pametni Telefoni, Računari & Autonomno Napajanje",
+    provider: "touch.com.ua Online Retailer",
+    badge: "TOP E-COMMERCE TECH 📱",
+    description: "Popularna ukrajinska internet-trgovina (e-commerce platforma) specijalizirana za prodaju pametnih telefona (Apple, Samsung, Xiaomi), laptopa, Apple i Xiaomi ekosistema, opreme za autonomno napajanje (EcoFlow, Bluetti generatori, Power Bank) i provjerene outlet tehnike.",
+    bullets: [
+      "Vodeći brendovi pametnih telefona: Apple iPhone, Samsung, Xiaomi, Google Pixel",
+      "Apple i Xiaomi ekosistemi te oprema za pametne domove",
+      "Oprema za autonomiju i energiju: Power Bank, EcoFlow i Bluetti generatori",
+      "Audio, gejming periferija i sekcija provjerene outlet/polovne tehnike"
+    ],
+    affiliateUrl: "https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/",
+    category: "Elektronika & Tehnika",
+    featured: true,
+    image: IMAGES.touchBanner
+  },
+  {
     id: "business-languages",
     title: "Poslovni Jezici & Menadžment",
     provider: "International Business Academy",

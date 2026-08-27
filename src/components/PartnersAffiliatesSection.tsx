@@ -10,6 +10,7 @@ import {
   Terminal, 
   Cpu, 
   Layers, 
+  Smartphone,
   ArrowUpRight
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
@@ -159,6 +160,24 @@ export const PARTNERS_AFFILIATES_DATA: PartnerAffiliateItem[] = [
     brandColor: '#10B981',
     accentBorderColor: 'hover:border-[#10B981]',
     bgGradient: 'from-[#10B981]/10 to-transparent'
+  },
+  {
+    id: 'touch',
+    name: 'TOUCH E-Commerce',
+    domain: 'touch.com.ua',
+    category: 'Elektronika & Pametni Uređaji',
+    badge: 'TOP E-COMMERCE TECH 📱',
+    badgeType: 'cyan',
+    description: 'Popularna ukrajinska internet-trgovina za pametne telefone (Apple, Samsung, Xiaomi), laptope, gadgete, alternativno napajanje (EcoFlow, Bluetti) i kućnu tehniku.',
+    highlight: 'Apple, Xiaomi, EcoFlow, Bluetti & outlet tehnika',
+    affiliateUrl: 'https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/',
+    buttonLabel: 'Posjeti TOUCH Trgovinu',
+    icon: Smartphone,
+    logoUrl: 'https://archive.org/download/touch_logo_promo_banner/touch_logo_promo_banner.png',
+    brandInitials: 'TC',
+    brandColor: '#FF7A00',
+    accentBorderColor: 'hover:border-[#FF7A00]',
+    bgGradient: 'from-[#FF7A00]/10 to-transparent'
   }
 ];
 
@@ -214,7 +233,7 @@ export const PartnersAffiliatesSection: React.FC = () => {
           <div className="flex items-center gap-2.5 shrink-0">
             <div className="px-3.5 py-1.5 rounded-xl bg-[#0A1628] border border-[#1A3152] flex items-center gap-2 text-xs font-mono text-[#00C9A7]">
               <span className="w-2 h-2 rounded-full bg-[#00C9A7] animate-pulse" />
-              <span>7 Aktivnih Partnerstava</span>
+              <span>8 Aktivnih Partnerstava</span>
             </div>
           </div>
         </div>
@@ -235,6 +254,11 @@ export const PartnersAffiliatesSection: React.FC = () => {
               >
                 {/* Top Glowing Indicator */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00C9A7]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                {/* Subtle Shimmer Loading Effect Layer */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl z-0">
+                  <div className="w-full h-full bg-gradient-to-r from-transparent via-white/[0.035] to-transparent -translate-x-full animate-shimmer" />
+                </div>
 
                 {/* Card Top & Body */}
                 <div className="space-y-3.5">

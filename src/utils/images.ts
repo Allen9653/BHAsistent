@@ -73,6 +73,8 @@ export const TRYHACKME_BANNER = 'https://archive.org/download/remote_rocketship_
 export const MONDAY_LOGO = 'https://archive.org/download/remote_rocketship_logo/monday_com_logo.png';
 export const RZEKL_LOGO = 'https://archive.org/download/remote_rocketship_logo/rzekl.com_logo.png';
 export const XPUVO_LOGO = 'https://archive.org/download/remote_rocketship_logo/xpuvo.com_raina_tours_logo.png';
+export const TOUCH_LOGO = 'https://archive.org/download/touch_logo_promo_banner/touch_logo_promo_banner.png';
+export const TOUCH_BANNER = 'https://archive.org/download/touch_logo_promo_banner/touch_logo_promo_banner.png';
 export const CLOUDTALK_BANNER = 'https://i.imgur.com/5rTpp9F.jpg';
 
 // Full Structured Dictionary for easy property lookup
@@ -125,6 +127,8 @@ export const IMAGES = {
   mondayLogo: 'https://archive.org/download/remote_rocketship_logo/monday_com_logo.png',
   rzeklLogo: 'https://archive.org/download/remote_rocketship_logo/rzekl.com_logo.png',
   xpuvoLogo: 'https://archive.org/download/remote_rocketship_logo/xpuvo.com_raina_tours_logo.png',
+  touchLogo: 'https://archive.org/download/touch_logo_promo_banner/touch_logo_promo_banner.png',
+  touchBanner: 'https://archive.org/download/touch_logo_promo_banner/touch_logo_promo_banner.png',
   cloudtalkBanner: 'https://i.imgur.com/5rTpp9F.jpg',
 } as const;
 
