@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { StecakBackground } from '../components/StecakBackground';
 import { PromoBannerCarousel } from '../components/PromoBannerCarousel';
 import { PartnersAffiliatesSection } from '../components/PartnersAffiliatesSection';
+import { NativeCommercialBanner } from '../components/NativeCommercialBanner';
 import { SafeImage } from '../components/SafeImage';
 import { IMAGES } from '../utils/images';
 import { useLanguage } from '../context/LanguageContext';
@@ -38,6 +39,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
   const { t } = useLanguage();
   const [heroSlide, setHeroSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [showDetailedLegal, setShowDetailedLegal] = useState(false);
 
   const heroSlides = [
     {
@@ -317,7 +319,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
         </div>
       </section>
 
-      {/* 2. CORE PILLARS & FAST NAVIGATION HUB */}
+      {/* 2. PROMINENT VERIFIED PARTNER (TOUCH E-COMMERCE HIGHLIGHT) */}
+      <NativeCommercialBanner />
+
+      {/* 3. CORE PILLARS & FAST NAVIGATION HUB */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F2038] border border-[#00C9A7]/30 text-[#00C9A7] text-xs font-mono tracking-wider uppercase">
@@ -404,8 +409,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
 
       {/* 5. COMPANY STATS & TRUST BLOCK */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#1A3152] border border-[#00C9A7]/30 p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center sm:text-left items-center">
+        <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#1A3152] border border-[#00C9A7]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center sm:text-left items-center">
             
             <div className="space-y-2 md:col-span-1">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00C9A7]/15 border border-[#00C9A7]/30 text-[#00C9A7] text-[11px] font-mono">
@@ -440,15 +445,43 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
                 <Mail className="w-4 h-4" />
                 <span>{t('home.trust.contactBtn', 'Kontaktirajte Nas')}</span>
               </Link>
-              <Link
-                to="/o-nama"
-                className="w-full text-center px-4 py-2.5 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] border border-[#1A3152] text-[#F5F0E8] font-syne font-bold text-xs transition-colors"
+              <button
+                onClick={() => setShowDetailedLegal(!showDetailedLegal)}
+                className="w-full text-center px-4 py-2.5 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] border border-[#1A3152] text-[#00C9A7] font-mono font-bold text-xs transition-colors flex items-center justify-center gap-1.5"
               >
-                {t('home.trust.bizPlanBtn', 'Pogledaj Poslovni Plan →')}
-              </Link>
+                <Building2 className="w-3.5 h-3.5" />
+                <span>{showDetailedLegal ? 'Sakrij Bankovne Račune ▲' : 'Svi Registarski & Bankovni Podaci ▼'}</span>
+              </button>
             </div>
 
           </div>
+
+          {/* Expandable Detailed Legal Registry & Banking Section */}
+          {showDetailedLegal && (
+            <div className="mt-8 pt-6 border-t border-[#1A3152] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono animate-fadeIn">
+              <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
+                <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Glavni Transakcijski Račun</span>
+                <span className="text-[#00C9A7] font-bold text-sm block mt-0.5">1610000305820078</span>
+                <span className="text-[10px] text-[#F5F0E8]/60">Raiffeisen Bank d.d. BiH</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
+                <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Puno Registrovano Ime</span>
+                <span className="text-[#F5F0E8] font-bold block mt-0.5">B&H ASSISTANT d.o.o. Zenica</span>
+                <span className="text-[10px] text-[#F5F0E8]/60">Društvo sa ograničenom odgovornošću</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
+                <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Zvanično Sjedište</span>
+                <span className="text-[#F5F0E8] font-bold block mt-0.5">{COMPANY_INFO.address}</span>
+                <span className="text-[10px] text-[#F5F0E8]/60">{COMPANY_INFO.city}, {COMPANY_INFO.postalCode}, BiH</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
+                <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Bonitet & Verifikacija</span>
+                <span className="text-[#C9A84C] font-bold block mt-0.5">CompanyWall Rejting</span>
+                <span className="text-[10px] text-[#00C9A7]">Verifikovan Poslovni Subjekt</span>
+              </div>
+            </div>
+          )}
+
         </div>
       </section>
     </div>

@@ -22,6 +22,7 @@ import {
   Send
 } from 'lucide-react';
 import { BhKonverVideoModal } from './BhKonverVideoModal';
+import { ExternalToolEmbedModal } from './ExternalToolEmbedModal';
 import { PromoBannerCarousel } from './PromoBannerCarousel';
 import { ProductsPresentationCarousel } from './ProductsPresentationCarousel';
 import { useLanguage } from '../context/LanguageContext';
@@ -38,6 +39,7 @@ export const DigitalToolsSection: React.FC<DigitalToolsSectionProps> = ({
   const [showKonverModal, setShowKonverModal] = useState(false);
   const [activeToolVideo, setActiveToolVideo] = useState<DigitalTool | null>(null);
   const [selectedVideoVersion, setSelectedVideoVersion] = useState<'bos' | 'eng'>('bos');
+  const [previewTool, setPreviewTool] = useState<{ title: string; url: string; futureDomain: string; badge: string } | null>(null);
   const { t } = useLanguage();
 
   const getToolIcon = (iconName: string) => {
@@ -254,15 +256,32 @@ export const DigitalToolsSection: React.FC<DigitalToolsSectionProps> = ({
                   </>
                 )}
 
-                <a
-                  href={tool.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 px-4 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] border border-[#00C9A7]/40 hover:border-[#00C9A7] text-[#00C9A7] hover:text-[#0A1628] font-syne font-bold text-xs tracking-wide transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg group-hover:shadow-[#00C9A7]/20"
-                >
-                  <span>{tool.id === 'ornamenti-bosne' ? t('tools.stecak.btn', 'Prelistaj E-Katalog (Canva)') : `Isprobaj ${tool.name}`}</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={tool.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-extrabold text-xs tracking-wide transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-[#00C9A7]/20"
+                  >
+                    <span>{tool.id === 'ornamenti-bosne' ? t('tools.stecak.btn', 'Prelistaj E-Katalog') : `Pokreni ${tool.name}`}</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+
+                  <button
+                    onClick={() => {
+                      setPreviewTool({
+                        title: tool.name,
+                        url: tool.url,
+                        futureDomain: tool.id === 'bh-konver' ? 'bh-konver.ba' : tool.id === 'bh-papirfinder' ? 'bh-papirfinder.ba' : 'ornamenti-bosne.ba',
+                        badge: tool.badge || 'DIGITALNI ALAT',
+                      });
+                    }}
+                    title="Brzi pregled aplikacije u prozoru"
+                    className="py-3 px-3 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] border border-[#1A3152] hover:border-[#00C9A7]/50 text-[#F5F0E8]/80 hover:text-[#00C9A7] text-xs font-mono font-bold transition-all flex items-center justify-center"
+                  >
+                    ⚡
+                  </button>
+                </div>
               </div>
 
             </div>
@@ -290,6 +309,18 @@ export const DigitalToolsSection: React.FC<DigitalToolsSectionProps> = ({
         </div>
 
       </div>
+
+      {/* External Tool In-App Sandboxed Preview Modal */}
+      {previewTool && (
+        <ExternalToolEmbedModal
+          isOpen={!!previewTool}
+          onClose={() => setPreviewTool(null)}
+          title={previewTool.title}
+          externalUrl={previewTool.url}
+          futureDomain={previewTool.futureDomain}
+          badge={previewTool.badge}
+        />
+      )}
 
       {/* BH KONVER Video Modal */}
       <BhKonverVideoModal
