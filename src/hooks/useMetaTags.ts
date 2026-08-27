@@ -77,7 +77,7 @@ export const ROUTE_META_MAP: Record<string, RouteMetaConfig> = {
   },
   '/kontakt': {
     title: 'Kontakt & Impressum | B&H Assistant d.o.o. Zenica - Javite nam se',
-    description: 'Stupite u kontakt sa timom B&H Assistant d.o.o. Zenica. Adresa: Ul. Crkvice, 72000 Zenica. E-mail: alenj9653@gmail.com, Tel: +387 61 754 534.',
+    description: 'Stupite u kontakt sa timom B&H Assistant d.o.o. Zenica. Adresa: Ul. Bulevar Ezhera Eze Arnautovića 8, 72000 Zenica. E-mail: info@bh-assistant.ba, Tel: +387 62 580 207.',
     keywords: 'kontakt bh assistant, adresa zenica, telefon bh assistant, impressum, email kontakt',
     canonical: 'https://bh-assistant.ba/kontakt',
     ogType: 'website',
@@ -136,16 +136,16 @@ function updateJsonLd(config: RouteMetaConfig, pathname: string) {
         'description': 'Zvanična platforma IT firme B&H Assistant d.o.o. Zenica. Slogan: SPAJAMO KULTURE - STVARAMO ŠANSE. >bd0c<',
         'address': {
           '@type': 'PostalAddress',
-          'streetAddress': 'Crkvice',
+          'streetAddress': 'Bulevar Ezhera Eze Arnautovića 8',
           'addressLocality': 'Zenica',
           'postalCode': '72000',
           'addressCountry': 'BA',
         },
         'contactPoint': {
           '@type': 'ContactPoint',
-          'telephone': '+387 61 754 534',
+          'telephone': '+387 62 580 207',
           'contactType': 'customer support',
-          'email': 'alenj9653@gmail.com',
+          'email': 'info@bh-assistant.ba',
         },
       },
       {

@@ -240,6 +240,38 @@ export const DEVELOPMENT_PROJECTS: DevelopmentProject[] = [
 
 export const AFFILIATE_COURSES: AffiliateCourse[] = [
   {
+    id: "mitgo-xpuvo-partner",
+    title: "Mitgo & Global Partner Deals",
+    provider: "xpuvo.com / Mitgo Premium Network",
+    badge: "GLOBALNI POPUSTI & PARTNER 🌟",
+    description: "Ekskluzivne partnerske ponude, digitalni alati i globalni popusti kroz zvaničnu partnersku mrežu B&H Assistant d.o.o. Zenica. Iskoristite provjerene pogodnosti i popuste vodećih svjetskih brendova na jednom mjestu.",
+    bullets: [
+      "Zvanični B&H Assistant autorizovani partnerski kanal",
+      "Ekskluzivni popusti i promotivni kodovi globalnih servisa",
+      "Direktan pristup i sigurna kupovina na partnerskoj platformi"
+    ],
+    affiliateUrl: "https://xpuvo.com/g/ofc53p8nisfe02eff231e94db72a90/",
+    category: "IT & Veb Dizajn",
+    featured: true,
+    image: IMAGES.xpuvoLogo
+  },
+  {
+    id: "admitad-gateway-renewed",
+    title: "Admitad & Mitgo - Obnovljeni Gateway",
+    provider: "rzekl.com / Admitad Global Platform",
+    badge: "OBNOVLJENI PARTNER • VERIFIED 🌐",
+    description: "Zvanično verifikovani i obnovljeni partnerski link firme B&H Assistant d.o.o. na domeni bh-assistant.ba. Povežite se sa stotinama CPA programa, e-commerce lidera i digitalnih servisa.",
+    bullets: [
+      "Obnovljen i aktivan zvanični gateway link",
+      "Potpuna verifikacija domene bh-assistant.ba (Mitgo ID)",
+      "Provjerene partnerske pogodnosti i digitalne usluge"
+    ],
+    affiliateUrl: "https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/",
+    category: "IT & Veb Dizajn",
+    featured: true,
+    image: IMAGES.rzeklLogo
+  },
+  {
     id: "monday-com",
     title: "Monday.com - Vodeći Work OS & Upravljanje Projektima",
     provider: "monday.com Work OS Global Platform",
@@ -250,31 +282,48 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
       "Automatizacija radnih tokova i 200+ gotovih integracija (Slack, Teams, Google)",
       "Isprobajte besplatno putem našeg zvaničnog partnerskog linka"
     ],
-    affiliateUrl: "https://try.monday.com/rzwizf4pspzc",
+    affiliateUrl: "https://try.monday.com/platforma-za-sve",
     category: "IT & Veb Dizajn",
     featured: true,
     image: IMAGES.mondayLogo
   },
   {
     id: "remote-rocketship",
-    title: "Remote Rocketship - Remote Poslovi u BiH",
-    provider: "Remote Rocketship Global Network",
-    badge: "REMOTE POSLOVI U BiH",
-    description: "Najbolja stranica za Remote Poslove u BiH! Pronađite rad od kuće i plaćene pozicije u IT-ju, marketingu, dizajnu i korisničkoj podršci sa fleksibilnim radnim vremenom.",
+    title: "Remote Rocketship - Remote Poslovi u BiH i Svijetu",
+    provider: "remoterocketship.com Global Network",
+    badge: "REMOTE POSLOVI & KARIJERA",
+    description: "Najbolja platforma za Remote Poslove! Pronađite rad od kuće i plaćene pozicije u IT-ju, marketingu, dizajnu i korisničkoj podršci sa fleksibilnim radnim vremenom.",
     bullets: [
       "Najbolja stranica za Remote Poslove u BiH i dijaspori",
       "Direktan kontakt sa vrhunskim poslodavcima iz EU, SAD i svijeta",
       "Redovno ažurirani oglasi i provjereni uslovi rada"
     ],
-    affiliateUrl: "https://tolt.link/remote-poslovi",
+    affiliateUrl: "https://remoterocketship.com/?ref=posaoodkuce",
     category: "Remote Poslovi",
     featured: true,
     image: IMAGES.remoteRocket
   },
   {
+    id: "alison-global",
+    title: "Alison - Besplatni Certificirani Kursevi",
+    provider: "alison.com Global Education",
+    badge: "BESPLATNO & CERTIFICIRANO",
+    description: "Ukoliko tražite korisne, certificirane edukativne kurseve iz raznih svjetskih oblasti — imate priliku da besplatno upišete kurseve koje Vam nudimo u saradnji sa Alison platformom. Predavanja i testiranja znanja su 100% online.",
+    bullets: [
+      "Predavanja i testiranje znanja su 100% online",
+      "Predavači su stručnjaci i profesori sa svjetskih univerziteta",
+      "Certifikati i diplome priznati u EU, SAD i širom svijeta",
+      "Širok spektar oblasti: IT, Menadžment, Jezici, Zdravstvo, Dizajn"
+    ],
+    affiliateUrl: "https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529",
+    category: "Online Edukacija",
+    featured: true,
+    image: IMAGES.alisonLogo
+  },
+  {
     id: "atoms-dev",
     title: "Atoms - Pretvori Ideju u Realnost",
-    provider: "Atoms World AI & App Platform",
+    provider: "atoms.dev World AI Platform",
     badge: "AI & TECH PLATFORMA",
     description: "Inovativna AI i cloud platforma za brzo kreiranje, testiranje i skaliranje pametnih web aplikacija i samostalnih agenata bez komplicirane infrastrukture.",
     bullets: [
@@ -288,44 +337,11 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
     image: IMAGES.atomsDev
   },
   {
-    id: "alison-global",
-    title: "Alison - Besplatni Certificirani Kursevi",
-    provider: "Alison Global Education Platform Services",
-    badge: "BESPLATNO & CERTIFICIRANO",
-    description: "Ukoliko tražite korisne, certificirane edukativne kurseve iz raznih svjetskih oblasti — imate priliku da besplatno upišete kurseve koje Vam nudimo u saradnji sa Alison platformom. Predavanja i testiranja znanja su 100% online.",
-    bullets: [
-      "Predavanja i testiranje znanja su 100% online",
-      "Predavači su stručnjaci i profesori sa svjetskih univerziteta",
-      "Certifikati i diplome priznati u EU, SAD i širom svijeta",
-      "Širok spektar oblasti: IT, Menadžment, Jezici, Zdravstvo, Dizajn"
-    ],
-    affiliateUrl: "https://alison.com/certificate-courses?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529",
-    category: "Online Edukacija",
-    featured: true,
-    image: IMAGES.alisonLogo
-  },
-  {
-    id: "cloudtalk-partner",
-    title: "CloudTalk AI - Telefonski Asistent",
-    provider: "CloudTalk Global Voice & AI Solutions",
-    badge: "AI TELEFONIJA & CALL CENTAR",
-    description: "AI telefonski asistent za organizaciju, transkripciju i automatsko primanje poziva za call centre, online prodaju i korisničku podršku. Ubrzajte i optimizujte komunikaciju.",
-    bullets: [
-      "Pametni AI asistent za primanje i organizaciju poziva",
-      "Savršeno za online trgovine, podršku i call centre",
-      "Besplatna instalacija i probni period preko B&H Assistant-a"
-    ],
-    affiliateUrl: "https://cloudtalk.introw.io/r/bjT0sXh8",
-    category: "IT & Veb Dizajn",
-    featured: true,
-    image: IMAGES.cloudtalkBanner
-  },
-  {
     id: "it-skills-boost",
-    title: "TryHackMe & IT Cyber Security",
-    provider: "TryHackMe Global Cyber Lab",
-    badge: "PREPORUKA ZA MLADE",
-    description: "Specijalizirani interaktivni moduli za učenje sajber sigurnosti, etičkog hakovanja, web dizajna i programiranja za početnike i napredne polaznike kroz praksu u pretraživaču.",
+    title: "TryHackMe - Cyber Security & IT Labs",
+    provider: "tryhackme.com Global Cyber Lab",
+    badge: "CYBER LABS & PRAKSA",
+    description: "Specijalizirani interaktivni moduli za učenje sajber sigurnosti, etičkog hakovanja, mreža i programiranja za početnike i napredne polaznike kroz praksu u pretraživaču.",
     bullets: [
       "Lična virtuelna mašina u pretraživaču na jedan klik",
       "Praktične laboratorije i stvarni scenariji bez komplicirane instalacije",
@@ -333,7 +349,7 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
     ],
     affiliateUrl: "https://tryhackme.com/",
     category: "IT & Veb Dizajn",
-    featured: false,
+    featured: true,
     image: IMAGES.tryhackmeBanner
   },
   {
@@ -347,7 +363,7 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
       "Poslovna korespondencija i komunikacija",
       "Dostupno odmah na svim uređajima"
     ],
-    affiliateUrl: "https://alison.com/certificate-courses?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529",
+    affiliateUrl: "https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529",
     category: "Jezici & Poslovanje",
     featured: false,
     image: IMAGES.businessPlan

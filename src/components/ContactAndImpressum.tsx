@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { COMPANY_INFO } from '../data/companyData';
-import { Mail, Phone, MapPin, Facebook, Instagram, Send, CheckCircle2, MessageSquare, Building, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Send, CheckCircle2, MessageSquare, Building, Clock, Server, ExternalLink, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
+import { EmailConfigModal } from './EmailConfigModal';
 
 export const ContactAndImpressum: React.FC = () => {
   const { t } = useLanguage();
+  const [showEmailConfig, setShowEmailConfig] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +20,14 @@ export const ContactAndImpressum: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
+    
+    // Create mailto fallback for direct client sending
+    const mailtoUrl = `mailto:${COMPANY_INFO.email}?subject=${encodeURIComponent(`[${formData.subject}] Upit sa sajta od ${formData.name}`)}&body=${encodeURIComponent(`Ime pošiljaoca: ${formData.name}\nEmail: ${formData.email}\nKategorija: ${formData.subject}\n\nPoruka:\n${formData.message}`)}`;
+    
     setSubmitted(true);
+    // Optional fallback trigger
+    window.location.href = mailtoUrl;
+
     setTimeout(() => {
       setSubmitted(false);
       setFormData({ name: '', email: '', subject: 'Opći Upit', message: '' });
@@ -174,11 +183,19 @@ export const ContactAndImpressum: React.FC = () => {
                   <div className="p-2.5 rounded-xl bg-[#0A1628] border border-[#1A3152] text-[#00C9A7]">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div>
+                  <div className="space-y-1">
                     <h4 className="font-bold text-[#F5F0E8] font-syne">E-mail Adresa</h4>
-                    <a href={`mailto:${COMPANY_INFO.email}`} className="text-[#00C9A7] hover:underline font-mono">
+                    <a href={`mailto:${COMPANY_INFO.email}`} className="text-[#00C9A7] hover:underline font-mono text-sm block">
                       {COMPANY_INFO.email}
                     </a>
+                    <button
+                      type="button"
+                      onClick={() => setShowEmailConfig(true)}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#0A1628] hover:bg-[#00C9A7]/20 border border-[#00C9A7]/30 text-[10px] font-mono text-[#00C9A7] transition-all"
+                    >
+                      <Server className="w-3 h-3" />
+                      <span>Postavke Klijenta (IMAP/SMTP/SSL)</span>
+                    </button>
                   </div>
                 </div>
 
@@ -240,6 +257,12 @@ export const ContactAndImpressum: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Email Client Manual Setup & Webmail Modal */}
+      <EmailConfigModal
+        isOpen={showEmailConfig}
+        onClose={() => setShowEmailConfig(false)}
+      />
     </section>
   );
 };

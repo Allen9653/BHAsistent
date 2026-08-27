@@ -4,10 +4,14 @@
  * Direct Imgur CDN integration with local fallback support.
  */
 
-// Helper to normalize image paths and Imgur links
+// Helper to normalize image paths, Archive.org, and Imgur links
 export const getImagePath = (filename: string): string => {
   if (!filename) return '';
   if (filename.startsWith('http://') || filename.startsWith('https://') || filename.startsWith('data:')) {
+    // If it's an archive.org /details/ link, transform to direct /download/ image link
+    if (filename.includes('archive.org/details/')) {
+      return filename.replace('archive.org/details/', 'archive.org/download/');
+    }
     // If it is an Imgur page link without file extension, convert to direct i.imgur image
     const imgurMatch = filename.match(/https?:\/\/(?:i\.)?imgur\.com\/([a-zA-Z0-9]+)(?:\.[a-zA-Z]+)?/);
     if (imgurMatch && !filename.includes('.')) {
@@ -61,13 +65,15 @@ export const GUMMI_VAS_JARAN = 'https://i.imgur.com/j5QDDA1.jpg';
 export const ZENTAXI_LOGO = 'https://i.imgur.com/nyGuQYP.jpg';
 export const ZENTAXI_BANNER = 'https://i.imgur.com/9xHhYZJ.jpg';
 
-// Affiliate & Strategic Tech Partners (Imgur CDN)
-export const ATOMS_DEV_LOGO = 'https://i.imgur.com/4aXGBJy.jpg';
-export const REMOTE_ROCKET_LOGO = 'https://i.imgur.com/XZpyxty.jpg';
-export const ALISON_LOGO = 'https://i.imgur.com/qb26j1I.jpg';
+// Affiliate & Strategic Tech Partners (Archive.org Official Assets & Imgur Fallbacks)
+export const ATOMS_DEV_LOGO = 'https://archive.org/download/remote_rocketship_logo/atoms_dev_logo.png';
+export const REMOTE_ROCKET_LOGO = 'https://archive.org/download/remote_rocketship_logo/remote_rocketship_logo.png';
+export const ALISON_LOGO = 'https://archive.org/download/remote_rocketship_logo/alison_com_logo.png';
+export const TRYHACKME_BANNER = 'https://archive.org/download/remote_rocketship_logo/try_hackMe_logo.png';
+export const MONDAY_LOGO = 'https://archive.org/download/remote_rocketship_logo/monday_com_logo.png';
+export const RZEKL_LOGO = 'https://archive.org/download/remote_rocketship_logo/rzekl.com_logo.png';
+export const XPUVO_LOGO = 'https://archive.org/download/remote_rocketship_logo/xpuvo.com_raina_tours_logo.png';
 export const CLOUDTALK_BANNER = 'https://i.imgur.com/5rTpp9F.jpg';
-export const TRYHACKME_BANNER = 'https://i.imgur.com/7GCX5oO.jpg';
-export const MONDAY_LOGO = 'https://i.ytimg.com/vi/_z1ssf9ycqA/maxresdefault.jpg';
 
 // Full Structured Dictionary for easy property lookup
 export const IMAGES = {
@@ -112,12 +118,14 @@ export const IMAGES = {
   zentaxiBanner: 'https://i.imgur.com/9xHhYZJ.jpg',
 
   // Affiliate & Tech Partners
-  atomsDev: 'https://i.imgur.com/4aXGBJy.jpg',
-  remoteRocket: 'https://i.imgur.com/XZpyxty.jpg',
-  alisonLogo: 'https://i.imgur.com/qb26j1I.jpg',
+  atomsDev: 'https://archive.org/download/remote_rocketship_logo/atoms_dev_logo.png',
+  remoteRocket: 'https://archive.org/download/remote_rocketship_logo/remote_rocketship_logo.png',
+  alisonLogo: 'https://archive.org/download/remote_rocketship_logo/alison_com_logo.png',
+  tryhackmeBanner: 'https://archive.org/download/remote_rocketship_logo/try_hackMe_logo.png',
+  mondayLogo: 'https://archive.org/download/remote_rocketship_logo/monday_com_logo.png',
+  rzeklLogo: 'https://archive.org/download/remote_rocketship_logo/rzekl.com_logo.png',
+  xpuvoLogo: 'https://archive.org/download/remote_rocketship_logo/xpuvo.com_raina_tours_logo.png',
   cloudtalkBanner: 'https://i.imgur.com/5rTpp9F.jpg',
-  tryhackmeBanner: 'https://i.imgur.com/7GCX5oO.jpg',
-  mondayLogo: 'https://i.ytimg.com/vi/_z1ssf9ycqA/maxresdefault.jpg',
 } as const;
 
 export type ImageKey = keyof typeof IMAGES;

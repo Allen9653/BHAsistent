@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { COMPANY_INFO } from '../data/companyData';
-import { Facebook, Instagram, Shield, FileText, Heart, X, Lock, Key, Sliders, ArrowRight } from 'lucide-react';
+import { Facebook, Instagram, Shield, FileText, Heart, X, Lock, Key, Sliders, ArrowRight, Cookie, Mail, Server } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
+import { EmailConfigModal } from './EmailConfigModal';
 
 interface FooterProps {
   onOpenAdmin?: () => void;
@@ -14,9 +15,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
   const { t } = useLanguage();
   const [showImpressum, setShowImpressum] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
+  const [showEmailConfig, setShowEmailConfig] = useState(false);
   const [showAdminPinModal, setShowAdminPinModal] = useState(false);
   const [pinInput, setPinInput] = useState('');
   const [pinError, setPinError] = useState(false);
+
+  const openCookieSettings = () => {
+    window.dispatchEvent(new CustomEvent('bh-open-cookie-settings'));
+  };
 
   const handleAdminAuth = (e: React.FormEvent) => {
     e.preventDefault();
@@ -143,6 +149,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
               >
                 <FileText className="w-3.5 h-3.5 text-[#C9A84C]" />
                 <span>Uslovi Korištenja & Privatnost</span>
+              </button>
+
+              <button
+                onClick={openCookieSettings}
+                className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
+              >
+                <Cookie className="w-3.5 h-3.5 text-[#00C9A7]" />
+                <span>Postavke Kolačića (GDPR)</span>
+              </button>
+
+              <button
+                onClick={() => setShowEmailConfig(true)}
+                className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
+              >
+                <Mail className="w-3.5 h-3.5 text-[#00C9A7]" />
+                <span>Službeni E-mail & Setup</span>
               </button>
 
               <Link
@@ -344,6 +366,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
           </div>
         </div>
       )}
+
+      {/* Email Client Manual Setup & Webmail Modal */}
+      <EmailConfigModal
+        isOpen={showEmailConfig}
+        onClose={() => setShowEmailConfig(false)}
+      />
     </footer>
   );
 };

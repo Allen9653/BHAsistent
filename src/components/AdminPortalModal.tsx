@@ -14,7 +14,15 @@ import {
   Sparkles,
   Database,
   RefreshCw,
-  Sliders
+  Sliders,
+  Mail,
+  Server,
+  Calendar,
+  Copy,
+  Check,
+  ExternalLink,
+  Lock,
+  Inbox
 } from 'lucide-react';
 import * as Select from '@radix-ui/react-select';
 
@@ -33,13 +41,22 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
 }) => {
   const [formData, setFormData] = useState<CompanyDetails>(companyInfo);
   const [savedSuccess, setSavedSuccess] = useState(false);
-  const [activeTab, setActiveTab] = useState<'info' | 'settings' | 'account'>('info');
+  const [activeTab, setActiveTab] = useState<'info' | 'settings' | 'email' | 'account'>('info');
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deletePin, setDeletePin] = useState('');
   const [deleteError, setDeleteError] = useState('');
   const [accountDeletedMessage, setAccountDeletedMessage] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   if (!isOpen) return null;
+
+  const copyToClipboard = (text: string, key: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => {
+      setCopiedKey(null);
+    }, 2000);
+  };
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,6 +138,18 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
           >
             <Database className="w-4 h-4" />
             <span>Sistemske Postavke</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('email')}
+            className={`min-h-[44px] px-4 py-2 rounded-xl font-syne font-bold text-xs transition-all flex items-center gap-2 ${
+              activeTab === 'email'
+                ? 'bg-[#00C9A7] text-[#0A1628] shadow-md'
+                : 'bg-[#0A1628] text-[#F5F0E8]/70 hover:text-white'
+            }`}
+          >
+            <Mail className="w-4 h-4" />
+            <span>Službeni E-mail</span>
           </button>
 
           <button
@@ -281,6 +310,105 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
                   Svi podaci, obrasci i certifikati su zaštićeni HTTPS enkripcijom.
                 </p>
               </div>
+            </div>
+          )}
+
+          {activeTab === 'email' && (
+            <div className="space-y-4 font-sans text-xs">
+              
+              {/* Webmail Direct Launch */}
+              <div className="p-4 rounded-2xl bg-[#0A1628] border border-[#00C9A7]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-2">
+                    <Inbox className="w-4 h-4 text-[#00C9A7]" />
+                    <span className="font-syne font-bold text-sm text-[#F5F0E8]">
+                      Zvanični Inbox: <span className="text-[#00C9A7] font-mono">info@bh-assistant.ba</span>
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-[#F5F0E8]/70 font-sans">
+                    Direktan cPanel Webmail portal za čitanje i slanje službenih poruka.
+                  </p>
+                </div>
+
+                <a
+                  href="https://mail.bh-assistant.ba:2096"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-[40px] px-4 py-2 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs transition-all flex items-center gap-1.5 shrink-0 shadow-md"
+                >
+                  <span>Otvori Webmail</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
+              {/* Secure SSL/TLS Parameters */}
+              <div className="p-4 rounded-2xl bg-[#0A1628] border border-[#1A3152] space-y-3">
+                <div className="flex items-center gap-2">
+                  <ShieldAlert className="w-4 h-4 text-[#00C9A7]" />
+                  <h4 className="font-syne font-bold text-xs text-[#00C9A7] uppercase tracking-wider">
+                    Preporučene SSL/TLS Postavke za Mail Klijente (Outlook, Thunderbird, iOS, Android)
+                  </h4>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-mono text-[11px]">
+                  <div className="p-2.5 rounded-xl bg-[#0F2038] border border-[#1A3152] flex items-center justify-between">
+                    <div>
+                      <span className="text-[#F5F0E8]/60 text-[10px] block">Username:</span>
+                      <span className="text-[#00C9A7] font-bold">info@bh-assistant.ba</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard('info@bh-assistant.ba', 'tab-user')}
+                      className="p-1 rounded bg-[#0A1628] text-[#00C9A7]"
+                    >
+                      {copiedKey === 'tab-user' ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                    </button>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-[#0F2038] border border-[#1A3152] flex items-center justify-between">
+                    <div>
+                      <span className="text-[#F5F0E8]/60 text-[10px] block">Dolazni Server (Incoming):</span>
+                      <span className="text-[#F5F0E8] font-bold">mail.bh-assistant.ba</span>
+                      <span className="text-[10px] text-[#00C9A7] block">IMAP: 993 | POP3: 995</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard('mail.bh-assistant.ba', 'tab-inc')}
+                      className="p-1 rounded bg-[#0A1628] text-[#00C9A7]"
+                    >
+                      {copiedKey === 'tab-inc' ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                    </button>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-[#0F2038] border border-[#1A3152] flex items-center justify-between sm:col-span-2">
+                    <div>
+                      <span className="text-[#F5F0E8]/60 text-[10px] block">Odlazni Server (Outgoing SMTP):</span>
+                      <span className="text-[#F5F0E8] font-bold">mail.bh-assistant.ba (SMTP Port: 465 SSL)</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard('mail.bh-assistant.ba', 'tab-out')}
+                      className="p-1 rounded bg-[#0A1628] text-[#00C9A7]"
+                    >
+                      {copiedKey === 'tab-out' ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* CalDAV & CardDAV */}
+              <div className="p-4 rounded-2xl bg-[#0A1628] border border-[#1A3152] space-y-2 font-mono text-[11px]">
+                <span className="text-[#C9A84C] font-bold block text-[10px] uppercase font-syne">
+                  Kalendar & Adresar Sinhronizacija (SSL Port 2080):
+                </span>
+                <div className="p-2 rounded bg-[#0F2038] text-[10px] text-[#00C9A7] truncate">
+                  CalDAV: https://mail.bh-assistant.ba:2080/calendars/info@bh-assistant.ba/calendar
+                </div>
+                <div className="p-2 rounded bg-[#0F2038] text-[10px] text-[#C9A84C] truncate">
+                  CardDAV: https://mail.bh-assistant.ba:2080/addressbooks/info@bh-assistant.ba/addressbook
+                </div>
+              </div>
+
             </div>
           )}
 

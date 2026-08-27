@@ -9,6 +9,7 @@ import { ScrollToTop } from './ScrollToTop';
 import { usePullToRefresh } from '../hooks/usePullToRefresh';
 import { PullToRefreshIndicator } from './PullToRefreshIndicator';
 import { MetaTagManager } from './MetaTagManager';
+import { CookieBanner } from './CookieBanner';
 import { COMPANY_INFO } from '../data/companyData';
 import { CompanyDetails } from '../types';
 
@@ -118,6 +119,9 @@ export const Layout: React.FC<LayoutProps> = ({
 
       {/* Floating Back to Top Button */}
       <BackToTop />
+
+      {/* GDPR Cookie Consent Banner */}
+      <CookieBanner />
 
     </div>
   );

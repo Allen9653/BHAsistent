@@ -107,6 +107,16 @@ function getCandidateUrls(rawSrc: string): string[] {
     return candidates;
   }
 
+  // Archive.org URLs
+  if (trimmed.includes('archive.org')) {
+    const directUrl = trimmed.includes('/details/')
+      ? trimmed.replace('/details/', '/download/')
+      : trimmed;
+    addCandidate(directUrl);
+    addCandidate(trimmed);
+    return candidates;
+  }
+
   // Absolute or data/blob URIs
   if (
     trimmed.startsWith('data:') ||

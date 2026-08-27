@@ -44,13 +44,126 @@ Glavne prednosti i funkcionalnosti:
 • 📱 Dostupnost na svim uređajima (Web, iOS, Android) za efikasan timski rad bilo kada i bilo gdje
 
 👉 Isprobajte Monday.com besplatno i unaprijedite poslovanje svog tima putem našeg zvaničnog partnerskog linka:
-https://try.monday.com/rzwizf4pspzc`,
+https://try.monday.com/platforma-za-sve`,
     imageUrl: IMAGES.mondayLogo,
     videoUrl: "https://www.youtube.com/watch?v=_z1ssf9ycqA",
-    externalUrl: "https://try.monday.com/rzwizf4pspzc",
+    externalUrl: "https://try.monday.com/platforma-za-sve",
     hasVideo: true,
     published: true,
     tags: ["monday.com", "Work OS", "Produktivnost", "Upravljanje Projektima", "Affiliate", "Timski Rad", "Automatizacija"]
+  },
+  {
+    id: "news-atoms-dev",
+    title: "Atoms.dev – Pretvori svaku ideju u stvarni AI proizvod",
+    slug: "atoms-dev-pretvori-ideju-u-ai-proizvod",
+    category: "AI & Tehnologija",
+    date: "24. August 2026. 🌟",
+    author: "B&H Assistant Inovacije",
+    excerpt: "Atoms.dev omogućava programerima, preduzetnicima i timovima ubrzano kreiranje autonomnih AI agenata i web aplikacija uz minimalnu konfiguraciju.",
+    content: `PRETVORI IDEJU U REALNOST UZ ATOMS.DEV
+
+Inovativna AI i cloud platforma Atoms.dev pruža mogućnost brzog kreiranja, testiranja i skaliranja pametnih aplikacija nove generacije.
+
+Ključne mogućnosti:
+• 🤖 Kreiranje i raspoređivanje pametnih autonomnih AI agenata
+• ⚡ Razvoj modernih web aplikacija bez složene serverske infrastrukture
+• 🚀 Skalabilnost i optimizovane performanse za startupe i preduzeća
+• 🌐 Zvanično integrisano sa digitalnim ekosistemom B&H Assistant d.o.o.
+
+👉 Isprobajte Atoms platformu putem našeg zvaničnog linka:
+https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost`,
+    imageUrl: IMAGES.atomsDev,
+    externalUrl: "https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost",
+    published: true,
+    tags: ["Atoms.dev", "AI Agenti", "Web Aplikacije", "Inovacije", "Partneri"]
+  },
+  {
+    id: "news-remoterocketship-partner",
+    title: "Remote Rocketship – Najbolja platforma za poslove od kuće u BiH i svijetu",
+    slug: "remote-rocketship-posao-od-kuce-bih-svijet",
+    category: "Posao & Karijera",
+    date: "23. August 2026.",
+    author: "B&H Assistant Karijere",
+    excerpt: "Pronađite stotine provjerenih remote pozicija u IT-ju, marketingu, dizajnu i korisničkoj podršci sa transparentnim zaradama i fleksibilnim radnim vremenom.",
+    content: `REMOTE ROCKETSHIP – VAŠA ULAZNICA ZA RAD OD KUĆE
+
+Tražite provjerene remote poslove sa inostranim kompanijama iz EU, SAD-a i ostatka svijeta? Remote Rocketship nudi ažurirane oglase za kandidate iz BiH i dijaspore.
+
+Prednosti platforme:
+• 💼 Direktan kontakt sa vodećim inostranim poslodavcima
+• 💶 Transparentno navedeni rasponi plata (EUR / USD)
+• 🏡 100% fleksibilno radno vrijeme i rad sa bilo koje lokacije
+• 🔍 Napredno filtriranje po vještinama i industrijama
+
+👉 Pronađite svoj idealan posao od kuće:
+https://remoterocketship.com/?ref=posaoodkuce`,
+    imageUrl: IMAGES.remoteRocket,
+    externalUrl: "https://remoterocketship.com/?ref=posaoodkuce",
+    published: true,
+    tags: ["Remote Rocketship", "Remote Posao", "Rad od kuće", "Karijera", "IT Poslovi"]
+  },
+  {
+    id: "news-alison-partner",
+    title: "Alison – 100% Besplatni certificirani online kursevi i priznate diplome",
+    slug: "alison-besplatni-certificirani-kursevi-diplome",
+    category: "Online Edukacija",
+    date: "22. August 2026.",
+    author: "B&H Assistant Edukacija",
+    excerpt: "U saradnji sa globalnom platformom Alison, omogućavamo besplatno pohađanje online kurseva iz IT-ja, menadžmenta, jezika i poslovanja uz međunarodno priznate certifikate.",
+    content: `BESPLATNO ONLINE OBRAZOVANJE SA SVJETSKIM DIPLOMAMA
+
+Ukoliko tražite korisne, certificirane edukativne kurseve iz raznih svjetskih oblasti — imate priliku da besplatno upišete tečajeve u saradnji sa Alison platformom.
+
+Detalji i prednosti:
+• 🎓 Predavanja i testiranja znanja su 100% online
+• 🌍 Predavači su stručnjaci i profesori sa svjetskih univerziteta
+• 📜 Certifikati i diplome priznati u EU, SAD i širom svijeta
+• 📚 Širok spektar oblasti: IT, Programiranje, Poslovanje, Menadžment, Zdravstvo i Dizajn
+
+👉 Upišite besplatne kurseve:
+https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529`,
+    imageUrl: IMAGES.alisonLogo,
+    externalUrl: "https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529",
+    published: true,
+    tags: ["Alison", "Online Edukacija", "Besplatni Kursevi", "Certifikati", "Diplome"]
+  },
+  {
+    id: "news-xpuvo-partner",
+    title: "Mitgo Global Deals (xpuvo.com) – Ekskluzivne partnerske ponude i popusti",
+    slug: "mitgo-global-deals-xpuvo-partner-popusti",
+    category: "E-Commerce & Popusti",
+    date: "21. August 2026.",
+    author: "B&H Assistant Redakcija",
+    excerpt: "Ovlašteni B&H Assistant partnerski kanal za ekskluzivne promotivne ponude, kupone i globalne popuste vodećih svjetskih brendova.",
+    content: `EKSKLUZIVNI POPUSTI I PROMO PONUDE KROZ MITGO MREŽU
+
+Iskoristite provjerene pogodnosti, digitalne alate i globalne popuste vodećih svjetskih brendova kroz ovlaštenu partnersku mrežu B&H Assistant d.o.o. Zenica.
+
+👉 Posjetite partnerski portal:
+https://xpuvo.com/g/ofc53p8nisfe02eff231e94db72a90/`,
+    imageUrl: IMAGES.xpuvoLogo,
+    externalUrl: "https://xpuvo.com/g/ofc53p8nisfe02eff231e94db72a90/",
+    published: true,
+    tags: ["xpuvo.com", "Mitgo", "Popusti", "Global Deals", "Partneri"]
+  },
+  {
+    id: "news-rzekl-partner",
+    title: "Admitad & Mitgo Gateway (rzekl.com) – Zvanično obnovljeni partnerski portal",
+    slug: "admitad-mitgo-gateway-rzekl-verifikovani-partner",
+    category: "Digitalna Mreža & Partneri",
+    date: "20. August 2026.",
+    author: "B&H Assistant Redakcija",
+    excerpt: "Zvanično obnovljeni i verifikovani gateway B&H Assistant d.o.o. sa pristupom stotinama svjetskih oglašivača i CPA programa.",
+    content: `OBNOVLJENI I VERIFIKOVANI ADMITAD / MITGO GATEWAY
+
+Zvanični gateway B&H Assistant d.o.o. Zenica na domeni bh-assistant.ba obnovljen je i aktivan u Admitad/Mitgo globalnoj mreži.
+
+👉 Otvorite zvanični gateway:
+https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/`,
+    imageUrl: IMAGES.rzeklLogo,
+    externalUrl: "https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/",
+    published: true,
+    tags: ["rzekl.com", "Admitad", "Mitgo", "Gateway", "Verifikovano"]
   },
   {
     id: "news-bh-konver-glavna",
