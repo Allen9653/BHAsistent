@@ -107,29 +107,31 @@ https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost`,
     tags: ["Atoms.dev", "AI Agenti", "Web Aplikacije", "Inovacije", "Partneri"]
   },
   {
-    id: "news-remoterocketship-partner",
-    title: "Remote Rocketship – Najbolja platforma za poslove od kuće u BiH i svijetu",
-    slug: "remote-rocketship-posao-od-kuce-bih-svijet",
-    category: "Posao & Karijera",
-    date: "23. August 2026.",
-    author: "B&H Assistant Karijere",
-    excerpt: "Pronađite stotine provjerenih remote pozicija u IT-ju, marketingu, dizajnu i korisničkoj podršci sa transparentnim zaradama i fleksibilnim radnim vremenom.",
-    content: `REMOTE ROCKETSHIP – VAŠA ULAZNICA ZA RAD OD KUĆE
+    id: "news-kaspersky-security-partner",
+    title: "Kaspersky – Vrhunska kibernetička sigurnost i zaštita Vaših digitalnih uređaja",
+    slug: "kaspersky-antivirus-digitalna-sigurnost-popust",
+    category: "Digitalna Sigurnost",
+    date: "08. Septembar 2026. 🔥",
+    author: "B&H Assistant Sigurnost",
+    excerpt: "Kaspersky predstavlja globalni standard u digitalnoj sigurnosti. Zaštitite računare, mobitele i online plaćanja uz ekskluzivni popust na zvanične licence.",
+    content: `KASPERSKY – VRHUNSKA DIGITALNA SIGURNOST I ZAŠTITA VAŠIH UREĐAJA
 
-Tražite provjerene remote poslove sa inostranim kompanijama iz EU, SAD-a i ostatka svijeta? Remote Rocketship nudi ažurirane oglase za kandidate iz BiH i dijaspore.
+Kaspersky predstavlja globalni standard u digitalnoj sigurnosti, razvijen s ciljem pružanja sveobuhvatne zaštite od najsofisticiranijih kibernetičkih prijetnji današnjice. Kroz napredne heurističke algoritme, platforma u stvarnom vremenu neutrališe viruse, ransomware ucjenjivački softver i pokušaje krađe identiteta.
 
-Prednosti platforme:
-• 💼 Direktan kontakt sa vodećim inostranim poslodavcima
-• 💶 Transparentno navedeni rasponi plata (EUR / USD)
-• 🏡 100% fleksibilno radno vrijeme i rad sa bilo koje lokacije
-• 🔍 Napredno filtriranje po vještinama i industrijama
+Stručnjaci ga preporučuju zbog besprijekorne zaštite privatnosti, sigurnih online plaćanja i robusne prevencije 'phishing' napada. Kao višestruko nagrađivani tehnološki lider, Kaspersky uživa povjerenje preko 400 miliona privatnih korisnika i 220.000 kompanija širom svijeta. Osigurajte stabilnost svojih računara, pametnih uređaja i povjerljivih poslovnih podataka.
 
-👉 Pronađite svoj idealan posao od kuće:
-https://remoterocketship.com/?ref=posaoodkuce`,
-    imageUrl: IMAGES.remoteRocket,
-    externalUrl: "https://remoterocketship.com/?ref=posaoodkuce",
+Ključne prednosti zvaničnih Kaspersky paketa:
+• 🛡️ Heuristička i antivirusna zaštita u stvarnom vremenu
+• 💳 Sigurno online bankarstvo i zaštićene finansijske transakcije
+• 🔒 Blokiranje phishing stranica i zlonamjernih linkova
+• ⚡ Visoke performanse bez usporavanja vašeg računara ili mobitela
+
+👉 Saznajte više o paketima i ostvarite poseban popust prilikom kupovine i instalacije:
+https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84`,
+    imageUrl: IMAGES.kasperskyBanner,
+    externalUrl: "https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84",
     published: true,
-    tags: ["Remote Rocketship", "Remote Posao", "Rad od kuće", "Karijera", "IT Poslovi"]
+    tags: ["Kaspersky", "Antivirus", "Cyber Security", "Sigurnost", "Popust", "Online Zaštita"]
   },
   {
     id: "news-alison-partner",
@@ -307,7 +309,7 @@ https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/`,
     author: "B&H Assistant Karijere",
     excerpt: "Planiraj, pokreni i skaliraj plaćene kampanje za generisanje leadova na Meta platformama, Google Ads, TikTok i nativnim mrežama (Taboola, Outbrain). Cloaking i Keitaro tracker ekspertiza ($2.5k - $3.5k/mj).",
     content: "OGLAS ZA POSAO: MEDIA BUYER\n\n📌 Osnovne informacije:\n• 🔥 Objavljeno: Prije 2 sata (Job not on LinkedIn)\n• 🇪🇺 Lokacija: Europe – Remote (Rad od kuće)\n• 💵 Plata: $2,500 – $3,500 / mjesečno ($2.5k - $3.5k / month)\n• ⏰ Radno vrijeme: Full Time (Puno radno vrijeme)\n• 🟡 Nivo iskustva: Mid-level / 🟠 Senior\n• 🎡 Industrija: Marketing & Lead Generation\n• 🔗 Link za prijavu: https://tolt.link/posaoodkuce\n\nOpis posla i ključne odgovornosti:\n1. Planiraj, pokreni i skaliraj plaćene kampanje za generisanje leadova na Meta platformama (Facebook/Instagram), Google Ads Search, TikTok, kao i na nativnim mrežama poput Taboola i Outbrain.\n2. Izgradi i upravljaj kompletnim sistemom za praćenje i cloaking – od oglasnog računa, preko trackera, landing stranice, CRM‑a, pa sve do povratnog signala sa platforme.\n\n👉 Prijavite se direktno putem linka: https://tolt.link/posaoodkuce",
-    imageUrl: IMAGES.remoteRocket,
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     externalUrl: "https://tolt.link/posaoodkuce",
     isJobPosting: true,
     jobDetails: {
@@ -429,6 +431,10 @@ export const getStoredNews = (): NewsArticle[] => {
         a.id !== 'news-4' && 
         a.id !== 'news-1' &&
         a.id !== 'news-3' &&
+        a.id !== 'news-remoterocketship-partner' &&
+        !a.id.includes('remoterocket') &&
+        !(a.externalUrl && a.externalUrl.includes('remoterocket')) &&
+        !(a.title && a.title.toLowerCase().includes('remote rocketship')) &&
         !a.title.toLowerCase().includes('gummi učenje je zabava') &&
         // Filter out old or duplicate monday.com articles from localStorage so only one canonical exists
         !(a.id !== 'news-monday-com' && (a.title.toLowerCase().includes('monday.com') || a.title.toLowerCase().includes('monday')))

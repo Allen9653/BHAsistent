@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { AFFILIATE_COURSES } from '../data/companyData';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
-import { ExternalLink, Sparkles, GraduationCap, Award, BookOpen, CheckCircle, Search, Zap, ShieldAlert, ShoppingBag, ChevronLeft, ChevronRight, Briefcase, Cpu, PhoneCall, Globe, Terminal, Database, Radio, Layers, Camera, Smartphone, Image as ImageIcon } from 'lucide-react';
+import { ExternalLink, Sparkles, GraduationCap, Award, BookOpen, CheckCircle, Search, Zap, ShieldAlert, ShieldCheck, ShoppingBag, ChevronLeft, ChevronRight, Briefcase, Cpu, PhoneCall, Globe, Terminal, Database, Radio, Layers, Camera, Smartphone, Image as ImageIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const ShopAffiliateSection: React.FC = () => {
@@ -23,7 +23,7 @@ export const ShopAffiliateSection: React.FC = () => {
     }, 200);
   };
 
-  const categories = ['Sve', 'Elektronika & Tehnika', 'Remote Poslovi', 'Online Edukacija', 'IT & Veb Dizajn', 'Jezici & Poslovanje', 'Fotografija & Umjetnost'];
+  const categories = ['Sve', 'Digitalna Sigurnost', 'Elektronika & Tehnika', 'Online Edukacija', 'IT & Veb Dizajn', 'Jezici & Poslovanje', 'Fotografija & Umjetnost'];
 
   const affiliateSlides = [
     {
@@ -141,22 +141,22 @@ export const ShopAffiliateSection: React.FC = () => {
       ]
     },
     {
-      id: 'remote-rocketship',
-      badge: 'REMOTE WORK BIH',
-      shortName: '05. Remote Rocket',
-      tagColor: 'bg-[#C9A84C] text-[#0A1628] font-extrabold',
-      title: 'Remote Rocketship – Najbolji Poslovi od Kuće',
-      subtitle: 'Pronađite plaćene poslove od kuće i globalne remote prilike za BiH i dijasporu',
-      description: 'Pretražite stotine provjerenih remote pozicija u IT-ju, marketingu, dizajnu i podršci. Prilagođeno za stručnjake i kandidate iz Bosne i Hercegovine i dijaspore sa mogućnošću rada za kompanije iz EU i SAD.',
-      url: 'https://remoterocketship.com/?ref=posaoodkuce',
-      buttonText: 'Otvori Remote Poslove',
-      bannerImg: IMAGES.remoteRocket,
-      icon: Briefcase,
+      id: 'kaspersky-security',
+      badge: 'KIBERNETIČKA SIGURNOST',
+      shortName: '05. Kaspersky Antivirus',
+      tagColor: 'bg-[#00A88E] text-[#0A1628] font-extrabold',
+      title: 'Kaspersky – Vrhunska Kibernetička Sigurnost',
+      subtitle: 'Sveobuhvatna zaštita uređaja, lozinki i online plaćanja uz ekskluzivni popust',
+      description: 'Kaspersky pruža globalno priznatu zaštitu od virusa, ransomwarea, phishing prevara i krađe identiteta u stvarnom vremenu. Iskoristite poseban partnerski popust prilikom kupovine i instalacije na vaše računare i pametne uređaje.',
+      url: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84',
+      buttonText: 'Aktiviraj Kaspersky Popust',
+      bannerImg: IMAGES.kasperskyBanner,
+      icon: ShieldCheck,
       bullets: [
-        'Najbolja stranica za Remote Poslove u BiH i regiji',
-        'Direktan kontakt sa vrhunskim inostranim poslodavcima',
-        'Transparentne plate u EUR/USD, rad od kuće i fleksibilno radno vrijeme',
-        'Ažurirane pozicije za developere, dizajnere i virtuelne asistente'
+        'Heuristička i antivirusna zaštita u stvarnom vremenu za PC, Mac i mobitele',
+        'Zaštita internet bankarstva, lozinki i prevencija sofisticiranih phishing napada',
+        'Globalni tehnološki lider sa preko 400 miliona zadovoljnih korisnika',
+        'Ekskluzivni popust za posjetioce B&H Assistant platforme uz garanciju'
       ]
     },
     {

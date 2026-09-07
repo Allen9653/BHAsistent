@@ -67,7 +67,6 @@ export const ZENTAXI_BANNER = 'https://i.imgur.com/9xHhYZJ.jpg';
 
 // Affiliate & Strategic Tech Partners (Archive.org Official Assets & Imgur Fallbacks)
 export const ATOMS_DEV_LOGO = 'https://archive.org/download/remote_rocketship_logo/atoms_dev_logo.png';
-export const REMOTE_ROCKET_LOGO = 'https://archive.org/download/remote_rocketship_logo/remote_rocketship_logo.png';
 export const ALISON_LOGO = 'https://archive.org/download/remote_rocketship_logo/alison_com_logo.png';
 export const TRYHACKME_BANNER = 'https://archive.org/download/remote_rocketship_logo/try_hackMe_logo.png';
 export const MONDAY_LOGO = 'https://archive.org/download/remote_rocketship_logo/monday_com_logo.png';
@@ -120,8 +119,9 @@ export const IMAGES = {
   zentaxiBanner: 'https://i.imgur.com/9xHhYZJ.jpg',
 
   // Affiliate & Tech Partners
+  kasperskyLogo: 'https://archive.org/download/kaspersky_affiliated_link/kaspersky_affiliated_link.jpg',
+  kasperskyBanner: 'https://archive.org/download/kaspersky_affiliated_link/kaspersky_affiliated_link.jpg',
   atomsDev: 'https://archive.org/download/remote_rocketship_logo/atoms_dev_logo.png',
-  remoteRocket: 'https://archive.org/download/remote_rocketship_logo/remote_rocketship_logo.png',
   alisonLogo: 'https://archive.org/download/remote_rocketship_logo/alison_com_logo.png',
   tryhackmeBanner: 'https://archive.org/download/remote_rocketship_logo/try_hackMe_logo.png',
   mondayLogo: 'https://archive.org/download/remote_rocketship_logo/monday_com_logo.png',

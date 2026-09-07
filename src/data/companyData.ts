@@ -288,20 +288,21 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
     image: IMAGES.mondayLogo
   },
   {
-    id: "remote-rocketship",
-    title: "Remote Rocketship - Remote Poslovi u BiH i Svijetu",
-    provider: "remoterocketship.com Global Network",
-    badge: "REMOTE POSLOVI & KARIJERA",
-    description: "Najbolja platforma za Remote Poslove! Pronađite rad od kuće i plaćene pozicije u IT-ju, marketingu, dizajnu i korisničkoj podršci sa fleksibilnim radnim vremenom.",
+    id: "kaspersky-security",
+    title: "Kaspersky – Vrhunska Kibernetička Sigurnost & Antivirus",
+    provider: "Kaspersky Global Security Network",
+    badge: "KIBERNETIČKA SIGURNOST & POPUST",
+    description: "Kaspersky pruža sveobuhvatnu digitalnu zaštitu od najnovijih kibernetičkih prijetnji, virusa i ransomware napada. Iskoristite ekskluzivni popust na zvanične licence za vaše računare i mobilne uređaje.",
     bullets: [
-      "Najbolja stranica za Remote Poslove u BiH i dijaspori",
-      "Direktan kontakt sa vrhunskim poslodavcima iz EU, SAD i svijeta",
-      "Redovno ažurirani oglasi i provjereni uslovi rada"
+      "Zaštita u stvarnom vremenu od virusa, malwarea i krađe identiteta",
+      "Zaštita finansijskih transakcija i prevencija naprednih phishing napada",
+      "Globalni lider sa stotinama miliona zadovoljnih korisnika širom svijeta",
+      "Ekskluzivni partnerski popust prilikom online kupovine i instalacije"
     ],
-    affiliateUrl: "https://remoterocketship.com/?ref=posaoodkuce",
-    category: "Remote Poslovi",
+    affiliateUrl: "https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84",
+    category: "Digitalna Sigurnost",
     featured: true,
-    image: IMAGES.remoteRocket
+    image: IMAGES.kasperskyBanner
   },
   {
     id: "alison-global",

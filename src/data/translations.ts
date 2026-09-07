@@ -95,10 +95,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.slide.atoms.desc': 'Inovativna AI i cloud platforma za brzo kreiranje, testiranje i skaliranje pametnih web aplikacija i samostalnih agenata.',
     'hero.slide.atoms.btn': 'Otvori Atoms.dev →',
 
-    'hero.slide.remote.title': 'Remote Rocketship',
-    'hero.slide.remote.motto': 'Najbolja stranica za Remote Poslove u BiH!',
-    'hero.slide.remote.desc': 'Pretražite stotine plaćenih poslova od kuće u IT-ju, marketingu, dizajnu i korisničkoj podršci sa fleksibilnim radnim vremenom.',
-    'hero.slide.remote.btn': 'Traži Remote Poslove →',
+    'hero.slide.kaspersky.title': 'Kaspersky Lab',
+    'hero.slide.kaspersky.motto': 'Vrhunska kibernetička sigurnost i zaštita uređaja!',
+    'hero.slide.kaspersky.desc': 'Sveobuhvatna zaštita od virusa, ransomwarea, krađe lozinki i bankovnih prevara za PC, Mac i mobitele uz ekskluzivni popust.',
+    'hero.slide.kaspersky.btn': 'Aktiviraj Kaspersky Popust →',
 
     'hero.slide.konver.title': 'BH KONVER',
     'hero.slide.konver.motto': 'Sistem za konverziju i pravne izjave',
@@ -226,11 +226,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.stecak.badge': 'BAŠTINA & DIZAJN',
     'banner.stecak.btn': 'Istraži Vektorsku Kolekciju',
 
-    // Banner 6 - Remote Jobs & Alison
-    'banner.remote.title': 'Pronađite Remote Poslove u BiH & Besplatne Certificirane Kurseve',
-    'banner.remote.desc': 'Povežite se sa inostranim poslodavcima ili upišite besplatne online edukacije u saradnji sa Alison akademijom.',
-    'banner.remote.badge': 'EDUKACIJA & KARIJERA',
-    'banner.remote.btn': 'Otvori SHOP & Partnerstva',
+    // Banner 6 - Kaspersky Security Partner
+    'banner.kaspersky.title': 'Kaspersky Kibernetička Sigurnost – Zaštitite Vaše Uređaje uz Poseban Popust',
+    'banner.kaspersky.desc': 'Sveobuhvatna zaštita od virusa, ransomwarea i krađe lozinki uz napredne heurističke algoritme i sigurno online bankarstvo.',
+    'banner.kaspersky.badge': 'KIBERNETIČKA SIGURNOST • POPUST 🛡️',
+    'banner.kaspersky.btn': 'Ostvari Kaspersky Popust',
 
     // Banner 7 - Future Upload Slot Placeholder
     'banner.future.title': 'Vaš Oglas ili Partnerski Banner Ovdje • Postanite Sponzor B&H Assistant-a',
@@ -246,12 +246,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Shop & Affiliate Section
     'shop.badge': 'FLUID IT SHOP & AFFILIATE HUB',
-    'shop.title': 'Edukativna Trgovina & Affiliated Partneri i Remote Poslovi',
-    'shop.subtitle': 'Predstavljamo našu e-trgovinsku platformu i sponzorisane partnere. Povezujemo vas sa najboljim stranicama za remote poslove, AI platformama i certificiranim kursevima!',
-    'shop.remote.badge': 'REMOTE POSLOVI U BiH',
-    'shop.remote.title': 'Najbolja stranica za Remote Poslove u BiH!',
-    'shop.remote.desc': 'Pretražite stotine provjerenih remote pozicija u IT-ju, marketingu, dizajnu i podršci. Prilagođeno za stručnjake i kandidate iz Bosne i Hercegovine i dijaspore sa mogućnošću rada za kompanije iz EU i SAD.',
-    'shop.remote.btn': 'Otvori Remote Rocketship Poslove',
+    'shop.title': 'Edukativna Trgovina & Affiliated Partneri i Digitalna Sigurnost',
+    'shop.subtitle': 'Predstavljamo našu e-trgovinsku platformu i sponzorisane partnere. Povezujemo vas sa vrhunskom kibernetičkom zaštitom, AI platformama i certificiranim kursevima!',
+    'shop.kaspersky.badge': 'KIBERNETIČKA SIGURNOST & POPUST 🛡️',
+    'shop.kaspersky.title': 'Kaspersky Lab – Vrhunska Zaštita Uređaja i Podataka',
+    'shop.kaspersky.desc': 'Kaspersky pruža sveobuhvatnu digitalnu zaštitu od najnovijih kibernetičkih prijetnji, virusa i ransomware napada. Iskoristite ekskluzivni popust na zvanične licence za vaše računare i mobilne uređaje.',
+    'shop.kaspersky.btn': 'Aktiviraj Kaspersky Popust',
 
     'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
     'shop.touch.title': 'TOUCH - Pametni Telefoni, Računari & Autonomno Napajanje',
@@ -425,10 +425,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.slide.atoms.desc': 'Innovative AI & cloud platform to quickly build, test, and scale smart web apps and autonomous AI agents.',
     'hero.slide.atoms.btn': 'Open Atoms.dev →',
 
-    'hero.slide.remote.title': 'Remote Rocketship',
-    'hero.slide.remote.motto': 'Best portal for Remote Jobs in B&H!',
-    'hero.slide.remote.desc': 'Browse hundreds of paid work-from-home positions in IT, marketing, design, and support with flexible working hours.',
-    'hero.slide.remote.btn': 'Search Remote Jobs →',
+    'hero.slide.kaspersky.title': 'Kaspersky Lab',
+    'hero.slide.kaspersky.motto': 'Premier Cybersecurity & Device Protection!',
+    'hero.slide.kaspersky.desc': 'Comprehensive defense against viruses, ransomware, password theft, and banking fraud for PC, Mac, and mobile devices with exclusive discounts.',
+    'hero.slide.kaspersky.btn': 'Activate Kaspersky Discount →',
 
     'hero.slide.konver.title': 'BH KONVER',
     'hero.slide.konver.motto': 'Conversion system & legal declarations',
@@ -556,11 +556,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.stecak.badge': 'HERITAGE & DESIGN',
     'banner.stecak.btn': 'Explore Vector Collection',
 
-    // Banner 6 - Remote Jobs & Alison
-    'banner.remote.title': 'Discover Remote Jobs in B&H & Free Certified Global Courses',
-    'banner.remote.desc': 'Connect with top global employers or enroll in 100% free online certified courses in partnership with Alison Academy.',
-    'banner.remote.badge': 'CAREER & EDUCATION',
-    'banner.remote.btn': 'Open SHOP & Partnerships',
+    // Banner 6 - Kaspersky Security Partner
+    'banner.kaspersky.title': 'Kaspersky Cybersecurity – Protect Your Digital Devices with Special Discount',
+    'banner.kaspersky.desc': 'Complete protection against viruses, ransomware, and identity theft with award-winning real-time heuristic scanning.',
+    'banner.kaspersky.badge': 'CYBERSECURITY • DISCOUNT 🛡️',
+    'banner.kaspersky.btn': 'Get Kaspersky Discount',
 
     // Banner 7 - Future Upload Slot Placeholder
     'banner.future.title': 'Your Ad or Partner Banner Here • Become a B&H Assistant Sponsor',
@@ -576,12 +576,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Shop & Affiliate Section
     'shop.badge': 'FLUID IT SHOP & AFFILIATE HUB',
-    'shop.title': 'Education Store, Affiliated Partners & Remote Jobs',
-    'shop.subtitle': 'Discover our e-commerce platform and sponsored partners. Connecting you with top remote job portals, AI platforms, and certified courses!',
-    'shop.remote.badge': 'REMOTE JOBS IN B&H',
-    'shop.remote.title': 'Best Platform for Remote Jobs in B&H!',
-    'shop.remote.desc': 'Explore hundreds of verified remote positions in IT, marketing, design, and customer support with flexible hours for B&H talent.',
-    'shop.remote.btn': 'Open Remote Rocketship Jobs',
+    'shop.title': 'Education Store, Affiliated Partners & Cybersecurity',
+    'shop.subtitle': 'Discover our e-commerce platform and sponsored partners. Connecting you with world-class cybersecurity, AI platforms, and certified courses!',
+    'shop.kaspersky.badge': 'CYBERSECURITY & DISCOUNT 🛡️',
+    'shop.kaspersky.title': 'Kaspersky Lab – Premier Device & Data Protection',
+    'shop.kaspersky.desc': 'Kaspersky offers total defense against viruses, malware, and ransomware with real-time heuristic security and secure online payments.',
+    'shop.kaspersky.btn': 'Activate Kaspersky Discount',
 
     'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
     'shop.touch.title': 'TOUCH - Smartphones, Computers & Power Equipment',
@@ -755,10 +755,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.slide.atoms.desc': 'Innovative KI- & Cloud-Plattform zum schnellen Erstellen, Testen und Skalieren smarter Web-Apps und autonomer KI-Agenten.',
     'hero.slide.atoms.btn': 'Atoms.dev Öffnen →',
 
-    'hero.slide.remote.title': 'Remote Rocketship',
-    'hero.slide.remote.motto': 'Das beste Portal für Remote-Jobs in BiH!',
-    'hero.slide.remote.desc': 'Durchsuchen Sie hunderte bezahlte Homeoffice-Stellen in IT, Marketing, Design und Support mit flexiblen Arbeitszeiten.',
-    'hero.slide.remote.btn': 'Remote-Jobs Suchen →',
+    'hero.slide.kaspersky.title': 'Kaspersky Lab',
+    'hero.slide.kaspersky.motto': 'Erstklassige Cybersicherheit & Geräteschutz!',
+    'hero.slide.kaspersky.desc': 'Umfassender Schutz vor Viren, Ransomware, Passwortdiebstahl und Betrug für PC, Mac und Mobilgeräte mit exklusivem Rabatt.',
+    'hero.slide.kaspersky.btn': 'Kaspersky-Rabatt Aktivieren →',
 
     'hero.slide.konver.title': 'BH KONVER',
     'hero.slide.konver.motto': 'Konvertierungssystem & Rechterklärungen',
@@ -886,11 +886,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.stecak.badge': 'KULTURERBE & DESIGN',
     'banner.stecak.btn': 'Vektorsammlung Erkunden',
 
-    // Banner 6 - Remote Jobs & Alison
-    'banner.remote.title': 'Finden Sie Remote-Jobs in GuH & Kostenlose Zertifizierte Kurse',
-    'banner.remote.desc': 'Verbinden Sie sich mit internationalen Arbeitgebern oder belegen Sie kostenlose Online-Kurse in Zusammenarbeit mit der Alison Academy.',
-    'banner.remote.badge': 'KARRIERE & BILDUNG',
-    'banner.remote.btn': 'SHOP & Partnerschaften Öffnen',
+    // Banner 6 - Kaspersky Security Partner
+    'banner.kaspersky.title': 'Kaspersky Cybersicherheit – Schützen Sie Ihre Geräte mit Exklusivem Rabatt',
+    'banner.kaspersky.desc': 'Umfassender Schutz vor Viren, Ransomware und Identitätsdiebstahl mit preisgekrönter Echtzeitüberwachung.',
+    'banner.kaspersky.badge': 'CYBERSICHERHEIT • RABATT 🛡️',
+    'banner.kaspersky.btn': 'Kaspersky-Rabatt Sichern',
 
     // Banner 7 - Future Upload Slot Placeholder
     'banner.future.title': 'Ihre Anzeige Oder Partnerbanner Hier • Werden Sie B&H Assistant Sponsor',
@@ -906,12 +906,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Shop & Affiliate Section
     'shop.badge': 'FLUID IT SHOP & AFFILIATE HUB',
-    'shop.title': 'Bildungsshop, Partner & Remote-Jobs',
-    'shop.subtitle': 'Entdecken Sie unsere Plattform und Partner. Wir verbinden Sie mit führenden Portalen für Remote-Jobs, KI-Plattformen und zertifizierten Kursen!',
-    'shop.remote.badge': 'REMOTE-JOBS IN BiH',
-    'shop.remote.title': 'Beste Seite für Remote-Jobs in BiH!',
-    'shop.remote.desc': 'Durchsuchen Sie hunderte geprüfte Homeoffice-Stellen in IT, Marketing, Design und Support für B&H Talenten.',
-    'shop.remote.btn': 'Remote Rocketship Jobs Öffnen',
+    'shop.title': 'Bildungsshop, Partner & Cybersicherheit',
+    'shop.subtitle': 'Entdecken Sie unsere Plattform und Partner. Wir verbinden Sie mit erstklassiger Cybersicherheit, KI-Plattformen und zertifizierten Kursen!',
+    'shop.kaspersky.badge': 'CYBERSICHERHEIT & RABATT 🛡️',
+    'shop.kaspersky.title': 'Kaspersky Lab – Erstklassiger Geräte- und Datenschutzes',
+    'shop.kaspersky.desc': 'Kaspersky bietet umfassenden Schutz vor Viren, Malware und Ransomware mit Echtzeit-Sicherheitsanalysen und sicherem Online-Banking.',
+    'shop.kaspersky.btn': 'Kaspersky-Rabatt Aktivieren',
 
     'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
     'shop.touch.title': 'TOUCH - Smartphones, Computer & Autonome Stromversorgung',
@@ -1085,10 +1085,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.slide.atoms.desc': 'Akıllı web uygulamalarını ve özerk yapay zeka ajanlarını hızla oluşturmak, test etmek ve ölçeklendirmek için yenilikçi platform.',
     'hero.slide.atoms.btn': 'Atoms.dev\'i Aç →',
 
-    'hero.slide.remote.title': 'Remote Rocketship',
-    'hero.slide.remote.motto': 'Bosna Hersek\'te Uzaktan Çalışma İçin En İyi Portal!',
-    'hero.slide.remote.desc': 'BT, pazarlama, tasarım ve destek alanlarında esnek çalışma saatlerine sahip yüzlerce evden çalışma fırsatını inceleyin.',
-    'hero.slide.remote.btn': 'Uzaktan İş Ara →',
+    'hero.slide.kaspersky.title': 'Kaspersky Lab',
+    'hero.slide.kaspersky.motto': 'Üstün Siber Güvenlik ve Cihaz Koruması!',
+    'hero.slide.kaspersky.desc': 'PC, Mac ve mobil cihazlar için virüslere, fidye yazılımlarına ve kimlik hırsızlığına karşı özel indirimli kapsamlı koruma.',
+    'hero.slide.kaspersky.btn': 'Kaspersky İndirimini Etkinleştir →',
 
     'hero.slide.konver.title': 'BH KONVER',
     'hero.slide.konver.motto': 'Dönüştürme sistemi ve hukuki beyannameler',
@@ -1216,11 +1216,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.stecak.badge': 'MİRAS VE TASARIM',
     'banner.stecak.btn': 'Vektör Koleksiyonunu Keşfet',
 
-    // Banner 6 - Remote Jobs & Alison
-    'banner.remote.title': 'Bosna Hersek\'te Uzaktan İşler ve Ücretsiz Sertifikalı Küresel Kurslar Keşfedin',
-    'banner.remote.desc': 'Küresel işverenlerle bağlantı kurun veya Alison Akademi ortaklığıyla %100 ücretsiz çevrimiçi sertifikalı kurslara kaydolun.',
-    'banner.remote.badge': 'KARİYER VE EĞİTİM',
-    'banner.remote.btn': 'SHOP ve Ortaklıkları Aç',
+    // Banner 6 - Kaspersky Security Partner
+    'banner.kaspersky.title': 'Kaspersky Siber Güvenlik – Cihazlarınızı Özel İndirimle Koruyun',
+    'banner.kaspersky.desc': 'Virüslere, fidye yazılımlarına ve şifre hırsızlığına karşı ödüllü gerçek zamanlı tarama ve güvenli online bankacılık.',
+    'banner.kaspersky.badge': 'SİBER GÜVENLİK • İNDİRİM 🛡️',
+    'banner.kaspersky.btn': 'Kaspersky İndirimini Al',
 
     // Banner 7 - Future Upload Slot Placeholder
     'banner.future.title': 'Reklamınız veya Ortaklık Bannerınız Burada • B&H Assistant Sponsoru Olun',
@@ -1236,12 +1236,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Shop & Affiliate Section
     'shop.badge': 'FLUID IT SHOP & AFFILIATE HUB',
-    'shop.title': 'Eğitim Mağazası, Ortaklıklar ve Uzaktan İşler',
-    'shop.subtitle': 'E-ticaret platformumuzu ve sponsorlu ortaklarımızı keşfedin. Sizi en iyi uzaktan iş portalları, yapay zeka platformları ve sertifikalı kurslarla buluşturuyoruz!',
-    'shop.remote.badge': 'BOSNA HERSEK\'TE UZAKTAN İŞLER',
-    'shop.remote.title': 'Bosna Hersek\'te Uzaktan Çalışma İçin En İyi Portal!',
-    'shop.remote.desc': 'BT, pazarlama, tasarım ve destek alanlarında doğrulanmış yüzlerce uzaktan çalışma pozisyonunu inceleyin.',
-    'shop.remote.btn': 'Remote Rocketship İşlerini Aç',
+    'shop.title': 'Eğitim Mağazası, Ortaklıklar ve Siber Güvenlik',
+    'shop.subtitle': 'E-ticaret platformumuzu ve sponsorlu ortaklarımızı keşfedin. Sizi birinci sınıf siber güvenlik, yapay zeka platformları ve sertifikalı kurslarla buluşturuyoruz!',
+    'shop.kaspersky.badge': 'SİBER GÜVENLİK & İNDİRİM 🛡️',
+    'shop.kaspersky.title': 'Kaspersky Lab – Üstün Cihaz ve Veri Koruması',
+    'shop.kaspersky.desc': 'Kaspersky, gerçek zamanlı sezgisel güvenlik ve korumalı çevrimiçi ödemeler ile virüslere, kötü amaçlı yazılımlara ve fidye yazılımlarına karşı tam koruma sunar.',
+    'shop.kaspersky.btn': 'Kaspersky İndirimini Etkinleştir',
 
     'shop.touch.badge': 'TOP E-TİCARET TEKNOLOJİ 📱',
     'shop.touch.title': 'TOUCH - Akıllı Telefonlar, Bilgisayarlar & Güç İstasyonları',

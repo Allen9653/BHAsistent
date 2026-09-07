@@ -46,17 +46,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBojanka, onNavig
     },
     {
       type: 'affiliate',
-      badge: 'AFFILIATE PARTNER • REMOTE POSLOVI',
-      badgeColor: 'bg-[#C9A84C] text-[#0A1628]',
-      title: t('hero.slide.remote.title', 'Remote Rocketship'),
-      motto: t('hero.slide.remote.motto', 'Najbolja stranica za Remote Poslove u BiH!'),
-      description: t('hero.slide.remote.desc', 'Pretražite stotine plaćenih poslova od kuće u IT-ju, marketingu, dizajnu i korisničkoj podršci sa fleksibilnim radnim vremenom.'),
-      icon: Briefcase,
-      image: IMAGES.remoteRocket,
-      url: 'https://tolt.link/remote-poslovi',
-      tags: ['Rad od kuće', 'EU & SAD Poslodavci', 'IT & Podrška'],
-      footerText: t('hero.slide.remote.motto', 'Pronađite vaš idealan remote posao u BiH'),
-      footerButton: t('hero.slide.remote.btn', 'Traži Remote Poslove →')
+      badge: 'AFFILIATE PARTNER • KIBERNETIČKA SIGURNOST',
+      badgeColor: 'bg-[#00A88E] text-[#0A1628]',
+      title: t('hero.slide.kaspersky.title', 'Kaspersky Lab'),
+      motto: t('hero.slide.kaspersky.motto', 'Vrhunska kibernetička sigurnost i zaštita uređaja!'),
+      description: t('hero.slide.kaspersky.desc', 'Sveobuhvatna zaštita od virusa, ransomwarea, krađe lozinki i bankovnih prevara za PC, Mac i mobitele uz ekskluzivni popust.'),
+      icon: ShieldCheck,
+      image: IMAGES.kasperskyBanner,
+      url: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84',
+      tags: ['Antivirus', 'Phishing Zaštita', 'Popust do 50%'],
+      footerText: t('hero.slide.kaspersky.motto', 'Zaštitite svoje uređaje uz globalnog lidera u kibernetičkoj sigurnosti'),
+      footerButton: t('hero.slide.kaspersky.btn', 'Aktiviraj Kaspersky Popust →')
     },
     {
       type: 'tool',

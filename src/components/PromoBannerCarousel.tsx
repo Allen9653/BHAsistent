@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Pause, Play, Sparkles, ExternalLink, MessageSquare, Download, Layers, Briefcase, Plus, Image as ImageIcon, Globe, PhoneCall, Bot, Smartphone } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pause, Play, Sparkles, ExternalLink, MessageSquare, Download, Layers, Briefcase, Plus, Image as ImageIcon, Globe, PhoneCall, Bot, Smartphone, ShieldCheck } from 'lucide-react';
 import { SafeImage } from './SafeImage';
 import { useLanguage } from '../context/LanguageContext';
 import { IMAGES } from '../utils/images';
@@ -228,20 +228,21 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
       bannerImage: IMAGES.ornamentiBosne
     },
     {
-      id: 'remote-career',
-      badgeKey: 'banner.remote.badge',
-      badgeDefault: 'EDUKACIJA & KARIJERA',
-      titleKey: 'banner.remote.title',
-      titleDefault: 'Pronađite Remote Poslove u BiH & Besplatne Certificirane Kurseve',
-      descKey: 'banner.remote.desc',
-      descDefault: 'Povežite se sa inostranim poslodavcima ili upišite besplatne online edukacije u saradnji sa Alison akademijom.',
-      btnKey: 'banner.remote.btn',
-      btnDefault: 'Otvori SHOP & Partnerstva',
-      btnUrl: '#shop',
-      tagColor: 'bg-[#00E5BE] text-[#0A1628]',
-      accentBg: 'from-[#0A1628] via-[#0F2038] to-[#1A3152]',
-      icon: Briefcase,
-      bannerImage: IMAGES.remoteRocket
+      id: 'kaspersky-security-slide',
+      badgeKey: 'banner.kaspersky.badge',
+      badgeDefault: 'KIBERNETIČKA SIGURNOST • POPUST 🛡️',
+      titleKey: 'banner.kaspersky.title',
+      titleDefault: 'Kaspersky Kibernetička Sigurnost – Zaštitite Vaše Uređaje uz Poseban Popust',
+      descKey: 'banner.kaspersky.desc',
+      descDefault: 'Sveobuhvatna zaštita od virusa, ransomwarea i krađe lozinki uz napredne heurističke algoritme i sigurno online bankarstvo.',
+      btnKey: 'banner.kaspersky.btn',
+      btnDefault: 'Ostvari Kaspersky Popust',
+      btnUrl: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84',
+      isExternal: true,
+      tagColor: 'bg-[#00A88E] text-[#0A1628]',
+      accentBg: 'from-[#0B1E2E] via-[#0F2937] to-[#0A1628]',
+      icon: ShieldCheck,
+      bannerImage: IMAGES.kasperskyBanner
     },
     {
       id: 'future-sponsor-slot',

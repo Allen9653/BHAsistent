@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { StecakBackground } from '../components/StecakBackground';
 import { PromoBannerCarousel } from '../components/PromoBannerCarousel';
+import { KasperskyPromoSection } from '../components/KasperskyPromoSection';
 import { PartnersAffiliatesSection } from '../components/PartnersAffiliatesSection';
 import { NativeCommercialBanner } from '../components/NativeCommercialBanner';
 import { SafeImage } from '../components/SafeImage';
@@ -402,12 +403,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
         <PromoBannerCarousel onOpenBojanka={onOpenBojanka} />
       </section>
 
-      {/* 4. PREPORUČENI PARTNERI & GLOBALNE POGODNOSTI (AFFILIATE HUB) */}
+      {/* 4. KASPERSKY CYBERSECURITY PROMOTIONAL FEATURE */}
+      <section className="max-w-7xl mx-auto">
+        <KasperskyPromoSection />
+      </section>
+
+      {/* 5. PREPORUČENI PARTNERI & GLOBALNE POGODNOSTI (AFFILIATE HUB) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PartnersAffiliatesSection />
       </section>
 
-      {/* 5. COMPANY STATS & TRUST BLOCK */}
+      {/* 6. COMPANY STATS & TRUST BLOCK */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#1A3152] border border-[#00C9A7]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center sm:text-left items-center">
