@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense, useCallback } from 'react';
+import React, { useState, lazy, Suspense, useCallback, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './Navbar';
@@ -27,6 +27,101 @@ const pageTransitionVariants = {
   exit: { opacity: 0, transition: { duration: 0.15, ease: 'easeIn' } },
 };
 
+/**
+ * Injects dynamic 'aria-label', 'role', and 'aria-current' attributes to all
+ * navigation links and landmark containers based on the current active page.
+ */
+function injectNavigationAccessibility(currentPath: string) {
+  try {
+    // 1. Ensure all navigation landmark containers have role="navigation" and descriptive aria-labels
+    const navContainers = document.querySelectorAll('nav, [data-nav-container]');
+    navContainers.forEach((nav, idx) => {
+      if (nav.getAttribute('role') !== 'navigation') {
+        nav.setAttribute('role', 'navigation');
+      }
+      if (!nav.getAttribute('aria-label')) {
+        const isHeader = nav.closest('header') !== null;
+        const isFooter = nav.closest('footer') !== null;
+        const defaultLabel = isHeader
+          ? 'Glavna navigacija (Main Navigation)'
+          : isFooter
+          ? 'Podnožna navigacija (Footer Navigation)'
+          : `Navigacija stranice ${idx + 1}`;
+        nav.setAttribute('aria-label', defaultLabel);
+      }
+    });
+
+    // 2. Query all navigation links in nav, header, and footer landmark elements
+    const links = document.querySelectorAll<HTMLAnchorElement>(
+      'nav a, [role="navigation"] a, header a[href], footer a[href]'
+    );
+
+    links.forEach((link) => {
+      // Set role="link" if not specified
+      if (!link.getAttribute('role')) {
+        link.setAttribute('role', 'link');
+      }
+
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      // Normalize target path
+      let targetPath = href;
+      try {
+        if (href.startsWith('http://') || href.startsWith('https://')) {
+          const url = new URL(href);
+          if (url.origin !== window.location.origin) {
+            // External link handling
+            const baseText = (link.textContent || '').trim().replace(/\s+/g, ' ');
+            const extLabel = `${baseText || 'Vanjski resurs'} (Otvori vanjski link / External link)`;
+            if (link.getAttribute('aria-label') !== extLabel) {
+              link.setAttribute('aria-label', extLabel);
+            }
+            return;
+          }
+          targetPath = url.pathname;
+        } else {
+          targetPath = href.split('?')[0].split('#')[0] || '/';
+        }
+      } catch {
+        targetPath = href;
+      }
+
+      // Check if this link corresponds to the current active page
+      const isExactMatch = targetPath === currentPath;
+      const isRoot = targetPath === '/';
+      const isSubPathMatch = !isRoot && currentPath.startsWith(targetPath);
+      const hasActiveClass = link.classList.contains('active');
+      const isActive = isExactMatch || isSubPathMatch || hasActiveClass;
+
+      const baseText = (link.textContent || '').trim().replace(/\s+/g, ' ');
+      const rawTitle = link.getAttribute('title') || '';
+      const readableName = baseText || rawTitle || targetPath;
+
+      const targetAriaLabel = isActive
+        ? `${readableName} – Trenutno aktivna stranica (Current active page)`
+        : `Navigiraj na stranicu: ${readableName} (Navigate to ${readableName})`;
+
+      // Only update if changed to avoid unnecessary DOM thrashing
+      if (link.getAttribute('aria-label') !== targetAriaLabel) {
+        link.setAttribute('aria-label', targetAriaLabel);
+      }
+
+      if (isActive) {
+        if (link.getAttribute('aria-current') !== 'page') {
+          link.setAttribute('aria-current', 'page');
+        }
+      } else {
+        if (link.hasAttribute('aria-current')) {
+          link.removeAttribute('aria-current');
+        }
+      }
+    });
+  } catch (err) {
+    console.debug('A11y navigation injection error:', err);
+  }
+}
+
 interface LayoutProps {
   isBojankaOpen: boolean;
   setIsBojankaOpen: (open: boolean) => void;
@@ -43,6 +138,35 @@ export const Layout: React.FC<LayoutProps> = ({
   const location = useLocation();
   const [companyInfo, setCompanyInfo] = useState<CompanyDetails>(COMPANY_INFO);
   const [refreshKey, setRefreshKey] = useState(0);
+
+  // Automatically inject dynamic 'aria-labels' and 'role' attributes to all navigation links
+  // based on the current active page for full screen reader compatibility
+  useEffect(() => {
+    // Inject immediately on path change
+    injectNavigationAccessibility(location.pathname);
+
+    // Re-run after brief delays for route transitions and code-split mounts
+    const timer1 = setTimeout(() => injectNavigationAccessibility(location.pathname), 100);
+    const timer2 = setTimeout(() => injectNavigationAccessibility(location.pathname), 350);
+
+    // Watch for dynamic DOM changes (e.g., mobile menu opening or dynamic tabs)
+    const observer = new MutationObserver(() => {
+      injectNavigationAccessibility(location.pathname);
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'href'],
+    });
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      observer.disconnect();
+    };
+  }, [location.pathname]);
 
   const handlePullRefresh = useCallback(async () => {
     await new Promise((resolve) => setTimeout(resolve, 800));

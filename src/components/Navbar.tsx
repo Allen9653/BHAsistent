@@ -97,22 +97,32 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center gap-1 bg-[#0F2038]/80 p-1.5 rounded-2xl border border-[#1A3152]/60 backdrop-blur-sm">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  `px-2.5 py-1.5 rounded-xl text-xs font-semibold min-h-[38px] transition-all duration-200 flex items-center ${
-                    isActive
-                      ? 'bg-[#00C9A7] text-[#0A1628] shadow-md shadow-[#00C9A7]/20 font-bold'
-                      : 'text-[#F5F0E8]/80 hover:text-[#00C9A7] hover:bg-[#1A3152]/50'
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
+          <nav
+            role="navigation"
+            aria-label="Glavna desktop navigacija"
+            className="hidden xl:flex items-center gap-1 bg-[#0F2038]/80 p-1.5 rounded-2xl border border-[#1A3152]/60 backdrop-blur-sm"
+          >
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  role="link"
+                  aria-label={isActive ? `${item.label} – Trenutno aktivna stranica` : `Navigiraj na stranicu: ${item.label}`}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={({ isActive: linkIsActive }) =>
+                    `px-2.5 py-1.5 rounded-xl text-xs font-semibold min-h-[38px] transition-all duration-200 flex items-center ${
+                      linkIsActive
+                        ? 'bg-[#00C9A7] text-[#0A1628] shadow-md shadow-[#00C9A7]/20 font-bold'
+                        : 'text-[#F5F0E8]/80 hover:text-[#00C9A7] hover:bg-[#1A3152]/50'
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              );
+            })}
           </nav>
 
           {/* Action CTAs: Theme Toggle + Language Flags Bar + Free Bojanka Download */}
@@ -192,31 +202,43 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </div>
 
-          {navItems.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className={({ isActive }) =>
-                `w-full text-left px-4 py-3 rounded-xl text-sm font-syne font-semibold transition-all min-h-[44px] flex items-center justify-between ${
-                  isActive
-                    ? 'bg-[#00C9A7] text-[#0A1628] font-bold shadow-md shadow-[#00C9A7]/20'
-                    : 'text-[#F5F0E8] hover:bg-[#0F2038] hover:text-[#00C9A7]'
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <span>{item.label}</span>
-                  {isActive ? (
-                    <span className="w-2 h-2 rounded-full bg-[#0A1628]" />
-                  ) : (
-                    <ChevronRight className="w-4 h-4 text-[#F5F0E8]/30" />
+          <nav
+            role="navigation"
+            aria-label="Mobilna navigacija"
+            className="space-y-1"
+          >
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  role="link"
+                  aria-label={isActive ? `${item.label} – Trenutno aktivna stranica` : `Navigiraj na stranicu: ${item.label}`}
+                  aria-current={isActive ? 'page' : undefined}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={({ isActive: linkIsActive }) =>
+                    `w-full text-left px-4 py-3 rounded-xl text-sm font-syne font-semibold transition-all min-h-[44px] flex items-center justify-between ${
+                      linkIsActive
+                        ? 'bg-[#00C9A7] text-[#0A1628] font-bold shadow-md shadow-[#00C9A7]/20'
+                        : 'text-[#F5F0E8] hover:bg-[#0F2038] hover:text-[#00C9A7]'
+                    }`
+                  }
+                >
+                  {({ isActive: linkIsActive }) => (
+                    <>
+                      <span>{item.label}</span>
+                      {linkIsActive ? (
+                        <span className="w-2 h-2 rounded-full bg-[#0A1628]" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4 text-[#F5F0E8]/30" />
+                      )}
+                    </>
                   )}
-                </>
-              )}
-            </NavLink>
-          ))}
+                </NavLink>
+              );
+            })}
+          </nav>
 
           <div className="pt-3 mt-2 border-t border-[#1A3152] space-y-2">
             <button
