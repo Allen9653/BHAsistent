@@ -10,6 +10,8 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import { ShopPage } from './pages/ShopPage';
 import { CommunityPage } from './pages/CommunityPage';
 import { ContactPage } from './pages/ContactPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsPage } from './pages/TermsPage';
 
 export default function App() {
   const [isBojankaOpen, setIsBojankaOpen] = useState(false);
@@ -76,6 +78,15 @@ export default function App() {
 
           {/* Contact & Impressum */}
           <Route path="/kontakt" element={<ContactPage />} />
+
+          {/* Legal Pages (Direct Semantic Routes) */}
+          <Route path="/politika-privatnosti" element={<PrivacyPolicyPage />} />
+          <Route path="/privatnost" element={<Navigate to="/politika-privatnosti" replace />} />
+          <Route path="/privacy-policy" element={<Navigate to="/politika-privatnosti" replace />} />
+
+          <Route path="/uslovi-koristenja" element={<TermsPage />} />
+          <Route path="/uslovi" element={<Navigate to="/uslovi-koristenja" replace />} />
+          <Route path="/terms" element={<Navigate to="/uslovi-koristenja" replace />} />
 
           {/* Catch-all route */}
           <Route path="*" element={<Navigate to="/" replace />} />
