@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Pause, Play, Sparkles, ExternalLink, MessageSquare, Download, Layers, Briefcase, Plus, Image as ImageIcon, Globe, PhoneCall, Bot, Smartphone, ShieldCheck } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pause, Play, Sparkles, ExternalLink, MessageSquare, Download, Layers, Briefcase, Plus, Image as ImageIcon, Globe, PhoneCall, Bot, Smartphone, ShieldCheck, X, Video } from 'lucide-react';
 import { SafeImage } from './SafeImage';
 import { useLanguage } from '../context/LanguageContext';
 import { IMAGES } from '../utils/images';
@@ -22,6 +22,8 @@ export interface BannerSlide {
   icon: React.ElementType;
   bgPattern?: string;
   bannerImage?: string;
+  videoUrl?: string;
+  videoTitle?: string;
 }
 
 interface PromoBannerCarouselProps {
@@ -36,11 +38,31 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
   const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<{ url: string; title: string } | null>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const bannerSlides: BannerSlide[] = [
+    {
+      id: 'custom-tool',
+      badgeKey: 'banner.tool.badge',
+      badgeDefault: 'USLUGA PO MJERI',
+      titleKey: 'banner.tool.title',
+      titleDefault: 'SPECIJALNA PONUDA!',
+      descKey: 'banner.tool.desc',
+      descDefault: 'Tim B&H Assistant d.o.o. Zenica nudi izradu specifičnih kalkulatora, baze obrazaca, API integracija i web platformi po Vašim zahtjevima.',
+      btnKey: 'banner.tool.btn',
+      btnDefault: 'Kontaktirajte Nas Odmah',
+      btnUrl: '#kontakt',
+      onClickAction: onOpenContact,
+      tagColor: 'bg-[#00C9A7] text-[#0A1628]',
+      accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
+      icon: MessageSquare,
+      bannerImage: IMAGES.specijalnaPonudaBanner,
+      videoUrl: IMAGES.specijalnaPonudaVideo,
+      videoTitle: 'SPECIJALNA PONUDA — Video Prezentacija'
+    },
     {
       id: 'bh-konver-app',
       badgeKey: 'banner.konver.badge',
@@ -144,23 +166,6 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
       bannerImage: IMAGES.rzeklLogo
     },
     {
-      id: 'custom-tool',
-      badgeKey: 'banner.tool.badge',
-      badgeDefault: 'USLUGA PO MJERI',
-      titleKey: 'banner.tool.title',
-      titleDefault: 'Želite prilagođeni digitalni alat ili e-upravu za Vašu firmu ili općinu?',
-      descKey: 'banner.tool.desc',
-      descDefault: 'Tim B&H Assistant d.o.o. Zenica nudi izradu specifičnih kalkulatora, baze obrazaca, API integracija i web platformi po Vašim zahtjevima.',
-      btnKey: 'banner.tool.btn',
-      btnDefault: 'Kontaktirajte Nas Odmah',
-      btnUrl: '#kontakt',
-      onClickAction: onOpenContact,
-      tagColor: 'bg-[#00C9A7] text-[#0A1628]',
-      accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
-      icon: MessageSquare,
-      bannerImage: IMAGES.bhKonverMockup
-    },
-    {
       id: 'scena-magazine',
       badgeKey: 'banner.scena.badge',
       badgeDefault: 'MARKETING & MEDIJI',
@@ -237,7 +242,7 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
       descDefault: 'Sveobuhvatna zaštita od virusa, ransomwarea i krađe lozinki uz napredne heurističke algoritme i sigurno online bankarstvo.',
       btnKey: 'banner.kaspersky.btn',
       btnDefault: 'Ostvari Kaspersky Popust',
-      btnUrl: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84',
+      btnUrl: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84',
       isExternal: true,
       tagColor: 'bg-[#00A88E] text-[#0A1628]',
       accentBg: 'from-[#0B1E2E] via-[#0F2937] to-[#0A1628]',
@@ -264,13 +269,24 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
 
   // Auto right-to-left slide rotation every 6 seconds (6000ms)
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || selectedVideo) return;
     const interval = setInterval(() => {
       // Right to left increment
       setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
     }, 6000);
     return () => clearInterval(interval);
-  }, [isPaused, bannerSlides.length]);
+  }, [isPaused, selectedVideo, bannerSlides.length]);
+
+  // Close video modal on Escape key
+  useEffect(() => {
+    const onGlobalKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedVideo) {
+        setSelectedVideo(null);
+      }
+    };
+    window.addEventListener('keydown', onGlobalKeyDown);
+    return () => window.removeEventListener('keydown', onGlobalKeyDown);
+  }, [selectedVideo]);
 
   const handleNext = () => {
     // Right to left step (next slide moves in from right)
@@ -378,7 +394,7 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
             </p>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               {slide.onClickAction ? (
                 <button
                   onClick={slide.onClickAction}
@@ -407,6 +423,25 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
                 </a>
               )}
 
+              {/* Video Presentation Action Button */}
+              {slide.videoUrl && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedVideo({
+                      url: slide.videoUrl!,
+                      title: slide.videoTitle || t(slide.titleKey, slide.titleDefault)
+                    });
+                    setIsPaused(true);
+                  }}
+                  className="px-5 py-3 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] text-[#00E5BE] hover:text-[#C9A84C] border-2 border-[#00C9A7]/60 font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"
+                  title="Pogledaj video prezentaciju"
+                >
+                  <Play className="w-4 h-4 fill-current text-[#00E5BE]" />
+                  <span>{t('banner.tool.video', 'Video Prezentacija')}</span>
+                </button>
+              )}
+
               <span className="text-[11px] font-mono text-[#F5F0E8]/50 hidden sm:inline-block">
                 {t('carousel.pauseOnHover', 'Pređite mišem za pauziranje prelistavanja')}
               </span>
@@ -417,23 +452,64 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
           {/* Right Visual Image / Icon Preview (4 cols) */}
           <div className="lg:col-span-4 flex flex-col justify-center items-center text-center">
             {slide.bannerImage ? (
-              <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border-2 border-[#00C9A7]/40 bg-[#0A1628] shadow-xl relative group-hover:scale-[1.02] transition-transform">
-                <SafeImage
-                  src={slide.bannerImage}
-                  alt={slide.titleDefault}
-                  fallbackTitle={slide.titleDefault}
-                  fallbackSubtitle={slide.badgeDefault}
-                  fallbackIcon={<IconComponent className="w-6 h-6 text-[#00C9A7]" />}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent opacity-60 pointer-events-none" />
-                <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-[#00C9A7] pointer-events-none">
-                  <span className="bg-[#0A1628]/90 px-2 py-0.5 rounded border border-[#00C9A7]/30">
-                    B&H Assistant Media
-                  </span>
-                  <IconComponent className="w-4 h-4 text-[#C9A84C]" />
+              slide.videoUrl ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedVideo({
+                      url: slide.videoUrl!,
+                      title: slide.videoTitle || t(slide.titleKey, slide.titleDefault)
+                    });
+                    setIsPaused(true);
+                  }}
+                  className="w-full aspect-[16/10] rounded-2xl overflow-hidden border-2 border-[#00C9A7]/60 hover:border-[#C9A84C] bg-[#0A1628] shadow-2xl relative group/img cursor-pointer text-left transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#00C9A7]"
+                  title="Kliknite za pokretanje video prezentacije"
+                >
+                  <SafeImage
+                    src={slide.bannerImage}
+                    alt={slide.titleDefault}
+                    fallbackTitle={slide.titleDefault}
+                    fallbackSubtitle={slide.badgeDefault}
+                    fallbackIcon={<IconComponent className="w-6 h-6 text-[#00C9A7]" />}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent opacity-60 pointer-events-none" />
+                  
+                  {/* Play Overlay Button */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover/img:bg-black/15 transition-colors">
+                    <div className="w-14 h-14 rounded-full bg-[#00C9A7] text-[#0A1628] flex items-center justify-center shadow-2xl group-hover/img:scale-110 group-hover/img:bg-[#00E5BE] transition-all">
+                      <Play className="w-6 h-6 fill-current translate-x-0.5" />
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-[#00C9A7] pointer-events-none">
+                    <span className="bg-[#0A1628]/95 px-2 py-0.5 rounded border border-[#00C9A7]/30 flex items-center gap-1 font-bold">
+                      <Play className="w-3 h-3 fill-[#00C9A7]" /> Video Prezentacija
+                    </span>
+                    <span className="bg-[#C9A84C] text-[#0A1628] px-2 py-0.5 rounded font-extrabold shadow-sm">
+                      Pogledaj video
+                    </span>
+                  </div>
+                </button>
+              ) : (
+                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border-2 border-[#00C9A7]/40 bg-[#0A1628] shadow-xl relative group-hover:scale-[1.02] transition-transform">
+                  <SafeImage
+                    src={slide.bannerImage}
+                    alt={slide.titleDefault}
+                    fallbackTitle={slide.titleDefault}
+                    fallbackSubtitle={slide.badgeDefault}
+                    fallbackIcon={<IconComponent className="w-6 h-6 text-[#00C9A7]" />}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent opacity-60 pointer-events-none" />
+                  <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-[#00C9A7] pointer-events-none">
+                    <span className="bg-[#0A1628]/90 px-2 py-0.5 rounded border border-[#00C9A7]/30">
+                      B&H Assistant Media
+                    </span>
+                    <IconComponent className="w-4 h-4 text-[#C9A84C]" />
+                  </div>
                 </div>
-              </div>
+              )
             ) : (
               <div className="w-full py-10 px-6 rounded-2xl bg-[#0A1628]/90 border-2 border-[#00C9A7]/30 shadow-xl flex flex-col items-center justify-center space-y-3">
                 <div className="w-16 h-16 rounded-2xl bg-[#0F2038] border border-[#00C9A7]/40 flex items-center justify-center text-[#00C9A7]">
@@ -506,6 +582,78 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
         </div>
 
       </div>
+
+      {/* Video Presentation Modal */}
+      {selectedVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1628]/90 backdrop-blur-md animate-fadeIn"
+          onClick={() => setSelectedVideo(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedVideo.title}
+        >
+          <div
+            className="relative w-full max-w-3xl rounded-3xl bg-[#0F2038] border-2 border-[#00C9A7] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#1A3152] bg-[#0A1628]">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-[#00C9A7]/20 text-[#00C9A7]">
+                  <Play className="w-5 h-5 fill-current" />
+                </div>
+                <div>
+                  <h3 className="font-syne font-extrabold text-base sm:text-lg text-[#F5F0E8] flex items-center gap-2">
+                    <span>{selectedVideo.title}</span>
+                  </h3>
+                  <p className="text-[11px] font-mono text-[#00C9A7]">
+                    B&H Assistant • Službena video prezentacija ponude
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="p-2 rounded-xl bg-[#1A3152]/80 hover:bg-rose-500/20 text-[#F5F0E8]/70 hover:text-rose-400 border border-[#1A3152] transition-colors"
+                aria-label="Zatvori video prezentaciju"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Video Player Container */}
+            <div className="p-3 sm:p-5 bg-black flex items-center justify-center">
+              <video
+                src={selectedVideo.url}
+                controls
+                autoPlay
+                playsInline
+                className="w-full max-h-[60vh] rounded-xl object-contain shadow-2xl"
+              >
+                Vaš internet preglednik ne podržava direktnu reprodukciju HTML5 videa.
+              </video>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 bg-[#0A1628] border-t border-[#1A3152] flex flex-wrap items-center justify-between gap-3">
+              <a
+                href={selectedVideo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[#00C9A7] hover:text-[#00E5BE] flex items-center gap-1.5 font-mono underline underline-offset-4"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span>Otvori direktan link videa (.mp4)</span>
+              </a>
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="px-5 py-2 rounded-xl bg-[#1A3152] hover:bg-[#00C9A7] text-[#F5F0E8] hover:text-[#0A1628] font-syne font-bold text-xs transition-colors ml-auto"
+              >
+                Zatvori
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

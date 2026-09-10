@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { StecakBackground } from '../components/StecakBackground';
 import { PromoBannerCarousel } from '../components/PromoBannerCarousel';
+import { SpecialOfferSection } from '../components/SpecialOfferSection';
 import { KasperskyPromoSection } from '../components/KasperskyPromoSection';
 import { PartnersAffiliatesSection } from '../components/PartnersAffiliatesSection';
 import { NativeCommercialBanner } from '../components/NativeCommercialBanner';
@@ -398,7 +399,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
         </div>
       </section>
 
-      {/* 3. PROMO CAROUSEL HIGHLIGHTS */}
+      {/* 3. DEDICATED FEATURE: USLUGA PO MJERI > SPECIJALNA PONUDA */}
+      <SpecialOfferSection />
+
+      {/* 4. PROMO CAROUSEL HIGHLIGHTS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PromoBannerCarousel onOpenBojanka={onOpenBojanka} />
       </section>

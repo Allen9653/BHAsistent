@@ -90,7 +90,7 @@ export const AboutSection: React.FC = () => {
               
               <div className="flex items-center gap-3">
                 <a
-                  href="https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84"
+                  href="https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-[#04131A] border border-[#00A88E]/40 p-1 shrink-0 overflow-hidden hover:scale-105 transition-transform"
@@ -112,7 +112,7 @@ export const AboutSection: React.FC = () => {
                   </p>
                 </div>
                 <a
-                  href="https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84"
+                  href="https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-2 rounded-xl bg-[#00A88E] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-extrabold text-xs shrink-0 transition-transform hover:scale-105 flex items-center gap-1 shadow-md shadow-[#00A88E]/20"

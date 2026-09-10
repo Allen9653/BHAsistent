@@ -299,7 +299,7 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
       "Globalni lider sa stotinama miliona zadovoljnih korisnika širom svijeta",
       "Ekskluzivni partnerski popust prilikom online kupovine i instalacije"
     ],
-    affiliateUrl: "https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84",
+    affiliateUrl: "https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84",
     category: "Digitalna Sigurnost",
     featured: true,
     image: IMAGES.kasperskyBanner

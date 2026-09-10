@@ -89,6 +89,8 @@ export const IMAGES = {
   digitalniSpavac: 'https://i.imgur.com/65sjyhp.jpg',
 
   // Digital Tools & Products
+  specijalnaPonudaBanner: 'https://i.postimg.cc/j5sb3yjg/specijalna-ponuda-za-sve-900.jpg',
+  specijalnaPonudaVideo: 'https://www.image2url.com/r2/default/videos/1789002206054-8298a53a-2e31-44f9-9c3e-cadb1816b29f.mp4',
   bhKonverMockup: 'https://i.imgur.com/WIdimeI.jpg',
   bhKonverBanner: 'https://i.imgur.com/WIdimeI.jpg',
   bhPapirfinderMockup: 'https://i.imgur.com/QfHNQIV.jpg',
@@ -119,8 +121,8 @@ export const IMAGES = {
   zentaxiBanner: 'https://i.imgur.com/9xHhYZJ.jpg',
 
   // Affiliate & Tech Partners
-  kasperskyLogo: 'https://archive.org/download/kaspersky_affiliated_link/kaspersky_affiliated_link.jpg',
-  kasperskyBanner: 'https://archive.org/download/kaspersky_affiliated_link/kaspersky_affiliated_link.jpg',
+  kasperskyLogo: 'https://archive.org/download/kaspersky-affiliated-promo/Kaspersky_affiliated_promo.jpg',
+  kasperskyBanner: 'https://archive.org/download/kaspersky-affiliated-promo/Kaspersky_affiliated_promo.jpg',
   atomsDev: 'https://archive.org/download/remote_rocketship_logo/atoms_dev_logo.png',
   alisonLogo: 'https://archive.org/download/remote_rocketship_logo/alison_com_logo.png',
   tryhackmeBanner: 'https://archive.org/download/remote_rocketship_logo/try_hackMe_logo.png',

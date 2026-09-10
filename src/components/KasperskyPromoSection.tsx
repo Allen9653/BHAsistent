@@ -8,7 +8,7 @@ interface KasperskyPromoSectionProps {
   isCompact?: boolean;
 }
 
-export const KASPERSKY_AFFILIATE_URL = 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84';
+export const KASPERSKY_AFFILIATE_URL = 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84';
 
 export const KasperskyPromoSection: React.FC<KasperskyPromoSectionProps> = ({
   className = '',

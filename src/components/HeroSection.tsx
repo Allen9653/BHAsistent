@@ -53,7 +53,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBojanka, onNavig
       description: t('hero.slide.kaspersky.desc', 'Sveobuhvatna zaštita od virusa, ransomwarea, krađe lozinki i bankovnih prevara za PC, Mac i mobitele uz ekskluzivni popust.'),
       icon: ShieldCheck,
       image: IMAGES.kasperskyBanner,
-      url: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84',
+      url: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84',
       tags: ['Antivirus', 'Phishing Zaštita', 'Popust do 50%'],
       footerText: t('hero.slide.kaspersky.motto', 'Zaštitite svoje uređaje uz globalnog lidera u kibernetičkoj sigurnosti'),
       footerButton: t('hero.slide.kaspersky.btn', 'Aktiviraj Kaspersky Popust →')

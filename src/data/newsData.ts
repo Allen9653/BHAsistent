@@ -127,9 +127,9 @@ Ključne prednosti zvaničnih Kaspersky paketa:
 • ⚡ Visoke performanse bez usporavanja vašeg računara ili mobitela
 
 👉 Saznajte više o paketima i ostvarite poseban popust prilikom kupovine i instalacije:
-https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84`,
+https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84`,
     imageUrl: IMAGES.kasperskyBanner,
-    externalUrl: "https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84",
+    externalUrl: "https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84",
     published: true,
     tags: ["Kaspersky", "Antivirus", "Cyber Security", "Sigurnost", "Popust", "Online Zaštita"]
   },

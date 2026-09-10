@@ -197,10 +197,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'carousel.of': 'od',
     
     // Banner 1 - Existing Tool Request
-    'banner.tool.title': 'Želite prilagođeni digitalni alat ili e-upravu za Vašu firmu ili općinu?',
+    'banner.tool.title': 'SPECIJALNA PONUDA!',
     'banner.tool.desc': 'Tim B&H Assistant d.o.o. Zenica nudi izradu specifičnih kalkulatora, baze obrazaca, API integracija i web platformi po Vašim zahtjevima.',
     'banner.tool.badge': 'USLUGA PO MJERI',
     'banner.tool.btn': 'Kontaktirajte Nas Odmah',
+    'banner.tool.video': 'Video Prezentacija',
 
     // Banner 2 - Scena Magazine
     'banner.scena.title': 'Magazin SCENA+ • Oglašavajte Vaš Brend u Zeničko-dobojskom Kantonu',
@@ -527,10 +528,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'carousel.of': 'of',
 
     // Banner 1 - Existing Tool Request
-    'banner.tool.title': 'Do you need a customized digital tool or e-government solution for your business or municipality?',
+    'banner.tool.title': 'SPECIAL OFFER!',
     'banner.tool.desc': 'The B&H Assistant Ltd. Zenica team develops tailored calculators, document databases, API integrations, and web platforms to your exact specifications.',
     'banner.tool.badge': 'CUSTOM SOFTWARE',
     'banner.tool.btn': 'Contact Us Now',
+    'banner.tool.video': 'Video Presentation',
 
     // Banner 2 - Scena Magazine
     'banner.scena.title': 'SCENA+ Magazine • Advertise Your Brand Across Zenica-Doboj Canton',
@@ -857,10 +859,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'carousel.of': 'von',
 
     // Banner 1 - Existing Tool Request
-    'banner.tool.title': 'Benötigen Sie ein maßgeschneidertes digitales Tool oder E-Government für Ihr Unternehmen oder Ihre Gemeinde?',
+    'banner.tool.title': 'SPEZIALANGEBOT!',
     'banner.tool.desc': 'Das Team von B&H Assistant d.o.o. Zenica entwickelt spezifische Rechner, Formulardatenbanken, API-Integrationen und Webplattformen nach Ihren Anforderungen.',
     'banner.tool.badge': 'MAßGESCHNEIDERTE SOFTWARE',
     'banner.tool.btn': 'Kontaktieren Sie Uns Jetzt',
+    'banner.tool.video': 'Videopräsentation',
 
     // Banner 2 - Scena Magazine
     'banner.scena.title': 'Magazin SCENA+ • Werben Sie Für Ihre Marke Im Kanton Zenica-Doboj',
@@ -1187,10 +1190,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'carousel.of': '/',
 
     // Banner 1 - Existing Tool Request
-    'banner.tool.title': 'Şirketiniz veya belediyeniz için özel bir dijital araç veya e-devlet çözümü mü istiyorsunuz?',
+    'banner.tool.title': 'ÖZEL TEKLİF!',
     'banner.tool.desc': 'B&H Assistant Ltd. Şti. Zenica ekibi, tam gereksinimlerinize göre özel hesaplayıcılar, belge veritabanları, API entegrasyonları ve web platformları geliştirir.',
     'banner.tool.badge': 'ÖZEL YAZILIM HİZMETİ',
     'banner.tool.btn': 'Hemen İletişime Geçin',
+    'banner.tool.video': 'Video Sunumu',
 
     // Banner 2 - Scena Magazine
     'banner.scena.title': 'SCENA+ Dergisi • Markanızı Zenica-Doboj Kanyonu\'nda Tanıtın',

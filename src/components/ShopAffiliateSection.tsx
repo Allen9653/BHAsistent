@@ -148,7 +148,7 @@ export const ShopAffiliateSection: React.FC = () => {
       title: 'Kaspersky – Vrhunska Kibernetička Sigurnost',
       subtitle: 'Sveobuhvatna zaštita uređaja, lozinki i online plaćanja uz ekskluzivni popust',
       description: 'Kaspersky pruža globalno priznatu zaštitu od virusa, ransomwarea, phishing prevara i krađe identiteta u stvarnom vremenu. Iskoristite poseban partnerski popust prilikom kupovine i instalacije na vaše računare i pametne uređaje.',
-      url: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3a/?erid=5jtCeReLm1S3Xx3LfA8QF84',
+      url: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84',
       buttonText: 'Aktiviraj Kaspersky Popust',
       bannerImg: IMAGES.kasperskyBanner,
       icon: ShieldCheck,
