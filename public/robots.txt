@@ -1,0 +1,10 @@
+# Robots.txt for https://bh-assistant.ba
+User-agent: *
+Allow: /
+
+# Disallow internal CMS modals and auth endpoints
+Disallow: /api/admin/
+Disallow: /admin
+
+# Sitemaps
+Sitemap: https://bh-assistant.ba/sitemap.xml

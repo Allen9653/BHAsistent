@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 1. Početna / Home -->
+  <url>
+    <loc>https://bh-assistant.ba/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/?lang=tr" />
+  </url>
+
+  <!-- 2. BH Digitalni Alati -->
+  <url>
+    <loc>https://bh-assistant.ba/alati</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/alati" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/alati?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/alati?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/alati?lang=tr" />
+  </url>
+
+  <!-- 3. Magazin SCENA+ -->
+  <url>
+    <loc>https://bh-assistant.ba/scena-magazin</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/scena-magazin" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/scena-magazin?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/scena-magazin?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/scena-magazin?lang=tr" />
+  </url>
+
+  <!-- 4. O Nama & Video Prezentacija -->
+  <url>
+    <loc>https://bh-assistant.ba/o-nama</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/o-nama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/o-nama?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/o-nama?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/o-nama?lang=tr" />
+  </url>
+
+  <!-- 5. Novosti & CMS -->
+  <url>
+    <loc>https://bh-assistant.ba/novosti</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/novosti" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/novosti?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/novosti?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/novosti?lang=tr" />
+  </url>
+
+  <!-- 6. Projekti (ZENTAXI, GUMMI) -->
+  <url>
+    <loc>https://bh-assistant.ba/projekti</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/projekti" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/projekti?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/projekti?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/projekti?lang=tr" />
+  </url>
+
+  <!-- 7. SHOP & Alison Edukacija -->
+  <url>
+    <loc>https://bh-assistant.ba/shop</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/shop?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/shop?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/shop?lang=tr" />
+  </url>
+
+  <!-- 8. Zajednica -->
+  <url>
+    <loc>https://bh-assistant.ba/zajednica</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/zajednica" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/zajednica?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/zajednica?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/zajednica?lang=tr" />
+  </url>
+
+  <!-- 9. Kontakt & Impressum -->
+  <url>
+    <loc>https://bh-assistant.ba/kontakt</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/kontakt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bh-assistant.ba/kontakt?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://bh-assistant.ba/kontakt?lang=de" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://bh-assistant.ba/kontakt?lang=tr" />
+  </url>
+
+  <!-- 10. Politika Privatnosti (GDPR) -->
+  <url>
+    <loc>https://bh-assistant.ba/politika-privatnosti</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/politika-privatnosti" />
+  </url>
+
+  <!-- 11. Uslovi Korištenja -->
+  <url>
+    <loc>https://bh-assistant.ba/uslovi-koristenja</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="bs" href="https://bh-assistant.ba/uslovi-koristenja" />
+  </url>
+
+</urlset>

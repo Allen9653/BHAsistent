@@ -149,9 +149,13 @@ export const Layout: React.FC<LayoutProps> = ({
     const timer1 = setTimeout(() => injectNavigationAccessibility(location.pathname), 100);
     const timer2 = setTimeout(() => injectNavigationAccessibility(location.pathname), 350);
 
-    // Watch for dynamic DOM changes (e.g., mobile menu opening or dynamic tabs)
+    // Debounced dynamic DOM observer to eliminate INP overhead
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
     const observer = new MutationObserver(() => {
-      injectNavigationAccessibility(location.pathname);
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        injectNavigationAccessibility(location.pathname);
+      }, 150);
     });
 
     observer.observe(document.body, {
@@ -164,6 +168,7 @@ export const Layout: React.FC<LayoutProps> = ({
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
+      if (debounceTimer) clearTimeout(debounceTimer);
       observer.disconnect();
     };
   }, [location.pathname]);

@@ -6,6 +6,7 @@ import { COMPANY_INFO } from '../data/companyData';
 export const TermsPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = 'Opći Uslovi Korištenja Platforme | B&H ASSISTANT d.o.o. Zenica';
   }, []);
 
   return (

@@ -6,6 +6,7 @@ import { COMPANY_INFO } from '../data/companyData';
 export const PrivacyPolicyPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = 'Politika Privatnosti i Zaštita Ličnih Podataka (GDPR) | B&H ASSISTANT d.o.o. Zenica';
   }, []);
 
   return (

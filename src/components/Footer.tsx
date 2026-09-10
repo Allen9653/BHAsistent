@@ -15,79 +15,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
   const { t } = useLanguage();
   const [showImpressum, setShowImpressum] = useState(false);
   const [showEmailConfig, setShowEmailConfig] = useState(false);
-  const [showAdminPinModal, setShowAdminPinModal] = useState(false);
-  const [pinInput, setPinInput] = useState('');
-  const [pinError, setPinError] = useState<string | null>(null);
-  const [isVerifying, setIsVerifying] = useState(false);
 
   const openCookieSettings = () => {
     window.dispatchEvent(new CustomEvent('bh-open-cookie-settings'));
-  };
-
-  /**
-   * Secure Admin Authentication verification
-   * Calls secure backend endpoint or auth verification function (Supabase RLS ready)
-   * No hardcoded pins or plain-text credentials in client-side code
-   */
-  const verifyAdminCredential = async (credential: string): Promise<boolean> => {
-    try {
-      // Simulate/call secure API endpoint for admin verification
-      const response = await fetch('/api/admin/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: credential }),
-      }).catch(() => null);
-
-      if (response && response.ok) {
-        const data = await response.json();
-        return Boolean(data.success);
-      }
-      
-      // Fallback verification using env or secure hashed token check
-      // Allows authorized administration while keeping credentials hidden from source
-      const cleanToken = credential.trim();
-      if (!cleanToken || cleanToken.length < 4) {
-        return false;
-      }
-
-      // Secure client session token validation handshake
-      const validSecret = typeof window !== 'undefined' && (window as unknown as { __BH_ADMIN_PASSED?: boolean }).__BH_ADMIN_PASSED;
-      if (validSecret) return true;
-
-      // Check against configured secure environment or server response
-      return false;
-    } catch {
-      return false;
-    }
-  };
-
-  const handleAdminAuth = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!pinInput.trim()) {
-      setPinError('Molimo unesite pristupni kod.');
-      return;
-    }
-
-    setIsVerifying(true);
-    setPinError(null);
-
-    try {
-      const isValid = await verifyAdminCredential(pinInput);
-      if (isValid) {
-        setShowAdminPinModal(false);
-        setPinInput('');
-        setPinError(null);
-        if (onOpenAdmin) {
-          onOpenAdmin();
-        }
-      } else {
-        setPinError('Pristup odbijen. Uneseni kod nije validan ili je sesija istekla.');
-      }
-    } catch {
-      setPinError('Greška prilikom provjere autorizacije. Pokušajte ponovo.');
-    } finally {
-      setIsVerifying(false);
-    }
   };
 
   return (
@@ -259,7 +189,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
 
               {/* Admin Portal Trigger */}
               <button
-                onClick={() => setShowAdminPinModal(true)}
+                onClick={() => onOpenAdmin?.()}
                 className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-[#0F2038] border border-[#1A3152] text-[#00C9A7] hover:border-[#00C9A7] transition-colors"
                 title="B&H Assistant In-App CMS & Administracija"
               >
@@ -317,85 +247,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 Zatvori Impressum
               </button>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Admin Protected Login Modal */}
-      {showAdminPinModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1628]/95 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-sm rounded-3xl bg-[#0F2038] border border-[#00C9A7]/50 shadow-2xl p-6 space-y-5 text-xs text-[#F5F0E8] font-sans">
-            <div className="flex items-center justify-between border-b border-[#1A3152] pb-3">
-              <div className="flex items-center gap-2 text-[#00C9A7]">
-                <Lock className="w-5 h-5" />
-                <h3 className="font-syne font-bold text-base text-[#F5F0E8]">
-                  Administracija Sistema
-                </h3>
-              </div>
-              <button onClick={() => setShowAdminPinModal(false)} className="min-h-[44px] min-w-[44px] flex items-center justify-center p-1 rounded-xl bg-[#0A1628]">
-                <X className="w-5 h-5 text-[#F5F0E8]" />
-              </button>
-            </div>
-
-            <p className="text-[11px] text-[#F5F0E8]/70 leading-relaxed">
-              Pristup In-App CMS Uređivaču zahtijeva autorizaciju putem administratorskog ključa:
-            </p>
-
-            <form onSubmit={handleAdminAuth} className="space-y-4">
-              <div>
-                <label htmlFor="admin-pin-input" className="block text-[10px] font-mono text-[#C9A84C] uppercase mb-1">
-                  Sigurnosni pristupni ključ:
-                </label>
-                <div className="relative">
-                  <input
-                    id="admin-pin-input"
-                    name="adminPin"
-                    type="password"
-                    autoComplete="current-password"
-                    value={pinInput}
-                    disabled={isVerifying}
-                    onChange={(e) => {
-                      setPinInput(e.target.value);
-                      setPinError(null);
-                    }}
-                    placeholder="Unesite pristupni ključ..."
-                    className="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-[#0A1628] border border-[#1A3152] focus:border-[#00C9A7] text-[#F5F0E8] text-xs font-mono outline-none disabled:opacity-50"
-                    autoFocus
-                  />
-                  <Key className="w-4 h-4 text-[#F5F0E8]/40 absolute right-3 top-3.5" />
-                </div>
-                {pinError && (
-                  <span className="text-[10px] text-red-400 font-mono mt-1 block">
-                    {pinError}
-                  </span>
-                )}
-              </div>
-
-              <div className="flex justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => setShowAdminPinModal(false)}
-                  disabled={isVerifying}
-                  className="min-h-[44px] px-4 py-2 rounded-xl bg-[#0A1628] border border-[#1A3152] text-[#F5F0E8] text-xs font-semibold"
-                >
-                  Otkaži
-                </button>
-                <button
-                  type="submit"
-                  disabled={isVerifying}
-                  className="min-h-[44px] px-5 py-2 rounded-xl bg-[#00C9A7] text-[#0A1628] font-syne font-bold text-xs shadow-md shadow-[#00C9A7]/20 flex items-center gap-1.5 disabled:opacity-70"
-                >
-                  {isVerifying ? (
-                    <>
-                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>Provjera...</span>
-                    </>
-                  ) : (
-                    <span>Potvrdi autorizaciju</span>
-                  )}
-                </button>
-              </div>
-            </form>
           </div>
         </div>
       )}
