@@ -1,28 +1,19 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, Scale, CheckCircle2, ShieldCheck, AlertCircle, Building2, Mail, ArrowLeft } from 'lucide-react';
+import { FileText, Scale, CheckCircle2, ShieldCheck, AlertCircle, Building2, Mail } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
+import { PageSeo } from '../components/PageSeo';
 
 export const TermsPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = 'Opći Uslovi Korištenja Platforme | B&H ASSISTANT d.o.o. Zenica';
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#0A1628] text-[#F5F0E8] pt-32 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen bg-[#0A1628] text-[#F5F0E8] py-10 sm:py-12 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
+      <PageSeo />
       <div className="max-w-4xl mx-auto space-y-10">
         
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-mono text-[#00C9A7]">
-          <Link to="/" className="hover:underline flex items-center gap-1">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Početna</span>
-          </Link>
-          <span className="text-[#F5F0E8]/40">/</span>
-          <span className="text-[#F5F0E8]/70">Uslovi Korištenja</span>
-        </div>
-
         {/* Header */}
         <header className="space-y-4 border-b border-[#1A3152] pb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C] font-mono text-xs font-semibold">
@@ -135,7 +126,7 @@ export const TermsPage: React.FC = () => {
         </div>
 
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -1,28 +1,19 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Lock, Eye, FileText, CheckCircle2, Mail, Phone, MapPin, Building2, ArrowLeft } from 'lucide-react';
+import { Shield, Lock, Eye, FileText, CheckCircle2, Mail, Phone, MapPin, Building2 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
+import { PageSeo } from '../components/PageSeo';
 
 export const PrivacyPolicyPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = 'Politika Privatnosti i Zaštita Ličnih Podataka (GDPR) | B&H ASSISTANT d.o.o. Zenica';
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#0A1628] text-[#F5F0E8] pt-32 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen bg-[#0A1628] text-[#F5F0E8] py-10 sm:py-12 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
+      <PageSeo />
       <div className="max-w-4xl mx-auto space-y-10">
         
-        {/* Breadcrumb / Back link */}
-        <div className="flex items-center gap-2 text-xs font-mono text-[#00C9A7]">
-          <Link to="/" className="hover:underline flex items-center gap-1">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Početna</span>
-          </Link>
-          <span className="text-[#F5F0E8]/40">/</span>
-          <span className="text-[#F5F0E8]/70">Politika Privatnosti</span>
-        </div>
-
         {/* Header */}
         <header className="space-y-4 border-b border-[#1A3152] pb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00C9A7]/10 border border-[#00C9A7]/30 text-[#00C9A7] font-mono text-xs font-semibold">
@@ -157,7 +148,7 @@ export const PrivacyPolicyPage: React.FC = () => {
         </div>
 
       </div>
-    </main>
+    </div>
   );
 };
 

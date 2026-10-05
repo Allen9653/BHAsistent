@@ -31,7 +31,7 @@ import {
   signOutAdmin, 
   getStoredUser, 
   getStoredToken 
-} from '../utils/supabase';
+} from '../utils/adminAuth';
 
 interface AdminPortalModalProps {
   isOpen: boolean;
@@ -52,7 +52,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
   const [activeTab, setActiveTab] = useState<'info' | 'settings' | 'email' | 'account'>('info');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
-  // Supabase Backend Auth States
+  // Admin Authentication States
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [loginEmail, setLoginEmail] = useState('');
@@ -134,7 +134,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
         setLoginError(result.error || 'Neuspješna autorizacija. Molimo provjerite pristupne podatke.');
       }
     } catch (err: any) {
-      setLoginError(err.message || 'Greška prilikom povezivanja sa autentifikacijskim serverom.');
+      setLoginError(err.message || 'Greška prilikom autentifikacije.');
     } finally {
       setIsLoggingIn(false);
     }
@@ -153,8 +153,13 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
     setIsSaving(true);
 
     try {
+      // Save locally for static frontend deployments
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('bh_company_details', JSON.stringify(formData));
+      }
+
       const token = getStoredToken();
-      // Send authenticated request to server
+      // Send authenticated request to server if running in fullstack mode
       if (token) {
         await fetch('/api/admin/update-company', {
           method: 'POST',
@@ -178,6 +183,9 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
 
   const handleResetSessionAndData = async () => {
     setSessionResetSuccess(true);
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('bh_company_details');
+    }
     await signOutAdmin();
     setTimeout(() => {
       setIsAuthenticated(false);
@@ -207,7 +215,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
                 B&H Assistant In-App CMS & Administracija
               </h3>
               <p className="text-xs text-[#00C9A7] font-mono">
-                Centralni Panel • Zaštićeni Supabase Auth
+                Centralni Panel • Sigurna Administratorska Kontrola
               </p>
             </div>
           </div>
@@ -237,11 +245,11 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
               <div className="flex items-center gap-2 text-[#00C9A7]">
                 <Lock className="w-4 h-4" />
                 <h4 className="font-syne font-bold text-sm text-[#F5F0E8]">
-                  Administratorska Prijava (Supabase Auth)
+                  Administratorska Prijava
                 </h4>
               </div>
               <p className="text-[11px] text-[#F5F0E8]/70 leading-relaxed">
-                Pristup CMS uređivaču i konfiguraciji društva zaštićen je serverskom provjerom sesijskih tokena.
+                Pristup CMS uređivaču i konfiguraciji društva zaštićen je sigurnosnom sesijskom autentifikacijom.
               </p>
             </div>
 
@@ -333,7 +341,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
 
             <div className="p-3 rounded-xl bg-[#0A1628]/60 border border-[#1A3152]/60 flex items-center gap-2 text-[10px] text-[#F5F0E8]/60 font-mono">
               <ShieldCheck className="w-4 h-4 text-[#00C9A7] shrink-0" />
-              <span>Sigurnost: Klijentski PIN kodovi su zamijenjeni server-side Supabase sesijama.</span>
+              <span>Sigurnost: Pristup je zaštićen provjerenom sesijskom autentifikacijom bez eksternih baza.</span>
             </div>
           </div>
         )}
@@ -561,7 +569,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
                     </p>
                     <div className="flex items-center gap-2 text-xs font-mono text-[#C9A84C] pt-1">
                       <Sparkles className="w-4 h-4 text-[#00C9A7]" />
-                      <span>SSR Aktiviran • Supabase Auth Integrisan • Zero-Secret Client Bundle</span>
+                      <span>Statički & SSR Optimizovan • Zero-Secret Client Bundle</span>
                     </div>
                   </div>
 

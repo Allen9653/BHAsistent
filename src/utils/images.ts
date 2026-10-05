@@ -132,6 +132,11 @@ export const IMAGES = {
   touchLogo: 'https://archive.org/download/touch_logo_promo_banner/touch_logo_promo_banner.png',
   touchBanner: 'https://archive.org/download/touch_logo_promo_banner/touch_logo_promo_banner.png',
   cloudtalkBanner: 'https://i.imgur.com/5rTpp9F.jpg',
+
+  // BiH Football Team Congratulation Banner (Archive.org & Local)
+  bihPobjedaBanner: '/images/cestitka-zmajevi-2026.jpg',
+  bihPobjedaArchiveDirect: 'https://archive.org/download/cestitka-za-nase-momke-2026/%C4%8Cestitka%20za%20na%C5%A1e%20momke%202026.jpg',
+  bihPobjedaArchiveDetails: 'https://archive.org/details/cestitka-za-nase-momke-2026',
 } as const;
 
 export type ImageKey = keyof typeof IMAGES;

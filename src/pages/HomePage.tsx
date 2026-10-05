@@ -11,6 +11,7 @@ import { SafeImage } from '../components/SafeImage';
 import { IMAGES } from '../utils/images';
 import { useLanguage } from '../context/LanguageContext';
 import { COMPANY_INFO } from '../data/companyData';
+import { PageSeo } from '../components/PageSeo';
 import {
   ArrowRight,
   Sparkles,
@@ -176,6 +177,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
 
   return (
     <div className="space-y-16 lg:space-y-24">
+      <PageSeo />
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden">
         <StecakBackground />

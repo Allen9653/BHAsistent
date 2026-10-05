@@ -19,8 +19,10 @@ import {
   ChevronDown,
   Users,
   Sparkles,
+  Search,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { HeaderSearchModal } from './HeaderSearchModal';
 
 interface NavbarProps {
   onOpenAdmin: () => void;
@@ -34,11 +36,30 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { language: _language, t } = useLanguage();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const location = useLocation();
+
+  // Global Ctrl+K / Cmd+K keyboard shortcut to open search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    const handleCustomOpen = () => setIsSearchOpen(true);
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('bh-open-search', handleCustomOpen);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('bh-open-search', handleCustomOpen);
+    };
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -289,8 +310,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               </ul>
             </nav>
 
-            {/* Right: Theme Toggle + Language Switcher + SINGLE CTA ("Zajednica") */}
+            {/* Right: Search + Theme Toggle + Language Switcher + SINGLE CTA ("Zajednica") */}
             <div className="hidden lg:flex items-center gap-2.5">
+              {/* Global Search Trigger (Desktop) */}
+              <button
+                type="button"
+                onClick={() => setIsSearchOpen(true)}
+                aria-label="Pretraži platformu (Ctrl+K)"
+                title="Pretraži alate, projekte, magazine i članke (Ctrl+K)"
+                className="flex items-center gap-2 px-3 py-2 min-h-[44px] rounded-xl bg-[#0F2038] hover:bg-[#1A3152] border border-[#1A3152] hover:border-[#00C9A7]/40 text-[#F5F0E8]/75 hover:text-[#00C9A7] transition-all text-xs font-mono group focus-visible:ring-2 focus-visible:ring-[#00C9A7]"
+              >
+                <Search className="w-4 h-4 text-[#00C9A7] group-hover:scale-110 transition-transform" />
+                <span className="hidden xl:inline text-[#F5F0E8]/80 group-hover:text-[#F5F0E8]">Pretraga...</span>
+                <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-[#0A1628] border border-[#1A3152] rounded text-[#F5F0E8]/50 group-hover:border-[#00C9A7]/40 group-hover:text-[#00C9A7]">
+                  ⌘K
+                </kbd>
+              </button>
+
               {/* Dark / Light / System Mode Toggle */}
               {mounted && (
                 <button
@@ -326,6 +362,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Mobile Header Controls (< 1024px) */}
             <div className="lg:hidden flex items-center gap-1.5 sm:gap-2">
+              {/* Mobile Search Button */}
+              <button
+                type="button"
+                onClick={() => setIsSearchOpen(true)}
+                aria-label="Pretraži platformu"
+                title="Pretraži alate, projekte, magazine"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-[#0F2038] border border-[#1A3152] text-[#00C9A7] hover:bg-[#1A3152] focus-visible:ring-2 focus-visible:ring-[#00C9A7]"
+              >
+                <Search className="w-5 h-5" />
+              </button>
+
               {/* Compact Language Selector */}
               <LanguageSwitcher variant="compact" />
 
@@ -377,6 +424,24 @@ export const Navbar: React.FC<NavbarProps> = ({
         }`}
       >
         <div className="px-4 space-y-4 max-h-[78vh] overflow-y-auto">
+          {/* Quick Search Bar inside Mobile Drawer */}
+          <button
+            type="button"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setIsSearchOpen(true);
+            }}
+            className="w-full text-left px-3.5 py-2.5 rounded-xl bg-[#0F2038] hover:bg-[#1A3152] border border-[#1A3152] hover:border-[#00C9A7]/40 text-[#F5F0E8]/70 hover:text-[#00C9A7] flex items-center justify-between transition-colors min-h-[44px] focus-visible:ring-2 focus-visible:ring-[#00C9A7]"
+          >
+            <div className="flex items-center gap-2.5 text-xs font-sans">
+              <Search className="w-4 h-4 text-[#00C9A7]" />
+              <span>Pretraži alate, projekte, magazine...</span>
+            </div>
+            <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-[#0A1628] border border-[#1A3152] rounded text-[#00C9A7]">
+              Traži
+            </kbd>
+          </button>
+
           {/* Mobile Language Selector */}
           <LanguageSwitcher variant="mobile" />
 
@@ -498,6 +563,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Platform-wide Client-side Search Modal */}
+      <HeaderSearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onOpenBojanka={onOpenBojanka}
+      />
     </header>
   );
 };

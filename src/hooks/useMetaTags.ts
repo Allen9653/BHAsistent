@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { MULTILINGUAL_ROUTE_META, RouteMetaConfig } from '../data/seoData';
+import { MULTILINGUAL_ROUTE_META, RouteMetaConfig, getRouteMeta, ROUTE_ALIASES } from '../data/seoData';
 import { Language } from '../data/translations';
 
 export { type RouteMetaConfig } from '../data/seoData';
@@ -17,16 +17,23 @@ export const ROUTE_META_MAP: Record<string, RouteMetaConfig> = Object.entries(MU
 );
 
 /**
- * Helper to get or create a meta tag by name or property attribute.
+ * Helper to set or update a meta tag by name or property attribute.
+ * Removes duplicate tags if multiple exist to prevent search engine confusion.
  */
 function setOrCreateMetaTag(attributeName: 'name' | 'property', attributeValue: string, content: string) {
-  let element = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
-  if (!element) {
-    element = document.createElement('meta');
+  const elements = document.querySelectorAll(`meta[${attributeName}="${attributeValue}"]`);
+  if (elements.length > 0) {
+    elements[0].setAttribute('content', content);
+    // Remove duplicates if any were previously injected
+    for (let i = 1; i < elements.length; i++) {
+      elements[i].parentNode?.removeChild(elements[i]);
+    }
+  } else {
+    const element = document.createElement('meta');
     element.setAttribute(attributeName, attributeValue);
+    element.setAttribute('content', content);
     document.head.appendChild(element);
   }
-  element.setAttribute('content', content);
 }
 
 /**
@@ -36,16 +43,21 @@ function setOrCreateLinkTag(rel: string, href: string, hreflang?: string) {
   const selector = hreflang
     ? `link[rel="${rel}"][hreflang="${hreflang}"]`
     : `link[rel="${rel}"]:not([hreflang])`;
-  let element = document.querySelector(selector);
-  if (!element) {
-    element = document.createElement('link');
+  const elements = document.querySelectorAll(selector);
+  if (elements.length > 0) {
+    elements[0].setAttribute('href', href);
+    for (let i = 1; i < elements.length; i++) {
+      elements[i].parentNode?.removeChild(elements[i]);
+    }
+  } else {
+    const element = document.createElement('link');
     element.setAttribute('rel', rel);
     if (hreflang) {
       element.setAttribute('hreflang', hreflang);
     }
+    element.setAttribute('href', href);
     document.head.appendChild(element);
   }
-  element.setAttribute('href', href);
 }
 
 /**
@@ -72,7 +84,7 @@ function updateJsonLd(config: RouteMetaConfig, pathname: string, language: Langu
         'name': 'B&H Assistant d.o.o. Zenica',
         'url': 'https://bh-assistant.ba',
         'logo': 'https://i.imgur.com/cXebP1B.jpg',
-        'description': 'Zvanična platforma IT firme B&H Assistant d.o.o. Zenica. Slogan: SPAJAMO KULTURE - STVARAMO ŠANSE. >bd0c<',
+        'description': 'Zvanična platforma IT firme B&H Assistant d.o.o. Zenica. Slogan: SPAJAMO KULTURE - STVARAMO ŠANSE. Digitalni alati, SCENA+ magazin i inovativni projekti.',
         'address': {
           '@type': 'PostalAddress',
           'streetAddress': 'Bulevar Ezhera Eze Arnautovića 8',
@@ -88,7 +100,8 @@ function updateJsonLd(config: RouteMetaConfig, pathname: string, language: Langu
           'availableLanguage': ['bs', 'en', 'de', 'tr'],
         },
         'sameAs': [
-          'https://www.instagram.com/bh.assistant.doo/',
+          'https://www.facebook.com/SpajamoKultureStvaramoSanse',
+          'https://www.instagram.com/bh.asst',
         ],
       },
       {
@@ -126,26 +139,29 @@ export function useMetaTags(overrideConfig?: Partial<RouteMetaConfig>) {
   const location = useLocation();
   const { language } = useLanguage();
 
-  useEffect(() => {
-    // Normalize path (strip trailing slash if length > 1)
-    const normalizedPath = location.pathname.length > 1 && location.pathname.endsWith('/')
-      ? location.pathname.slice(0, -1)
-      : location.pathname;
+  const useHook = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-    const routeConfig = MULTILINGUAL_ROUTE_META[normalizedPath] || MULTILINGUAL_ROUTE_META['/'];
-    const localizedMeta = routeConfig[language] || routeConfig['bs'] || routeConfig['en'];
+  useHook(() => {
+    // Normalize path (strip query params, hash and trailing slash)
+    const rawPath = location.pathname.split('?')[0].split('#')[0];
+    const cleanPath = rawPath.length > 1 && rawPath.endsWith('/')
+      ? rawPath.slice(0, -1)
+      : rawPath;
+    const resolvedPath = ROUTE_ALIASES[cleanPath] || cleanPath;
+
+    const localizedMeta = getRouteMeta(resolvedPath, language);
 
     const activeConfig: RouteMetaConfig = {
       title: overrideConfig?.title || localizedMeta.title,
       description: overrideConfig?.description || localizedMeta.description,
       keywords: overrideConfig?.keywords || localizedMeta.keywords || 'bh assistant, zenica, bih software',
-      canonical: overrideConfig?.canonical || localizedMeta.canonical || `https://bh-assistant.ba${normalizedPath === '/' ? '/' : normalizedPath}`,
+      canonical: overrideConfig?.canonical || localizedMeta.canonical || `https://bh-assistant.ba${resolvedPath === '/' ? '/' : resolvedPath}`,
       ogType: overrideConfig?.ogType || localizedMeta.ogType || 'website',
       ogImage: overrideConfig?.ogImage || localizedMeta.ogImage || 'https://i.imgur.com/cXebP1B.jpg',
       ogImageAlt: overrideConfig?.ogImageAlt || localizedMeta.ogImageAlt || 'B&H Assistant d.o.o. Zenica',
     };
 
-    // 1. Update Document Title
+    // 1. Update Document Title immediately (ensures unique page title for tab & indexer)
     document.title = activeConfig.title;
 
     // 2. Update Standard SEO Meta Tags
@@ -159,7 +175,7 @@ export function useMetaTags(overrideConfig?: Partial<RouteMetaConfig>) {
     // 3. Update Open Graph (Facebook, LinkedIn, Viber, WhatsApp) Meta Tags
     setOrCreateMetaTag('property', 'og:title', activeConfig.title);
     setOrCreateMetaTag('property', 'og:description', activeConfig.description);
-    setOrCreateMetaTag('property', 'og:url', activeConfig.canonical || `https://bh-assistant.ba${normalizedPath}`);
+    setOrCreateMetaTag('property', 'og:url', activeConfig.canonical || `https://bh-assistant.ba${resolvedPath}`);
     setOrCreateMetaTag('property', 'og:type', activeConfig.ogType || 'website');
     setOrCreateMetaTag('property', 'og:site_name', 'B&H Assistant d.o.o. Zenica');
     const ogLocale = language === 'bs' ? 'bs_BA' : language === 'de' ? 'de_DE' : language === 'tr' ? 'tr_TR' : 'en_US';
@@ -177,6 +193,7 @@ export function useMetaTags(overrideConfig?: Partial<RouteMetaConfig>) {
     setOrCreateMetaTag('name', 'twitter:card', 'summary_large_image');
     setOrCreateMetaTag('name', 'twitter:title', activeConfig.title);
     setOrCreateMetaTag('name', 'twitter:description', activeConfig.description);
+    setOrCreateMetaTag('name', 'twitter:url', activeConfig.canonical || `https://bh-assistant.ba${resolvedPath}`);
     if (activeConfig.ogImage) {
       setOrCreateMetaTag('name', 'twitter:image', activeConfig.ogImage);
       if (activeConfig.ogImageAlt) {
@@ -185,7 +202,7 @@ export function useMetaTags(overrideConfig?: Partial<RouteMetaConfig>) {
     }
 
     // 5. Update Canonical Link
-    const cleanCanonical = activeConfig.canonical || `https://bh-assistant.ba${normalizedPath === '/' ? '/' : normalizedPath}`;
+    const cleanCanonical = activeConfig.canonical || `https://bh-assistant.ba${resolvedPath === '/' ? '/' : resolvedPath}`;
     setOrCreateLinkTag('canonical', cleanCanonical);
 
     // 6. Set Multi-Language Hreflang Tags for Search Engine Indexing
@@ -196,8 +213,7 @@ export function useMetaTags(overrideConfig?: Partial<RouteMetaConfig>) {
     setOrCreateLinkTag('alternate', cleanCanonical, 'tr');
 
     // 7. Update Structured Data (Schema JSON-LD)
-    updateJsonLd(activeConfig, normalizedPath, language);
+    updateJsonLd(activeConfig, resolvedPath, language);
 
   }, [location.pathname, language, overrideConfig]);
 }
-

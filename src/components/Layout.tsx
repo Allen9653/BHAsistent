@@ -10,6 +10,7 @@ import { usePullToRefresh } from '../hooks/usePullToRefresh';
 import { PullToRefreshIndicator } from './PullToRefreshIndicator';
 import { MetaTagManager } from './MetaTagManager';
 import { CookieBanner } from './CookieBanner';
+import { Breadcrumbs } from './Breadcrumbs';
 import { COMPANY_INFO } from '../data/companyData';
 import { CompanyDetails } from '../types';
 
@@ -136,7 +137,19 @@ export const Layout: React.FC<LayoutProps> = ({
   setIsAdminOpen,
 }) => {
   const location = useLocation();
-  const [companyInfo, setCompanyInfo] = useState<CompanyDetails>(COMPANY_INFO);
+  const [companyInfo, setCompanyInfo] = useState<CompanyDetails>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem('bh_company_details');
+        if (stored) {
+          return { ...COMPANY_INFO, ...JSON.parse(stored) };
+        }
+      } catch {
+        // Fallback to default
+      }
+    }
+    return COMPANY_INFO;
+  });
   const [refreshKey, setRefreshKey] = useState(0);
 
   // Automatically inject dynamic 'aria-labels' and 'role' attributes to all navigation links
@@ -207,6 +220,9 @@ export const Layout: React.FC<LayoutProps> = ({
 
       {/* Dynamic Route Content via Outlet */}
       <main className="flex-1 w-full pt-safe-top">
+        {/* Dynamic Breadcrumbs Navigation (visible on all subpages, auto-hidden on homepage) */}
+        <Breadcrumbs />
+
         <AnimatePresence mode="wait">
           <motion.div
             key={`${location.pathname}-${refreshKey}`}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { DigitalToolsSection } from '../components/DigitalToolsSection';
 import { useNavigate } from 'react-router-dom';
+import { PageSeo } from '../components/PageSeo';
 
 interface ToolsPageProps {
   onOpenBojanka: () => void;
@@ -11,6 +12,7 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onOpenBojanka }) => {
 
   return (
     <div className="pt-16 pb-12 w-full min-h-[70vh]">
+      <PageSeo />
       <DigitalToolsSection
         onOpenContact={() => navigate('/kontakt')}
         onOpenBojanka={onOpenBojanka}

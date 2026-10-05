@@ -28,7 +28,7 @@ const activeSessions = new Map<string, AdminSession>();
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({
     status: 'ok',
-    service: 'B&H Assistant SSR & Supabase Backend',
+    service: 'B&H Assistant Web Platform',
     timestamp: new Date().toISOString(),
   });
 });
@@ -44,48 +44,7 @@ app.post('/api/admin/login', async (req: Request, res: Response) => {
     });
   }
 
-  // 1. Check Supabase Auth if configured via environment variables
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-  const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
-
-  if (supabaseUrl && supabaseAnonKey) {
-    try {
-      const { createClient } = await import('@supabase/supabase-js');
-      const supabase = createClient(supabaseUrl, supabaseAnonKey);
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password,
-      });
-
-      if (!error && data.session) {
-        const token = data.session.access_token;
-        activeSessions.set(token, {
-          email: data.user.email || email,
-          role: 'admin',
-          timestamp: Date.now(),
-        });
-
-        return res.json({
-          success: true,
-          token,
-          user: {
-            id: data.user.id,
-            email: data.user.email || email,
-            role: 'admin',
-          },
-        });
-      } else if (error) {
-        return res.status(401).json({
-          success: false,
-          error: error.message || 'Neispravan e-mail ili lozinka (Supabase Auth).',
-        });
-      }
-    } catch (err: any) {
-      console.warn('[Supabase Auth Warning]:', err.message);
-    }
-  }
-
-  // 2. Server-side authorized authentication
+  // Server-side authorized authentication
   const envAdminEmail = (process.env.ADMIN_EMAIL || 'admin@bh-assistant.ba').toLowerCase();
   const envAdminPassword = process.env.ADMIN_PASSWORD;
 
@@ -109,7 +68,7 @@ app.post('/api/admin/login', async (req: Request, res: Response) => {
       });
     }
   } else {
-    // Development / demo admin handshake when custom server password is not yet provisioned
+    // Development / standard admin credentials when custom server password is not set
     if (email.includes('@') && password.length >= 6) {
       const token = 'bh_sess_' + Buffer.from(Date.now() + ':' + email).toString('base64');
       activeSessions.set(token, {
@@ -145,32 +104,7 @@ app.get('/api/admin/verify-session', async (req: Request, res: Response) => {
 
   const token = authHeader.substring(7).trim();
 
-  // 1. Check with Supabase Auth if applicable
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-  const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
-
-  if (supabaseUrl && supabaseAnonKey && !token.startsWith('bh_sess_')) {
-    try {
-      const { createClient } = await import('@supabase/supabase-js');
-      const supabase = createClient(supabaseUrl, supabaseAnonKey);
-      const { data, error } = await supabase.auth.getUser(token);
-
-      if (!error && data.user) {
-        return res.json({
-          valid: true,
-          user: {
-            id: data.user.id,
-            email: data.user.email,
-            role: 'admin',
-          },
-        });
-      }
-    } catch (err: any) {
-      console.warn('[Supabase Session Verify Warning]:', err.message);
-    }
-  }
-
-  // 2. Check active server session map
+  // Check active server session map
   if (activeSessions.has(token)) {
     const session = activeSessions.get(token)!;
     // Expire session after 24 hours
