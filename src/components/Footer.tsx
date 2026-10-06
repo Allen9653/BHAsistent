@@ -6,6 +6,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
 import { EmailConfigModal } from './EmailConfigModal';
+import { FooterBackground } from './FooterBackground';
 
 interface FooterProps {
   onOpenAdmin?: () => void;
@@ -21,8 +22,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
   };
 
   return (
-    <footer className="bg-[var(--brand-footer,#081120)] border-t border-[var(--brand-border,#1A3152)] pt-16 pb-[max(24px,env(safe-area-inset-bottom))] text-[#F5F0E8]/80 text-xs font-sans relative mt-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <footer className="bg-[var(--brand-footer,#081120)] border-t border-[var(--brand-border,#1A3152)] pt-16 pb-[max(24px,env(safe-area-inset-bottom))] text-[#F5F0E8]/80 text-xs font-sans relative mt-12 overflow-hidden">
+      {/* Subtle Animated Background matching Hero Style */}
+      <FooterBackground />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
         
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-[#1A3152]/60">
