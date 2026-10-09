@@ -4,8 +4,6 @@ import { motion } from 'motion/react';
 import { StecakBackground } from '../components/StecakBackground';
 import { PromoBannerCarousel } from '../components/PromoBannerCarousel';
 import { SpecialOfferSection } from '../components/SpecialOfferSection';
-import { KasperskyPromoSection } from '../components/KasperskyPromoSection';
-import { PartnersAffiliatesSection } from '../components/PartnersAffiliatesSection';
 import { NativeCommercialBanner } from '../components/NativeCommercialBanner';
 import { SafeImage } from '../components/SafeImage';
 import { IMAGES } from '../utils/images';
@@ -165,10 +163,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
     {
       id: 'shop',
       title: t('home.pillar.shop.title', 'Shop & Edukacija'),
-      subtitle: t('home.pillar.shop.subtitle', 'Alison Besplatni Kursevi'),
-      desc: t('home.pillar.shop.desc', 'Pristupite 100% besplatnim sertifikovanim IT kursevima, remote IT poslovima i AI platformama.'),
+      subtitle: t('home.pillar.shop.subtitle', 'Edukativni Centar & Alati'),
+      desc: t('home.pillar.shop.desc', 'Pristupite besplatnim digitalnim resursima, interaktivnim edukacijama i softverskim alatima B&H Assistant ekosistema.'),
       icon: GraduationCap,
-      image: IMAGES.alisonLogo,
+      image: IMAGES.ourProducts,
       badge: t('home.pillar.shop.badge', 'Edukativni Centar'),
       color: 'from-[#00C9A7]/20 to-[#C9A84C]/10 border-[#00C9A7]/40 text-[#00C9A7]',
       link: '/shop'
@@ -323,7 +321,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
         </div>
       </section>
 
-      {/* 2. PROMINENT VERIFIED PARTNER (TOUCH E-COMMERCE HIGHLIGHT) */}
+      {/* 2. SLUŽBENE OBJAVE & ISTAKNUTI BANERI (ČESTITKA ZMAJEVIMA & BH DIGITALNI ALATI) */}
       <NativeCommercialBanner />
 
       {/* 3. CORE PILLARS & FAST NAVIGATION HUB */}
@@ -409,17 +407,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
         <PromoBannerCarousel onOpenBojanka={onOpenBojanka} />
       </section>
 
-      {/* 4. KASPERSKY CYBERSECURITY PROMOTIONAL FEATURE */}
-      <section className="max-w-7xl mx-auto">
-        <KasperskyPromoSection />
-      </section>
-
-      {/* 5. PREPORUČENI PARTNERI & GLOBALNE POGODNOSTI (AFFILIATE HUB) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <PartnersAffiliatesSection />
-      </section>
-
-      {/* 6. COMPANY STATS & TRUST BLOCK */}
+      {/* 5. COMPANY STATS & TRUST BLOCK */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#1A3152] border border-[#00C9A7]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center sm:text-left items-center">

@@ -245,41 +245,17 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.cloudtalk.badge': 'AI TELEFONSKI ASISTENT',
     'banner.cloudtalk.btn': 'Preuzmite CloudTalk Besplatno',
 
-    // Shop & Affiliate Section
-    'shop.badge': 'FLUID IT SHOP & AFFILIATE HUB',
-    'shop.title': 'Edukativna Trgovina & Affiliated Partneri i Digitalna Sigurnost',
-    'shop.subtitle': 'Predstavljamo našu e-trgovinsku platformu i sponzorisane partnere. Povezujemo vas sa vrhunskom kibernetičkom zaštitom, AI platformama i certificiranim kursevima!',
-    'shop.kaspersky.badge': 'KIBERNETIČKA SIGURNOST & POPUST 🛡️',
-    'shop.kaspersky.title': 'Kaspersky Lab – Vrhunska Zaštita Uređaja i Podataka',
-    'shop.kaspersky.desc': 'Kaspersky pruža sveobuhvatnu digitalnu zaštitu od najnovijih kibernetičkih prijetnji, virusa i ransomware napada. Iskoristite ekskluzivni popust na zvanične licence za vaše računare i mobilne uređaje.',
-    'shop.kaspersky.btn': 'Aktiviraj Kaspersky Popust',
-
-    'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
-    'shop.touch.title': 'TOUCH - Pametni Telefoni, Računari & Autonomno Napajanje',
-    'shop.touch.desc': 'Popularna ukrajinska e-commerce platforma sa širokim asortimanom originalnih pametnih telefona (Apple, Xiaomi, Samsung), opreme za alternativno napajanje (EcoFlow, Bluetti generatori, Power Bank) i provjerene outlet tehnike.',
-    'shop.touch.btn': 'Posjeti TOUCH Trgovinu',
-
-    'banner.touch.badge': 'NOVI E-COMMERCE PARTNER 📱',
-    'banner.touch.title': 'TOUCH (touch.com.ua) – Pametni Telefoni, Računari, Gadgeti i Autonomno Napajanje',
-    'banner.touch.desc': 'Popularna ukrajinska e-commerce platforma sa širokim asortimanom originalne tehnike (Apple, Xiaomi, Samsung), alternativnog napajanja (EcoFlow, Bluetti generatori) i provjerene outlet tehnike.',
-    'banner.touch.btn': 'Posjeti TOUCH Trgovinu',
-
-    'shop.atoms.badge': 'AI & TECH PLATFORMA',
-    'shop.atoms.title': 'Atoms - Pretvori Ideju u Realnost',
-    'shop.atoms.desc': 'Izgradite, testirajte i skalirajte napredne AI agente i moderne veb aplikacije u rekordnom roku. Prevorite svaku ideju u stvarni, operativni softverski proizvod uz podršku B&H Assistant partnerstva.',
-    'shop.atoms.btn': 'Isprobaj Atoms Platformu Odmah',
-
-    'shop.alison.badge': 'BESPLATNI CERTIFIKATI',
-    'shop.alison.title': 'Alison - Besplatni Certificirani Kursevi Iz Svjetskih Oblasti',
-    'shop.alison.desc': 'Ukoliko tražite korisne, certificirane edukativne kurseve iz raznih svjetskih oblasti — imate priliku da besplatno upišete tečajeve u saradnji sa Alison platformom.',
-    'shop.alison.btn': 'Upiši Besplatne Kurseve na Alison',
+    // Shop & Edukacijski Centar
+    'shop.badge': 'DIGITALNI SHOP & EDUKACIJSKI CENTAR',
+    'shop.title': 'Edukativni Centar & Digitalni Proizvodi',
+    'shop.subtitle': 'Istražite zvanične digitalne alate, autorska izdanja kulturne baštine i edukativne platforme B&H Assistant d.o.o. Zenica.',
+    'shop.accessPartner': 'Pristupi Resursu',
 
     'shop.allCat': 'Sve',
     'shop.catRemote': 'Remote Poslovi',
     'shop.catEdu': 'Online Edukacija',
     'shop.catIt': 'IT & Veb Dizajn',
     'shop.catLang': 'Jezici & Poslovanje',
-    'shop.accessPartner': 'Pristupi Partnerskom Linku',
 
     // Contact & Impressum
     'contact.badge': 'KONTAKT & IMPRESSUM',
@@ -576,41 +552,17 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.cloudtalk.badge': 'AI CALL ASSISTANT',
     'banner.cloudtalk.btn': 'Download CloudTalk Free',
 
-    // Shop & Affiliate Section
-    'shop.badge': 'FLUID IT SHOP & AFFILIATE HUB',
-    'shop.title': 'Education Store, Affiliated Partners & Cybersecurity',
-    'shop.subtitle': 'Discover our e-commerce platform and sponsored partners. Connecting you with world-class cybersecurity, AI platforms, and certified courses!',
-    'shop.kaspersky.badge': 'CYBERSECURITY & DISCOUNT 🛡️',
-    'shop.kaspersky.title': 'Kaspersky Lab – Premier Device & Data Protection',
-    'shop.kaspersky.desc': 'Kaspersky offers total defense against viruses, malware, and ransomware with real-time heuristic security and secure online payments.',
-    'shop.kaspersky.btn': 'Activate Kaspersky Discount',
-
-    'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
-    'shop.touch.title': 'TOUCH - Smartphones, Computers & Power Equipment',
-    'shop.touch.desc': 'Popular Ukrainian e-commerce platform offering a wide selection of genuine smartphones (Apple, Xiaomi, Samsung), autonomous power equipment (EcoFlow, Bluetti power stations, Power Banks), and certified outlet electronics.',
-    'shop.touch.btn': 'Visit TOUCH Store',
-
-    'banner.touch.badge': 'NEW E-COMMERCE PARTNER 📱',
-    'banner.touch.title': 'TOUCH (touch.com.ua) – Smartphones, Laptops, Gadgets & Autonomous Power',
-    'banner.touch.desc': 'Popular Ukrainian e-commerce store with genuine electronics (Apple, Xiaomi, Samsung), power stations (EcoFlow, Bluetti), and certified outlet gear.',
-    'banner.touch.btn': 'Visit TOUCH Store',
-
-    'shop.atoms.badge': 'AI & TECH PLATFORM',
-    'shop.atoms.title': 'Atoms - Turn Ideas into Reality',
-    'shop.atoms.desc': 'Build, test, and scale advanced AI agents and web apps in record time with B&H Assistant partnership benefits.',
-    'shop.atoms.btn': 'Try Atoms Platform Now',
-
-    'shop.alison.badge': 'FREE CERTIFICATES',
-    'shop.alison.title': 'Alison - Free Certified Global Courses',
-    'shop.alison.desc': 'Looking for certified courses across diverse disciplines? Enroll in 100% free online courses partnered with Alison.',
-    'shop.alison.btn': 'Enroll Free Courses on Alison',
+    // Shop & Education Center
+    'shop.badge': 'DIGITAL SHOP & EDUCATION CENTER',
+    'shop.title': 'Education Center & Digital Products',
+    'shop.subtitle': 'Explore official digital tools, cultural heritage editions, and educational platforms from B&H Assistant Ltd. Zenica.',
+    'shop.accessPartner': 'Access Resource',
 
     'shop.allCat': 'All',
     'shop.catRemote': 'Remote Jobs',
     'shop.catEdu': 'Online Education',
     'shop.catIt': 'IT & Web Design',
     'shop.catLang': 'Languages & Business',
-    'shop.accessPartner': 'Access Affiliate Link',
 
     // Contact & Impressum
     'contact.badge': 'CONTACT & IMPRESSUM',
@@ -907,34 +859,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.cloudtalk.badge': 'KI ANRUF-ASSISTENT',
     'banner.cloudtalk.btn': 'CloudTalk Gratis Herunterladen',
 
-    // Shop & Affiliate Section
-    'shop.badge': 'FLUID IT SHOP & AFFILIATE HUB',
-    'shop.title': 'Bildungsshop, Partner & Cybersicherheit',
-    'shop.subtitle': 'Entdecken Sie unsere Plattform und Partner. Wir verbinden Sie mit erstklassiger Cybersicherheit, KI-Plattformen und zertifizierten Kursen!',
-    'shop.kaspersky.badge': 'CYBERSICHERHEIT & RABATT 🛡️',
-    'shop.kaspersky.title': 'Kaspersky Lab – Erstklassiger Geräte- und Datenschutzes',
-    'shop.kaspersky.desc': 'Kaspersky bietet umfassenden Schutz vor Viren, Malware und Ransomware mit Echtzeit-Sicherheitsanalysen und sicherem Online-Banking.',
-    'shop.kaspersky.btn': 'Kaspersky-Rabatt Aktivieren',
-
-    'shop.touch.badge': 'TOP E-COMMERCE TECH 📱',
-    'shop.touch.title': 'TOUCH - Smartphones, Computer & Autonome Stromversorgung',
-    'shop.touch.desc': 'Beliebter ukrainischer E-Commerce-Shop für Original-Smartphones (Apple, Xiaomi, Samsung), Laptops, Powerstations (EcoFlow, Bluetti) und geprüfte Outlet-Elektronik.',
-    'shop.touch.btn': 'TOUCH Shop Besuchen',
-
-    'banner.touch.badge': 'NEUER E-COMMERCE PARTNER 📱',
-    'banner.touch.title': 'TOUCH (touch.com.ua) – Smartphones, Laptops, Gadgets & Notstromtechnik',
-    'banner.touch.desc': 'Beliebter ukrainischer Online-Händler für Unterhaltungselektronik, Apple/Xiaomi Ökosysteme und EcoFlow/Bluetti Generatoren.',
-    'banner.touch.btn': 'TOUCH Shop Besuchen',
-
-    'shop.atoms.badge': 'KI & TECH PLATTFORM',
-    'shop.atoms.title': 'Atoms - Ideen in Realität Verwandeln',
-    'shop.atoms.desc': 'Bauen, testen und skalieren Sie fortschrittliche KI-Agenten und Web-Apps in Rekordzeit mit B&H Assistant Partnervorteilen.',
-    'shop.atoms.btn': 'Atoms Plattform Jetzt Testen',
-
-    'shop.alison.badge': 'GRATIS ZERTIFIKATE',
-    'shop.alison.title': 'Alison - Kostenlose Zertifizierte Kurse',
-    'shop.alison.desc': 'Suchen Sie nach zertifizierten Online-Kursen? Schreiben Sie sich kostenlos in weltweit anerkannte Alison-Kurse ein.',
-    'shop.alison.btn': 'Kostenlos Auf Alison Einschreiben',
+    // Shop & Bildungszentrum
+    'shop.badge': 'DIGITALER SHOP & BILDUNGSZENTRUM',
+    'shop.title': 'Bildungszentrum & Digitale Produkte',
+    'shop.subtitle': 'Entdecken Sie offizielle digitale Werkzeuge, Kulturerbe-Editionen und Bildungsplattformen der B&H Assistant GmbH Zenica.',
+    'shop.accessPartner': 'Ressource Öffnen',
 
     'shop.allCat': 'Alle',
     'shop.catRemote': 'Remote-Jobs',
@@ -1238,34 +1167,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.cloudtalk.badge': 'YAPAY ZEKA ARAMA ASİSTANI',
     'banner.cloudtalk.btn': 'CloudTalk\'u Ücretsiz İndirin',
 
-    // Shop & Affiliate Section
-    'shop.badge': 'FLUID IT SHOP & AFFILIATE HUB',
-    'shop.title': 'Eğitim Mağazası, Ortaklıklar ve Siber Güvenlik',
-    'shop.subtitle': 'E-ticaret platformumuzu ve sponsorlu ortaklarımızı keşfedin. Sizi birinci sınıf siber güvenlik, yapay zeka platformları ve sertifikalı kurslarla buluşturuyoruz!',
-    'shop.kaspersky.badge': 'SİBER GÜVENLİK & İNDİRİM 🛡️',
-    'shop.kaspersky.title': 'Kaspersky Lab – Üstün Cihaz ve Veri Koruması',
-    'shop.kaspersky.desc': 'Kaspersky, gerçek zamanlı sezgisel güvenlik ve korumalı çevrimiçi ödemeler ile virüslere, kötü amaçlı yazılımlara ve fidye yazılımlarına karşı tam koruma sunar.',
-    'shop.kaspersky.btn': 'Kaspersky İndirimini Etkinleştir',
-
-    'shop.touch.badge': 'TOP E-TİCARET TEKNOLOJİ 📱',
-    'shop.touch.title': 'TOUCH - Akıllı Telefonlar, Bilgisayarlar & Güç İstasyonları',
-    'shop.touch.desc': 'Orijinal akıllı telefonlar (Apple, Xiaomi, Samsung), dizüstü bilgisayarlar, alternatif güç kaynakları (EcoFlow, Bluetti jeneratörler) ve garantili outlet elektronik konusunda uzmanlaşmış popüler Ukrayna e-ticaret platformu.',
-    'shop.touch.btn': 'TOUCH Mağazasını Ziyaret Et',
-
-    'banner.touch.badge': 'YENİ E-TİCARET ORTAĞI 📱',
-    'banner.touch.title': 'TOUCH (touch.com.ua) – Akıllı Telefonlar, Bilgisayarlar, Gadgetlar ve Güç Sistemleri',
-    'banner.touch.desc': 'Orijinal teknoloji ürünleri (Apple, Xiaomi, Samsung), güç istasyonları (EcoFlow, Bluetti) ve outlet fırsatlarıyla popüler Ukrayna e-ticaret mağazası.',
-    'banner.touch.btn': 'TOUCH Mağazasını Ziyaret Et',
-
-    'shop.atoms.badge': 'YAPAY ZEKA VE TEKNOLOJİ PLATFORMU',
-    'shop.atoms.title': 'Atoms - Fikirleri Gerçeğe Dönüştürün',
-    'shop.atoms.desc': 'B&H Assistant ortaklık avantajlarıyla gelişmiş yapay zeka ajanlarını ve web uygulamalarını rekor sürede inşa edin.',
-    'shop.atoms.btn': 'Atoms Platformunu Şimdi Deneyin',
-
-    'shop.alison.badge': 'ÜCRETSİZ SERTİFİKALAR',
-    'shop.alison.title': 'Alison - Ücretsiz Sertifikalı Küresel Kurslar',
-    'shop.alison.desc': 'Çeşitli alanlarda sertifikalı kurslar mı arıyorsunuz? Alison ortaklığıyla %100 ücretsiz çevrimiçi kurslara kaydolun.',
-    'shop.alison.btn': 'Alison\'da Ücretsiz Kaydol',
+    // Shop & Eğitim Merkezi
+    'shop.badge': 'DİJİTAL MAĞAZA VE EĞİTİM MERKEZİ',
+    'shop.title': 'Eğitim Merkezi ve Dijital Ürünler',
+    'shop.subtitle': 'B&H Assistant Ltd. resmi dijital araçlarını, kültürel miras yayınlarını ve eğitim platformlarını keşfedin.',
+    'shop.accessPartner': 'Kaynağa Git',
 
     'shop.allCat': 'Tümü',
     'shop.catRemote': 'Uzaktan İşler',

@@ -1,35 +1,30 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router-dom';
 import {
-  Smartphone,
-  Zap,
-  ShieldCheck,
-  ArrowUpRight,
-  Sparkles,
-  CheckCircle2,
   Trophy,
   ChevronLeft,
   ChevronRight,
   Pause,
   Play,
-  ExternalLink,
+  ArrowRight,
+  ArrowUpRight,
   Download,
   Flame,
+  CheckCircle2,
+  Sparkles,
+  Compass,
 } from 'lucide-react';
 import { IMAGES } from '../utils/images';
 
 interface NativeCommercialBannerProps {
   className?: string;
-  partnerId?: string;
-  trackingUrl?: string;
 }
 
 const SLIDE_DURATION_MS = 8000; // 8 seconds auto-rotation as requested
 
 export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
   className = '',
-  partnerId = 'touch-ecommerce-cpc',
-  trackingUrl = 'https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/',
 }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
@@ -39,7 +34,6 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
   // Touch swipe support for mobile
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number>(Date.now());
 
   const totalSlides = 2;
@@ -113,24 +107,6 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
     }
   };
 
-  // Telemetry click tracking for TOUCH affiliate banner
-  const handleTouchPartnerClick = () => {
-    try {
-      const payload = JSON.stringify({
-        partner: partnerId,
-        timestamp: new Date().toISOString(),
-        referrer: window.location.pathname,
-        placement: 'home_carousel_slide_touch',
-      });
-      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-        const blob = new Blob([payload], { type: 'application/json' });
-        navigator.sendBeacon('/api/track-partner-click', blob);
-      }
-    } catch {
-      // Non-blocking
-    }
-  };
-
   const slideVariants = {
     enter: (dir: number) => ({
       x: dir > 0 ? 80 : -80,
@@ -161,7 +137,7 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
 
   return (
     <section
-      aria-label="Promotivni i partnerski carousel"
+      aria-label="Promotivni i zvanični carousel"
       className={`w-full max-w-7xl mx-auto my-6 px-4 sm:px-6 lg:px-8 select-none ${className}`}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -178,8 +154,8 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
           <div
             className={`h-full transition-all duration-75 ease-linear ${
               currentSlide === 0
-                ? 'bg-gradient-to-r from-[#FF7A00] to-[#FFA14A]'
-                : 'bg-gradient-to-r from-[#0088FF] via-[#C9A84C] to-[#00C9A7]'
+                ? 'bg-gradient-to-r from-[#0088FF] via-[#C9A84C] to-[#00C9A7]'
+                : 'bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C]'
             }`}
             style={{ width: `${progress}%` }}
           />
@@ -213,90 +189,9 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
           <AnimatePresence mode="wait" custom={direction}>
             
             {/* ========================================================= */}
-            {/* SLIDE 0: Postojeći TOUCH E-Commerce Affiliated Banner     */}
+            {/* SLIDE 0: Zvanična Čestitka Reprezentaciji BiH (Zmajevi)   */}
             {/* ========================================================= */}
             {currentSlide === 0 && (
-              <motion.div
-                key="slide-touch"
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                className="w-full relative overflow-hidden bg-gradient-to-r from-[#0F2038] via-[#16273E] to-[#0F2038] border-y border-[#FF7A00]/40 p-5 sm:p-7 group"
-              >
-                {/* Subtle Ambient Accent Glows */}
-                <div className="absolute top-0 right-0 w-80 h-full bg-gradient-to-l from-[#FF7A00]/10 via-[#FF7A00]/5 to-transparent pointer-events-none rounded-r-3xl" />
-                <div className="absolute -left-12 -bottom-12 w-48 h-48 bg-[#00C9A7]/5 rounded-full blur-2xl pointer-events-none" />
-
-                {/* Shimmer Ambient Border Line */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF7A00] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10 px-6 sm:px-10 lg:px-12">
-                  {/* Partner Presentation Info */}
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5 w-full lg:w-auto">
-                    <div className="w-14 h-14 rounded-2xl bg-[#FF7A00]/15 border border-[#FF7A00]/40 flex items-center justify-center shrink-0 text-[#FF7A00] shadow-lg shadow-[#FF7A00]/10 group-hover:scale-105 transition-transform">
-                      <Smartphone className="w-7 h-7" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-center sm:justify-start gap-2.5 flex-wrap">
-                        <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#FF7A00] to-[#FF9433] text-[#0A1628] text-[10px] font-extrabold font-mono tracking-wider shadow-sm">
-                          VERIFIKOVANI E-COMMERCE PARTNER 📱
-                        </span>
-                        <span className="inline-flex items-center gap-1 text-xs font-mono text-[#00C9A7]">
-                          <ShieldCheck className="w-3.5 h-3.5" /> Verifikovano
-                        </span>
-                        <span className="text-[11px] font-mono text-[#C9A84C]">
-                          Direktan Pristup
-                        </span>
-                      </div>
-
-                      <h3 className="text-lg sm:text-xl font-syne font-bold text-[#F5F0E8] group-hover:text-[#FF9433] transition-colors">
-                        TOUCH E-Commerce (touch.com.ua)
-                      </h3>
-
-                      <p className="text-xs sm:text-sm text-[#F5F0E8]/75 max-w-2xl leading-relaxed font-sans">
-                        Smartfoni (Apple iPhone, Xiaomi, Samsung), EcoFlow &amp; Bluetti prijenosno napajanje i originalna audio-tehnika.
-                      </p>
-
-                      {/* Bullet highlights */}
-                      <div className="flex items-center justify-center sm:justify-start gap-3 pt-1 flex-wrap text-xs text-[#F5F0E8]/80 font-mono">
-                        {['Apple & Android uređaji', 'EcoFlow generatori', 'Provjerena outlet ponuda'].map((hl, i) => (
-                          <span key={i} className="inline-flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3 text-[#00C9A7]" />
-                            {hl}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* High-Converting CTA Button */}
-                  <div className="w-full lg:w-auto shrink-0 flex flex-col items-center sm:items-end gap-2">
-                    <a
-                      href={trackingUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={handleTouchPartnerClick}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FF7A00] to-[#FFA14A] text-[#0A1628] font-syne font-extrabold text-xs tracking-wide shadow-xl shadow-[#FF7A00]/20 hover:shadow-[#FF7A00]/40 hover:scale-[1.02] transition-all min-h-[46px]"
-                    >
-                      <Zap className="w-4 h-4 fill-current" />
-                      <span>Istraži Ponudu i Pogodnosti</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                    <span className="text-[10px] font-mono text-[#F5F0E8]/40">
-                      Službena partnerska kampanja B&H Assistant
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {/* ========================================================= */}
-            {/* SLIDE 1: Novi Promo Banner – Čestitka Reprezentaciji BiH */}
-            {/* ========================================================= */}
-            {currentSlide === 1 && (
               <motion.div
                 key="slide-bih-pobjeda"
                 custom={direction}
@@ -380,7 +275,7 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/80 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end justify-center p-1.5">
                         <span className="text-[10px] font-mono text-[#C9A84C] font-semibold flex items-center gap-1">
-                          <ExternalLink className="w-3 h-3" /> Povećaj (Archive.org)
+                          <ArrowUpRight className="w-3 h-3" /> Povećaj (Archive.org)
                         </span>
                       </div>
                     </a>
@@ -418,6 +313,84 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
               </motion.div>
             )}
 
+            {/* ========================================================= */}
+            {/* SLIDE 1: Autorski Softverski Ekosistem (BH Konver & Alati) */}
+            {/* ========================================================= */}
+            {currentSlide === 1 && (
+              <motion.div
+                key="slide-bh-digitalni-alati"
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className="w-full relative overflow-hidden bg-gradient-to-r from-[#0F2038] via-[#132A4A] to-[#0A1628] border-y border-[#00C9A7]/40 p-5 sm:p-7 group"
+              >
+                {/* Subtle Ambient Teal Accent Glows */}
+                <div className="absolute top-0 right-0 w-80 h-full bg-gradient-to-l from-[#00C9A7]/10 via-[#00C9A7]/5 to-transparent pointer-events-none rounded-r-3xl" />
+                <div className="absolute -left-12 -bottom-12 w-48 h-48 bg-[#C9A84C]/10 rounded-full blur-2xl pointer-events-none" />
+
+                {/* Shimmer Ambient Border Line */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00C9A7] via-[#C9A84C] to-transparent opacity-70 group-hover:opacity-100 transition-opacity" />
+
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10 px-6 sm:px-10 lg:px-12">
+                  {/* Presentation Info */}
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5 w-full lg:w-auto">
+                    <div className="w-14 h-14 rounded-2xl bg-[#00C9A7]/15 border border-[#00C9A7]/40 flex items-center justify-center shrink-0 text-[#00C9A7] shadow-lg shadow-[#00C9A7]/10 group-hover:scale-105 transition-transform">
+                      <Compass className="w-7 h-7" />
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-center sm:justify-start gap-2.5 flex-wrap">
+                        <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#00C9A7] to-[#00A88B] text-[#0A1628] text-[10px] font-extrabold font-mono tracking-wider shadow-sm">
+                          AUTORSKI SOFTVER • B&amp;H ASSISTANT
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-xs font-mono text-[#00C9A7]">
+                          <Sparkles className="w-3.5 h-3.5" /> Lovable Pobjednik
+                        </span>
+                        <span className="text-[11px] font-mono text-[#C9A84C]">
+                          100% Besplatno za Građane
+                        </span>
+                      </div>
+
+                      <h3 className="text-lg sm:text-xl font-syne font-bold text-[#F5F0E8] group-hover:text-[#00C9A7] transition-colors">
+                        BH Digitalni Alati – BH Konver &amp; BH PapirFinder
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-[#F5F0E8]/75 max-w-2xl leading-relaxed font-sans">
+                        Pobjednički bh. kalkulator i automatizovani sistem za pravne izjave pod materijalnom odgovornošću, uz pametni registar obrazaca i taksi lokalne samouprave u BiH.
+                      </p>
+
+                      {/* Bullet highlights */}
+                      <div className="flex items-center justify-center sm:justify-start gap-3 pt-1 flex-wrap text-xs text-[#F5F0E8]/80 font-mono">
+                        {['Pravne izjave i konverzije', 'Centralni registar obrazaca', 'Ornamenti Bosne na USB sticku'].map((hl, i) => (
+                          <span key={i} className="inline-flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3 text-[#00C9A7]" />
+                            {hl}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA Actions */}
+                  <div className="w-full lg:w-auto shrink-0 flex flex-col items-center sm:items-end gap-2">
+                    <Link
+                      to="/alati"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00C9A7] to-[#00A88B] text-[#0A1628] font-syne font-extrabold text-xs tracking-wide shadow-xl shadow-[#00C9A7]/20 hover:shadow-[#00C9A7]/40 hover:scale-[1.02] transition-all min-h-[46px]"
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      <span>Istraži Sve Naše Alate</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <span className="text-[10px] font-mono text-[#F5F0E8]/40">
+                      Zvanični proizvodi B&amp;H Assistant d.o.o. Zenica
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
           </AnimatePresence>
         </div>
 
@@ -430,30 +403,30 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
             <button
               type="button"
               onClick={() => goToSlide(0)}
-              aria-label="Prikaži TOUCH E-Commerce baner"
+              aria-label="Prikaži Čestitku Zmajevima baner"
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono transition-all duration-200 ${
                 currentSlide === 0
-                  ? 'bg-[#FF7A00]/20 text-[#FF9433] border border-[#FF7A00]/50 font-bold'
+                  ? 'bg-[#0088FF]/20 text-[#00C9A7] border border-[#0088FF]/50 font-bold'
                   : 'bg-[#0A1628] text-[#F5F0E8]/60 hover:text-[#F5F0E8] border border-[#1A3152]'
               }`}
             >
               <span
                 className={`w-2 h-2 rounded-full ${
-                  currentSlide === 0 ? 'bg-[#FF7A00] animate-pulse' : 'bg-[#1A3152]'
+                  currentSlide === 0 ? 'bg-[#00C9A7] animate-pulse' : 'bg-[#1A3152]'
                 }`}
               />
-              <span className="hidden sm:inline">1. TOUCH E-Commerce</span>
-              <span className="sm:hidden">1. TOUCH</span>
+              <span className="hidden sm:inline">1. Čestitka Zmajevima (BiH)</span>
+              <span className="sm:hidden">1. BiH Čestitka</span>
             </button>
 
             {/* Slide 1 Pill */}
             <button
               type="button"
               onClick={() => goToSlide(1)}
-              aria-label="Prikaži Čestitku Zmajevima baner"
+              aria-label="Prikaži BH Digitalne Alate"
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono transition-all duration-200 ${
                 currentSlide === 1
-                  ? 'bg-[#0088FF]/20 text-[#00C9A7] border border-[#0088FF]/50 font-bold'
+                  ? 'bg-[#00C9A7]/20 text-[#00C9A7] border border-[#00C9A7]/50 font-bold'
                   : 'bg-[#0A1628] text-[#F5F0E8]/60 hover:text-[#F5F0E8] border border-[#1A3152]'
               }`}
             >
@@ -462,8 +435,8 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
                   currentSlide === 1 ? 'bg-[#00C9A7] animate-pulse' : 'bg-[#1A3152]'
                 }`}
               />
-              <span className="hidden sm:inline">2. Čestitka Zmajevima (BiH)</span>
-              <span className="sm:hidden">2. BiH Čestitka</span>
+              <span className="hidden sm:inline">2. BH Digitalni Alati</span>
+              <span className="sm:hidden">2. BH Alati</span>
             </button>
           </div>
 

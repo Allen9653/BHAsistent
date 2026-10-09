@@ -75,55 +75,10 @@ export const AboutSection: React.FC = () => {
         {/* Info Grid: Company Wall Official Card + Story */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
           
-          {/* Left Column: Affiliated Top Banner + Official Company Registry Card + Affiliated Ads Bottom */}
+          {/* Left Column: Official Company Registry Card + In-House Tools */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* 1. TOP AFFILIATED AD SPOT (Above the Cube) */}
-            <div className="rounded-2xl bg-gradient-to-r from-[#0B1E2E] via-[#0F2937] to-[#0A1628] border border-[#00A88E]/50 p-4 shadow-xl relative overflow-hidden group hover:border-[#00E5BE] transition-all">
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-[#00A88E]/20 border border-[#00A88E]/40 text-[#00E5BE] font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-[#00A88E]" />
-                  SPONZORISANI AFFILIATE PARTNER
-                </span>
-                <span className="text-[10px] font-mono text-[#C9A84C]">Kaspersky Popust 🛡️</span>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-xl bg-[#04131A] border border-[#00A88E]/40 p-1 shrink-0 overflow-hidden hover:scale-105 transition-transform"
-                  title="Otvori Kaspersky uz poseban popust"
-                >
-                  <SafeImage
-                    src={IMAGES.kasperskyBanner}
-                    alt="Kaspersky Logo"
-                    fallbackTitle="Kaspersky"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </a>
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-syne font-bold text-sm text-[#F5F0E8] truncate group-hover:text-[#00E5BE] transition-colors">
-                    Kaspersky Lab – Digitalna Sigurnost
-                  </h4>
-                  <p className="text-[11px] text-[#F5F0E8]/70 line-clamp-1 font-sans">
-                    Vrhunska zaštita od virusa, ransomwarea, phishinga i krađe lozinki.
-                  </p>
-                </div>
-                <a
-                  href="https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-2 rounded-xl bg-[#00A88E] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-extrabold text-xs shrink-0 transition-transform hover:scale-105 flex items-center gap-1 shadow-md shadow-[#00A88E]/20"
-                >
-                  <span>Popust</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </div>
-
-            {/* 2. MAIN OFFICIAL COMPANY REGISTRY CARD (B&H ASSISTANT D.O.O. ZENICA CUBE) */}
+            {/* 1. MAIN OFFICIAL COMPANY REGISTRY CARD (B&H ASSISTANT D.O.O. ZENICA CUBE) */}
             <div className="rounded-3xl bg-[#0F2038] border-2 border-[#00C9A7]/40 p-8 shadow-2xl space-y-6 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10">
                 <Building2 className="w-32 h-32 text-[#00C9A7]" />
@@ -180,112 +135,108 @@ export const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            {/* 3. BOTTOM AFFILIATED ADS & PROMO SPOTS (Below the Cube) */}
+            {/* 2. IN-HOUSE SOLUTIONS & PROJECTS (Below the Cube) */}
             <div className="space-y-4">
               
-              {/* Ad Card 1: Atoms AI & Tech Cloud */}
+              {/* Card 1: BH Konver */}
               <div className="rounded-2xl bg-[#0F2038] border border-[#1A3152] p-4 shadow-xl hover:border-[#00C9A7]/50 transition-all flex items-center justify-between gap-3 group">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-[#0A1628] border border-[#1A3152] p-1.5 shrink-0">
                     <SafeImage
-                      src={IMAGES.atomsDev}
-                      alt="Atoms Dev AI Platform"
-                      fallbackTitle="Atoms"
+                      src={IMAGES.bhKonverMockup}
+                      alt="BH Konver Softver"
+                      fallbackTitle="Konver"
                       className="w-full h-full object-contain"
                     />
                   </div>
                   <div>
                     <span className="text-[9px] font-mono text-[#00C9A7] uppercase font-bold tracking-wider block">
-                      AFFILIATE PARTNER • AI AGENTI
+                      AUTORSKI SOFTVER • B&amp;H ASSISTANT
                     </span>
                     <h4 className="font-syne font-bold text-xs sm:text-sm text-[#F5F0E8] group-hover:text-[#00C9A7] transition-colors">
-                      Atoms - Pretvori Ideju u Realnost
+                      BH KONVER – Pravne Izjave &amp; Finansije
                     </h4>
                     <p className="text-[11px] text-[#F5F0E8]/70 font-sans line-clamp-1">
-                      Izgradi pametne AI web aplikacije i agente odmah.
+                      Kalkulator valuta i automatsko generisanje pravnih izjava.
                     </p>
                   </div>
                 </div>
                 <a
-                  href="https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost"
+                  href="https://bh-konver.lovable.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-2 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] text-[#00C9A7] hover:text-[#0A1628] border border-[#00C9A7]/30 font-syne font-bold text-xs shrink-0 transition-colors flex items-center gap-1"
                 >
-                  <span>Atoms</span>
+                  <span>Konver</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
 
-              {/* Ad Card 2: CloudTalk AI Telephony & Alison Certifications */}
+              {/* Card 2: SCENA+ Magazin & BH PapirFinder */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <a
-                  href="https://cloudtalk.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3.5 rounded-2xl bg-[#0F2038] border border-[#1A3152] hover:border-[#C9A84C]/60 transition-all flex flex-col justify-between group shadow-md"
-                >
-                  <div className="space-y-1">
-                    <span className="text-[9px] font-mono text-[#C9A84C] font-bold uppercase block">
-                      AI CALL CENTAR
-                    </span>
-                    <h5 className="font-syne font-bold text-xs text-[#F5F0E8] group-hover:text-[#C9A84C] transition-colors">
-                      CloudTalk Telephony
-                    </h5>
-                    <p className="text-[10px] text-[#F5F0E8]/70 line-clamp-2">
-                      Automatizujte korisničku podršku i prodaju uz pametne pozive.
-                    </p>
-                  </div>
-                  <div className="mt-2.5 pt-2 border-t border-[#1A3152] flex items-center justify-between text-[10px] font-mono text-[#C9A84C]">
-                    <span>Isprobaj Free</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </div>
-                </a>
-
-                <a
-                  href="https://alison.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/alati"
                   className="p-3.5 rounded-2xl bg-[#0F2038] border border-[#1A3152] hover:border-[#00C9A7]/60 transition-all flex flex-col justify-between group shadow-md"
                 >
                   <div className="space-y-1">
                     <span className="text-[9px] font-mono text-[#00C9A7] font-bold uppercase block">
-                      BESPLATNI KURSEVI
+                      E-UPRAVA VODIČ
                     </span>
                     <h5 className="font-syne font-bold text-xs text-[#F5F0E8] group-hover:text-[#00C9A7] transition-colors">
-                      Alison Certifikati
+                      BH PapirFinder
                     </h5>
                     <p className="text-[10px] text-[#F5F0E8]/70 line-clamp-2">
-                      Besplatno upišite svjetske certificirane online tečajeve.
+                      Centralni registar obrazaca i taksi lokalne samouprave u BiH.
                     </p>
                   </div>
                   <div className="mt-2.5 pt-2 border-t border-[#1A3152] flex items-center justify-between text-[10px] font-mono text-[#00C9A7]">
-                    <span>Upiši Kurs</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <span>Pregled Alata</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </div>
+                </a>
+
+                <a
+                  href="/scena-magazin"
+                  className="p-3.5 rounded-2xl bg-[#0F2038] border border-[#1A3152] hover:border-[#C9A84C]/60 transition-all flex flex-col justify-between group shadow-md"
+                >
+                  <div className="space-y-1">
+                    <span className="text-[9px] font-mono text-[#C9A84C] font-bold uppercase block">
+                      KULTURA &amp; ZDK
+                    </span>
+                    <h5 className="font-syne font-bold text-xs text-[#F5F0E8] group-hover:text-[#C9A84C] transition-colors">
+                      SCENA+ Magazin
+                    </h5>
+                    <p className="text-[10px] text-[#F5F0E8]/70 line-clamp-2">
+                      Prvo urbano print i e-izdanje za kulturu, privredu i umjetnost.
+                    </p>
+                  </div>
+                  <div className="mt-2.5 pt-2 border-t border-[#1A3152] flex items-center justify-between text-[10px] font-mono text-[#C9A84C]">
+                    <span>Čitaj Magazin</span>
+                    <ArrowRight className="w-3 h-3" />
                   </div>
                 </a>
               </div>
 
-              {/* Ad Card 3: Interactive Partner/Affiliate Banner Placement Trigger */}
+              {/* Card 3: In-House Corporate Marketing Inquiry */}
               <div className="p-4 rounded-2xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#14263F] border border-dashed border-[#00C9A7]/40 text-left space-y-2">
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5 text-[#00C9A7] text-xs font-syne font-bold">
                     <MessageSquarePlus className="w-4 h-4" />
-                    <span>Mjesto Za Vašu Affiliated Reklamu</span>
+                    <span>Oglašavanje i Sponzorstva</span>
                   </div>
                   <span className="px-2 py-0.5 rounded bg-[#00C9A7]/10 text-[#00C9A7] text-[10px] font-mono">
-                    DOSTUPNO
+                    B&amp;H ASSISTANT
                   </span>
                 </div>
                 <p className="text-[11px] text-[#F5F0E8]/75 font-sans leading-relaxed">
-                  Želite plasirati svoj brend, remote ponudu ili edukaciju na B&H Assistant mreži? Kontaktirajte naš tim za partnersko oglašavanje.
+                  Želite plasirati svoj brend ili poslovnu ponudu na web platformi i u magazinu SCENA+? Javite se našem marketinškom timu.
                 </p>
                 <a
-                  href="#kontakt"
+                  href="/kontakt"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] text-[#00C9A7] hover:text-[#0A1628] border border-[#00C9A7]/30 text-xs font-mono font-bold transition-all"
                 >
                   <Send className="w-3 h-3" />
-                  <span>Pošaljite Upit za Reklamni Prostor →</span>
+                  <span>Kontaktirajte Nas za Oglašavanje →</span>
                 </a>
               </div>
 

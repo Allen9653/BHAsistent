@@ -252,7 +252,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (article.videoUrl || article.id === 'news-monday-com') {
+                        if (article.videoUrl) {
                           setActiveArticle(article);
                         } else {
                           setIsVideoModalOpen(true);
@@ -310,9 +310,9 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-[#C9A84C]/10 border border-[#C9A84C]/40 text-[#C9A84C] hover:bg-[#C9A84C]/20 flex items-center gap-1 transition-colors"
-                        title="Zvanični partnerski / eksterni link"
+                        title="Zvanični vanjski link"
                       >
-                        <span>{article.externalUrl.includes('monday') ? 'monday.com ↗' : 'Vanjski Link ↗'}</span>
+                        <span>Vanjski Link ↗</span>
                       </a>
                     )}
 
@@ -399,26 +399,20 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                   {activeArticle.content}
                 </div>
 
-                {/* External / Affiliate Link CTA Box */}
+                {/* External Link CTA Box */}
                 {activeArticle.externalUrl && (
-                  <div className={`p-5 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl my-4 ${
-                    activeArticle.externalUrl.includes('monday')
-                      ? 'bg-gradient-to-r from-[#0F2038] via-[#162C4E] to-[#0F2038] border-[#00C9A7]/60'
-                      : 'bg-gradient-to-r from-[#0A1628] via-[#0F2038] to-[#0A1628] border-[#00C9A7]/40'
-                  }`}>
+                  <div className="p-5 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl my-4 bg-gradient-to-r from-[#0A1628] via-[#0F2038] to-[#0A1628] border-[#00C9A7]/40">
                     <div className="space-y-1 text-center sm:text-left">
                       <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
                         <span className="text-xs font-syne font-bold text-[#F5F0E8]">
-                          {activeArticle.externalUrl.includes('monday') ? 'Zvanični Partnerski Link:' : 'Zvanični Link Članka:'}
+                          Zvanični Link Članka:
                         </span>
                         <span className="px-2.5 py-0.5 rounded-full bg-[#00C9A7]/20 border border-[#00C9A7]/40 text-[#00C9A7] font-mono text-[11px] font-bold">
-                          {activeArticle.externalUrl.includes('monday') ? 'monday.com Free Trial' : 'Vanjski Izvor'}
+                          Vanjski Izvor
                         </span>
                       </div>
                       <p className="text-xs text-[#F5F0E8]/80 font-sans">
-                        {activeArticle.externalUrl.includes('monday')
-                          ? 'Isprobajte Monday.com besplatno, kreirajte svoje prilagođene radne tokove i ubrzajte poslovanje.'
-                          : 'Pristupite kompletnom vizuelnom članku i originalnom izdanju na partnerskoj platformi.'}
+                        Pristupite kompletnom vizuelnom članku i originalnom izdanju na povezanoj platformi.
                       </p>
                     </div>
 
@@ -428,7 +422,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-[#00C9A7]/30 transition-all hover:scale-105 shrink-0"
                     >
-                      <span>{activeArticle.externalUrl.includes('monday') ? 'Isprobaj Monday.com Besplatno' : 'Otvori Vanjski Link'}</span>
+                      <span>Otvori Vanjski Link</span>
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
@@ -634,14 +628,14 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="article-external-url-input" className="block text-[11px] font-mono text-[#C9A84C] uppercase mb-1">Affiliate / Vanjski URL (Opcionalno)</label>
+                  <label htmlFor="article-external-url-input" className="block text-[11px] font-mono text-[#C9A84C] uppercase mb-1">Vanjski URL Članka (Opcionalno)</label>
                   <input
                     id="article-external-url-input"
                     name="articleExternalUrl"
                     type="text"
                     value={editingArticle.externalUrl || ''}
                     onChange={(e) => setEditingArticle({ ...editingArticle, externalUrl: e.target.value })}
-                    placeholder="https://try.monday.com/..."
+                    placeholder="https://..."
                     className="w-full px-4 py-2.5 rounded-xl bg-[#0A1628] border border-[#1A3152] focus:border-[#00C9A7] outline-none text-[#F5F0E8]"
                   />
                 </div>

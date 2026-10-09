@@ -3,7 +3,25 @@ import { motion } from 'motion/react';
 import { AFFILIATE_COURSES } from '../data/companyData';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
-import { ExternalLink, Sparkles, GraduationCap, Award, BookOpen, CheckCircle, Search, Zap, ShieldAlert, ShieldCheck, ShoppingBag, ChevronLeft, ChevronRight, Briefcase, Cpu, PhoneCall, Globe, Terminal, Database, Radio, Layers, Camera, Smartphone, Image as ImageIcon } from 'lucide-react';
+import {
+  ExternalLink,
+  Sparkles,
+  GraduationCap,
+  Award,
+  BookOpen,
+  CheckCircle,
+  Search,
+  Zap,
+  ShoppingBag,
+  ChevronLeft,
+  ChevronRight,
+  Briefcase,
+  Layers,
+  Terminal,
+  Database,
+  Camera,
+  Image as ImageIcon
+} from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const ShopAffiliateSection: React.FC = () => {
@@ -23,244 +41,122 @@ export const ShopAffiliateSection: React.FC = () => {
     }, 200);
   };
 
-  const categories = ['Sve', 'Digitalna Sigurnost', 'Elektronika & Tehnika', 'Online Edukacija', 'IT & Veb Dizajn', 'Jezici & Poslovanje', 'Fotografija & Umjetnost'];
+  const categories = [
+    'Sve',
+    'IT & Veb Dizajn',
+    'Fotografija & Umjetnost',
+    'Digitalna Sigurnost'
+  ];
 
-  const affiliateSlides = [
+  // In-house and verified official digital products (100% free of affiliate links)
+  const productSlides = [
     {
       id: 'bh-konver-lovable',
-      badge: 'LOVABLE & BH KONVER',
+      badge: 'AUTORSKI SOFTVER • POBJEDNIK 🏆',
       shortName: '01. BH KONVER',
       tagColor: 'bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] text-[#0A1628] font-extrabold',
       title: 'BH KONVER – Kreira Pravne Dokumente, Prevodi i Konvertuje!',
-      subtitle: 'Autorska web aplikacija B&H Assistant d.o.o. na domenu https://bh-konver.lovable.app',
+      subtitle: 'Autorska web aplikacija B&H Assistant d.o.o. na domeni bh-konver.lovable.app',
       description: 'Automatizovana izrada ugovora, punomoći, izjava i prevoda u sekundi. Pobjednik natjecanja i izglasana Aplikacija Sedmice sa osiguranim razvojem iOS i Android nativnih aplikacija od tima Lovable.',
       url: 'https://bh-konver.lovable.app/',
       buttonText: 'Pokreni BH KONVER App',
       bannerImg: IMAGES.bhKonverBanner,
       icon: Sparkles,
       bullets: [
-        'Kreira pravne dokumente, prevodi i konvertuje za Vas',
-        'Zvanični pobjednik i izglasana Aplikacija Sedmice',
-        'Finansiran i u izradi zvanični iOS & Android app od tima Lovable',
+        'Kreira standardizovane pravne izjave i konvertuje valute',
+        'Zvanični pobjednik natjecanja i izglasana Aplikacija Sedmice',
+        'U izradi zvanični iOS & Android app uz podršku platforme Lovable',
         'Brzo, sigurno i 100% besplatno za građane i pravna lica'
       ]
     },
     {
-      id: 'touch-ecommerce',
-      badge: 'TOP E-COMMERCE TECH 📱',
-      shortName: '02. TOUCH Tech',
-      tagColor: 'bg-gradient-to-r from-[#FF7A00] via-[#FFA500] to-[#00C9A7] text-[#0A1628] font-extrabold',
-      title: 'TOUCH (touch.com.ua) – Pametni Telefoni, Računari i Elektronika',
-      subtitle: 'Popularna ukrajinska e-commerce platforma i novi partner B&H Assistant d.o.o.',
-      description: 'Veliki online retailer potrošačke elektronike specijaliziran za pametne telefone (Apple, Samsung, Xiaomi), laptope, Apple/Xiaomi ekosisteme, alternativno napajanje (EcoFlow, Bluetti generatori, Power Bank) i provjerenu outlet tehniku.',
-      url: 'https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/',
-      buttonText: 'Posjeti TOUCH Trgovinu',
-      bannerImg: IMAGES.touchBanner,
-      icon: Smartphone,
-      bullets: [
-        'Širok asortiman vodećih brendova: Apple iPhone, Samsung, Xiaomi, Pixel',
-        'Fokus na originalni Apple & Xiaomi ekosistem i pametne domove',
-        'Oprema za autonomiju i energiju: EcoFlow, Bluetti solarni/inverter generatori',
-        'Audio, gejming oprema i provjerena outlet/polovna tehnika'
-      ]
-    },
-    {
       id: 'bh-papirfinder-atoms',
-      badge: 'ATOMS & E-UPRAVA',
-      shortName: '03. PapirFinder',
+      badge: 'E-UPRAVA VODIČ • B&H ASSISTANT',
+      shortName: '02. PapirFinder',
       tagColor: 'bg-gradient-to-r from-[#C9A84C] via-[#FFD700] to-[#00C9A7] text-[#0A1628] font-extrabold',
       title: 'BH PapirFinder – Više Ne Ganjate Papire, Oni Dolaze Vama!',
-      subtitle: 'E-Uprava i administrativni asistent na domenu https://bhpapirfinder.atoms.world',
-      description: 'Zaboravite šaltere i čekanja u redovima! BH PapirFinder automatski pronalazi i priprema sve potrebne općinske, kantonalne i državne papire, takse i obrasce direktno za Vas.',
+      subtitle: 'E-Uprava i pametni administrativni vodič na domeni bhpapirfinder.atoms.world',
+      description: 'Zaboravite šaltere i čekanja u redovima! BH PapirFinder automatski pronalazi i priprema sve potrebne općinske, kantonalne i državne obrasce, takse i procedure direktno za građane i privredu.',
       url: 'https://bhpapirfinder.atoms.world',
       buttonText: 'Otvori BH PapirFinder',
       bannerImg: IMAGES.bhPapirfinderBanner,
       icon: Layers,
       bullets: [
         'Slogan: VIŠE NE GANJATE PAPIRE - ONI DOLAZE VAMA!',
-        'Automatska baza obrazaca, taksi i općinskih zahtjeva',
-        'Smanjuje birokratiju i štedi Vaše vrijeme i novac',
-        'Povezano na Atoms platformi B&H Assistant ekosistema'
+        'Centralni registar obrazaca, taksi i općinskih zahtjeva',
+        'Smanjuje birokratiju i štedi vrijeme građanima i privredi',
+        'Zvanični softverski proizvod razvijen u Zenici'
       ]
     },
     {
-      id: 'aliexpress-admitad',
-      badge: 'ADMITAD • ALIEXPRESS WW',
-      shortName: '03. AliExpress WW',
-      tagColor: 'bg-gradient-to-r from-[#FF4747] via-[#FF6A00] to-[#FFD700] text-white font-extrabold',
-      title: 'AliExpress Worldwide – Ekskluzivne Ponude & Popusti',
-      subtitle: 'Službena Admitad partnerska ponuda na domenu https://bh-assistant.ba',
-      description: 'Kupujte milione artikala iz tehnologije, mode, doma i elektronike uz ekskluzivne kupone i besplatnu dostavu za Bosnu i Hercegovinu i regiju preko zvaničnog Admitad partnerstva B&H Assistant d.o.o.',
-      url: 'https://rzekl.com/g/giqeddbbgxfe02eff23116525dc3e8/?i=4',
-      buttonText: 'Otvori AliExpress Ponude',
-      bannerImg: 'https://ad.admitad.com/b/giqeddbbgxfe02eff23116525dc3e8/',
-      icon: ShoppingBag,
+      id: 'stecak-ornamenti-usb',
+      badge: 'KULTURNA BAŠTINA • USB DOSTAVA 📦',
+      shortName: '03. Ornamenti Bosne',
+      tagColor: 'bg-gradient-to-r from-[#C9A84C] to-[#00C9A7] text-[#0A1628] font-extrabold',
+      title: 'Ornamenti Bosne – Kodirani Motivi sa Stećaka na USB Sticku',
+      subtitle: 'Digitalna kolekcija baštine u SVG, PNG, HTML i CSS formatima',
+      description: 'Autentični vektorski motivi i stilizovani kodovi sa srednjovjekovnih bosanskih stećaka. Jedini digitalni proizvod koji se dostavlja direktno na Vašu adresu na USB memorijskom sticku uz plaćanje po preuzimanju (pouzećem).',
+      url: 'https://canva.link/8dwxeack5cwn18l',
+      buttonText: 'Istraži Kolekciju Motiva',
+      bannerImg: IMAGES.ornamentiBosne,
+      icon: ImageIcon,
       bullets: [
-        'Zvanični Admitad partnerski link za AliExpress Worldwide',
-        'Globalni popusti, promo kodovi i posebne akcije za BiH',
-        'Verifikovan preko Mitgo/Admitad mreže (ID: fe02eff231)',
-        'Ekskluzivni povrat i sigurna kupovina preko zvaničnog kanala'
-      ]
-    },
-    {
-      id: 'mitgo-xpuvo',
-      badge: 'MITGO GLOBAL DEALS & PARTNER 🌟',
-      shortName: '03. Global Deals',
-      tagColor: 'bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] text-[#0A1628] font-extrabold',
-      title: 'Mitgo Global Deals – Ekskluzivni Popusti & Partnerski Program',
-      subtitle: 'Ovlašteni partnerski kanal B&H Assistant d.o.o. na domeni https://bh-assistant.ba',
-      description: 'Iskoristite provjerene pogodnosti, digitalne alate i globalne popuste vodećih svjetskih brendova kroz ovlaštenu partnersku mrežu B&H Assistant d.o.o. Zenica. Kupujte i koristite vodeće servise uz ekskluzivne pogodnosti.',
-      url: 'https://xpuvo.com/g/ofc53p8nisfe02eff231e94db72a90/',
-      buttonText: 'Otvori Partnerske Ponude',
-      bannerImg: IMAGES.xpuvoLogo,
-      icon: Globe,
-      bullets: [
-        'Zvanični B&H Assistant autorizovani partnerski kanal',
-        'Ekskluzivni promo kodovi i globalni popusti',
-        'Sigurna kupovina i provjereni brendovi širom svijeta',
-        'Povezano sa B&H Assistant d.o.o. digitalnim ekosistemom'
-      ]
-    },
-    {
-      id: 'mitgo-admitad',
-      badge: 'MITGO / ADMITAD OBNOVLJENI GATEWAY 🌐',
-      shortName: '04. Mitgo Gateway',
-      tagColor: 'bg-gradient-to-r from-[#C9A84C] via-[#FFD700] to-[#00C9A7] text-[#0A1628] font-extrabold',
-      title: 'Mitgo & Admitad – Obnovljeni Partnerski Gateway',
-      subtitle: 'Zvanično verifikovani izdavač i partner na domenu https://bh-assistant.ba',
-      description: 'Pristupite stotinama vodećih svetskih e-commerce brendova, digitalnih servisa i CPA programa. Naš sajt bh-assistant.ba je zvanično verifikovan u Mitgo/Admitad mreži za monetizaciju i ekskluzivne partnerske popuste.',
-      url: 'https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/',
-      buttonText: 'Otvori Mitgo Partner Portal',
-      bannerImg: IMAGES.rzeklLogo,
-      icon: Globe,
-      bullets: [
-        'Zvanično obnovljen i verifikovan gateway (Mitgo ID: fe02eff231)',
-        'Ekskluzivni popusti i promotivni kodovi globalnih brendova',
-        'Transparentan obračun i direktne provizije za partnere',
-        'Povezano sa B&H Assistant d.o.o. digitalnim ekosistemom'
-      ]
-    },
-    {
-      id: 'kaspersky-security',
-      badge: 'KIBERNETIČKA SIGURNOST',
-      shortName: '05. Kaspersky Antivirus',
-      tagColor: 'bg-[#00A88E] text-[#0A1628] font-extrabold',
-      title: 'Kaspersky – Vrhunska Kibernetička Sigurnost',
-      subtitle: 'Sveobuhvatna zaštita uređaja, lozinki i online plaćanja uz ekskluzivni popust',
-      description: 'Kaspersky pruža globalno priznatu zaštitu od virusa, ransomwarea, phishing prevara i krađe identiteta u stvarnom vremenu. Iskoristite poseban partnerski popust prilikom kupovine i instalacije na vaše računare i pametne uređaje.',
-      url: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84',
-      buttonText: 'Aktiviraj Kaspersky Popust',
-      bannerImg: IMAGES.kasperskyBanner,
-      icon: ShieldCheck,
-      bullets: [
-        'Heuristička i antivirusna zaštita u stvarnom vremenu za PC, Mac i mobitele',
-        'Zaštita internet bankarstva, lozinki i prevencija sofisticiranih phishing napada',
-        'Globalni tehnološki lider sa preko 400 miliona zadovoljnih korisnika',
-        'Ekskluzivni popust za posjetioce B&H Assistant platforme uz garanciju'
-      ]
-    },
-    {
-      id: 'atoms-dev',
-      badge: 'AI AGENT MATRIX',
-      shortName: '06. Atoms Dev AI',
-      tagColor: 'bg-[#00C9A7] text-[#0A1628] font-extrabold',
-      title: 'Atoms.dev – Pretvori Ideju u AI Proizvod',
-      subtitle: 'Inovativna AI i cloud platforma za izradu pametnih aplikacija',
-      description: 'Izgradite, testirajte i skalirajte napredne AI agente i moderne veb aplikacije u rekordnom roku. Prevorite svaku ideju u stvarni, operativni softverski proizvod uz podršku B&H Assistant partnerstva.',
-      url: 'https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost',
-      buttonText: 'Isprobaj Atoms Platformu',
-      bannerImg: IMAGES.atomsDev,
-      icon: Cpu,
-      bullets: [
-        'Brzo kreiranje i samostalno skaliranje AI agenata',
-        'Pristupačan interfejs bez komplicirane infrastrukture',
-        'Ekskluzivni partnerski pristup za bh. programe i projekte',
-        'Pretvori ideju u stvarni proizvod uz napredne alate'
-      ]
-    },
-    {
-      id: 'alison-global',
-      badge: 'FREE GLOBAL DIPLOMA',
-      shortName: '07. Alison Edu',
-      tagColor: 'bg-gradient-to-r from-[#00C9A7] to-[#C9A84C] text-[#0A1628] font-extrabold',
-      title: 'Alison – Besplatni Certificirani Kursevi',
-      subtitle: '100% Online edukacija sa međunarodno priznatim diplomama',
-      description: 'Ukoliko tražite korisne, certificirane edukativne kurseve iz raznih svjetskih oblasti — imate priliku da besplatno upišete tečajeve u saradnji sa Alison platformom. Predavači su profesori sa priznatih svjetskih univerziteta.',
-      url: 'https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529',
-      buttonText: 'Upiši Besplatne Kurseve',
-      bannerImg: IMAGES.alisonLogo,
-      icon: GraduationCap,
-      bullets: [
-        'Predavanja i testiranje znanja su 100% online',
-        'Predavači su profesori sa priznatih svjetskih univerziteta',
-        'Certifikati i diplome priznate u EU, SAD i širom svijeta',
-        'Širok izbor: IT, Poslovanje, Jezici, Menadžment, Dizajn'
-      ]
-    },
-    {
-      id: 'bcx-crypto',
-      badge: 'BLOCKCHAIN BIH',
-      shortName: '06. BCX Krypto',
-      tagColor: 'bg-gradient-to-r from-[#9333EA] to-[#C084FC] text-white font-extrabold',
-      title: 'BCX.ba – Prva Domaća Kripto Platforma',
-      subtitle: 'Sigurna kupovina, prodaja i pohrana digitalne imovine u BiH',
-      description: 'Povežite se sa vodećom bh. kripto mrežom. Jednostavno kupujte i prodajte Bitcoin, Ethereum i druge digitalne valute sa podrškom za lokalne tekuće račune u BAM (konvertibilnim markama).',
-      url: 'https://bcx.ba',
-      buttonText: 'Pristupi BCX Mjenjačnici',
-      icon: Database,
-      bullets: [
-        'Prva i najveća licencirana kripto platforma u BiH',
-        'Brze uplate i isplate u konvertibilnim markama (BAM)',
-        'Ekskluzivna partnerska podrška za B&H Assistant zajednicu',
-        'Mogućnost plaćanja i trgovanja digitalnom imovinom'
+        'Vektorski formati spremni za grafički i web dizajn (SVG/PNG)',
+        'Dostava na USB Memory Sticku širom Bosne i Hercegovine',
+        'Sigurno i jednostavno plaćanje pouzećem po prijemu pošiljke',
+        'Kulturno naslijeđe preneseno u savremeni digitalni svijet'
       ]
     },
     {
       id: 'scena-magazin-promo',
-      badge: 'SCENA+ PRINT & E-IZDANJE',
-      shortName: '07. SCENA+ Magazin',
+      badge: 'SCENA+ PRINT & E-IZDANJE 📖',
+      shortName: '04. SCENA+ Magazin',
       tagColor: 'bg-gradient-to-r from-[#C9A84C] via-[#FFD700] to-[#00C9A7] text-[#0A1628] font-extrabold',
       title: 'SCENA+ Magazin – Spajamo Kulture, Stvaramo Šanse!',
-      subtitle: 'Prvi urbani magazin ZDK sa ekskluzivnim pričama i video prezentacijom',
-      description: 'Zavirite u prvo štampano i e-izdanje urbanog magazina SCENA+. Otkrijte autentične priče o umjetnosti Danila Kese, craft pivarama, esport gamingu, kripto revoluciji i privrednim sajmovima.',
+      subtitle: 'Prvi urbani magazin Zeničko-dobojskog kantona sa multimedijalnim izdanjem',
+      description: 'Zavirite u prvo štampano i e-izdanje urbanog magazina SCENA+. Otkrijte autentične priče o umjetnosti Danila Kese, craft pivarstvu, gejmingu, kripto revoluciji i privrednim prilikama.',
       url: 'https://canva.link/vxekpnx0ow1xvt9',
-      buttonText: 'Prelistaj Magazin na Canva',
+      buttonText: 'Prelistaj E-Izdanje Magazina',
       bannerImg: IMAGES.scenaCover,
       icon: BookOpen,
       bullets: [
         'Podijeljeno 300 besplatnih štampanih primjeraka u ZDK',
-        'Interaktivni Canva e-čitač i multimedijalna video prezentacija',
+        'Interaktivni Canva e-čitač i video prezentacija',
         'Kultura, umjetnost, domaći biznis i tehnologija na jednom mjestu',
         'Zvanično izdanje B&H Assistant d.o.o. Zenica'
       ]
     }
   ];
 
-  // Auto slide rotation every 5 seconds (5000ms)
+  // Auto slide rotation every 6 seconds
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % affiliateSlides.length);
-    }, 5000);
+      setCurrentSlide((prev) => (prev + 1) % productSlides.length);
+    }, 6000);
     return () => clearInterval(interval);
-  }, [isPaused, affiliateSlides.length]);
+  }, [isPaused, productSlides.length]);
 
   const filteredCourses = AFFILIATE_COURSES.filter((course) => {
     const matchesCat = selectedCategory === 'Sve' || course.category === selectedCategory;
-    const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          course.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch =
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesSearch;
   });
 
-  const activeSlide = affiliateSlides[currentSlide];
+  const activeSlide = productSlides[currentSlide];
   const IconComponent = activeSlide.icon;
 
   return (
     <section id="shop" className="py-24 bg-[#0A1628] relative overflow-hidden border-t border-[#1A3152]">
-      {/* Energetic Fluid Neon Animated Glowing Mesh Backdrop */}
+      {/* Energetic Fluid Glowing Mesh Backdrop */}
       <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
         <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#00C9A7] rounded-full blur-[150px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#C9A84C] rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#C9A84C] rounded-full blur-[140px] animate-pulse"
+          style={{ animationDelay: '2s' }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -268,26 +164,29 @@ export const ShopAffiliateSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0F2038] border border-[#00C9A7]/50 text-[#00C9A7] text-xs font-mono tracking-wider uppercase shadow-lg shadow-[#00C9A7]/10">
-            <Radio className="w-3.5 h-3.5 text-[#00C9A7] animate-ping" />
-            <span>{t('shop.badge', 'SCI-FI AFFILIATE MATRIX • 6 PLATFORMI')}</span>
+            <ShoppingBag className="w-3.5 h-3.5 text-[#00C9A7]" />
+            <span>{t('shop.badge', 'DIGITALNI SHOP & EDUKACIJSKI CENTAR')}</span>
           </div>
 
           <h2 className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#F5F0E8] tracking-tight">
-            {t('shop.title', 'Affiliate Mreža & Preporučeni Kursevi')}
+            {t('shop.title', 'Edukativni Centar & Digitalni Proizvodi')}
           </h2>
 
           <p className="text-[#F5F0E8]/70 text-base font-sans leading-relaxed">
-            {t('shop.subtitle', 'Povezujemo vas sa provjerenim remote radnim mjestima, vodećim AI platformama, verifikovanim partnerima i globalnim online akademijama.')}
+            {t(
+              'shop.subtitle',
+              'Istražite zvanične digitalne alate, autorska izdanja kulturne baštine i edukativne platforme B&H Assistant d.o.o. Zenica.'
+            )}
           </p>
         </div>
 
-        {/* Dynamic High-Tech Sci-Fi Carousel for 6 Affiliated Links */}
+        {/* Dynamic High-Tech Carousel for Flagship In-House Digital Products */}
         <div
           className="mb-16 rounded-3xl bg-gradient-to-br from-[#0B1A2F] via-[#0F2038] to-[#06101E] border-2 border-[#00C9A7]/80 p-6 sm:p-10 shadow-[0_0_50px_rgba(0,201,167,0.2)] relative overflow-hidden group transition-all duration-500"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Futuristic Cyber Sci-Fi Frame Accents */}
+          {/* Cyber Frame Accents */}
           <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#00C9A7] z-20 pointer-events-none" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#00C9A7] z-20 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#00C9A7] z-20 pointer-events-none" />
@@ -298,20 +197,22 @@ export const ShopAffiliateSection: React.FC = () => {
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-[#0A1628] border border-[#00C9A7]/40 text-[#00C9A7] font-bold">
                 <Terminal className="w-3 h-3 text-[#C9A84C]" />
-                SYS.MATRIX: ACTIVE
+                SYS: DIGITALNI EKOSISTEM
               </span>
-              <span className="hidden sm:inline text-[#F5F0E8]/40">| VERIFIED AFFILIATE PIPELINE</span>
+              <span className="hidden sm:inline text-[#F5F0E8]/40">| ZVANIČNI RESURSI B&amp;H ASSISTANT</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[#C9A84C] font-extrabold tracking-widest">[ 0{currentSlide + 1} / 0{affiliateSlides.length} ]</span>
+              <span className="text-[#C9A84C] font-extrabold tracking-widest">
+                [ 0{currentSlide + 1} / 0{productSlides.length} ]
+              </span>
             </div>
           </div>
 
-          {/* Top Progress Bar for 5s Timer */}
+          {/* Top Progress Bar */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-[#1A3152] z-20">
             <div
               key={currentSlide}
-              className="h-full bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] animate-[progress_5s_linear]"
+              className="h-full bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] animate-[progress_6s_linear]"
               style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
             />
           </div>
@@ -322,14 +223,13 @@ export const ShopAffiliateSection: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            
             <div className="lg:col-span-8 space-y-5 text-left">
               <div className="flex flex-wrap items-center gap-2">
                 <span className={`px-3 py-1 rounded-full font-syne font-black text-xs uppercase tracking-wider ${activeSlide.tagColor}`}>
                   {activeSlide.badge}
                 </span>
                 <span className="px-3 py-1 rounded-full bg-[#C9A84C]/20 border border-[#C9A84C]/40 text-[#C9A84C] text-xs font-mono font-bold">
-                  AUTORIZOVANI LINK • PARTNER B&H ASSISTANT
+                  AUTORSKI PROIZVOD • B&amp;H ASSISTANT
                 </span>
               </div>
 
@@ -346,7 +246,7 @@ export const ShopAffiliateSection: React.FC = () => {
                 {activeSlide.description}
               </p>
 
-              {/* Verified Bullet Points */}
+              {/* Bullet Points */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-sans text-[#F5F0E8]">
                 {activeSlide.bullets.map((b, idx) => (
                   <div key={idx} className="flex items-center gap-2.5 p-3 rounded-xl bg-[#0A1628]/70 border border-[#1A3152]">
@@ -361,8 +261,8 @@ export const ShopAffiliateSection: React.FC = () => {
             <div className="lg:col-span-4 flex flex-col justify-center items-center text-center space-y-5 bg-[#0A1628]/90 p-6 rounded-2xl border-2 border-[#00C9A7]/50 shadow-[0_0_30px_rgba(0,201,167,0.15)] relative">
               {activeSlide.bannerImg ? (
                 <div className="w-full bg-[#0F2038] p-3 rounded-2xl border border-[#00C9A7]/60 flex flex-col items-center justify-center overflow-hidden shadow-lg">
-                  <span className="text-[10px] font-mono text-[#00C9A7] font-bold mb-2">OFFICIAL ADMITAD BANNER</span>
-                  <a href={activeSlide.url} target="_blank" rel="nofollow noreferrer" className="w-full hover:opacity-90 transition-opacity">
+                  <span className="text-[10px] font-mono text-[#00C9A7] font-bold mb-2">SLUŽBENI PROIZVOD</span>
+                  <a href={activeSlide.url} target="_blank" rel="noopener noreferrer" className="w-full hover:opacity-90 transition-opacity">
                     <SafeImage
                       src={activeSlide.bannerImg}
                       alt={activeSlide.title}
@@ -384,7 +284,7 @@ export const ShopAffiliateSection: React.FC = () => {
                   Direktan Pristup
                 </h4>
                 <p className="text-xs text-[#F5F0E8]/70 mt-1 font-sans">
-                  Klikom otvarate zvanični partnerski portal:
+                  Klikom otvarate zvanični resurs:
                 </p>
               </div>
 
@@ -401,33 +301,31 @@ export const ShopAffiliateSection: React.FC = () => {
               {/* Prev / Next Controls */}
               <div className="flex items-center justify-between w-full pt-3 border-t border-[#1A3152]">
                 <button
-                  onClick={() => setCurrentSlide((prev) => (prev - 1 + affiliateSlides.length) % affiliateSlides.length)}
+                  onClick={() => setCurrentSlide((prev) => (prev - 1 + productSlides.length) % productSlides.length)}
                   className="p-2 rounded-xl bg-[#0F2038] hover:bg-[#00C9A7]/20 border border-[#00C9A7]/40 text-[#F5F0E8] transition-colors"
-                  aria-label="Prethodni baner"
+                  aria-label="Prethodni proizvod"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
 
                 <span className="text-[10px] font-mono text-[#F5F0E8]/60">
-                  {currentSlide + 1} OD {affiliateSlides.length} BANERA
+                  {currentSlide + 1} OD {productSlides.length} PROIZVODA
                 </span>
 
                 <button
-                  onClick={() => setCurrentSlide((prev) => (prev + 1) % affiliateSlides.length)}
+                  onClick={() => setCurrentSlide((prev) => (prev + 1) % productSlides.length)}
                   className="p-2 rounded-xl bg-[#0F2038] hover:bg-[#00C9A7]/20 border border-[#00C9A7]/40 text-[#F5F0E8] transition-colors"
-                  aria-label="Sjedeći baner"
+                  aria-label="Sljedeći proizvod"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
-
             </div>
-
           </div>
 
-          {/* Sci-Fi Cyber Carousel Selector Buttons (8 Platforms) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 mt-8 pt-6 border-t border-[#1A3152] relative z-20">
-            {affiliateSlides.map((slide, idx) => (
+          {/* Selector Tabs */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-8 pt-6 border-t border-[#1A3152] relative z-20">
+            {productSlides.map((slide, idx) => (
               <button
                 key={slide.id}
                 onClick={() => setCurrentSlide(idx)}
@@ -441,12 +339,10 @@ export const ShopAffiliateSection: React.FC = () => {
               </button>
             ))}
           </div>
-
         </div>
 
         {/* Filter & Search Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 bg-[#0F2038] p-4 rounded-2xl border border-[#1A3152]">
-          
           {/* Categories */}
           <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             {categories.map((cat) => (
@@ -468,20 +364,19 @@ export const ShopAffiliateSection: React.FC = () => {
           <div className="relative w-full sm:w-64">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F5F0E8]/50" />
             <input
-              id="shop-course-search"
-              name="courseSearch"
-              aria-label="Pretraži kurseve"
+              id="shop-product-search"
+              name="productSearch"
+              aria-label="Pretraži digitalne resurse"
               type="text"
-              placeholder="Pretraži kurseve..."
+              placeholder="Pretraži resurse..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#0A1628] border border-[#1A3152] text-xs text-[#F5F0E8] focus:border-[#00C9A7] outline-none"
             />
           </div>
-
         </div>
 
-        {/* Courses Cards Grid with Shimmer */}
+        {/* Products & Resources Grid */}
         {isTransitioning ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((n) => (
@@ -524,105 +419,108 @@ export const ShopAffiliateSection: React.FC = () => {
                   }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   onClick={() => {
-                    if (course.affiliateUrl) {
-                      window.open(course.affiliateUrl, '_blank', 'noopener,noreferrer');
+                    const targetUrl = course.affiliateUrl || (course as any).url;
+                    if (targetUrl) {
+                      window.open(targetUrl, '_blank', 'noopener,noreferrer');
                     }
                   }}
                   className={`rounded-3xl bg-[#0F2038] border ${
                     isGuruShots ? 'border-[#C9A84C]/50' : 'border-[#1A3152]'
                   } p-6 flex flex-col justify-between shadow-xl transition-all group cursor-pointer relative overflow-hidden`}
                 >
-                  {/* Subtle Shimmer Loading Effect Layer */}
+                  {/* Shimmer Effect */}
                   <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-0">
                     <div className="w-full h-full bg-gradient-to-r from-transparent via-white/[0.035] to-transparent -translate-x-full animate-shimmer" />
                   </div>
 
-                  {/* Subtle Glow Corner */}
+                  {/* Corner Accent */}
                   <div
                     className={`absolute top-0 right-0 w-28 h-28 ${
                       isGuruShots ? 'bg-gradient-to-bl from-[#C9A84C]/15' : 'bg-gradient-to-bl from-[#00C9A7]/10'
                     } to-transparent rounded-bl-full pointer-events-none group-hover:opacity-100 transition-opacity`}
                   />
 
-                <div className="space-y-4 relative z-10">
-                  <div className="flex items-center justify-between gap-2">
-                    <span
-                      className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold border ${
-                        isGuruShots
-                          ? 'bg-[#0A1628] text-[#C9A84C] border-[#C9A84C]/40'
-                          : 'bg-[#0A1628] text-[#00C9A7] border-[#00C9A7]/30'
-                      }`}
+                  <div className="space-y-4 relative z-10">
+                    <div className="flex items-center justify-between gap-2">
+                      <span
+                        className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold border ${
+                          isGuruShots
+                            ? 'bg-[#0A1628] text-[#C9A84C] border-[#C9A84C]/40'
+                            : 'bg-[#0A1628] text-[#00C9A7] border-[#00C9A7]/30'
+                        }`}
+                      >
+                        {course.badge}
+                      </span>
+                      <span className="text-[10px] font-mono text-[#C9A84C]">
+                        {course.category}
+                      </span>
+                    </div>
+
+                    {/* Visual Preview */}
+                    {course.image && (
+                      <div className="rounded-2xl overflow-hidden border border-[#1A3152] bg-[#0A1628] aspect-video flex items-center justify-center p-2 group-hover:border-[#00C9A7]/40 transition-colors">
+                        <SafeImage
+                          src={course.image}
+                          alt={course.title}
+                          fallbackTitle={course.title}
+                          fallbackSubtitle={course.provider}
+                          className="max-h-full max-w-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )}
+
+                    <h4
+                      className={`font-syne font-bold text-lg text-[#F5F0E8] ${
+                        isGuruShots ? 'group-hover:text-[#C9A84C]' : 'group-hover:text-[#00C9A7]'
+                      } transition-colors flex items-center justify-between gap-2`}
                     >
-                      {course.badge}
-                    </span>
-                    <span className="text-[10px] font-mono text-[#C9A84C]">
-                      {course.category}
-                    </span>
+                      <span>{course.title}</span>
+                      {isGuruShots && <Camera className="w-4 h-4 text-[#C9A84C] shrink-0" />}
+                    </h4>
+
+                    <p className="text-xs text-[#F5F0E8]/70 font-sans leading-relaxed">
+                      {course.description}
+                    </p>
+
+                    <ul className="space-y-1.5 text-[11px] text-[#F5F0E8]/80 font-sans pt-2 border-t border-[#1A3152]">
+                      {course.bullets.map((b, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full ${
+                              isGuruShots ? 'bg-[#C9A84C]' : 'bg-[#00C9A7]'
+                            }`}
+                          />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  {/* Visual Preview for Photography / Visual Cards */}
-                  {course.image && (
-                    <div className="rounded-2xl overflow-hidden border border-[#1A3152] bg-[#0A1628] aspect-video flex items-center justify-center p-2 group-hover:border-[#00C9A7]/40 transition-colors">
-                      <SafeImage
-                        src={course.image}
-                        alt={course.title}
-                        fallbackTitle={course.title}
-                        fallbackSubtitle={course.provider}
-                        className="max-h-full max-w-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  )}
-
-                  <h4
-                    className={`font-syne font-bold text-lg text-[#F5F0E8] ${
-                      isGuruShots ? 'group-hover:text-[#C9A84C]' : 'group-hover:text-[#00C9A7]'
-                    } transition-colors flex items-center justify-between gap-2`}
-                  >
-                    <span>{course.title}</span>
-                    {isGuruShots && <Camera className="w-4 h-4 text-[#C9A84C] shrink-0" />}
-                  </h4>
-
-                  <p className="text-xs text-[#F5F0E8]/70 font-sans leading-relaxed">
-                    {course.description}
-                  </p>
-
-                  <ul className="space-y-1.5 text-[11px] text-[#F5F0E8]/80 font-sans pt-2 border-t border-[#1A3152]">
-                    {course.bullets.map((b, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span
-                          className={`w-1.5 h-1.5 rounded-full ${
-                            isGuruShots ? 'bg-[#C9A84C]' : 'bg-[#00C9A7]'
-                          }`}
-                        />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-6 relative z-10">
-                  <a
-                    href={course.affiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className={`w-full py-3 px-4 rounded-xl font-syne font-bold text-xs tracking-wide transition-all flex items-center justify-center gap-2 ${
-                      isGuruShots
-                        ? 'bg-[#0A1628] hover:bg-[#C9A84C] border border-[#C9A84C]/40 text-[#C9A84C] hover:text-[#0A1628]'
-                        : 'bg-[#0A1628] hover:bg-[#00C9A7] border border-[#00C9A7]/40 text-[#00C9A7] hover:text-[#0A1628]'
-                    }`}
-                  >
-                    <span>{isGuruShots ? 'Otvori GuruShots Portfolio' : 'Pristupi Partnerskom Linku'}</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                  <div className="pt-6 relative z-10">
+                    <a
+                      href={course.affiliateUrl || (course as any).url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className={`w-full py-3 px-4 rounded-xl font-syne font-bold text-xs tracking-wide transition-all flex items-center justify-center gap-2 ${
+                        isGuruShots
+                          ? 'bg-[#0A1628] hover:bg-[#C9A84C] border border-[#C9A84C]/40 text-[#C9A84C] hover:text-[#0A1628]'
+                          : 'bg-[#0A1628] hover:bg-[#00C9A7] border border-[#00C9A7]/40 text-[#00C9A7] hover:text-[#0A1628]'
+                      }`}
+                    >
+                      <span>{isGuruShots ? 'Otvori Portfolio' : 'Pristupi Resursu'}</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         )}
 
       </div>
     </section>
   );
 };
+
+export default ShopAffiliateSection;

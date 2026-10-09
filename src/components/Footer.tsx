@@ -109,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
               </li>
               <li>
                 <Link to="/shop" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
-                  Shop & Alison Besplatni Kursevi
+                  Shop & Edukativni Centar
                 </Link>
               </li>
             </ul>

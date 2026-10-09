@@ -89,7 +89,7 @@ export const TermsPage: React.FC = () => {
               B&H ASSISTANT d.o.o. Zenica ulaže maksimalne stručne napore kako bi osigurala tačnost, ažurnost i kontinuitet svih informacija i kalkulatora. Ipak, platforma se pruža po principu „viđeno-dostupno” (<em>as is</em>) bez implicitnih garancija za specifične poslovne odluke korisnika.
             </p>
             <p>
-              Za pravne poslove sa trećim stranama (npr. vanjski partneri, affiliate edukacije preko platforme Alison) važe uslovi korištenja tih eksternih servisa.
+              Za pravne poslove sa trećim stranama (npr. vanjski partneri i eksterni edukativni servisi) važe uslovi korištenja tih eksternih servisa.
             </p>
           </section>
 

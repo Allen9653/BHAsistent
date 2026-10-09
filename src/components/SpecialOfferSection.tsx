@@ -56,7 +56,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
     {
       icon: DollarSign,
       title: 'Sistem za zaradu',
-      desc: 'Ugrađene opcije za iznajmljivanje reklamnog prostora i plasiranje profitabilnih affiliate linkova.'
+      desc: 'Ugrađene opcije za iznajmljivanje reklamnog prostora i plasiranje digitalnih ponuda i banera.'
     },
     {
       icon: Share2,

@@ -39,11 +39,11 @@ const CATEGORY_TABS: { id: SearchCategory; label: string; icon: React.ComponentT
 const SUGGESTED_QUERIES = [
   'BH Konverter',
   'BH PapirFinder',
-  'ZENTAXI',
+  'Ornamenti Bosne',
   'SCENA+ Magazin',
   'Gummi Bojanka',
-  'Alison Kursevi',
-  'monday.com',
+  'ZENTAXI',
+  'Digitalni Alati',
   'O nama',
 ];
 

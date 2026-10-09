@@ -130,7 +130,7 @@ export const CookieBanner: React.FC = () => {
                   Poštujemo Vašu Privatnost i Podatke
                 </h3>
                 <p className="text-xs text-[#F5F0E8]/75 font-sans leading-relaxed max-w-2xl">
-                  B&H Assistant d.o.o. Zenica koristi neophodne tehničke kolačiće za ispravan rad platforme, te opcionalne analitičke i partnerske (affiliate) kolačiće radi poboljšanja korisničkog iskustva i pružanja ekskluzivnih partnerskih pogodnosti.
+                  B&H Assistant d.o.o. Zenica koristi neophodne tehničke kolačiće za ispravan rad platforme, te opcionalne analitičke i marketinške kolačiće radi poboljšanja korisničkog iskustva i pružanja personalizovanih funkcionalnosti.
                 </p>
               </div>
             </div>
@@ -216,12 +216,12 @@ export const CookieBanner: React.FC = () => {
                   </p>
                 </div>
 
-                {/* 3. Marketing & Affiliate */}
+                {/* 3. Marketing */}
                 <div className="p-4 rounded-2xl bg-[#0A1628] border border-[#1A3152] space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <ShieldCheck className="w-4 h-4 text-[#00C9A7]" />
-                      <span className="font-syne font-bold text-sm text-[#F5F0E8]">Partneri & Affiliate</span>
+                      <span className="font-syne font-bold text-sm text-[#F5F0E8]">Marketinški Kolačići</span>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
@@ -234,7 +234,7 @@ export const CookieBanner: React.FC = () => {
                     </label>
                   </div>
                   <p className="text-[11px] text-[#F5F0E8]/70 leading-relaxed">
-                    Omogućavaju ispravno evidentiranje promotivnih popusta i kupona kod partnera (Mitgo, Admitad, monday.com).
+                    Omogućavaju prikaz relevantnih obavijesti, novih alata i promocija naših autorskih proizvoda.
                   </p>
                 </div>
 

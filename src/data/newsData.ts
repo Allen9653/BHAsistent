@@ -23,180 +23,6 @@ export function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event
 
 export const INITIAL_NEWS: NewsArticle[] = [
   {
-    id: "news-touch-ecommerce",
-    title: "TOUCH (touch.com.ua) – Novi zvanični partner B&H Assistant d.o.o. za pametne telefone, računare i elektroniku",
-    slug: "touch-com-ua-novi-partner-tehnika-elektronika",
-    category: "E-Commerce & Tehnika",
-    date: "27. August 2026. 🔥",
-    author: "B&H Assistant Redakcija",
-    excerpt: "TOUCH (touch.com.ua) je popularna ukrajinska internet-trgovina (e-commerce platforma) specijalizirana za prodaju pametnih telefona, računara, savremene elektronike, kućnih aparata i raznih tehnoloških gadgeta.",
-    content: `TOUCH (touch.com.ua) JE NOVI ZVANIČNI PARTNER B&H ASSISTANT d.o.o.
-
-TOUCH (touch.com.ua) je popularna ukrajinska internet-trgovina (e-commerce platforma) specijalizirana za prodaju pametnih telefona, računara, savremene elektronike, kućnih aparata i raznih tehnoloških gadgeta.
-
-Glavne karakteristike i ponuda ove firme uključuju:
-
-• 📱 Širok asortiman tehnike: U ponudi imaju pametne telefone vodećih brendova (Apple iPhone, Samsung, Xiaomi, Google Pixel, OnePlus itd.), laptope (Apple MacBook, Lenovo, Asus, Acer), tablete, pametne satove i fitnes narukvice.
-• 🍏 Apple i Xiaomi ekosistemi: Posebno su fokusirani na originalnu Apple opremu (iPhone, iPad, AirPods, Apple Watch) te kompletan asortiman Xiaomi uređaja i pametne kućne opreme.
-• ⚡ Oprema za autonomiju i energiju: Zbog specifične situacije u Ukrajini posljednjih godina, ponuda obuhvata i veliki izbor opreme za alternativno napajanje električnom energijom – prijenosne baterije (Power Bank), solarne i inverter generatore (EcoFlow, Bluetti) te opremu za internet i Wi-Fi rutere.
-• 🎧 Audio, gejming i periferija: Slušalice, zvučnici, gejming periferija (miševi, tastature, konzole), kao i oprema za pametne domove.
-• 🏷️ Polovna i outlet roba: U ponudi imaju i sekciju provjerene polovne (b/u) tehnike, kao i uređaje sa sniženom cijenom (уцінена техніка).
-
-Ukratko, riječ je o velikom online retaileru potrošačke elektronike u Ukrajini.
-
-👉 Posjetite našeg novog partnera TOUCH i iskoristite ekskluzivne pogodnosti:
-https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/`,
-    imageUrl: IMAGES.touchBanner,
-    externalUrl: "https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/",
-    published: true,
-    tags: ["TOUCH", "touch.com.ua", "E-Commerce", "Smartphones", "Apple", "Xiaomi", "EcoFlow", "Tehnika", "Partneri", "Affiliate"]
-  },
-  {
-    id: "news-monday-com",
-    title: "JESTE LI PROBALI MONDAY.COM?! Vodeća platforma za upravljanje projektima i timovima",
-    slug: "jeste-li-probali-monday-com-work-os",
-    category: "IT & Produktivnost",
-    date: "26. August 2026. 🔥",
-    author: "B&H Assistant Redakcija",
-    excerpt: "Monday.com je jedna od vodećih svjetskih Work OS platformi za vizuelno upravljanje zadacima, planiranje projekata, automatizaciju procesa i besprijekornu timsku saradnju. Isprobajte besplatno putem našeg partnerskog linka!",
-    content: `JESTE LI PROBALI MONDAY.COM?
-
-Monday.com je jedna od najpopularnijih i najmoćnijih svjetskih Work OS platformi koja omogućava timovima i kompanijama svih veličina da kreiraju prilagođene radne tokove, efikasno prate projekte i automatizuju svakodnevne poslovne procese.
-
-Bilo da vodite IT razvoj, marketinšku agenciju, operativni sektor, prodaju ili građevinske projekte, monday.com pruža fleksibilno, intuitivno i pregledno radno okruženje prilagođeno Vašim specifičnim potrebama.
-
-Glavne prednosti i funkcionalnosti:
-• 📊 Pregledne vizuelne Kanban table, Gantogrami i vremenske linije za jasan uvid u sve faze projekta
-• ⚡ Moćne automatizacije: automatsko delegiranje zadataka, slanje notifikacija i promjena statusa
-• 🔗 Više od 200+ gotovih integracija (Slack, Google Workspace, Zoom, Jira, Microsoft Teams, Gmail)
-• 📈 Analitika i prilagodljivi kontrolni dashboardi u realnom vremenu za donošenje pametnih odluka
-• 📱 Dostupnost na svim uređajima (Web, iOS, Android) za efikasan timski rad bilo kada i bilo gdje
-
-👉 Isprobajte Monday.com besplatno i unaprijedite poslovanje svog tima putem našeg zvaničnog partnerskog linka:
-https://try.monday.com/platforma-za-sve`,
-    imageUrl: IMAGES.mondayLogo,
-    videoUrl: "https://www.youtube.com/watch?v=_z1ssf9ycqA",
-    externalUrl: "https://try.monday.com/platforma-za-sve",
-    hasVideo: true,
-    published: true,
-    tags: ["monday.com", "Work OS", "Produktivnost", "Upravljanje Projektima", "Affiliate", "Timski Rad", "Automatizacija"]
-  },
-  {
-    id: "news-atoms-dev",
-    title: "Atoms.dev – Pretvori svaku ideju u stvarni AI proizvod",
-    slug: "atoms-dev-pretvori-ideju-u-ai-proizvod",
-    category: "AI & Tehnologija",
-    date: "24. August 2026. 🌟",
-    author: "B&H Assistant Inovacije",
-    excerpt: "Atoms.dev omogućava programerima, preduzetnicima i timovima ubrzano kreiranje autonomnih AI agenata i web aplikacija uz minimalnu konfiguraciju.",
-    content: `PRETVORI IDEJU U REALNOST UZ ATOMS.DEV
-
-Inovativna AI i cloud platforma Atoms.dev pruža mogućnost brzog kreiranja, testiranja i skaliranja pametnih aplikacija nove generacije.
-
-Ključne mogućnosti:
-• 🤖 Kreiranje i raspoređivanje pametnih autonomnih AI agenata
-• ⚡ Razvoj modernih web aplikacija bez složene serverske infrastrukture
-• 🚀 Skalabilnost i optimizovane performanse za startupe i preduzeća
-• 🌐 Zvanično integrisano sa digitalnim ekosistemom B&H Assistant d.o.o.
-
-👉 Isprobajte Atoms platformu putem našeg zvaničnog linka:
-https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost`,
-    imageUrl: IMAGES.atomsDev,
-    externalUrl: "https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost",
-    published: true,
-    tags: ["Atoms.dev", "AI Agenti", "Web Aplikacije", "Inovacije", "Partneri"]
-  },
-  {
-    id: "news-kaspersky-security-partner",
-    title: "Kaspersky – Vrhunska kibernetička sigurnost i zaštita Vaših digitalnih uređaja",
-    slug: "kaspersky-antivirus-digitalna-sigurnost-popust",
-    category: "Digitalna Sigurnost",
-    date: "08. Septembar 2026. 🔥",
-    author: "B&H Assistant Sigurnost",
-    excerpt: "Kaspersky predstavlja globalni standard u digitalnoj sigurnosti. Zaštitite računare, mobitele i online plaćanja uz ekskluzivni popust na zvanične licence.",
-    content: `KASPERSKY – VRHUNSKA DIGITALNA SIGURNOST I ZAŠTITA VAŠIH UREĐAJA
-
-Kaspersky predstavlja globalni standard u digitalnoj sigurnosti, razvijen s ciljem pružanja sveobuhvatne zaštite od najsofisticiranijih kibernetičkih prijetnji današnjice. Kroz napredne heurističke algoritme, platforma u stvarnom vremenu neutrališe viruse, ransomware ucjenjivački softver i pokušaje krađe identiteta.
-
-Stručnjaci ga preporučuju zbog besprijekorne zaštite privatnosti, sigurnih online plaćanja i robusne prevencije 'phishing' napada. Kao višestruko nagrađivani tehnološki lider, Kaspersky uživa povjerenje preko 400 miliona privatnih korisnika i 220.000 kompanija širom svijeta. Osigurajte stabilnost svojih računara, pametnih uređaja i povjerljivih poslovnih podataka.
-
-Ključne prednosti zvaničnih Kaspersky paketa:
-• 🛡️ Heuristička i antivirusna zaštita u stvarnom vremenu
-• 💳 Sigurno online bankarstvo i zaštićene finansijske transakcije
-• 🔒 Blokiranje phishing stranica i zlonamjernih linkova
-• ⚡ Visoke performanse bez usporavanja vašeg računara ili mobitela
-
-👉 Saznajte više o paketima i ostvarite poseban popust prilikom kupovine i instalacije:
-https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84`,
-    imageUrl: IMAGES.kasperskyBanner,
-    externalUrl: "https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84",
-    published: true,
-    tags: ["Kaspersky", "Antivirus", "Cyber Security", "Sigurnost", "Popust", "Online Zaštita"]
-  },
-  {
-    id: "news-alison-partner",
-    title: "Alison – 100% Besplatni certificirani online kursevi i priznate diplome",
-    slug: "alison-besplatni-certificirani-kursevi-diplome",
-    category: "Online Edukacija",
-    date: "22. August 2026.",
-    author: "B&H Assistant Edukacija",
-    excerpt: "U saradnji sa globalnom platformom Alison, omogućavamo besplatno pohađanje online kurseva iz IT-ja, menadžmenta, jezika i poslovanja uz međunarodno priznate certifikate.",
-    content: `BESPLATNO ONLINE OBRAZOVANJE SA SVJETSKIM DIPLOMAMA
-
-Ukoliko tražite korisne, certificirane edukativne kurseve iz raznih svjetskih oblasti — imate priliku da besplatno upišete tečajeve u saradnji sa Alison platformom.
-
-Detalji i prednosti:
-• 🎓 Predavanja i testiranja znanja su 100% online
-• 🌍 Predavači su stručnjaci i profesori sa svjetskih univerziteta
-• 📜 Certifikati i diplome priznati u EU, SAD i širom svijeta
-• 📚 Širok spektar oblasti: IT, Programiranje, Poslovanje, Menadžment, Zdravstvo i Dizajn
-
-👉 Upišite besplatne kurseve:
-https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529`,
-    imageUrl: IMAGES.alisonLogo,
-    externalUrl: "https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529",
-    published: true,
-    tags: ["Alison", "Online Edukacija", "Besplatni Kursevi", "Certifikati", "Diplome"]
-  },
-  {
-    id: "news-xpuvo-partner",
-    title: "Mitgo Global Deals (xpuvo.com) – Ekskluzivne partnerske ponude i popusti",
-    slug: "mitgo-global-deals-xpuvo-partner-popusti",
-    category: "E-Commerce & Popusti",
-    date: "21. August 2026.",
-    author: "B&H Assistant Redakcija",
-    excerpt: "Ovlašteni B&H Assistant partnerski kanal za ekskluzivne promotivne ponude, kupone i globalne popuste vodećih svjetskih brendova.",
-    content: `EKSKLUZIVNI POPUSTI I PROMO PONUDE KROZ MITGO MREŽU
-
-Iskoristite provjerene pogodnosti, digitalne alate i globalne popuste vodećih svjetskih brendova kroz ovlaštenu partnersku mrežu B&H Assistant d.o.o. Zenica.
-
-👉 Posjetite partnerski portal:
-https://xpuvo.com/g/ofc53p8nisfe02eff231e94db72a90/`,
-    imageUrl: IMAGES.xpuvoLogo,
-    externalUrl: "https://xpuvo.com/g/ofc53p8nisfe02eff231e94db72a90/",
-    published: true,
-    tags: ["xpuvo.com", "Mitgo", "Popusti", "Global Deals", "Partneri"]
-  },
-  {
-    id: "news-rzekl-partner",
-    title: "Admitad & Mitgo Gateway (rzekl.com) – Zvanično obnovljeni partnerski portal",
-    slug: "admitad-mitgo-gateway-rzekl-verifikovani-partner",
-    category: "Digitalna Mreža & Partneri",
-    date: "20. August 2026.",
-    author: "B&H Assistant Redakcija",
-    excerpt: "Zvanično obnovljeni i verifikovani gateway B&H Assistant d.o.o. sa pristupom stotinama svjetskih oglašivača i CPA programa.",
-    content: `OBNOVLJENI I VERIFIKOVANI ADMITAD / MITGO GATEWAY
-
-Zvanični gateway B&H Assistant d.o.o. Zenica na domeni bh-assistant.ba obnovljen je i aktivan u Admitad/Mitgo globalnoj mreži.
-
-👉 Otvorite zvanični gateway:
-https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/`,
-    imageUrl: IMAGES.rzeklLogo,
-    externalUrl: "https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/",
-    published: true,
-    tags: ["rzekl.com", "Admitad", "Mitgo", "Gateway", "Verifikovano"]
-  },
-  {
     id: "news-bh-konver-glavna",
     title: "BH KONVER – Autorski softver za brze konverzije i pravne izjave u BiH",
     slug: "bh-konver-autorski-softver-pravne-izjave",
@@ -301,30 +127,6 @@ https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/`,
     tags: ["TryHackMe", "Sajber Sigurnost", "IT Obuka", "Hakeri", "Edukacija"]
   },
   {
-    id: "news-job-media-buyer",
-    title: "Oglas za posao: Media Buyer (Europe – Remote | $2.5k - $3.5k / mjesečno)",
-    slug: "oglas-za-posao-media-buyer-remote",
-    category: "Posao & Karijera",
-    date: "Prije 2 sata 🔥",
-    author: "B&H Assistant Karijere",
-    excerpt: "Planiraj, pokreni i skaliraj plaćene kampanje za generisanje leadova na Meta platformama, Google Ads, TikTok i nativnim mrežama (Taboola, Outbrain). Cloaking i Keitaro tracker ekspertiza ($2.5k - $3.5k/mj).",
-    content: "OGLAS ZA POSAO: MEDIA BUYER\n\n📌 Osnovne informacije:\n• 🔥 Objavljeno: Prije 2 sata (Job not on LinkedIn)\n• 🇪🇺 Lokacija: Europe – Remote (Rad od kuće)\n• 💵 Plata: $2,500 – $3,500 / mjesečno ($2.5k - $3.5k / month)\n• ⏰ Radno vrijeme: Full Time (Puno radno vrijeme)\n• 🟡 Nivo iskustva: Mid-level / 🟠 Senior\n• 🎡 Industrija: Marketing & Lead Generation\n• 🔗 Link za prijavu: https://tolt.link/posaoodkuce\n\nOpis posla i ključne odgovornosti:\n1. Planiraj, pokreni i skaliraj plaćene kampanje za generisanje leadova na Meta platformama (Facebook/Instagram), Google Ads Search, TikTok, kao i na nativnim mrežama poput Taboola i Outbrain.\n2. Izgradi i upravljaj kompletnim sistemom za praćenje i cloaking – od oglasnog računa, preko trackera, landing stranice, CRM‑a, pa sve do povratnog signala sa platforme.\n\n👉 Prijavite se direktno putem linka: https://tolt.link/posaoodkuce",
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-    externalUrl: "https://tolt.link/posaoodkuce",
-    isJobPosting: true,
-    jobDetails: {
-      salary: "$2.5k - $3.5k / month",
-      location: "Europe – Remote",
-      type: "Full Time",
-      level: "Mid-level / Senior",
-      department: "Marketing",
-      source: "Job not on LinkedIn",
-      postedAgo: "2 hours ago"
-    },
-    published: true,
-    tags: ["Media Buyer", "Remote Posao", "Marketing", "Meta Ads", "Google Ads", "Keitaro", "Lead Gen"]
-  },
-  {
     id: "news-scena-print",
     title: "Podijeljeno prvih 300 printanih primjeraka urbanog magazina SCENA+",
     slug: "scena-magazin-print-izdanje-podjela",
@@ -422,23 +224,51 @@ https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/`,
 
 const STORAGE_KEY = 'bh_assistant_news_articles';
 
+const AFFILIATE_ARTICLE_IDS = new Set([
+  'news-job-media-buyer',
+  'news-touch-ecommerce',
+  'news-monday-com',
+  'news-atoms-dev',
+  'news-kaspersky-security-partner',
+  'news-alison-partner',
+  'news-xpuvo-partner',
+  'news-rzekl-partner',
+  'news-remoterocketship-partner',
+  'news-1',
+  'news-3',
+  'news-4'
+]);
+
 export const getStoredNews = (): NewsArticle[] => {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
     if (data) {
       const parsed: NewsArticle[] = JSON.parse(data);
-      const filteredParsed = parsed.filter(a => 
-        a.id !== 'news-4' && 
-        a.id !== 'news-1' &&
-        a.id !== 'news-3' &&
-        a.id !== 'news-remoterocketship-partner' &&
-        !a.id.includes('remoterocket') &&
-        !(a.externalUrl && a.externalUrl.includes('remoterocket')) &&
-        !(a.title && a.title.toLowerCase().includes('remote rocketship')) &&
-        !a.title.toLowerCase().includes('gummi učenje je zabava') &&
-        // Filter out old or duplicate monday.com articles from localStorage so only one canonical exists
-        !(a.id !== 'news-monday-com' && (a.title.toLowerCase().includes('monday.com') || a.title.toLowerCase().includes('monday')))
-      );
+      const filteredParsed = parsed.filter(a => {
+        if (AFFILIATE_ARTICLE_IDS.has(a.id)) return false;
+        if (a.id.includes('remoterocket')) return false;
+        if (a.externalUrl && (
+          a.externalUrl.includes('wbbsv.com') ||
+          a.externalUrl.includes('dhwnh.com') ||
+          a.externalUrl.includes('rzekl.com') ||
+          a.externalUrl.includes('xpuvo.com') ||
+          a.externalUrl.includes('try.monday.com') ||
+          a.externalUrl.includes('tolt.link') ||
+          a.externalUrl.includes('admitad') ||
+          a.externalUrl.includes('affiliate') ||
+          a.externalUrl.includes('remoterocket')
+        )) return false;
+        if (a.tags && a.tags.some(t => t.toLowerCase() === 'affiliate')) return false;
+        if (a.title && (
+          a.title.toLowerCase().includes('remote rocketship') ||
+          a.title.toLowerCase().includes('gummi učenje je zabava') ||
+          a.title.toLowerCase().includes('touch.com.ua') ||
+          a.title.toLowerCase().includes('media buyer') ||
+          a.title.toLowerCase().includes('monday.com') ||
+          a.title.toLowerCase().includes('kaspersky')
+        )) return false;
+        return true;
+      });
       const parsedIds = new Set(filteredParsed.map(a => a.id));
       const missingInitial = INITIAL_NEWS.filter(a => !parsedIds.has(a.id));
       const combined = [...missingInitial, ...filteredParsed];

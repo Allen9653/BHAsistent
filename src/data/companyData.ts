@@ -240,158 +240,123 @@ export const DEVELOPMENT_PROJECTS: DevelopmentProject[] = [
 
 export const AFFILIATE_COURSES: AffiliateCourse[] = [
   {
-    id: "mitgo-xpuvo-partner",
-    title: "Mitgo & Global Partner Deals",
-    provider: "xpuvo.com / Mitgo Premium Network",
-    badge: "GLOBALNI POPUSTI & PARTNER 🌟",
-    description: "Ekskluzivne partnerske ponude, digitalni alati i globalni popusti kroz zvaničnu partnersku mrežu B&H Assistant d.o.o. Zenica. Iskoristite provjerene pogodnosti i popuste vodećih svjetskih brendova na jednom mjestu.",
+    id: "bh-konver-tool",
+    title: "BH KONVER – Kalkulator & Pravne Izjave",
+    provider: "B&H Assistant d.o.o. Zenica",
+    badge: "AUTORSKI SOFTVER • POBJEDNIK 🏆",
+    description: "Nagrađeni bh. digitalni kalkulator za brze konverzije valuta, poreza i automatsko kreiranje pravnih izjava pod materijalnom odgovornošću.",
     bullets: [
-      "Zvanični B&H Assistant autorizovani partnerski kanal",
-      "Ekskluzivni popusti i promotivni kodovi globalnih servisa",
-      "Direktan pristup i sigurna kupovina na partnerskoj platformi"
+      "Pobjednik takmičenja i Aplikacija Sedmice",
+      "Automatsko generisanje standardizovanih pravnih izjava",
+      "Besplatno za građane i preduzeća u BiH"
     ],
-    affiliateUrl: "https://xpuvo.com/g/ofc53p8nisfe02eff231e94db72a90/",
+    affiliateUrl: "https://bh-konver.lovable.app/",
     category: "IT & Veb Dizajn",
     featured: true,
-    image: IMAGES.xpuvoLogo
+    image: IMAGES.bhKonverBanner
   },
   {
-    id: "admitad-gateway-renewed",
-    title: "Admitad & Mitgo - Obnovljeni Gateway",
-    provider: "rzekl.com / Admitad Global Platform",
-    badge: "OBNOVLJENI PARTNER • VERIFIED 🌐",
-    description: "Zvanično verifikovani i obnovljeni partnerski link firme B&H Assistant d.o.o. na domeni bh-assistant.ba. Povežite se sa stotinama CPA programa, e-commerce lidera i digitalnih servisa.",
+    id: "bh-papirfinder-tool",
+    title: "BH PapirFinder – Pametni Registar e-Uprave",
+    provider: "B&H Assistant d.o.o. Zenica",
+    badge: "E-UPRAVA VODIČ 🏛️",
+    description: "Centralni registar i digitalni vodič za pronalaženje općinskih obrazaca, zahtjeva i administrativnih taksi u Bosni i Hercegovini.",
     bullets: [
-      "Obnovljen i aktivan zvanični gateway link",
-      "Potpuna verifikacija domene bh-assistant.ba (Mitgo ID)",
-      "Provjerene partnerske pogodnosti i digitalne usluge"
+      "Slogan: Više ne ganjate papire, oni dolaze Vama!",
+      "Baza općinskih i kantonalnih obrazaca i uputstava",
+      "Štedi sate čekanja na administrativnim šalterima"
     ],
-    affiliateUrl: "https://rzekl.com/g/1e8d114494fe02eff23116525dc3e8/",
+    affiliateUrl: "https://bhpapirfinder.atoms.world",
     category: "IT & Veb Dizajn",
     featured: true,
-    image: IMAGES.rzeklLogo
+    image: IMAGES.bhPapirfinderBanner
   },
   {
-    id: "monday-com",
-    title: "Monday.com - Vodeći Work OS & Upravljanje Projektima",
-    provider: "monday.com Work OS Global Platform",
-    badge: "WORK OS & PRODUKTIVNOST",
-    description: "Jeste li probali monday.com?! Vodeća platforma za upravljanje projektima, zadacima, Kanban tablama i automatizaciju procesa za moderne timove.",
+    id: "stecak-ornamenti-tool",
+    title: "Ornamenti Bosne – Kodirani Motivi sa Stećaka",
+    provider: "B&H Assistant Izdavaštvo",
+    badge: "USB DOSTAVA & POUZEĆE 📦",
+    description: "Stilizirani i kodirani vektorski motivi bh. kulturne baštine (SVG, PNG, HTML i CSS). Jedini digitalni proizvod sa dostavom na USB sticku i plaćanjem pouzećem.",
     bullets: [
-      "Vizuelne Kanban table, vremenske linije i gantogrami",
-      "Automatizacija radnih tokova i 200+ gotovih integracija (Slack, Teams, Google)",
-      "Isprobajte besplatno putem našeg zvaničnog partnerskog linka"
+      "Vektorski formati (SVG, PNG, kodovi)",
+      "Sigurna dostava na USB memorijskom sticku",
+      "Plaćanje po preuzimanju pošiljke na adresi"
     ],
-    affiliateUrl: "https://try.monday.com/platforma-za-sve",
+    affiliateUrl: "https://canva.link/8dwxeack5cwn18l",
+    category: "Fotografija & Umjetnost",
+    featured: true,
+    image: IMAGES.ornamentiBosne
+  },
+  {
+    id: "scena-magazin-edition",
+    title: "SCENA+ Magazin – Urbano Izdanje ZDK",
+    provider: "B&H Assistant d.o.o. Zenica",
+    badge: "KULTURA & PRIVREDA 📖",
+    description: "Prvo štampano i e-izdanje urbanog magazina sa temama iz arheologije, kulture, savremene umjetnosti, privrede i tehnologije.",
+    bullets: [
+      "Podijeljeno 300 besplatnih printanih primjeraka",
+      "Interaktivno digitalno čitanje na Canva platformi",
+      "Ekskluzivni intervjui i priče iz Zenice i regije"
+    ],
+    affiliateUrl: "https://canva.link/vxekpnx0ow1xvt9",
+    category: "Fotografija & Umjetnost",
+    featured: true,
+    image: IMAGES.scenaCover
+  },
+  {
+    id: "zentaxi-platform-tool",
+    title: "ZENTAXI – Pametna Dispečerska Mreža",
+    provider: "B&H Assistant Razvojni Tim",
+    badge: "MOBILNOST & STARTUP 🚖",
+    description: "Digitalna taksi dispečerska mreža i moderna platforma za povezivanje licenciranih taksista i putnika u gradu Zenici.",
+    bullets: [
+      "Unaprijed poznate cijene i GPS praćenje vožnje",
+      "Podrška za samostalne licencirane vozače",
+      "Moderna dispečerska infrastruktura"
+    ],
+    affiliateUrl: "https://canva.link/xyqzerrxvkxbfy2",
     category: "IT & Veb Dizajn",
     featured: true,
-    image: IMAGES.mondayLogo
+    image: IMAGES.zentaxiBanner
   },
   {
-    id: "kaspersky-security",
-    title: "Kaspersky – Vrhunska Kibernetička Sigurnost & Antivirus",
-    provider: "Kaspersky Global Security Network",
-    badge: "KIBERNETIČKA SIGURNOST & POPUST",
-    description: "Kaspersky pruža sveobuhvatnu digitalnu zaštitu od najnovijih kibernetičkih prijetnji, virusa i ransomware napada. Iskoristite ekskluzivni popust na zvanične licence za vaše računare i mobilne uređaje.",
+    id: "bcx-crypto-platform",
+    title: "BCX Krypto – Prva Domaća Kripto Platforma",
+    provider: "Balkan Crypto Exchange (BCX.ba)",
+    badge: "FINTECH & BLOCKCHAIN 🪙",
+    description: "Licencirana mjenjačnica digitalne imovine u Bosni i Hercegovini sa direktnim uplatama i isplatama u BAM valuti.",
     bullets: [
-      "Zaštita u stvarnom vremenu od virusa, malwarea i krađe identiteta",
-      "Zaštita finansijskih transakcija i prevencija naprednih phishing napada",
-      "Globalni lider sa stotinama miliona zadovoljnih korisnika širom svijeta",
-      "Ekskluzivni partnerski popust prilikom online kupovine i instalacije"
+      "Sigurna kupovina i prodaja digitalnih valuta",
+      "Lokalni bankovni računi u konvertibilnim markama",
+      "Regulisan domaći kripto ekosistem"
     ],
-    affiliateUrl: "https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84",
-    category: "Digitalna Sigurnost",
-    featured: true,
-    image: IMAGES.kasperskyBanner
-  },
-  {
-    id: "alison-global",
-    title: "Alison - Besplatni Certificirani Kursevi",
-    provider: "alison.com Global Education",
-    badge: "BESPLATNO & CERTIFICIRANO",
-    description: "Ukoliko tražite korisne, certificirane edukativne kurseve iz raznih svjetskih oblasti — imate priliku da besplatno upišete kurseve koje Vam nudimo u saradnji sa Alison platformom. Predavanja i testiranja znanja su 100% online.",
-    bullets: [
-      "Predavanja i testiranje znanja su 100% online",
-      "Predavači su stručnjaci i profesori sa svjetskih univerziteta",
-      "Certifikati i diplome priznati u EU, SAD i širom svijeta",
-      "Širok spektar oblasti: IT, Menadžment, Jezici, Zdravstvo, Dizajn"
-    ],
-    affiliateUrl: "https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529",
-    category: "Online Edukacija",
-    featured: true,
-    image: IMAGES.alisonLogo
-  },
-  {
-    id: "atoms-dev",
-    title: "Atoms - Pretvori Ideju u Realnost",
-    provider: "atoms.dev World AI Platform",
-    badge: "AI & TECH PLATFORMA",
-    description: "Inovativna AI i cloud platforma za brzo kreiranje, testiranje i skaliranje pametnih web aplikacija i samostalnih agenata bez komplicirane infrastrukture.",
-    bullets: [
-      "Gradite napredne AI agente i moderne veb aplikacije",
-      "Pretvori svaku ideju u stvarni, operativni softverski proizvod",
-      "Ekskluzivni partnerski pristup preko B&H Assistant mreže"
-    ],
-    affiliateUrl: "https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost",
+    affiliateUrl: "https://bcx.ba",
     category: "IT & Veb Dizajn",
-    featured: true,
-    image: IMAGES.atomsDev
+    featured: false,
+    image: IMAGES.bcxKrypto
   },
   {
     id: "it-skills-boost",
-    title: "TryHackMe - Cyber Security & IT Labs",
+    title: "TryHackMe – Cyber Security & IT Labs",
     provider: "tryhackme.com Global Cyber Lab",
-    badge: "CYBER LABS & PRAKSA",
-    description: "Specijalizirani interaktivni moduli za učenje sajber sigurnosti, etičkog hakovanja, mreža i programiranja za početnike i napredne polaznike kroz praksu u pretraživaču.",
+    badge: "CYBER LABS & PRAKSA 🛡️",
+    description: "Interaktivni moduli za učenje sajber sigurnosti, etičkog hakovanja, mreža i programiranja za početnike i napredne polaznike kroz praksu u pretraživaču.",
     bullets: [
       "Lična virtuelna mašina u pretraživaču na jedan klik",
-      "Praktične laboratorije i stvarni scenariji bez komplicirane instalacije",
-      "Besplatna registracija putem našeg zvaničnog linka"
+      "Praktične laboratorije i stvarni scenariji bez instalacije",
+      "Besplatna registracija na zvaničnom portalu"
     ],
     affiliateUrl: "https://tryhackme.com/",
-    category: "IT & Veb Dizajn",
-    featured: true,
-    image: IMAGES.tryhackmeBanner
-  },
-  {
-    id: "touch-ecommerce-partner",
-    title: "TOUCH (touch.com.ua) - Pametni Telefoni, Računari & Autonomno Napajanje",
-    provider: "touch.com.ua Online Retailer",
-    badge: "TOP E-COMMERCE TECH 📱",
-    description: "Popularna ukrajinska internet-trgovina (e-commerce platforma) specijalizirana za prodaju pametnih telefona (Apple, Samsung, Xiaomi), laptopa, Apple i Xiaomi ekosistema, opreme za autonomno napajanje (EcoFlow, Bluetti generatori, Power Bank) i provjerene outlet tehnike.",
-    bullets: [
-      "Vodeći brendovi pametnih telefona: Apple iPhone, Samsung, Xiaomi, Google Pixel",
-      "Apple i Xiaomi ekosistemi te oprema za pametne domove",
-      "Oprema za autonomiju i energiju: Power Bank, EcoFlow i Bluetti generatori",
-      "Audio, gejming periferija i sekcija provjerene outlet/polovne tehnike"
-    ],
-    affiliateUrl: "https://wbbsv.com/c/ynys1f2mjpfe02eff2310e81904d8b/",
-    category: "Elektronika & Tehnika",
-    featured: true,
-    image: IMAGES.touchBanner
-  },
-  {
-    id: "business-languages",
-    title: "Poslovni Jezici & Menadžment",
-    provider: "International Business Academy",
-    badge: "POSLOVNE VJEŠTINE",
-    description: "Unaprijedite svoje poslovne vještine uz međunarodno akreditovane besplatne kurseve engleskog, njemačkog, poslovnog komuniciranja i vođenja timova.",
-    bullets: [
-      "Priprema za međunarodne sertifikate",
-      "Poslovna korespondencija i komunikacija",
-      "Dostupno odmah na svim uređajima"
-    ],
-    affiliateUrl: "https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=56404529",
-    category: "Jezici & Poslovanje",
+    category: "Digitalna Sigurnost",
     featured: false,
-    image: IMAGES.businessPlan
+    image: IMAGES.tryhackmeBanner
   },
   {
     id: "gurushots-yusufowych",
     title: "GuruShots Yusufowych Fotografija",
     provider: "GuruShots Global Photo Platform & Exhibitions",
-    badge: "FOTOGRAFIJA & UMJETNOST",
-    description: "Pogledajte ekskluzivni portfolio i autorske fotografije bh. autora Yusufowych na globalnoj platformi GuruShots. Učešće u svjetskim fotografskim izazovima i međunarodnim digitalnim izložbama.",
+    badge: "FOTOGRAFIJA & UMJETNOST 📷",
+    description: "Pogledajte autorski portfolio i umjetničke fotografije bh. autora Yusufowych na globalnoj platformi GuruShots. Učešće u svjetskim fotografskim izazovima.",
     bullets: [
       "Autorska umjetnička i pejsažna fotografija",
       "Međunarodna takmičenja i globalne izložbe",

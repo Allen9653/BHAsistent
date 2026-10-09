@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StecakBackground } from './StecakBackground';
-import { ArrowRight, Sparkles, Download, Layers, BookOpen, Compass, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Briefcase, Cpu, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Sparkles, Download, Layers, BookOpen, Compass, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Briefcase } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { SafeImage } from './SafeImage';
 import { useLanguage } from '../context/LanguageContext';
@@ -29,34 +29,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBojanka, onNavig
       footerText: t('hero.slide.brand.desc', 'U potrazi ste za partnerstvom ili investicijom?'),
       footerAction: () => onNavigateSection('projekti'),
       footerButton: t('hero.slide.brand.btn', 'Detalji Projekata →')
-    },
-    {
-      type: 'affiliate',
-      badge: 'AFFILIATE PARTNER • AI PLATFORMA',
-      badgeColor: 'bg-[#00C9A7] text-[#0A1628]',
-      title: t('hero.slide.atoms.title', 'Atoms AI Platforma'),
-      motto: t('hero.slide.atoms.motto', 'Pretvori Ideju u Realnost'),
-      description: t('hero.slide.atoms.desc', 'Inovativna AI i cloud platforma za brzo kreiranje, testiranje i skaliranje pametnih web aplikacija i samostalnih agenata.'),
-      icon: Cpu,
-      image: IMAGES.atomsDev,
-      url: 'https://atoms.dev/?utm_source=affiliate&via=pretvori-ideju-u-realnost',
-      tags: ['AI Agenti', 'No-Code/Low-Code', 'Cloud App'],
-      footerText: t('hero.slide.atoms.motto', 'Gradite pametne aplikacije odmah uz Atoms'),
-      footerButton: t('hero.slide.atoms.btn', 'Otvori Atoms.dev →')
-    },
-    {
-      type: 'affiliate',
-      badge: 'AFFILIATE PARTNER • KIBERNETIČKA SIGURNOST',
-      badgeColor: 'bg-[#00A88E] text-[#0A1628]',
-      title: t('hero.slide.kaspersky.title', 'Kaspersky Lab'),
-      motto: t('hero.slide.kaspersky.motto', 'Vrhunska kibernetička sigurnost i zaštita uređaja!'),
-      description: t('hero.slide.kaspersky.desc', 'Sveobuhvatna zaštita od virusa, ransomwarea, krađe lozinki i bankovnih prevara za PC, Mac i mobitele uz ekskluzivni popust.'),
-      icon: ShieldCheck,
-      image: IMAGES.kasperskyBanner,
-      url: 'https://dhwnh.com/g/f6b07970c6fe02eff231e5a65aad3ad5ea3e5afd/?erid=5jtCeReLm1S3Xx3LfA8QF84',
-      tags: ['Antivirus', 'Phishing Zaštita', 'Popust do 50%'],
-      footerText: t('hero.slide.kaspersky.motto', 'Zaštitite svoje uređaje uz globalnog lidera u kibernetičkoj sigurnosti'),
-      footerButton: t('hero.slide.kaspersky.btn', 'Aktiviraj Kaspersky Popust →')
     },
     {
       type: 'tool',

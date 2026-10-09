@@ -102,7 +102,7 @@ export function getAllSearchItems(): SearchItem[] {
     });
   }
 
-  // 5. Affiliate Courses & Shop
+  // 5. Digital Products & Educational Resources
   for (const course of AFFILIATE_COURSES) {
     items.push({
       id: `course-${course.id}`,
