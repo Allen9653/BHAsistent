@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ShieldCheck, Cookie, Check, X, Sliders, ChevronDown, ChevronUp, Lock, Sparkles, ExternalLink } from 'lucide-react';
+import { ShieldCheck, Cookie, Check, Sliders, ChevronDown, ChevronUp, Lock, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import {
+  updateConsentState,
+  attachConsentButtonListeners,
+  isConsentGranted,
+  loadTagManagerScript,
+  GTM_CONTAINER_ID,
+  PREFERENCES_STORAGE_KEY,
+} from '../utils/consentManager';
 
 export interface CookiePreferences {
   essential: boolean;
@@ -10,8 +18,6 @@ export interface CookiePreferences {
   timestamp: string;
   consented: boolean;
 }
-
-const STORAGE_KEY = 'bh_assistant_cookie_consent_v1';
 
 export const CookieBanner: React.FC = () => {
   const { t } = useLanguage();
@@ -26,21 +32,28 @@ export const CookieBanner: React.FC = () => {
   });
 
   useEffect(() => {
-    // Check if consent has already been given
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) {
-      // Small delay for smooth entry experience
+    // Check if consent has already been given previously
+    const previouslyConsented = isConsentGranted();
+    
+    if (previouslyConsented) {
+      // User already granted consent previously: Tag Manager container is loaded safely
+      loadTagManagerScript(GTM_CONTAINER_ID);
+
+      const saved = localStorage.getItem(PREFERENCES_STORAGE_KEY);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          setPreferences(parsed);
+        } catch (e) {
+          // ignore parsing error
+        }
+      }
+    } else {
+      // Consent not yet granted: keep Tag Manager blocked, show consent banner
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 1000);
       return () => clearTimeout(timer);
-    } else {
-      try {
-        const parsed = JSON.parse(saved);
-        setPreferences(parsed);
-      } catch (e) {
-        setIsVisible(true);
-      }
     }
 
     // Global listener to reopen cookie banner from footer/links
@@ -55,40 +68,81 @@ export const CookieBanner: React.FC = () => {
     };
   }, []);
 
-  const saveConsent = (prefs: CookiePreferences) => {
-    const updated = {
-      ...prefs,
-      essential: true,
-      timestamp: new Date().toISOString(),
-      consented: true,
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    setPreferences(updated);
-    setIsVisible(false);
-  };
+  // Monitor DOM button clicks and ensure handlers are actively listening
+  useEffect(() => {
+    if (isVisible) {
+      const detachListeners = attachConsentButtonListeners();
+      return () => {
+        detachListeners();
+      };
+    }
+  }, [isVisible]);
 
+  /**
+   * Grant All: Updates Consent Mode, loads Tag Manager container,
+   * pushes interaction to dataLayer, and saves decision.
+   */
   const handleAcceptAll = () => {
-    saveConsent({
+    updateConsentState('granted', {
+      analytics: true,
+      marketing: true,
+      interactionType: 'grant_all',
+      buttonId: 'grantButton',
+    });
+
+    setPreferences({
       essential: true,
       analytics: true,
       marketing: true,
       timestamp: new Date().toISOString(),
       consented: true,
     });
+    setIsVisible(false);
   };
 
+  /**
+   * Essential Only: Updates Consent Mode to denied, does NOT load marketing/analytics trackers,
+   * pushes interaction to dataLayer, and saves decision.
+   */
   const handleAcceptEssentialOnly = () => {
-    saveConsent({
+    updateConsentState('denied', {
+      analytics: false,
+      marketing: false,
+      interactionType: 'essential_only',
+      buttonId: 'btn-cookie-accept-essential',
+    });
+
+    setPreferences({
       essential: true,
       analytics: false,
       marketing: false,
       timestamp: new Date().toISOString(),
       consented: true,
     });
+    setIsVisible(false);
   };
 
+  /**
+   * Save Custom Preferences: Sets granular consent, pushes to dataLayer,
+   * conditionally loads Tag Manager if analytics or marketing granted.
+   */
   const handleSaveCustom = () => {
-    saveConsent(preferences);
+    const isGranted = preferences.analytics || preferences.marketing;
+
+    updateConsentState(isGranted ? 'granted' : 'denied', {
+      analytics: preferences.analytics,
+      marketing: preferences.marketing,
+      interactionType: 'custom_save',
+      buttonId: 'btn-cookie-save-custom',
+    });
+
+    setPreferences({
+      ...preferences,
+      essential: true,
+      timestamp: new Date().toISOString(),
+      consented: true,
+    });
+    setIsVisible(false);
   };
 
   if (!isVisible) return null;
@@ -135,9 +189,12 @@ export const CookieBanner: React.FC = () => {
               </div>
             </div>
 
-            {/* Quick Action Buttons on Desktop */}
+            {/* Quick Action Buttons on Desktop with Identifiers */}
             <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 w-full md:w-auto shrink-0 pt-2 md:pt-0">
+              {/* Grant Button (Consent Granted -> Loads Tag Manager & updates consent) */}
               <button
+                id="grantButton"
+                data-testid="consent-grant-all"
                 type="button"
                 onClick={handleAcceptAll}
                 className="flex-1 md:flex-none min-h-[44px] px-5 py-2.5 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-lg shadow-[#00C9A7]/20 hover:scale-[1.02]"
@@ -146,7 +203,10 @@ export const CookieBanner: React.FC = () => {
                 <span>Prihvati Sve</span>
               </button>
 
+              {/* Deny / Essential Only Button */}
               <button
+                id="btn-cookie-accept-essential"
+                data-testid="consent-essential-only"
                 type="button"
                 onClick={handleAcceptEssentialOnly}
                 className="flex-1 md:flex-none min-h-[44px] px-4 py-2.5 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] border border-[#1A3152] hover:border-[#00C9A7]/50 text-[#F5F0E8] font-syne font-bold text-xs transition-all flex items-center justify-center"
@@ -154,7 +214,10 @@ export const CookieBanner: React.FC = () => {
                 <span>Samo Neophodni</span>
               </button>
 
+              {/* Customize Settings Toggle */}
               <button
+                id="btn-cookie-customize"
+                data-testid="consent-customize-toggle"
                 type="button"
                 onClick={() => setShowCustomize(!showCustomize)}
                 aria-expanded={showCustomize}
@@ -203,6 +266,7 @@ export const CookieBanner: React.FC = () => {
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
+                        id="cookie-toggle-analytics"
                         type="checkbox"
                         checked={preferences.analytics}
                         onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
@@ -225,6 +289,7 @@ export const CookieBanner: React.FC = () => {
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
+                        id="cookie-toggle-marketing"
                         type="checkbox"
                         checked={preferences.marketing}
                         onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
@@ -240,12 +305,14 @@ export const CookieBanner: React.FC = () => {
 
               </div>
 
-              {/* Save custom selections */}
+              {/* Save custom selections with ID */}
               <div className="flex items-center justify-between pt-2">
                 <p className="text-[11px] text-[#F5F0E8]/50 font-mono">
                   Službeni kontakt: <span className="text-[#00C9A7]">info@bh-assistant.ba</span>
                 </p>
                 <button
+                  id="btn-cookie-save-custom"
+                  data-testid="consent-save-custom"
                   type="button"
                   onClick={handleSaveCustom}
                   className="min-h-[40px] px-6 py-2 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs transition-all shadow-md"

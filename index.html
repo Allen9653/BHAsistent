@@ -1,22 +1,59 @@
 <!doctype html>
 <html lang="bs" class="scroll-smooth">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MG545DQF');</script>
-    <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DS5DCM7Z7"></script>
+    <!-- Google Consent Mode v2: dataLayer initialization & consent defaults BEFORE loading GTM -->
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() { dataLayer.push(arguments); }
 
-      gtag('config', 'G-4DS5DCM7Z7');
-      gtag('config', 'G-XZE9GE0XX4');
+      // Establish consent defaults in the data layer (blocked by default)
+      gtag('consent', 'default', {
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500,
+      });
+      dataLayer.push({'gtm.start': new Date().getTime(), 'event': 'gtm.js'});
+
+      // If returning user already granted consent, update consent & load Tag Manager container immediately
+      (function() {
+        try {
+          var consentGranted = localStorage.getItem('consentGranted') === 'true';
+          if (!consentGranted) {
+            var saved = localStorage.getItem('bh_assistant_cookie_consent_v1');
+            if (saved) {
+              var parsed = JSON.parse(saved);
+              if (parsed && parsed.consented && (parsed.analytics || parsed.marketing)) {
+                consentGranted = true;
+              }
+            }
+          }
+          if (!consentGranted && document.cookie.indexOf('bh_assistant_consent_v2=granted') !== -1) {
+            consentGranted = true;
+          }
+
+          if (consentGranted) {
+            gtag('consent', 'update', {
+              'ad_user_data': 'granted',
+              'ad_personalization': 'granted',
+              'ad_storage': 'granted',
+              'analytics_storage': 'granted'
+            });
+
+            // Load Google Tag Manager container script for consented user
+            var gtmScript = document.createElement('script');
+            gtmScript.async = true;
+            gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MG545DQF';
+            var firstScript = document.getElementsByTagName('script')[0];
+            if (firstScript && firstScript.parentNode) {
+              firstScript.parentNode.insertBefore(gtmScript, firstScript);
+            } else {
+              document.head.appendChild(gtmScript);
+            }
+          }
+        } catch (e) {}
+      })();
     </script>
     <!-- Google AdSense Official Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4192839247871586" crossorigin="anonymous"></script>
