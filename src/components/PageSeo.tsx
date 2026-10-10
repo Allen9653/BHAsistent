@@ -1,29 +1,15 @@
 import React from 'react';
-import { useMetaTags, RouteMetaConfig } from '../hooks/useMetaTags';
+import { SEOHead, SEOHeadProps } from './SEOHead';
 
-interface PageSeoProps {
-  title?: string;
-  description?: string;
-  keywords?: string;
-  canonical?: string;
-}
+export type PageSeoProps = SEOHeadProps;
 
 /**
  * PageSeo: Ensures page-level title and meta description are set
  * immediately and uniquely for the rendered page.
+ * Powered by SEOHead for deep canonical and Open Graph dynamic management.
  */
-export const PageSeo: React.FC<PageSeoProps> = ({ title, description, keywords, canonical }) => {
-  const override: Partial<RouteMetaConfig> | undefined = (title || description || keywords || canonical)
-    ? {
-        ...(title ? { title } : {}),
-        ...(description ? { description } : {}),
-        ...(keywords ? { keywords } : {}),
-        ...(canonical ? { canonical } : {}),
-      }
-    : undefined;
-
-  useMetaTags(override);
-  return null;
+export const PageSeo: React.FC<PageSeoProps> = (props) => {
+  return <SEOHead {...props} />;
 };
 
 export default PageSeo;

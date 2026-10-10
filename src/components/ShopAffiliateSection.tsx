@@ -165,7 +165,7 @@ export const ShopAffiliateSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0F2038] border border-[#00C9A7]/50 text-[#00C9A7] text-xs font-mono tracking-wider uppercase shadow-lg shadow-[#00C9A7]/10">
             <ShoppingBag className="w-3.5 h-3.5 text-[#00C9A7]" />
-            <span>{t('shop.badge', 'DIGITALNI SHOP & EDUKACIJSKI CENTAR')}</span>
+            <span>{t('shop.badge', 'DIGITALNI RESURSI & EDUKACIJSKI CENTAR')}</span>
           </div>
 
           <h2 className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#F5F0E8] tracking-tight">

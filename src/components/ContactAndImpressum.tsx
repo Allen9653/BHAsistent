@@ -130,7 +130,7 @@ export const ContactAndImpressum: React.FC = () => {
                     <option value="BH Alati Support">BH Digitalni Alati (Konver, PapirFinder)</option>
                     <option value="SCENA Magazin">Magazin SCENA+ Saradnja</option>
                     <option value="Investicije & Projekti">Investicije / Partnerstvo (ZENTAXI, GUMMI)</option>
-                    <option value="Shop & Edukacija">SHOP & Alison Edukacija</option>
+                    <option value="Resursi & Edukacija">Resursi & Edukacija</option>
                   </select>
                 </div>
 

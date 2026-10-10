@@ -64,6 +64,7 @@ export interface AffiliateCourse {
   description: string;
   bullets: string[];
   affiliateUrl: string;
+  url?: string;
   category: string;
   featured: boolean;
   image: string;
@@ -135,4 +136,54 @@ export interface NewsArticle {
     source?: string;
     postedAgo?: string;
   };
+  authorId?: string;
+  authorBio?: string;
+  authorRole?: string;
+}
+
+export interface AuthorProfileData {
+  id: string;
+  name: string;
+  role: string;
+  credentials: string;
+  bio: string;
+  experienceYears?: string;
+  location: string;
+  avatarUrl?: string;
+  verified: boolean;
+  eeatBadge: string; // e.g. "E-E-A-T Verifikovani Autor"
+  specialties: string[];
+  contactEmail?: string;
+  linkedinUrl?: string;
+  websiteUrl?: string;
+  articlesCount?: number;
+}
+
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category: 'alati' | 'firma' | 'pravno' | 'sigurnost' | 'kultura';
+  categoryLabel: string;
+  tags?: string[];
+  lastUpdated?: string;
+}
+
+export interface NewsFeedUpdate {
+  id: string;
+  title: string;
+  summary: string;
+  fullContent: string;
+  category: 'it-trends' | 'achievements' | 'community' | 'security';
+  categoryLabel: string;
+  badge?: string;
+  date: string;
+  timestamp: number;
+  author: string;
+  readTime: string;
+  linkUrl?: string;
+  linkText?: string;
+  tags: string[];
+  source?: string;
+  authorId?: string;
 }

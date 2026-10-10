@@ -98,11 +98,20 @@ export const PrivacyPolicyPage: React.FC = () => {
           <section className="space-y-3">
             <h2 className="font-syne font-bold text-lg text-[#F5F0E8] flex items-center gap-2">
               <FileText className="w-4 h-4 text-[#00C9A7]" />
-              <span>4. Kolačići (Cookies) i analitički servisi</span>
+              <span>4. Kolačići (Cookies), Analitika i Google AdSense Oglašavanje</span>
             </h2>
             <p>
-              Web stranica koristi Google Tag Manager i Google Analytics (oznaka <code className="text-[#00C9A7] bg-[#0F2038] px-1.5 py-0.5 rounded">G-XZE9GE0XX4</code>) za anonimizirano mjerenje posjećenosti. Možete u bilo kojem trenutku promijeniti ili opozvati svoje postavke kolačića putem linka u podnožju stranice.
+              Web stranica koristi Google Tag Manager, Google Analytics (mjerni ID <code className="text-[#00C9A7] bg-[#0F2038] px-1.5 py-0.5 rounded">G-4DS5DCM7Z7</code> i <code className="text-[#00C9A7] bg-[#0F2038] px-1.5 py-0.5 rounded">G-XZE9GE0XX4</code>) za anonimizirano mjerenje posjećenosti i tehničko poboljšanje korisničkog iskustva.
             </p>
+            <div className="p-4 rounded-xl bg-[#0A1628] border border-[#1A3152] space-y-2 mt-2">
+              <h3 className="font-syne font-bold text-xs uppercase text-[#C9A84C]">Google AdSense & Pravila o Oglašavanju:</h3>
+              <p className="text-xs text-[#F5F0E8]/80 leading-relaxed">
+                Platforma sarađuje sa Google AdSense mrežom (klijentski ID: <code className="text-[#00C9A7]">ca-pub-4192839247871586</code>) za prikazivanje relevantnih i usklađenih oglasa. Treće strane, uključujući Google, koriste kolačiće (kao što je DoubleClick kolačić) za posluživanje oglasa na osnovu prethodnih posjeta korisnika ovoj ili drugim web lokacijama.
+              </p>
+              <p className="text-xs text-[#F5F0E8]/80 leading-relaxed">
+                Korisnici mogu onemogućiti personalizovano oglašavanje posjetom <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#00C9A7] underline hover:text-[#00E5BE]">Google Postavkama Oglasa</a>. Također možete upravljati kolačićima trećih strana ili ih blokirati putem postavki Vašeg internet preglednika ili našeg panela za kolačiće u podnožju stranice.
+              </p>
+            </div>
           </section>
 
           <section className="space-y-3">

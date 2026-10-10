@@ -394,6 +394,88 @@ export const AboutSection: React.FC = () => {
 
         </div>
 
+        {/* E-E-A-T TRANSPARENCY: UREDNIČKI & AUTORSKI KOLEGIJ */}
+        <div className="mt-20 pt-16 border-t border-[#1A3152] space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00C9A7]/10 border border-[#00C9A7]/30 text-[#00C9A7] text-xs font-mono uppercase tracking-wider font-bold">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>E-E-A-T STANDARDI & AUTORSKA TRANSPARENTNOST</span>
+            </div>
+            <h3 className="font-syne font-extrabold text-2xl sm:text-3xl text-[#F5F0E8]">
+              Autori i Urednički Odbor Portala
+            </h3>
+            <p className="text-xs sm:text-sm text-[#F5F0E8]/70 font-sans leading-relaxed">
+              Svaki stručni članak, vodič kroz javnu upravu i analitički osvrt potpisuju verifikovani inženjeri i urednici sa imenom, prezimenom i mjerljivim iskustvom.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Alen Jusufović Profile */}
+            <div className="p-6 rounded-3xl bg-[#0F2038] border-2 border-[#00C9A7]/40 shadow-xl space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-[#00C9A7] bg-[#0A1628] shrink-0 p-1">
+                  <SafeImage
+                    src="https://i.imgur.com/cXebP1B.jpg"
+                    alt="Alen Jusufović"
+                    fallbackTitle="Alen Jusufović"
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+                <div className="space-y-1 flex-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h4 className="font-syne font-extrabold text-lg text-[#F5F0E8]">Alen Jusufović</h4>
+                    <span className="px-2 py-0.5 rounded bg-[#00C9A7]/20 text-[#00C9A7] text-[10px] font-mono font-bold">
+                      Glavni Inženjer & Osnivač
+                    </span>
+                  </div>
+                  <p className="text-xs font-mono text-[#C9A84C]">B.Sc. Računarstvo • Glavni urednik SCENA+</p>
+                  <span className="text-[11px] font-mono text-[#F5F0E8]/60 block">Zenica, Bosna i Hercegovina</span>
+                </div>
+              </div>
+              <p className="text-xs text-[#F5F0E8]/80 leading-relaxed font-sans">
+                Autor inovativnih alata BH KONVER i BH PapirFinder. Preko 10 godina iskustva u razvoju web aplikacija, digitalizaciji administrativnih procesa i izdavaštvu u BiH.
+              </p>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                <span className="px-2 py-0.5 rounded bg-[#0A1628] text-[10px] font-mono text-[#00C9A7] border border-[#1A3152]">✓ LegalTech & E-Uprava</span>
+                <span className="px-2 py-0.5 rounded bg-[#0A1628] text-[10px] font-mono text-[#00C9A7] border border-[#1A3152]">✓ Softverska Arhitektura</span>
+                <span className="px-2 py-0.5 rounded bg-[#0A1628] text-[10px] font-mono text-[#00C9A7] border border-[#1A3152]">✓ Izdavaštvo & Mediji</span>
+              </div>
+            </div>
+
+            {/* Redakcija & Stručni Kolegij */}
+            <div className="p-6 rounded-3xl bg-[#0F2038] border border-[#1A3152] shadow-xl space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-[#1A3152] bg-[#0A1628] shrink-0 p-1">
+                  <SafeImage
+                    src="https://i.imgur.com/cXebP1B.jpg"
+                    alt="Redakcija B&H Assistant"
+                    fallbackTitle="Redakcija"
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+                <div className="space-y-1 flex-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h4 className="font-syne font-extrabold text-lg text-[#F5F0E8]">Redakcijski Kolegij B&H Assistant</h4>
+                    <span className="px-2 py-0.5 rounded bg-[#C9A84C]/20 text-[#C9A84C] text-[10px] font-mono font-bold">
+                      Stručni Odbor
+                    </span>
+                  </div>
+                  <p className="text-xs font-mono text-[#C9A84C]">Pravna verifikacija • Tehnološke vijesti • Kultura</p>
+                  <span className="text-[11px] font-mono text-[#F5F0E8]/60 block">Zenica / FBiH / ZDK</span>
+                </div>
+              </div>
+              <p className="text-xs text-[#F5F0E8]/80 leading-relaxed font-sans">
+                Tim zadužen za provjeru činjenica, analizu općinskih propisa, praćenje novosti iz sajber sigurnosti i afirmaciju lokalnih poduzetničkih inicijativa.
+              </p>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                <span className="px-2 py-0.5 rounded bg-[#0A1628] text-[10px] font-mono text-[#00C9A7] border border-[#1A3152]">✓ Provjera Činjenica</span>
+                <span className="px-2 py-0.5 rounded bg-[#0A1628] text-[10px] font-mono text-[#00C9A7] border border-[#1A3152]">✓ Administrativna Tačnost</span>
+                <span className="px-2 py-0.5 rounded bg-[#0A1628] text-[10px] font-mono text-[#00C9A7] border border-[#1A3152]">✓ Sajber Zaštita</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

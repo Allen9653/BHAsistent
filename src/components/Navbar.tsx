@@ -111,8 +111,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   // 2. Secondary Items (Available in "Više" dropdown on Desktop & in Drawer on Mobile)
   const secondaryNavItems = [
     { path: '/novosti', label: t('nav.novosti', 'Novosti & Najave'), desc: 'IT vijesti, projekti i saopštenja' },
+    { path: '/#faq', label: 'Česta Pitanja (FAQ)', desc: 'Strukturirani odgovori o alatima i firmi' },
     { path: '/projekti', label: t('nav.projekti', 'Projekti & Partnerstva'), desc: 'ZENTAXI, GUMMI i inovacije' },
-    { path: '/shop', label: t('nav.shop', 'SHOP & Edukacija'), desc: 'Alison besplatni certifikovani kursevi' },
+    { path: '/shop', label: t('nav.shop', 'Resursi & Edukacija'), desc: 'Digitalni alati, edukativni vodiči i znanje' },
     { path: '/politika-privatnosti', label: 'Politika Privatnosti (GDPR)', desc: 'Zaštita podataka i prava korisnika' },
     { path: '/uslovi-koristenja', label: 'Uslovi Korištenja', desc: 'Pravni okvir i uslovi poslovanja' },
   ];

@@ -6,6 +6,8 @@ import { IMAGES } from '../utils/images';
 import { Newspaper, Plus, Edit2, Trash2, Download, Search, X, Calendar, User, Tag, Sparkles, CheckCircle2, ChevronRight, Share2, Globe, ShieldCheck, Video, Play, ExternalLink, HardDrive, Package, ArrowRight, ArrowLeft } from 'lucide-react';
 import { BhKonverVideoModal } from './BhKonverVideoModal';
 import { ArticleVideoPlayer } from './ArticleVideoPlayer';
+import { AuthorProfile } from './AuthorProfile';
+import { SEOHead } from './SEOHead';
 import { useLanguage } from '../context/LanguageContext';
 import { RadixCustomSelect } from './RadixCustomSelect';
 
@@ -28,8 +30,40 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    setArticles(getStoredNews());
+    const loadedArticles = getStoredNews();
+    setArticles(loadedArticles);
+
+    // Deep-link check from URL parameters (?clanak=... or ?slug=... or ?id=...)
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const articleParam = searchParams.get('clanak') || searchParams.get('slug') || searchParams.get('id');
+      if (articleParam) {
+        const matched = loadedArticles.find(
+          (a) => a.slug === articleParam || a.id === articleParam
+        );
+        if (matched) {
+          setActiveArticle(matched);
+        }
+      }
+    } catch (e) {
+      // Ignore URL parsing errors in sandboxed environments
+    }
   }, []);
+
+  const openArticle = (article: NewsArticle) => {
+    setActiveArticle(article);
+    try {
+      const newUrl = `${window.location.pathname}?clanak=${encodeURIComponent(article.slug || article.id)}`;
+      window.history.replaceState({ articleId: article.id }, '', newUrl);
+    } catch (_) {}
+  };
+
+  const closeArticle = () => {
+    setActiveArticle(null);
+    try {
+      window.history.replaceState({}, '', window.location.pathname);
+    } catch (_) {}
+  };
 
   const handleCategorySelect = (cat: string) => {
     if (cat === selectedCategory) return;
@@ -276,14 +310,15 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                         {article.date}
                       </span>
                       <span>•</span>
-                      <span className="flex items-center gap-1 truncate max-w-[140px]">
+                      <span className="flex items-center gap-1 truncate max-w-[170px]" title={article.author}>
                         <User className="w-3.5 h-3.5 text-[#00C9A7]" />
-                        {article.author}
+                        <span className="truncate">{article.author}</span>
+                        <CheckCircle2 className="w-3 h-3 text-[#00C9A7] shrink-0" />
                       </span>
                     </div>
 
                     <h3 
-                      onClick={() => setActiveArticle(article)}
+                      onClick={() => openArticle(article)}
                       className="font-syne font-bold text-lg text-[#F5F0E8] group-hover:text-[#00C9A7] transition-colors leading-snug line-clamp-2 cursor-pointer"
                     >
                       {article.title}
@@ -297,7 +332,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                   {/* Actions Bar */}
                   <div className="pt-4 border-t border-[#1A3152] flex items-center justify-between gap-2">
                     <button
-                      onClick={() => setActiveArticle(article)}
+                      onClick={() => openArticle(article)}
                       className="text-xs font-syne font-bold text-[#00C9A7] hover:text-[#00E5BE] flex items-center gap-1 transition-colors"
                     >
                       <span>Pročitaj članak</span>
@@ -348,28 +383,59 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
       {activeArticle && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1628]/95 backdrop-blur-md animate-fadeIn">
           <div className="relative w-full max-w-3xl rounded-3xl bg-[#0F2038] border border-[#00C9A7]/50 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+            {/* Dynamic Article SEO & Open Graph Headers */}
+            <SEOHead
+              title={`${activeArticle.title} | B&H Assistant d.o.o.`}
+              description={activeArticle.excerpt}
+              canonical={`https://bh-assistant.ba/novosti?clanak=${encodeURIComponent(activeArticle.slug || activeArticle.id)}`}
+              ogType="article"
+              ogImage={normalizeImageUrl(activeArticle.imageUrl)}
+              ogImageAlt={activeArticle.title}
+              author={activeArticle.author}
+              section={activeArticle.category}
+              tags={activeArticle.tags}
+            />
+
             {/* Header */}
             <div className="flex items-center justify-between p-5 border-b border-[#1A3152] bg-[#0A1628]">
               <div className="flex items-center gap-3">
                 <button
-                  onClick={() => setActiveArticle(null)}
+                  onClick={closeArticle}
                   className="px-3 py-1.5 rounded-xl bg-[#0F2038] hover:bg-[#00C9A7] border border-[#00C9A7]/40 text-[#00C9A7] hover:text-[#0A1628] font-syne font-bold text-xs transition-all flex items-center gap-1.5"
                 >
                   <ArrowRight className="w-3.5 h-3.5 rotate-180" />
-                  <span>Nazad / Return</span>
+                  <span>Nazad</span>
                 </button>
                 <span className="px-2.5 py-1 rounded-full bg-[#00C9A7]/20 border border-[#00C9A7]/40 text-[#00C9A7] font-mono font-bold text-[10px] uppercase">
                   {activeArticle.category}
                 </span>
                 <span className="text-xs font-mono text-[#F5F0E8]/60 hidden sm:inline">{activeArticle.date}</span>
               </div>
-              <button
-                onClick={() => setActiveArticle(null)}
-                className="p-2 rounded-xl bg-[#0F2038] text-[#F5F0E8] hover:text-[#00C9A7] transition-colors"
-                aria-label="Zatvori"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    const shareUrl = `${window.location.origin}/novosti?clanak=${encodeURIComponent(activeArticle.slug || activeArticle.id)}`;
+                    if (navigator.share) {
+                      navigator.share({ title: activeArticle.title, text: activeArticle.excerpt, url: shareUrl }).catch(() => {});
+                    } else if (navigator.clipboard) {
+                      navigator.clipboard.writeText(shareUrl);
+                      alert('Link članka je kopiran u međuspremnik!');
+                    }
+                  }}
+                  className="px-2.5 py-1.5 rounded-xl bg-[#0F2038] hover:bg-[#1A3152] text-[#00C9A7] border border-[#00C9A7]/30 transition-colors flex items-center gap-1 text-xs font-mono"
+                  title="Podijeli link članka"
+                >
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Podijeli</span>
+                </button>
+                <button
+                  onClick={closeArticle}
+                  className="p-2 rounded-xl bg-[#0F2038] text-[#F5F0E8] hover:text-[#00C9A7] transition-colors"
+                  aria-label="Zatvori"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
             {/* Content Scroll Area */}
@@ -390,9 +456,19 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                 <h2 className="font-syne font-extrabold text-2xl sm:text-3xl text-[#F5F0E8] mb-3 leading-tight">
                   {activeArticle.title}
                 </h2>
-                <div className="flex items-center gap-2 text-xs font-mono text-[#C9A84C] mb-6 border-b border-[#1A3152] pb-3">
-                  <User className="w-4 h-4 text-[#00C9A7]" />
-                  <span>Autor: {activeArticle.author}</span>
+                <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-[#C9A84C] mb-6 border-b border-[#1A3152] pb-3">
+                  <div className="flex items-center gap-2">
+                    <User className="w-4 h-4 text-[#00C9A7]" />
+                    <span className="font-bold text-[#F5F0E8]">{activeArticle.author}</span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#00C9A7]/10 text-[#00C9A7] text-[10px] font-bold border border-[#00C9A7]/30">
+                      <ShieldCheck className="w-3 h-3 text-[#00C9A7]" />
+                      <span>E-E-A-T Verifikovano</span>
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[11px] text-[#F5F0E8]/50">
+                    <Calendar className="w-3.5 h-3.5 text-[#C9A84C]" />
+                    <span>{activeArticle.date}</span>
+                  </div>
                 </div>
 
                 <div className="text-sm sm:text-base text-[#F5F0E8]/90 font-sans leading-relaxed whitespace-pre-line space-y-4">
@@ -513,6 +589,16 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                   </div>
                 )}
 
+                {/* E-E-A-T AUTHOR PROFILE SECTION */}
+                <div className="my-8">
+                  <AuthorProfile
+                    author={activeArticle.author}
+                    authorId={activeArticle.authorId}
+                    publishDate={activeArticle.date}
+                    category={activeArticle.category}
+                  />
+                </div>
+
                 {activeArticle.tags && activeArticle.tags.length > 0 && (
                   <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#1A3152] mt-8">
                     <Tag className="w-3.5 h-3.5 text-[#00C9A7]" />
@@ -533,14 +619,14 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
               </span>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setActiveArticle(null)}
+                  onClick={closeArticle}
                   className="px-4 py-2 rounded-xl bg-[#0F2038] hover:bg-[#1A3152] border border-[#00C9A7]/40 text-[#00C9A7] font-syne font-bold text-xs transition-colors flex items-center gap-1.5"
                 >
                   <ArrowRight className="w-3.5 h-3.5 rotate-180" />
-                  <span>← Vrati se na novosti (Return)</span>
+                  <span>← Vrati se na novosti</span>
                 </button>
                 <button
-                  onClick={() => setActiveArticle(null)}
+                  onClick={closeArticle}
                   className="px-5 py-2 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs transition-colors"
                 >
                   Zatvori

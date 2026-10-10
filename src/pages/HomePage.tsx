@@ -9,7 +9,10 @@ import { SafeImage } from '../components/SafeImage';
 import { IMAGES } from '../utils/images';
 import { useLanguage } from '../context/LanguageContext';
 import { COMPANY_INFO } from '../data/companyData';
+import { SEOHead } from '../components/SEOHead';
 import { PageSeo } from '../components/PageSeo';
+import { NewsFeed } from '../components/NewsFeed';
+import { FAQ } from '../components/FAQ';
 import {
   ArrowRight,
   Sparkles,
@@ -162,7 +165,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
     },
     {
       id: 'shop',
-      title: t('home.pillar.shop.title', 'Shop & Edukacija'),
+      title: t('home.pillar.shop.title', 'Resursi & Edukacija'),
       subtitle: t('home.pillar.shop.subtitle', 'Edukativni Centar & Alati'),
       desc: t('home.pillar.shop.desc', 'Pristupite besplatnim digitalnim resursima, interaktivnim edukacijama i softverskim alatima B&H Assistant ekosistema.'),
       icon: GraduationCap,
@@ -175,7 +178,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
 
   return (
     <div className="space-y-16 lg:space-y-24">
-      <PageSeo />
+      <SEOHead
+        title="B&H Assistant d.o.o. Zenica | Spajamo Kulture, Stvaramo Šanse"
+        description="Zvanična web platforma IT firme B&H Assistant d.o.o. Zenica. Istražite domaće digitalne alate BH Konver i BH PapirFinder, magazin SCENA+ i IT projekte."
+        canonical="https://bh-assistant.ba/"
+        ogType="website"
+        ogImage="https://i.imgur.com/cXebP1B.jpg"
+        ogImageAlt="B&H Assistant d.o.o. Zenica — Logo i brend"
+      />
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden">
         <StecakBackground />
@@ -407,7 +417,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
         <PromoBannerCarousel onOpenBojanka={onOpenBojanka} />
       </section>
 
-      {/* 5. COMPANY STATS & TRUST BLOCK */}
+      {/* 5. DYNAMIC NEWSFEED (IT Trends, Company Achievements & Community Events) */}
+      <NewsFeed />
+
+      {/* 6. STRUCTURED FAQ (Detailed Answers on Services, Tools, Legal & Mission) */}
+      <FAQ />
+
+      {/* 7. COMPANY STATS & TRUST BLOCK */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#1A3152] border border-[#00C9A7]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center sm:text-left items-center">

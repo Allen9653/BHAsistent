@@ -11,12 +11,28 @@ interface HeroSectionProps {
   onNavigateSection: (secId: string) => void;
 }
 
+interface HeroSlide {
+  type: string;
+  badge: string;
+  badgeColor: string;
+  title: string;
+  motto: string;
+  description: string;
+  image?: string;
+  icon?: React.ComponentType<{ className?: string }>;
+  url?: string;
+  tags: string[];
+  footerText: string;
+  footerAction?: () => void;
+  footerButton: string;
+}
+
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBojanka, onNavigateSection }) => {
   const [heroSlide, setHeroSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const { t } = useLanguage();
 
-  const heroSlides = [
+  const heroSlides: HeroSlide[] = [
     {
       type: 'brand',
       badge: 'B&H ASSISTANT d.o.o.',

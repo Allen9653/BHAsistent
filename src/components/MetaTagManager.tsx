@@ -1,18 +1,18 @@
 import React from 'react';
-import { useMetaTags, RouteMetaConfig } from '../hooks/useMetaTags';
+import { SEOHead, SEOHeadProps } from './SEOHead';
 
-interface MetaTagManagerProps {
-  overrideConfig?: Partial<RouteMetaConfig>;
+export interface MetaTagManagerProps {
+  overrideConfig?: SEOHeadProps;
 }
 
 /**
  * Dynamic Meta-Tag Generator Component
- * Automatically updates document title, description, keywords, canonical URLs,
- * Open Graph, Twitter Cards, and JSON-LD schema based on the current active route.
+ * Powered by SEOHead to dynamically manage document title, description, keywords,
+ * canonical URLs, Open Graph headers, Twitter Cards, and Schema.org JSON-LD
+ * based on current active route, language, and route overrides.
  */
 export const MetaTagManager: React.FC<MetaTagManagerProps> = ({ overrideConfig }) => {
-  useMetaTags(overrideConfig);
-  return null;
+  return <SEOHead {...overrideConfig} />;
 };
 
 export default MetaTagManager;
