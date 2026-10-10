@@ -12,6 +12,7 @@ import { CommunityPage } from './pages/CommunityPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
+import { SearchPage } from './pages/SearchPage';
 
 export default function App() {
   const [isBojankaOpen, setIsBojankaOpen] = useState(false);
@@ -78,6 +79,13 @@ export default function App() {
 
           {/* Contact & Impressum */}
           <Route path="/kontakt" element={<ContactPage />} />
+
+          {/* Site-Wide Search Route */}
+          <Route
+            path="/pretraga"
+            element={<SearchPage onOpenBojanka={() => setIsBojankaOpen(true)} />}
+          />
+          <Route path="/search" element={<Navigate to="/pretraga" replace />} />
 
           {/* Legal Pages (Direct Semantic Routes) */}
           <Route path="/politika-privatnosti" element={<PrivacyPolicyPage />} />

@@ -1,7 +1,10 @@
 import { DIGITAL_TOOLS, DEVELOPMENT_PROJECTS, SCENA_MAGAZINE, AFFILIATE_COURSES } from './companyData';
 import { INITIAL_NEWS, getStoredNews } from './newsData';
+import { INITIAL_NEWS_FEED_UPDATES, getStoredNewsFeed } from './newsFeedData';
+import { FAQ_DATA } from './faqData';
+import { AUTHORS_DATA } from './authorsData';
 
-export type SearchCategory = 'all' | 'tools' | 'projects' | 'articles' | 'education' | 'company';
+export type SearchCategory = 'all' | 'tools' | 'projects' | 'articles' | 'education' | 'company' | 'faq';
 
 export interface SearchItem {
   id: string;
@@ -14,6 +17,8 @@ export interface SearchItem {
   tags: string[];
   badge?: string;
   image?: string;
+  author?: string;
+  date?: string;
 }
 
 /**
@@ -33,7 +38,7 @@ export function normalizeSearchString(text: string): string {
 }
 
 /**
- * Builds the complete searchable catalog across all platforms, tools, projects, and articles
+ * Builds the complete searchable catalog across all tools, articles, projects, updates, and resources
  */
 export function getAllSearchItems(): SearchItem[] {
   const items: SearchItem[] = [];
@@ -54,7 +59,7 @@ export function getAllSearchItems(): SearchItem[] {
     });
   }
 
-  // 2. Development Projects
+  // 2. Development Projects & Initiatives
   for (const proj of DEVELOPMENT_PROJECTS) {
     items.push({
       id: `project-${proj.id}`,
@@ -70,7 +75,7 @@ export function getAllSearchItems(): SearchItem[] {
     });
   }
 
-  // 3. Articles & News (incorporate both storage and initial items)
+  // 3. News Articles
   const allArticles = typeof window !== 'undefined' ? getStoredNews() : INITIAL_NEWS;
   for (const art of allArticles) {
     items.push({
@@ -78,16 +83,36 @@ export function getAllSearchItems(): SearchItem[] {
       title: art.title,
       description: art.excerpt,
       category: 'articles',
-      categoryLabel: 'Članak & Novost',
-      route: '/novosti',
+      categoryLabel: 'Članak & Analiza',
+      route: `/novosti/${art.id}`,
       externalUrl: art.externalUrl,
       tags: [art.category, ...(art.tags || []), art.author],
       badge: art.date,
       image: art.imageUrl,
+      author: art.author,
+      date: art.date,
     });
   }
 
-  // 4. SCENA+ Magazine Topics
+  // 4. Live NewsFeed Updates (IT Trends, Company Achievements & Community)
+  const allFeedUpdates = typeof window !== 'undefined' ? getStoredNewsFeed() : INITIAL_NEWS_FEED_UPDATES;
+  for (const update of allFeedUpdates) {
+    items.push({
+      id: `feed-${update.id}`,
+      title: update.title,
+      description: update.summary,
+      category: 'articles',
+      categoryLabel: update.categoryLabel || 'Novosti & Feed',
+      route: '/novosti',
+      externalUrl: update.linkUrl,
+      tags: [...(update.tags || []), update.author, update.badge],
+      badge: update.badge,
+      author: update.author,
+      date: update.date,
+    });
+  }
+
+  // 5. SCENA+ Magazine Topics
   for (const topic of SCENA_MAGAZINE.topics || []) {
     items.push({
       id: `scena-${topic.title.replace(/\s+/g, '-').toLowerCase()}`,
@@ -102,7 +127,7 @@ export function getAllSearchItems(): SearchItem[] {
     });
   }
 
-  // 5. Digital Products & Educational Resources
+  // 6. Educational Courses & Shop Resources
   for (const course of AFFILIATE_COURSES) {
     items.push({
       id: `course-${course.id}`,
@@ -118,7 +143,37 @@ export function getAllSearchItems(): SearchItem[] {
     });
   }
 
-  // 6. Core Pages & Specialized Features
+  // 7. Author Profiles (E-E-A-T Transparency)
+  for (const [key, author] of Object.entries(AUTHORS_DATA)) {
+    items.push({
+      id: `author-${key}`,
+      title: `${author.name} — ${author.role}`,
+      description: author.bio,
+      category: 'company',
+      categoryLabel: 'Autor & Urednik',
+      route: '/o-nama',
+      tags: [author.credentials, ...(author.specialties || []), author.location, 'E-E-A-T Autor'],
+      badge: author.eeatBadge || 'Verifikovan Profil',
+      image: author.avatarUrl,
+      author: author.name,
+    });
+  }
+
+  // 8. Frequently Asked Questions (FAQ)
+  for (const faq of FAQ_DATA) {
+    items.push({
+      id: `faq-${faq.id}`,
+      title: faq.question,
+      description: faq.answer,
+      category: 'faq',
+      categoryLabel: 'Često Pitanje (FAQ)',
+      route: '/#faq',
+      tags: [...(faq.tags || []), faq.category],
+      badge: 'FAQ Odgovor',
+    });
+  }
+
+  // 9. Core Institutional & Legal Pages
   items.push(
     {
       id: 'page-onama',
@@ -176,7 +231,7 @@ export function getAllSearchItems(): SearchItem[] {
 }
 
 /**
- * Filter search items using a fast client-side scoring algorithm
+ * Filters and scores items using client-side matching algorithm
  */
 export function filterSearchCatalog(
   items: SearchItem[],
@@ -200,12 +255,14 @@ export function filterSearchCatalog(
     const titleNorm = normalizeSearchString(item.title);
     const descNorm = normalizeSearchString(item.description);
     const catNorm = normalizeSearchString(item.categoryLabel);
+    const authorNorm = normalizeSearchString(item.author || '');
     const tagsNorm = item.tags.map(normalizeSearchString).join(' ');
 
     return (
       titleNorm.includes(normalizedQuery) ||
       descNorm.includes(normalizedQuery) ||
       catNorm.includes(normalizedQuery) ||
+      authorNorm.includes(normalizedQuery) ||
       tagsNorm.includes(normalizedQuery)
     );
   });

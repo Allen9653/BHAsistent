@@ -431,6 +431,44 @@ export const MULTILINGUAL_ROUTE_META: Record<string, MultilingualRouteMeta> = {
       ogImageAlt: 'Kullanım Şartları B&H Assistant d.o.o.',
     },
   },
+  '/pretraga': {
+    bs: {
+      title: 'Pretraga Alata, Članaka i Projekata | B&H Assistant d.o.o. Zenica',
+      description: 'Brza interaktivna pretraga digitalnih alata (BH Konver, PapirFinder), autorskih članaka, magazina SCENA+ i razvojnih projekata B&H Assistant.',
+      keywords: 'pretraga alata, pretraga clanaka, bh konver pretraga, papirfinder obrasci, scena magazin, projekti zenica, bh assistant',
+      canonical: 'https://bh-assistant.ba/pretraga',
+      ogType: 'website',
+      ogImage: 'https://i.imgur.com/cXebP1B.jpg',
+      ogImageAlt: 'Pretraga B&H Assistant Platforme',
+    },
+    en: {
+      title: 'Site-Wide Search — Tools, Articles & Projects | B&H Assistant Zenica',
+      description: 'Quickly search all digital tools (BH Konver, PapirFinder), articles, SCENA+ magazine topics, and IT projects across B&H Assistant.',
+      keywords: 'search tools, search articles, bh konver search, bosnia legal forms, scena magazine, it projects zenica',
+      canonical: 'https://bh-assistant.ba/pretraga',
+      ogType: 'website',
+      ogImage: 'https://i.imgur.com/cXebP1B.jpg',
+      ogImageAlt: 'B&H Assistant Site Search',
+    },
+    de: {
+      title: 'Plattformsuche — Tools, Artikel & Projekte | B&H Assistant Zenica',
+      description: 'Durchsuchen Sie alle digitalen Werkzeuge, Artikel und Entwicklungsprojekte von B&H Assistant d.o.o. Zenica.',
+      keywords: 'plattformsuche, tools suchen, artikel durchsuchen, bh assistant zenica',
+      canonical: 'https://bh-assistant.ba/pretraga',
+      ogType: 'website',
+      ogImage: 'https://i.imgur.com/cXebP1B.jpg',
+      ogImageAlt: 'B&H Assistant Plattformsuche',
+    },
+    tr: {
+      title: 'Site İçi Arama — Araçlar, Makaleler ve Projeler | B&H Assistant',
+      description: 'B&H Assistant platformundaki tüm dijital araçları, makaleleri ve projeleri anında arayın ve keşfedin.',
+      keywords: 'site ici arama, arac arama, makale arama, projeler zenica, bh assistant',
+      canonical: 'https://bh-assistant.ba/pretraga',
+      ogType: 'website',
+      ogImage: 'https://i.imgur.com/cXebP1B.jpg',
+      ogImageAlt: 'B&H Assistant Arama',
+    },
+  },
 };
 
 // Route aliases map (pointing to canonical routes)
@@ -444,6 +482,7 @@ export const ROUTE_ALIASES: Record<string, string> = {
   '/privacy-policy': '/politika-privatnosti',
   '/uslovi': '/uslovi-koristenja',
   '/terms': '/uslovi-koristenja',
+  '/search': '/pretraga',
 };
 
 /**

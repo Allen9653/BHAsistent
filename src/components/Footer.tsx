@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { COMPANY_INFO } from '../data/companyData';
-import { Facebook, Instagram, Shield, FileText, Heart, X, Lock, Key, Sliders, ArrowRight, Cookie, Mail, Server, Loader2, Building2 } from 'lucide-react';
+import { Facebook, Instagram, Shield, FileText, Heart, X, Lock, Key, Sliders, ArrowRight, Cookie, Mail, Server, Loader2, Building2, Search } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
@@ -66,6 +66,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
               <li>
                 <Link to="/alati" className="hover:text-[#00C9A7] transition-colors py-1 inline-block font-semibold">
                   Pregled Svih Alata →
+                </Link>
+              </li>
+              <li>
+                <Link to="/pretraga" className="hover:text-[#00C9A7] transition-colors py-1 inline-flex items-center gap-1.5 text-[#00C9A7] font-semibold">
+                  <Search className="w-3.5 h-3.5" />
+                  <span>Pretraga Platforme</span>
                 </Link>
               </li>
               <li>

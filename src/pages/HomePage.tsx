@@ -13,6 +13,7 @@ import { SEOHead } from '../components/SEOHead';
 import { PageSeo } from '../components/PageSeo';
 import { NewsFeed } from '../components/NewsFeed';
 import { FAQ } from '../components/FAQ';
+import { SiteWideSearch } from '../components/SiteWideSearch';
 import {
   ArrowRight,
   Sparkles,
@@ -417,7 +418,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
         <PromoBannerCarousel onOpenBojanka={onOpenBojanka} />
       </section>
 
-      {/* 5. DYNAMIC NEWSFEED (IT Trends, Company Achievements & Community Events) */}
+      {/* 5. CENTRAL SITE-WIDE SEARCH (Instant discovery of tools, articles, magazine topics & projects) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SiteWideSearch
+          variant="section"
+          onOpenBojanka={onOpenBojanka}
+          title="Brza Pretraga Alata, Članaka & Projekata"
+          subtitle="Pronađite domaća IT rješenja (BH Konver, PapirFinder), najnovije tehnološke analize, magazin SCENA+ ili odgovore na česta pitanja."
+        />
+      </section>
+
+      {/* 6. DYNAMIC NEWSFEED (IT Trends, Company Achievements & Community Events) */}
       <NewsFeed />
 
       {/* 6. STRUCTURED FAQ (Detailed Answers on Services, Tools, Legal & Mission) */}
