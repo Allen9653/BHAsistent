@@ -272,7 +272,7 @@ export const DigitalToolsSection: React.FC<DigitalToolsSectionProps> = ({
                       setPreviewTool({
                         title: tool.name,
                         url: tool.url,
-                        futureDomain: tool.id === 'bh-konver' ? 'bh-konver.ba' : tool.id === 'bh-papirfinder' ? 'bh-papirfinder.ba' : 'ornamenti-bosne.ba',
+                        futureDomain: tool.id === 'bh-konver' ? 'bh-konver.com' : tool.id === 'bh-papirfinder' ? 'bh-papirfinder.ba' : 'ornamenti-bosne.ba',
                         badge: tool.badge || 'DIGITALNI ALAT',
                       });
                     }}

@@ -23,7 +23,7 @@ export const DIGITAL_TOOLS: DigitalTool[] = [
     name: "BH Konverter (Konver)",
     tagline: "Univerzalni BH digitalni kalkulator i pravni generator",
     description: "Autorsko softversko rješenje za brze i precizne proračune poreza, valuta, građevinskih i mjernih jedinica, te automatizovano generisanje pravno važećih izjava pod punom krivičnom i materijalnom odgovornošću. U toku je izrada nativnih iOS i Android mobilnih aplikacija uz podršku platforme Lovable.",
-    url: "https://bh-konver.lovable.app/",
+    url: "https://www.bh-konver.com/",
     badge: "POBJEDNIK SEDMICE & NATIVNI APP 🏆",
     category: "Finansije & e-Pravni Alati",
     iconName: "Calculator",
@@ -37,7 +37,7 @@ export const DIGITAL_TOOLS: DigitalTool[] = [
       "Nativne iOS & Android mobilne aplikacije (Lovable partnerstvo) 📱",
       "Kalkulatori valuta, poreza i mjernih jedinica usklađeni sa zakonima BiH 🇧🇦",
       "Brz izvoz dokumenata u PDF format spreman za printanje i potpis",
-      "Primarna zvanična domena u pripremi: www.bh-konver.ba"
+      "Zvanična javna web adresa: www.bh-konver.com"
     ]
   },
   {
@@ -250,7 +250,7 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
       "Automatsko generisanje standardizovanih pravnih izjava",
       "Besplatno za građane i preduzeća u BiH"
     ],
-    affiliateUrl: "https://bh-konver.lovable.app/",
+    affiliateUrl: "https://www.bh-konver.com/",
     category: "IT & Veb Dizajn",
     featured: true,
     image: IMAGES.bhKonverBanner
@@ -423,7 +423,7 @@ export const SOCIAL_POSTS: SocialPost[] = [
   {
     id: "post-konver-2",
     image: IMAGES.bhKonverMockup,
-    caption: "Predstavljamo BH Konverter (Konver) ⚡ Vaš novi omiljeni alat za brze poslovne i devizne kalkulacije, prilagođen zakonima i valutama u BiH. Bez registracije, 100% besplatno i munjevito brzo. Isprobajte na bh-konver.lovable.app 💻🚀",
+    caption: "Predstavljamo BH Konverter (Konver) ⚡ Vaš novi omiljeni alat za brze poslovne i devizne kalkulacije, prilagođen zakonima i valutama u BiH. Bez registracije, 100% besplatno i munjevito brzo. Isprobajte na www.bh-konver.com 💻🚀",
     category: "alati",
     categoryLabel: "BH Digitalni Alati",
     likes: 215,

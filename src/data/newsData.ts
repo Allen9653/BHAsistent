@@ -23,6 +23,53 @@ export function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event
 
 export const INITIAL_NEWS: NewsArticle[] = [
   {
+    id: "news-skilledbridge-radna-snaga-bih",
+    title: "Rješenje za nedostatak radne snage u Vašoj firmi!",
+    slug: "rjesenje-za-nedostatak-radne-snage-skilledbridge",
+    category: "Biznis & Zapošljavanje",
+    date: "23. Oktobar 2026.",
+    author: "Alen Jusufović, SkilledBridge d.o.o. & B&H Assistant",
+    excerpt: "Nedostatak kvalifikovanih i pouzdanih radnika u građevinarstvu, proizvodnji, ugostiteljstvu i uslužnim djelatnostima u BiH zahtijeva hitan i profesionalan odgovor. SkilledBridge d.o.o. nudi legalno rješenje 'ključ u ruke' za uvoz edukovane radne snage iz Azije uz brzu realizaciju, pravnu sigurnost i strogu selekciju.",
+    content: `Tržište rada u Bosni i Hercegovini prolazi kroz najveću krizu radne snage u modernoj historiji. Masovni odliv stanovništva i odlazak stručnog kadra prema zemljama Zapadne Evrope doveli su domaće privrednike pred zid: građevinski projekti kasne, proizvodne linije smanjuju kapacitete, a ugostiteljski i turistički objekti primorani su skraćivati radno vrijeme ili odbijati goste.
+
+Koji su sektori u Bosni i Hercegovini najteže pogođeni?
+
+1. Građevinarstvo i niskogradnja: Izuzetno izražen deficit majstora svih profila — od zidara, tesara, armirača i keramičara do rukovalaca teškom građevinskom mehanizacijom i kranista.
+2. Proizvodnja i prerađivačka industrija: Nedostatak operatera na CNC mašinama, certificiranih zavarivača, bravara, radnika u metalskom, drvnom i prehrambenom sektoru.
+3. Ugostiteljstvo i turizam: Hronični manjak profesionalnih kuhara, pomoćnih radnika u kuhinji, konobara i sobarica u hotelima širom BiH.
+4. Uslužne i logističke djelatnosti: Nedostatak skladištara, vozača teretnih vozila i radnika na održavanju objekata i komunalne infrastrukture.
+
+Za mnoge domaće kompanije, nemogućnost pronalaska odgovarajućeg osoblja više ne predstavlja samo operativni problem — to je postalo direktno pitanje opstanka na tržištu i ispunjavanja ugovorenih obaveza.
+
+Kako SkilledBridge d.o.o. rješava ovaj problem za poslodavce?
+
+SkilledBridge d.o.o. je specijalizovana agencija koja pruža kompletne usluge međunarodne regrutacije, uvoza i pravne dokumentacije za provjerenu i edukovanu radnu snagu iz Azije (Filipini, Nepal, Indija, Vijetnam i druge regije sa visokom koncentracijom kvalifikovanih radnika). 
+
+Umjesto da domaći poslodavac gubi mjesece u komplikovanim birokratskim procedurama, SkilledBridge d.o.o. preuzima cjelokupan proces po modelu "ključ u ruke":
+
+Ključne prednosti saradnje sa SkilledBridge d.o.o.:
+
+• BRZA I EFIKASNA REALIZACIJA: Od inicijalne analize potreba Vaše kompanije do organizovanog dolaska radnika na radno mjesto u BiH, vodimo kompletan vremenski raspored, uključujući logistiku letova i doček kandidata.
+• POTPUNA PRAVNA SIGURNOST: Naš pravni tim preuzima pripremu i predaju sve potrebne dokumentacije pred nadležnim institucijama (kantonalne i entitetske službe za zapošljavanje, Ministarstvo sigurnosti BiH, Služba za poslove sa strancima, MUP). Obezbjeđujemo radne dozvole, privremeni boravak, rješenja i usklađenost sa zakonima o radu.
+• PAŽLJIVA I RIGOROZNA SELEKCIJA KANDIDATA: Svaki kandidat prolazi višestepenu provjeru radnog iskustva, praktično testiranje vještina u struci, provjeru znanja engleskog jezika, detaljne medicinske preglede i obaveznu sigurnosnu provjeru nekažnjavanja.
+• PODRŠKA PRI INTEGRACIJI: Pružamo mentorsku podršku radnicima pri dolasku u Bosnu i Hercegovinu, prilagođavanju lokalnoj kulturi i upoznavanju sa standardima zaštite na radu u Vašoj firmi.
+
+Nemojte dozvoliti da nedostatak radnika zaustavi rast Vašeg biznisa. Osigurajte stabilnu, motivisanu i dugoročnu radnu snagu koja garantuje realizaciju Vaših ugovorenih poslova.
+
+POZIV NA AKCIJU ZA PRIVREDNIKE I POSLODAVCE U BIH:
+
+Prijavite potrebe Vaše firme direktno putem zvanične web stranice:
+👉 https://www.skilledbridge.ba/kontakt
+
+Ili pošaljite direktan upit za besplatne konsultacije i specifikaciju radnih mjesta:
+📧 E-mail: alen.jusufovic@skilledbridge.ba
+
+Zvanični vizuelni identitet i logotip: SkilledBridge d.o.o. (dostupan na https://archive.org/details/skilled-bridge-d.o.o.-logotype).`,
+    imageUrl: IMAGES.skilledBridgeAdBanner,
+    published: true,
+    tags: ["SkilledBridge", "Radna Snaga BiH", "Uvoz Radnika", "Građevinarstvo", "Proizvodnja", "Ugostiteljstvo", "Biznis Partnerstva"]
+  },
+  {
     id: "news-bh-konver-glavna",
     title: "BH KONVER – Autorski softver za brze konverzije i pravne izjave u BiH",
     slug: "bh-konver-autorski-softver-pravne-izjave",
@@ -32,7 +79,7 @@ export const INITIAL_NEWS: NewsArticle[] = [
     excerpt: "Predstavljamo BH KONVER — napredni domaći web alat za konverziju valuta, obračune taksi i automatsko generisanje službenih pravnih izjava spremnih za print i ovjeru pred notarom ili u općini.",
     content: `BH KONVER predstavlja vodeće autorsko softversko rješenje u tehnološkom portfoliju domaće IT kompanije B&H Assistant d.o.o. sa sjedištem u Zenici. Aplikacija je ciljano koncipirana i razvijena kako bi riješila svakodnevne administrativne, pravne i finansijske barijere sa kojima se suočavaju građani, preduzetnici i pravni subjekti širom Bosne i Hercegovine.
 
-Ključna inovacija BH KONVER alata ogleda se u automatizovanom generatoru standardizovanih pravnih izjava pod punom materijalnom i krivičnom odgovornošću. Korisnici više ne moraju ručno sastavljati komplikovane pravne formulacije niti plaćati skupe advokatske nacrte za tipske dokumente. Kroz intuitivnu formu na web domeni bh-konver.lovable.app, građani unose osnovne podatke, a softver u realnom vremenu generiše pravno validne obrasce prilagođene zakonodavstvu Federacije Bosne i Hercegovine i Republike Srpske. Među najčešće korištenim obrascima nalaze se:
+Ključna inovacija BH KONVER alata ogleda se u automatizovanom generatoru standardizovanih pravnih izjava pod punom materijalnom i krivičnom odgovornošću. Korisnici više ne moraju ručno sastavljati komplikovane pravne formulacije niti plaćati skupe advokatske nacrte za tipske dokumente. Kroz intuitivnu formu na web domeni www.bh-konver.com, građani unose osnovne podatke, a softver u realnom vremenu generiše pravno validne obrasce prilagođene zakonodavstvu Federacije Bosne i Hercegovine i Republike Srpske. Među najčešće korištenim obrascima nalaze se:
 • Izjava o zajedničkom domaćinstvu (kućna lista) za potrebe stipendija, dječijih dodataka i socijalnih davanja;
 • Izjava o izdržavanju članova uže i šire porodice;
 • Izjava o neposjedovanju nepokretne imovine i stambenog prostora;
@@ -43,7 +90,7 @@ Svaki generisani dokument automatski se formatira prema propisanim standardima o
 
 Pored pravnog modula, BH KONVER posjeduje i visoko precizni kalkulator valuta i finansijskih naknada. Konverzioni mehanizam usklađen je sa zvaničnim kursnim listama Centralne Banke Bosne i Hercegovine (CBBiH), omogućavajući trenutne i tačne preračune između konvertibilne marke (BAM), eura (EUR), američkog dolara (USD), švicarskog franka (CHF) i drugih vodećih svjetskih valuta. Za razliku od generičkih globalnih kalkulatora, BH KONVER automatski uračunava domaće bankarske provizije, administrativne takse i specifičnosti bh. platnog prometa.
 
-Korištenje osnovnih funkcionalnosti aplikacije u potpunosti je besplatno za sve građane Bosne i Hercegovine i dijasporu. Aplikacija poštuje najviše standarde privatnosti korisničkih podataka: svi uneseni podaci obrađuju se isključivo u lokalnom pretraživaču (client-side) i ne pohranjuju se na udaljene servere bez izričitog odobrenja korisnika. Isprobajte aplikaciju na adresi https://bh-konver.lovable.app/.`,
+Korištenje osnovnih funkcionalnosti aplikacije u potpunosti je besplatno za sve građane Bosne i Hercegovine i dijasporu. Aplikacija poštuje najviše standarde privatnosti korisničkih podataka: svi uneseni podaci obrađuju se isključivo u lokalnom pretraživaču (client-side) i ne pohranjuju se na udaljene servere bez izričitog odobrenja korisnika. Isprobajte aplikaciju na adresi https://www.bh-konver.com/.`,
     imageUrl: IMAGES.bhKonverMockup,
     published: true,
     tags: ["BH Konver", "Softver", "Pravne Izjave", "Digitalni Alati", "B&H Assistant", "Zenica"]
@@ -351,7 +398,7 @@ Prezentaciju i katalog možete naručiti ili pregledati putem našeg odjeljka za
     content: `Kao mlada, inovativna i zvanično registrovana domaća IT firma u Zenici (JIB 4219296620005, MBS 43-01-0177-25), B&H Assistant d.o.o. izgradila je jedinstven digitalni ekosistem koji spaja privredni razvoj, praktičnu pomoć građanima, očuvanje kulturne baštine i nezavisno izdavaštvo.
 
 Naš suite trenutno obuhvata sljedeće integrisane platforme i usluge:
-1. BH KONVER (bh-konver.lovable.app): Nagrađivani kalkulator poreza, valuta i generator službenih pravnih izjava. Pobjednik Bravo takmičenja i Aplikacija Sedmice na Lovable platformi, sa predstojećim nativnim iOS i Android aplikacijama.
+1. BH KONVER (www.bh-konver.com): Nagrađivani kalkulator poreza, valuta i generator službenih pravnih izjava. Pobjednik Bravo takmičenja i Aplikacija Sedmice na Lovable platformi, sa predstojećim nativnim iOS i Android aplikacijama.
 2. BH PapirFinder (bhpapirfinder.atoms.world): Centralni registar i digitalni vodič za administrativne takse, obrasce i e-upravu koji štedi sate čekanja na općinskim šalterima.
 3. Ornamenti Bosne: Digitalizovana kolekcija stećaka i kulturne baštine na USB memorijskom sticku sa sigurnom dostavom na adresu i plaćanjem pouzećem.
 4. SCENA+ Magazin: Prvi urbani magazin Zeničko-dobojskog kantona sa printanim izdanjem (podijeljeno 300 besplatnih primjeraka) i interaktivnim e-čitačem.

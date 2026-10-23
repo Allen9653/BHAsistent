@@ -13,7 +13,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     id: "faq-bh-konver-how-it-works",
     question: "Kako funkcioniše softverski alat BH Konver i zašto je proglašen pobjednikom sedmice?",
-    answer: "BH Konver (dostupan na bh-konver.lovable.app) je univerzalni digitalni kalkulator i generator pravnih izjava. Omogućava građanima, preduzetnicima i dijaspori izračun poreza, konverziju valuta po zvaničnim kursevima CBBiH, proračun građevinskih i mjernih jedinica, te automatsko kreiranje pravno validnih pisanih izjava pod punom krivičnom i materijalnom odgovornošću u PDF formatu. Zbog inovativnog pristupa i rješavanja stvarnih problema građana, alat je proglašen 'App of the Week' na globalnoj platformi Lovable, koja trenutno podržava razvoj nativnih mobilnih aplikacija za iOS i Android.",
+    answer: "BH Konver (dostupan na zvaničnoj adresi www.bh-konver.com) je univerzalni digitalni kalkulator i generator pravnih izjava. Omogućava građanima, preduzetnicima i dijaspori izračun poreza, konverziju valuta po zvaničnim kursevima CBBiH, proračun građevinskih i mjernih jedinica, te automatsko kreiranje pravno validnih pisanih izjava pod punom krivičnom i materijalnom odgovornošću u PDF formatu. Zbog inovativnog pristupa i rješavanja stvarnih problema građana, alat je proglašen 'App of the Week' na globalnoj platformi Lovable, koja trenutno podržava razvoj nativnih mobilnih aplikacija za iOS i Android.",
     category: "alati",
     categoryLabel: "Digitalni Alati",
     tags: ["BH Konver", "Lovable", "Pravne izjave", "Kalkulator"],

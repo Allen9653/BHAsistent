@@ -58,7 +58,7 @@ export const ProductsPresentationCarousel: React.FC<ProductsPresentationCarousel
       icon: Calculator,
       themeColor: '#00C9A7',
       primaryActionText: 'Isprobaj BH Konver Uživo',
-      primaryActionLink: 'https://bh-konver.lovable.app',
+      primaryActionLink: 'https://www.bh-konver.com/',
       secondaryActionText: 'Pogledaj Demo Video',
       secondaryActionLink: 'https://youtu.be/shBDQQvmZiY',
     },

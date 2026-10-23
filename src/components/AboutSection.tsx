@@ -162,7 +162,7 @@ export const AboutSection: React.FC = () => {
                   </div>
                 </div>
                 <a
-                  href="https://bh-konver.lovable.app/"
+                  href="https://www.bh-konver.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-2 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] text-[#00C9A7] hover:text-[#0A1628] border border-[#00C9A7]/30 font-syne font-bold text-xs shrink-0 transition-colors flex items-center gap-1"

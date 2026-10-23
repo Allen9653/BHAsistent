@@ -133,6 +133,11 @@ export const IMAGES = {
   touchBanner: 'https://archive.org/download/touch_logo_promo_banner/touch_logo_promo_banner.png',
   cloudtalkBanner: 'https://i.imgur.com/5rTpp9F.jpg',
 
+  // SkilledBridge d.o.o. B2B Recruitment Visuals & Logotype
+  skilledBridgeAdBanner: '/src/assets/images/skilledbridge_b2b_ad_1792786595176.jpg',
+  skilledBridgeLogo: 'https://archive.org/download/skilled-bridge-d.o.o.-logotype/SkilledBridge%20d.o.o._logotype.png',
+  skilledBridgeLogoLocal: '/src/assets/images/skilledbridge_logo.png',
+
   // BiH Football Team Congratulation Banner (Archive.org & Local)
   bihPobjedaBanner: '/images/cestitka-zmajevi-2026.jpg',
   bihPobjedaArchiveDirect: 'https://archive.org/download/cestitka-za-nase-momke-2026/%C4%8Cestitka%20za%20na%C5%A1e%20momke%202026.jpg',

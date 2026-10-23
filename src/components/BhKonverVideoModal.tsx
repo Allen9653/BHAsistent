@@ -24,9 +24,9 @@ export const BhKonverVideoModal: React.FC<BhKonverVideoModalProps> = ({ isOpen, 
       highlight: "Maksimalna Privatnost Podataka"
     },
     {
-      title: "3. Višejezični Mod & Priprema za Zvaničnu Domenu",
-      desc: "U toku je prošiđenje kompletnog prijevoda (Engleski, Njemački, Turski, Ćirilica) na cijelu aplikaciju uoči zakupa domene www.bh-konver.ba.",
-      highlight: "Kominiciramo sa Lovable Platformom"
+      title: "3. Višejezični Mod & Zvanična Javna Domena",
+      desc: "U toku je proširenje kompletnog prijevoda (Engleski, Njemački, Turski, Ćirilica) na cijelu aplikaciju na zvaničnoj domeni www.bh-konver.com.",
+      highlight: "Komuniciramo sa Lovable Platformom"
     }
   ];
 
@@ -60,7 +60,7 @@ export const BhKonverVideoModal: React.FC<BhKonverVideoModalProps> = ({ isOpen, 
                 </span>
               </h3>
               <p className="text-xs text-[#C9A84C] font-mono">
-                Pregled korisničkog iskustva i plan razvoja za www.bh-konver.ba
+                Pregled korisničkog iskustva i novosti za www.bh-konver.com
               </p>
             </div>
           </div>
@@ -165,7 +165,7 @@ export const BhKonverVideoModal: React.FC<BhKonverVideoModalProps> = ({ isOpen, 
                 <span>Završna Nadogradnja Prijevoda</span>
               </div>
               <p className="text-[#F5F0E8]/80 leading-relaxed font-sans">
-                Prijevodi (Engleski, Njemački, Turski, Ćirilica) se trenutno kompletiraju na svim podstranicama u saradnji sa razvojnim timom. Slijedi zakup zvanične domene <strong className="text-[#00C9A7]">www.bh-konver.ba</strong> i lansiranje u produkciju!
+                Prijevodi (Engleski, Njemački, Turski, Ćirilica) se trenutno kompletiraju na svim podstranicama u saradnji sa razvojnim timom na zvaničnoj domeni <strong className="text-[#00C9A7]">www.bh-konver.com</strong>.
               </p>
             </div>
 
@@ -177,12 +177,12 @@ export const BhKonverVideoModal: React.FC<BhKonverVideoModalProps> = ({ isOpen, 
               Razvijeno u sklopu IT alata B&H Assistant d.o.o. Zenica
             </span>
             <a
-              href="https://bh-konver.lovable.app/"
+              href="https://www.bh-konver.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs tracking-wide flex items-center gap-2 shadow-lg shadow-[#00C9A7]/20 transition-all hover:scale-105"
             >
-              <span>Otvori Testnu BH KONVER Aplikaciju</span>
+              <span>Otvori Zvaničnu BH KONVER Aplikaciju</span>
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { StecakBackground } from './StecakBackground';
 import { ArrowRight, Sparkles, Download, Layers, BookOpen, Compass, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Briefcase } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
@@ -129,6 +130,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBojanka, onNavig
               {t('hero.subtitle', 'B&H Assistant d.o.o. Zenica spaja moderne IT tehnologije, besplatne alate za bh. građane, urbani magazin SCENA+ i kulturnu baštinu stećaka u jedinstven ekosistem.')}
             </p>
 
+            {/* Slogan Entrance Animation: Fade in & slide up gracefully */}
+            <motion.div
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-[#0F2038]/90 border border-[#C9A84C]/50 text-[#C9A84C] text-xs sm:text-sm font-mono font-bold tracking-wider uppercase shadow-lg shadow-[#C9A84C]/5 backdrop-blur-md"
+            >
+              <Sparkles className="w-4 h-4 text-[#00C9A7] shrink-0 animate-pulse" />
+              <span>{t('hero.motto', 'SPAJAMO KULTURE - STVARAMO ŠANSE')}</span>
+            </motion.div>
+
             {/* Key Feature Badges Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               <div className="p-3 rounded-xl bg-[#0F2038]/80 border border-[#1A3152] backdrop-blur-sm flex items-start gap-2.5">
@@ -162,8 +174,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBojanka, onNavig
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-4">
+            {/* Primary Action Buttons Entrance Animation: Fade in & slide up gracefully */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-3 pt-4"
+            >
               <button
                 onClick={() => onNavigateSection('alati')}
                 className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#00C9A7] to-[#00A88B] text-[#0A1628] font-syne font-bold text-xs sm:text-sm tracking-wide shadow-xl shadow-[#00C9A7]/25 hover:shadow-[#00C9A7]/40 hover:scale-[1.02] transition-all flex items-center gap-2 min-h-[44px]"
@@ -198,7 +215,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBojanka, onNavig
                 <Download className="w-4 h-4" />
                 <span>{t('hero.btnBojanka', 'Preuzmi Gummi Bojanku')}</span>
               </button>
-            </div>
+            </motion.div>
 
             {/* Legal Company Banner */}
             <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-mono text-[#F5F0E8]/60 border-t border-[#1A3152]/60">

@@ -83,6 +83,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.statTools': 'BH Digitalna Alata',
     'hero.statHub': 'Zenica d.o.o.',
     'hero.statSolutions': '100% Autorska Rješenja',
+    'hero.motto': 'SPAJAMO KULTURE - STVARAMO ŠANSE',
+    'company.motto': 'SPAJAMO KULTURE - STVARAMO ŠANSE',
 
     // Hero Carousel
     'hero.slide.brand.title': 'B&H ASSISTANT d.o.o.',
@@ -390,6 +392,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.statTools': 'BH Digital Tools',
     'hero.statHub': 'Zenica LLC',
     'hero.statSolutions': '100% Proprietary Tech',
+    'hero.motto': 'SPAJAMO KULTURE - STVARAMO ŠANSE',
+    'company.motto': 'SPAJAMO KULTURE - STVARAMO ŠANSE',
 
     // Hero Carousel
     'hero.slide.brand.title': 'B&H ASSISTANT Ltd.',
@@ -697,6 +701,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.statTools': 'BH Digitale Tools',
     'hero.statHub': 'Zenica GmbH',
     'hero.statSolutions': '100% Eigene Software',
+    'hero.motto': 'SPAJAMO KULTURE - STVARAMO ŠANSE',
+    'company.motto': 'SPAJAMO KULTURE - STVARAMO ŠANSE',
 
     // Hero Carousel
     'hero.slide.brand.title': 'B&H ASSISTANT GmbH',
@@ -1004,6 +1010,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.statTools': 'BH Dijital Araç',
     'hero.statHub': 'Zenica Ltd. Şti.',
     'hero.statSolutions': '%100 Yerli Yazılım',
+    'hero.motto': 'SPAJAMO KULTURE - STVARAMO ŠANSE',
+    'company.motto': 'SPAJAMO KULTURE - STVARAMO ŠANSE',
 
     // Hero Carousel
     'hero.slide.brand.title': 'B&H ASSISTANT Ltd. Şti.',

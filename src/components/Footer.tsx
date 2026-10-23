@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 </Link>
               </li>
               <li>
-                <a href="https://bh-konver.lovable.app/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                <a href="https://www.bh-konver.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
                   BH Konverter (Konver)
                 </a>
               </li>

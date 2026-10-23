@@ -2,6 +2,25 @@ import { NewsFeedUpdate } from '../types';
 
 export const INITIAL_NEWS_FEED_UPDATES: NewsFeedUpdate[] = [
   {
+    id: "feed-skilledbridge-radna-snaga",
+    title: "Rješenje za nedostatak radne snage u Vašoj firmi – Partnerstvo sa SkilledBridge d.o.o.",
+    summary: "SkilledBridge d.o.o. omogućava domaćim poslodavcima u građevinarstvu, industriji i ugostiteljstvu legalan uvoz edukovane i testirane radne snage iz Azije po modelu ključ u ruke.",
+    fullContent: `Usljed akutnog deficita radne snage u Bosni i Hercegovini, kompanija SkilledBridge d.o.o. nudi sveobuhvatno rješenje za domaće privrednike. 
+
+Preuzimamo cjelokupnu proceduru regrutacije, viza, boravišnih i radnih dozvola, te selekcije provjerenih stručnjaka iz Azije (građevina, industrija, ugostiteljstvo i transport). Prijavite potrebe svoje kompanije na https://www.skilledbridge.ba/kontakt ili putem e-maila alen.jusufovic@skilledbridge.ba.`,
+    category: "community",
+    categoryLabel: "Biznis & Tržište Rada",
+    badge: "B2B RJEŠENJE 💼",
+    date: "23. Oktobar 2026.",
+    timestamp: Date.now() - 1000 * 60 * 15,
+    author: "Alen Jusufović, SkilledBridge d.o.o.",
+    readTime: "3 min",
+    linkUrl: "https://www.skilledbridge.ba/kontakt",
+    linkText: "Prijavi Potrebe Firme",
+    tags: ["SkilledBridge", "Radna Snaga", "Biznis", "Građevinarstvo", "Ugostiteljstvo"],
+    source: "SkilledBridge d.o.o."
+  },
+  {
     id: "feed-lovable-winner",
     title: "BH KONVER proglašen pobjednikom sedmice na globalnoj platformi Lovable",
     summary: "Autorski alat B&H Assistant tima iz Zenice prepoznat je među hiljadama aplikacija širom svijeta. Pokrenut je razvoj nativnih mobilnih aplikacija za iOS i Android.",
@@ -19,7 +38,7 @@ Zahvaljujemo svim korisnicima koji su testirali rane verzije alata i doprinijeli
     timestamp: Date.now() - 1000 * 60 * 60 * 2, // 2 hours ago
     author: "B&H Assistant Razvojni Tim",
     readTime: "2 min",
-    linkUrl: "https://bh-konver.lovable.app/",
+    linkUrl: "https://www.bh-konver.com/",
     linkText: "Isprobaj BH Konver",
     tags: ["BH Konver", "Lovable", "Priznanje", "Mobilne Aplikacije"],
     source: "Zvanično Saopštenje"
