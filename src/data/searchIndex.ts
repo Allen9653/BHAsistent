@@ -84,7 +84,7 @@ export function getAllSearchItems(): SearchItem[] {
       description: art.excerpt,
       category: 'articles',
       categoryLabel: 'Članak & Analiza',
-      route: `/novosti/${art.id}`,
+      route: `/novosti?clanak=${encodeURIComponent(art.slug || art.id)}`,
       externalUrl: art.externalUrl,
       tags: [art.category, ...(art.tags || []), art.author],
       badge: art.date,
@@ -93,6 +93,37 @@ export function getAllSearchItems(): SearchItem[] {
       date: art.date,
     });
   }
+
+  // Guaranteed direct SkilledBridge B2B search item
+  items.push({
+    id: 'partnership-skilledbridge-b2b',
+    title: 'SkilledBridge d.o.o. – Rješenje za nedostatak radne snage u Vašoj firmi!',
+    description: 'Kompletne usluge regrutacije, uvoza i pravne dokumentacije za kvalifikovanu radnu snagu iz Azije za građevinarstvo, proizvodnju i ugostiteljstvo u BiH.',
+    category: 'articles',
+    categoryLabel: 'B2B Partnerstvo & Zapošljavanje',
+    route: '/novosti?clanak=rjesenje-za-nedostatak-radne-snage-skilledbridge',
+    externalUrl: 'https://www.skilledbridge.ba/kontakt',
+    tags: [
+      'skilledbridge',
+      'skilled bridge',
+      'radna snaga',
+      'nedostatak radne snage',
+      'građevinarstvo',
+      'građevina',
+      'proizvodnja',
+      'ugostiteljstvo',
+      'uvoz radnika',
+      'radnici iz azije',
+      'radne dozvole',
+      'poslodavci bih',
+      'alen jusufovic',
+      'b2b regrutacija'
+    ],
+    badge: 'B2B RJEŠENJE 💼',
+    image: '/src/assets/images/skilledbridge_b2b_ad_1792786595176.jpg',
+    author: 'Alen Jusufović, SkilledBridge d.o.o.',
+    date: '23. Oktobar 2026.',
+  });
 
   // 4. Live NewsFeed Updates (IT Trends, Company Achievements & Community)
   const allFeedUpdates = typeof window !== 'undefined' ? getStoredNewsFeed() : INITIAL_NEWS_FEED_UPDATES;
@@ -257,13 +288,24 @@ export function filterSearchCatalog(
     const catNorm = normalizeSearchString(item.categoryLabel);
     const authorNorm = normalizeSearchString(item.author || '');
     const tagsNorm = item.tags.map(normalizeSearchString).join(' ');
+    const combinedNorm = `${titleNorm} ${descNorm} ${catNorm} ${authorNorm} ${tagsNorm}`;
 
-    return (
-      titleNorm.includes(normalizedQuery) ||
-      descNorm.includes(normalizedQuery) ||
-      catNorm.includes(normalizedQuery) ||
-      authorNorm.includes(normalizedQuery) ||
-      tagsNorm.includes(normalizedQuery)
-    );
+    // Direct substring match
+    if (combinedNorm.includes(normalizedQuery)) {
+      return true;
+    }
+
+    // Tokenized search for multi-word or comma-separated queries
+    // (e.g. "SkilledBridge, radna snaga, građevinarstvo, uvoz radnika")
+    const tokens = normalizedQuery
+      .split(/[\s,;]+/)
+      .map((t) => t.trim())
+      .filter((t) => t.length > 1);
+
+    if (tokens.length > 0) {
+      return tokens.some((token) => combinedNorm.includes(token));
+    }
+
+    return false;
   });
 }

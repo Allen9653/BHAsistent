@@ -57,15 +57,15 @@ const CATEGORY_TABS: {
 ];
 
 const POPULAR_SEARCHES = [
+  'SkilledBridge (Radna Snaga)',
   'BH Konver',
+  'Uvoz Radnika',
   'BH PapirFinder',
   'Ornamenti Bosne',
   'SCENA+ Magazin',
   'Alen Jusufović',
   'Gummi Bojanka',
   'Pravne Izjave',
-  'CompanyWall Bonitet',
-  'Lovable Pobjednik',
   'ZENTAXI'
 ];
 

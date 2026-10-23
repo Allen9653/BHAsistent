@@ -63,6 +63,10 @@ export default function App() {
             path="/novosti"
             element={<NewsPage onOpenAdmin={() => setIsAdminOpen(true)} />}
           />
+          <Route
+            path="/novosti/:slug"
+            element={<NewsPage onOpenAdmin={() => setIsAdminOpen(true)} />}
+          />
 
           {/* Projects Seeking Partners & Kids Coloring Book */}
           <Route

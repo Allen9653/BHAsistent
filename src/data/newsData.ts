@@ -67,7 +67,21 @@ Ili pošaljite direktan upit za besplatne konsultacije i specifikaciju radnih mj
 Zvanični vizuelni identitet i logotip: SkilledBridge d.o.o. (dostupan na https://archive.org/details/skilled-bridge-d.o.o.-logotype).`,
     imageUrl: IMAGES.skilledBridgeAdBanner,
     published: true,
-    tags: ["SkilledBridge", "Radna Snaga BiH", "Uvoz Radnika", "Građevinarstvo", "Proizvodnja", "Ugostiteljstvo", "Biznis Partnerstva"]
+    tags: [
+      "SkilledBridge",
+      "skilledbridge",
+      "radna snaga",
+      "nedostatak radne snage",
+      "građevinarstvo",
+      "proizvodnja",
+      "ugostiteljstvo",
+      "uvoz radnika",
+      "radnici iz azije",
+      "radne dozvole bih",
+      "poslodavci bih",
+      "Biznis Partnerstva",
+      "Alen Jusufović"
+    ]
   },
   {
     id: "news-bh-konver-glavna",
@@ -412,7 +426,7 @@ Pozivamo domaće kompanije, općinske službe i omladinske organizacije da nam s
   }
 ];
 
-const STORAGE_KEY = 'bh_assistant_news_articles';
+const STORAGE_KEY = 'bh_assistant_news_articles_v3';
 
 const AFFILIATE_ARTICLE_IDS = new Set([
   'news-job-media-buyer',

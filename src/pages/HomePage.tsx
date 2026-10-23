@@ -174,6 +174,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
       badge: t('home.pillar.shop.badge', 'Edukativni Centar'),
       color: 'from-[#00C9A7]/20 to-[#C9A84C]/10 border-[#00C9A7]/40 text-[#00C9A7]',
       link: '/shop'
+    },
+    {
+      id: 'skilledbridge',
+      title: 'SkilledBridge d.o.o.',
+      subtitle: 'Uvoz Radne Snage & B2B Regrutacija',
+      desc: 'Rješenje za deficit radnika u BiH: regrutacija, uvoz i kompletna pravna dokumentacija za edukovanu radnu snagu iz Azije po modelu "ključ u ruke".',
+      icon: Briefcase,
+      image: IMAGES.skilledBridgeAdBanner,
+      logo: IMAGES.skilledBridgeLogoLocal,
+      badge: 'B2B PARTNER • RADNA SNAGA',
+      color: 'from-[#00C9A7]/20 to-[#C9A84C]/10 border-[#00C9A7]/40 text-[#00C9A7]',
+      link: '/novosti?clanak=rjesenje-za-nedostatak-radne-snage-skilledbridge',
+      externalUrl: 'https://www.skilledbridge.ba/kontakt'
     }
   ];
 
@@ -394,6 +407,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
                       fallbackTitle={p.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                    {p.logo && (
+                      <div className="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-[#0A1628]/95 border border-[#00C9A7]/50 backdrop-blur-sm shadow-md flex items-center">
+                        <img src={p.logo} alt="Logo" className="h-4 w-auto object-contain" />
+                      </div>
+                    )}
                   </div>
 
                   {/* Title & Desc */}
@@ -411,14 +429,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
                 </div>
 
                 {/* Bottom Link CTA */}
-                <div className="pt-5 mt-4 border-t border-[#1A3152]/60">
+                <div className="pt-5 mt-4 border-t border-[#1A3152]/60 flex items-center gap-2">
                   <Link
                     to={p.link}
-                    className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] border border-[#1A3152] hover:border-[#00C9A7] text-xs font-syne font-bold text-[#F5F0E8] hover:text-[#0A1628] transition-all group-hover:shadow-md"
+                    className="flex-1 flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] border border-[#1A3152] hover:border-[#00C9A7] text-xs font-syne font-bold text-[#F5F0E8] hover:text-[#0A1628] transition-all group-hover:shadow-md"
                   >
-                    <span>{t('home.openPage', 'Otvori Stranicu')}</span>
+                    <span>{p.externalUrl ? 'Pročitaj Članak' : t('home.openPage', 'Otvori Stranicu')}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
+                  {p.externalUrl && (
+                    <a
+                      href={p.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Prijavite potrebe firme na SkilledBridge web stranici"
+                      className="px-3 py-2.5 rounded-xl bg-[#00C9A7]/15 hover:bg-[#00C9A7] border border-[#00C9A7]/40 text-[#00C9A7] hover:text-[#0A1628] text-xs font-syne font-bold transition-all flex items-center justify-center shrink-0"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
               </div>
             );
