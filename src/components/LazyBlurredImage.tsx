@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Layers, Image as ImageIcon } from 'lucide-react';
+import {
+  getResilientImageCandidates,
+  recordWorkingImageUrl,
+  getProxyImageUrl
+} from '../utils/imageUtils';
 
 export interface LazyBlurredImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
+  fallbackSrc?: string;
   fallbackTitle?: string;
   fallbackSubtitle?: string;
   fallbackIcon?: React.ReactNode;
@@ -13,6 +19,7 @@ export interface LazyBlurredImageProps extends React.ImgHTMLAttributes<HTMLImage
   blurIntensity?: 'low' | 'medium' | 'high';
   priority?: boolean;
   blurPlaceholderColor?: string;
+  crossOrigin?: '' | 'anonymous' | 'use-credentials';
 }
 
 // Map of Imgur hash IDs to their fallback paths
@@ -107,30 +114,17 @@ function getCandidateUrls(rawSrc: string): string[] {
     return candidates;
   }
 
-  // Archive.org URLs
-  if (trimmed.includes('archive.org')) {
-    const directUrl = trimmed.includes('/details/')
-      ? trimmed.replace('/details/', '/download/')
-      : trimmed;
-    
-    // If it points to an item without specific file extension
-    const hasExtension = /\.(png|jpe?g|webp|gif|svg)$/i.test(directUrl);
-    if (!hasExtension) {
-      const parts = directUrl.split('/');
-      const itemId = parts[parts.length - 1] || parts[parts.length - 2];
-      if (itemId) {
-        addCandidate(`${directUrl}/${itemId}.png`);
-        addCandidate(`${directUrl}/${itemId}.jpg`);
-        addCandidate(`${directUrl}/${itemId}.jpeg`);
-        addCandidate(`${directUrl}/touch_logo_promo_banner.png`);
-        addCandidate(`${directUrl}/touch_logo_promo_banner.jpg`);
-      }
-      addCandidate(`${directUrl}.png`);
-      addCandidate(`${directUrl}.jpg`);
-    }
+  // SkilledBridge d.o.o. Special Candidate Mapping with CORS & Proxy Support
+  if (trimmed.includes('skilledbridge') || trimmed.includes('skilled-bridge')) {
+    const resilient = getResilientImageCandidates(trimmed);
+    resilient.forEach(addCandidate);
+    return candidates;
+  }
 
-    addCandidate(directUrl);
-    addCandidate(trimmed);
+  // Archive.org URLs with CORS & Proxy Support
+  if (trimmed.includes('archive.org')) {
+    const resilient = getResilientImageCandidates(trimmed);
+    resilient.forEach(addCandidate);
     return candidates;
   }
 
@@ -186,6 +180,7 @@ function getCandidateUrls(rawSrc: string): string[] {
 export const LazyBlurredImage: React.FC<LazyBlurredImageProps> = ({
   src,
   alt,
+  fallbackSrc,
   fallbackTitle,
   fallbackSubtitle,
   fallbackIcon,
@@ -196,6 +191,8 @@ export const LazyBlurredImage: React.FC<LazyBlurredImageProps> = ({
   blurIntensity = 'medium',
   priority = false,
   blurPlaceholderColor = '#0A1628',
+  crossOrigin,
+  referrerPolicy = 'no-referrer',
   onLoad,
   onError,
   ...props
@@ -203,20 +200,29 @@ export const LazyBlurredImage: React.FC<LazyBlurredImageProps> = ({
   const [isInView, setIsInView] = useState(priority);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [candidateList, setCandidateList] = useState<string[]>(() => getCandidateUrls(src));
+  const [candidateList, setCandidateList] = useState<string[]>(() => {
+    const list = getCandidateUrls(src);
+    if (fallbackSrc && !list.includes(fallbackSrc)) {
+      list.push(fallbackSrc);
+    }
+    return list;
+  });
   const [candidateIndex, setCandidateIndex] = useState(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  // Sync candidate list whenever src changes
+  // Sync candidate list whenever src or fallbackSrc changes
   useEffect(() => {
     const list = getCandidateUrls(src);
+    if (fallbackSrc && !list.includes(fallbackSrc)) {
+      list.push(fallbackSrc);
+    }
     setCandidateList(list);
     setCandidateIndex(0);
     setHasError(list.length === 0);
     setIsLoaded(false);
-  }, [src]);
+  }, [src, fallbackSrc]);
 
   // Viewport Intersection Observer for lazy loading
   useEffect(() => {
@@ -266,8 +272,9 @@ export const LazyBlurredImage: React.FC<LazyBlurredImageProps> = ({
   const handleImageLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     setIsLoaded(true);
     setHasError(false);
+    recordWorkingImageUrl(src, currentSrc);
     onLoad?.(e);
-  }, [onLoad]);
+  }, [src, currentSrc, onLoad]);
 
   const handleImageError = useCallback((e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     if (candidateIndex < candidateList.length - 1) {

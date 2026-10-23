@@ -594,19 +594,38 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                 {/* SKILLEDBRIDGE B2B PARTNERSHIP SHOWCASE */}
                 {activeArticle.id === 'news-skilledbridge-radna-snaga-bih' && (
                   <div className="my-8 p-6 rounded-3xl bg-gradient-to-r from-[#071328] via-[#0F2038] to-[#0A1A33] border-2 border-[#00C9A7]/60 shadow-2xl space-y-5">
+                    {/* Official Letterhead Header Graphic */}
+                    <div className="rounded-2xl overflow-hidden border border-[#00C9A7]/30 bg-white p-3 flex items-center justify-center shadow-lg">
+                      <img
+                        src={IMAGES.skilledBridgeHeader}
+                        alt="SkilledBridge d.o.o. Zvanični Memorandum i Zaglavlje"
+                        className="max-h-20 w-auto object-contain"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = IMAGES.skilledBridgeArchiveHeaderDirect;
+                        }}
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#1A3152] pb-5">
                       <div className="flex items-center gap-3">
-                        <div className="p-3 rounded-2xl bg-[#0A1628] border border-[#00C9A7]/50 shadow-md">
+                        <div className="p-2.5 rounded-2xl bg-white border border-[#00C9A7]/50 shadow-md">
                           <img
                             src={IMAGES.skilledBridgeLogoLocal}
                             alt="SkilledBridge d.o.o. Logo"
-                            className="h-9 w-auto object-contain"
+                            className="h-10 w-auto object-contain"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = IMAGES.skilledBridgeArchiveLogoDirect;
+                            }}
+                            referrerPolicy="no-referrer"
                           />
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
                             <h4 className="font-syne font-extrabold text-base text-[#F5F0E8]">
-                              SkilledBridge d.o.o.
+                              SkilledBridge d.o.o. Bijeljina
                             </h4>
                             <span className="px-2.5 py-0.5 rounded-full bg-[#00C9A7]/20 border border-[#00C9A7]/40 text-[#00C9A7] text-[10px] font-mono font-bold">
                               ZVANIČNI B2B PARTNER
@@ -618,15 +637,27 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                         </div>
                       </div>
 
-                      <a
-                        href="https://archive.org/details/skilled-bridge-d.o.o.-logotype"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[11px] font-mono text-[#F5F0E8]/60 hover:text-[#00C9A7] transition-colors flex items-center gap-1 shrink-0"
-                      >
-                        <span>Archive.org Logotip</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <a
+                          href="https://archive.org/details/skilledbridge_header"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] font-mono text-[#F5F0E8]/60 hover:text-[#00C9A7] transition-colors flex items-center gap-1 shrink-0"
+                        >
+                          <span>Archive.org Header</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <span className="text-[#1A3152]">•</span>
+                        <a
+                          href="https://archive.org/details/skilled-bridge-d.o.o.-logotype"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] font-mono text-[#F5F0E8]/60 hover:text-[#00C9A7] transition-colors flex items-center gap-1 shrink-0"
+                        >
+                          <span>Archive.org Logotip</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">

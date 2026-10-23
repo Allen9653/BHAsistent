@@ -33,6 +33,69 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
+// ---------------------------------------------------------------------------
+// Image Proxy with Caching and CORS for External CDNs (Archive.org, Imgur, etc.)
+// ---------------------------------------------------------------------------
+const ALLOWED_IMAGE_HOSTS = [
+  'archive.org',
+  'ia800100.us.archive.org',
+  'ia800503.us.archive.org',
+  'ia600503.us.archive.org',
+  'i.imgur.com',
+  'imgur.com',
+  'postimg.cc',
+  'i.postimg.cc',
+  'i.ytimg.com',
+  'img.youtube.com'
+];
+
+app.get('/api/proxy-image', async (req: Request, res: Response) => {
+  const targetUrl = req.query.url as string;
+  if (!targetUrl) {
+    return res.status(400).json({ error: 'Nedostaje url parametar.' });
+  }
+
+  try {
+    const parsed = new URL(targetUrl);
+    const isAllowed = ALLOWED_IMAGE_HOSTS.some(
+      host => parsed.hostname === host || parsed.hostname.endsWith(`.${host}`)
+    );
+
+    if (!isAllowed) {
+      return res.status(403).json({ error: 'Dozvoljeno je samo keširanje provjerenih domena.' });
+    }
+
+    const response = await fetch(targetUrl, {
+      headers: {
+        'User-Agent': 'BH-Assistant-Bot/1.0 (https://bh-assistant.ba; ImageCDN)',
+        'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+      },
+      redirect: 'follow',
+    });
+
+    if (!response.ok) {
+      return res.status(response.status).json({ error: `Greška izvornog servera: ${response.statusText}` });
+    }
+
+    const contentType = response.headers.get('content-type') || 'image/png';
+    const buffer = Buffer.from(await response.arrayBuffer());
+
+    res.set({
+      'Content-Type': contentType,
+      'Content-Length': buffer.length.toString(),
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
+      'Cross-Origin-Resource-Policy': 'cross-origin',
+      'Cache-Control': 'public, max-age=604800, stale-while-revalidate=2592000', // 7 days browser cache, 30 days stale-while-revalidate
+    });
+
+    return res.send(buffer);
+  } catch (err: any) {
+    console.error('[Image Proxy Error]:', err?.message || err);
+    return res.status(500).json({ error: 'Neuspješno preuzimanje slike.' });
+  }
+});
+
 // Admin Login endpoint
 app.post('/api/admin/login', async (req: Request, res: Response) => {
   const { email, password } = req.body || {};
@@ -162,6 +225,24 @@ app.post('/api/admin/update-company', (req: Request, res: Response) => {
 
 async function startServer() {
   let vite: ViteDevServer | null = null;
+
+  // Static images folder serving with permissive CORS and immutable caching
+  const imagesPath = path.resolve(process.cwd(), 'public', 'images');
+  if (fs.existsSync(imagesPath)) {
+    app.use('/images', (req: Request, res: Response, next: NextFunction) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+      res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
+      }
+      next();
+    }, express.static(imagesPath, {
+      maxAge: '1y',
+      immutable: true,
+    }));
+  }
 
   if (!isProd) {
     vite = await createViteServer({

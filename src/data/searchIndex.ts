@@ -3,6 +3,7 @@ import { INITIAL_NEWS, getStoredNews } from './newsData';
 import { INITIAL_NEWS_FEED_UPDATES, getStoredNewsFeed } from './newsFeedData';
 import { FAQ_DATA } from './faqData';
 import { AUTHORS_DATA } from './authorsData';
+import { IMAGES } from '../utils/images';
 
 export type SearchCategory = 'all' | 'tools' | 'projects' | 'articles' | 'education' | 'company' | 'faq';
 
@@ -120,7 +121,7 @@ export function getAllSearchItems(): SearchItem[] {
       'b2b regrutacija'
     ],
     badge: 'B2B RJEŠENJE 💼',
-    image: '/src/assets/images/skilledbridge_b2b_ad_1792786595176.jpg',
+    image: IMAGES.skilledBridgeAdBanner,
     author: 'Alen Jusufović, SkilledBridge d.o.o.',
     date: '23. Oktobar 2026.',
   });

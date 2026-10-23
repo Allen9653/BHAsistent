@@ -134,9 +134,14 @@ export const IMAGES = {
   cloudtalkBanner: 'https://i.imgur.com/5rTpp9F.jpg',
 
   // SkilledBridge d.o.o. B2B Recruitment Visuals & Logotype
-  skilledBridgeAdBanner: '/src/assets/images/skilledbridge_b2b_ad_1792786595176.jpg',
-  skilledBridgeLogo: 'https://archive.org/download/skilled-bridge-d.o.o.-logotype/SkilledBridge%20d.o.o._logotype.png',
-  skilledBridgeLogoLocal: '/src/assets/images/skilledbridge_logo.png',
+  skilledBridgeAdBanner: '/images/skilledbridge_b2b_ad.jpg',
+  skilledBridgeHeader: '/images/skilledbridge_header.png',
+  skilledBridgeLogo: '/images/skilledbridge_logo.png',
+  skilledBridgeLogoLocal: '/images/skilledbridge_logo.png',
+  skilledBridgeArchiveHeaderDirect: 'https://archive.org/download/skilledbridge_header/skilledbridge_header.png',
+  skilledBridgeArchiveLogoDirect: 'https://archive.org/download/skilled-bridge-d.o.o.-logotype/SkilledBridge%20d.o.o._logotype.png',
+  skilledBridgeArchiveHeaderDetails: 'https://archive.org/details/skilledbridge_header',
+  skilledBridgeArchiveLogoDetails: 'https://archive.org/details/skilled-bridge-d.o.o.-logotype',
 
   // BiH Football Team Congratulation Banner (Archive.org & Local)
   bihPobjedaBanner: '/images/cestitka-zmajevi-2026.jpg',

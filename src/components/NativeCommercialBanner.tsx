@@ -19,6 +19,7 @@ import {
   FileText,
 } from 'lucide-react';
 import { IMAGES } from '../utils/images';
+import { SafeImage } from './SafeImage';
 
 interface NativeCommercialBannerProps {
   className?: string;
@@ -268,18 +269,24 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
                       title="Pročitajte detaljan članak o uslugama SkilledBridge d.o.o."
                       className="group/img relative rounded-xl overflow-hidden border border-[#00C9A7]/50 shadow-md shadow-[#00C9A7]/20 hover:border-[#00C9A7] transition-all max-w-[200px] sm:max-w-[230px] aspect-[16/9] hidden sm:block shrink-0 bg-[#0A1628]"
                     >
-                      <img
+                      <SafeImage
                         src={IMAGES.skilledBridgeAdBanner}
                         alt="SkilledBridge d.o.o. - Uvoz Radne Snage"
                         className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300"
-                        loading="lazy"
+                        fallbackTitle="SkilledBridge d.o.o."
+                        fallbackSubtitle="Uvoz stručne radne snage"
                       />
                       {/* Logo overlay badge on the image */}
-                      <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-md bg-[#0A1628]/95 border border-[#00C9A7]/50 backdrop-blur-sm flex items-center gap-1 shadow-md">
+                      <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-md bg-white/95 border border-[#00C9A7]/60 backdrop-blur-sm flex items-center gap-1 shadow-md">
                         <img
                           src={IMAGES.skilledBridgeLogoLocal}
                           alt="SkilledBridge Logo"
                           className="h-3.5 w-auto object-contain"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = IMAGES.skilledBridgeArchiveLogoDirect;
+                          }}
+                          referrerPolicy="no-referrer"
                         />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/80 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end justify-center p-1.5">

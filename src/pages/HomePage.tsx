@@ -408,8 +408,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     {p.logo && (
-                      <div className="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-[#0A1628]/95 border border-[#00C9A7]/50 backdrop-blur-sm shadow-md flex items-center">
-                        <img src={p.logo} alt="Logo" className="h-4 w-auto object-contain" />
+                      <div className="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-white/95 border border-[#00C9A7]/50 backdrop-blur-sm shadow-md flex items-center">
+                        <img
+                          src={p.logo}
+                          alt={`${p.title} Logo`}
+                          className="h-4 w-auto object-contain"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            if (p.id === 'skilledbridge') {
+                              e.currentTarget.src = IMAGES.skilledBridgeArchiveLogoDirect;
+                            }
+                          }}
+                          referrerPolicy="no-referrer"
+                        />
                       </div>
                     )}
                   </div>
