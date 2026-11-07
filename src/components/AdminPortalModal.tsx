@@ -46,7 +46,10 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
   companyInfo,
   onUpdateCompanyInfo,
 }) => {
-  const [formData, setFormData] = useState<CompanyDetails>(companyInfo);
+  const [formData, setFormData] = useState<CompanyDetails>(() => ({
+    ...companyInfo,
+    description: (companyInfo as CompanyDetails).description ?? companyInfo.motto ?? '',
+  }));
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [activeTab, setActiveTab] = useState<'info' | 'settings' | 'email' | 'account'>('info');
@@ -437,10 +440,10 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
                       </label>
                       <input
                         id="admin-full-name"
-                        name="fullName"
+                        name="fullLegalName"
                         type="text"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        value={formData.fullLegalName ?? ''}
+                        onChange={(e) => setFormData({ ...formData, fullLegalName: e.target.value })}
                         className="w-full min-h-[44px] px-3.5 py-2 rounded-xl bg-[#0A1628] border border-[#1A3152] focus:border-[#00C9A7] text-[#F5F0E8] font-sans outline-none"
                       />
                     </div>
@@ -451,10 +454,10 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
                       </label>
                       <input
                         id="admin-short-name"
-                        name="shortName"
+                        name="name"
                         type="text"
-                        value={formData.shortName}
-                        onChange={(e) => setFormData({ ...formData, shortName: e.target.value })}
+                        value={formData.name ?? ''}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full min-h-[44px] px-3.5 py-2 rounded-xl bg-[#0A1628] border border-[#1A3152] focus:border-[#00C9A7] text-[#F5F0E8] font-sans outline-none"
                       />
                     </div>

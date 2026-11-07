@@ -20,6 +20,31 @@ export const ExternalToolEmbedModal: React.FC<ExternalToolEmbedModalProps> = ({
 }) => {
   const [iframeLoading, setIframeLoading] = useState(true);
 
+  // Allowlist for embeddable external tools (defense against open-redirect / phishing embeds)
+  const ALLOWED_EMBED_HOSTS = [
+    'bh-konver.com',
+    'www.bh-konver.com',
+    'bhpapirfinder.atoms.world',
+    'bhpapirfinder.ba',
+    'www.bhpapirfinder.ba',
+    'canva.link',
+    'www.canva.com',
+    'bh-konver.lovable.app',
+  ];
+
+  let parsedUrl: URL | null = null;
+  try {
+    parsedUrl = new URL(externalUrl);
+  } catch {
+    parsedUrl = null;
+  }
+  const isAllowedEmbed =
+    parsedUrl !== null &&
+    parsedUrl.protocol === 'https:' &&
+    ALLOWED_EMBED_HOSTS.some(
+      (host) => parsedUrl!.hostname === host || parsedUrl!.hostname.endsWith(`.${host}`)
+    );
+
   if (!isOpen) return null;
 
   return (
@@ -41,7 +66,7 @@ export const ExternalToolEmbedModal: React.FC<ExternalToolEmbedModalProps> = ({
               </div>
               {futureDomain && (
                 <p className="text-[11px] font-mono text-[#F5F0E8]/50">
-                  Planirana domena: <span className="text-[#C9A84C] font-semibold">{futureDomain}</span> (Trenutno: {new URL(externalUrl).hostname})
+                  Planirana domena: <span className="text-[#C9A84C] font-semibold">{futureDomain}</span> (Trenutno: {parsedUrl?.hostname ?? ''})
                 </p>
               )}
             </div>
@@ -73,21 +98,38 @@ export const ExternalToolEmbedModal: React.FC<ExternalToolEmbedModalProps> = ({
           {iframeLoading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-xs text-[#00C9A7] font-mono bg-[#060D17] z-10 p-6 text-center">
               <RefreshCw className="w-8 h-8 animate-spin text-[#00C9A7]" />
-              <span className="font-bold text-sm text-[#F5F0E8]">Povezivanje sa alatom ({new URL(externalUrl).hostname})...</span>
+              <span className="font-bold text-sm text-[#F5F0E8]">Povezivanje sa alatom ({parsedUrl?.hostname ?? ''})...</span>
               <p className="text-xs text-[#F5F0E8]/60 max-w-md">
                 Učitava se radna verzija alata sa razvojnog servera. Ukoliko se prozor ne učita odmah zbog zaštite pretraživača, kliknite na dugme "Otvori u Novom Tabu".
               </p>
             </div>
           )}
 
-          <iframe
-            src={externalUrl}
-            title={title}
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
-            loading="lazy"
-            onLoad={() => setIframeLoading(false)}
-            className="w-full h-full border-0"
-          />
+          {isAllowedEmbed ? (
+            <iframe
+              src={externalUrl}
+              title={title}
+              sandbox="allow-scripts allow-forms allow-popups allow-downloads"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              onLoad={() => setIframeLoading(false)}
+              className="w-full h-full border-0"
+            />
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-xs text-[#F5F0E8]/70 bg-[#060D17] z-10 p-6 text-center">
+              <ShieldAlert className="w-8 h-8 text-[#C9A84C]" />
+              <span className="font-bold text-sm text-[#F5F0E8]">Ugrađivanje nije dozvoljeno za ovu adresu.</span>
+              <a
+                href={externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#00C9A7] text-[#0A1628] font-syne font-bold text-xs"
+              >
+                <span>Otvori u Novom Tabu</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Modal Bottom Footer Notice */}

@@ -73,6 +73,8 @@ export interface AffiliateCourse {
 export interface CompanyDetails {
   name: string;
   fullLegalName: string;
+  // Admin form field backing: 'description' maps to company motto in form state
+  description?: string;
   city: string;
   postalCode: string;
   jib: string;

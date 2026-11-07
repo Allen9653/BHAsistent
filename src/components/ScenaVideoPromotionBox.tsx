@@ -367,6 +367,8 @@ export const ScenaVideoPromotionBox: React.FC<ScenaVideoPromotionBoxProps> = ({
               className="w-full h-full border-0 flex-1"
               allow="autoplay; fullscreen"
               allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              loading="lazy"
             />
             <div className="p-3 bg-[#0F2038] border-t border-[#1A3152] flex flex-wrap items-center justify-between gap-2 text-xs">
               <span className="text-[#F5F0E8]/70 font-mono">

@@ -90,7 +90,7 @@ export const FAQ: React.FC = () => {
       {/* Schema.org FAQPage JSON-LD Injection for Google Knowledge Graph & AdSense Quality Review */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

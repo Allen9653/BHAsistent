@@ -14,7 +14,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({ onOpenBojanka }) => {
       <PageSeo
         title="Pretraga Alata, Članaka i Projekata | B&H Assistant d.o.o. Zenica"
         description="Pronađite specifične digitalne alate (BH Konver, PapirFinder), autorske članke, magazine SCENA+ ili razvojne projekte firme B&H Assistant d.o.o."
-        canonicalUrl="https://bh-assistant.ba/pretraga"
+        canonical="https://bh-assistant.ba/pretraga"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">

@@ -8,9 +8,31 @@ const app = express();
 const PORT = 3000;
 const isProd = process.env.NODE_ENV === 'production';
 
-// Parse JSON request bodies
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Security headers (defense-in-depth; Vercel also sets these via vercel.json)
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.setHeader('Content-Security-Policy', [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline'",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: https:",
+    "font-src 'self' data: https:",
+    "connect-src 'self' https:",
+    "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.canva.com https://canva.link",
+    "frame-ancestors 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+  ].join('; '));
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  next();
+});
+
+// Parse JSON request bodies (bounded size to prevent abuse)
+app.use(express.json({ limit: '100kb' }));
+app.use(express.urlencoded({ extended: true, limit: '100kb' }));
 
 // Server-side active session store
 interface AdminSession {
@@ -51,12 +73,15 @@ const ALLOWED_IMAGE_HOSTS = [
 
 app.get('/api/proxy-image', async (req: Request, res: Response) => {
   const targetUrl = req.query.url as string;
-  if (!targetUrl) {
+  if (!targetUrl || typeof targetUrl !== 'string') {
     return res.status(400).json({ error: 'Nedostaje url parametar.' });
   }
 
   try {
     const parsed = new URL(targetUrl);
+    if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
+      return res.status(400).json({ error: 'Neispravna URL adresa.' });
+    }
     const isAllowed = ALLOWED_IMAGE_HOSTS.some(
       host => parsed.hostname === host || parsed.hostname.endsWith(`.${host}`)
     );
@@ -65,27 +90,39 @@ app.get('/api/proxy-image', async (req: Request, res: Response) => {
       return res.status(403).json({ error: 'Dozvoljeno je samo keširanje provjerenih domena.' });
     }
 
-    const response = await fetch(targetUrl, {
-      headers: {
-        'User-Agent': 'BH-Assistant-Bot/1.0 (https://bh-assistant.ba; ImageCDN)',
-        'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
-      },
-      redirect: 'follow',
-    });
-
-    if (!response.ok) {
-      return res.status(response.status).json({ error: `Greška izvornog servera: ${response.statusText}` });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    let response: globalThis.Response;
+    try {
+      response = await fetch(targetUrl, {
+        headers: {
+          'User-Agent': 'BH-Assistant-Bot/1.0 (https://bh-assistant.ba; ImageCDN)',
+          'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+        },
+        redirect: 'follow',
+        signal: controller.signal,
+      });
+    } finally {
+      clearTimeout(timeout);
     }
 
-    const contentType = response.headers.get('content-type') || 'image/png';
+    if (!response.ok) {
+      return res.status(502).json({ error: 'Neuspješno preuzimanje slike.' });
+    }
+
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.startsWith('image/')) {
+      return res.status(415).json({ error: 'Resurs nije slika.' });
+    }
     const buffer = Buffer.from(await response.arrayBuffer());
+    if (buffer.length > 5 * 1024 * 1024) {
+      return res.status(413).json({ error: 'Slika je prevelika.' });
+    }
 
     res.set({
       'Content-Type': contentType,
       'Content-Length': buffer.length.toString(),
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
-      'Cross-Origin-Resource-Policy': 'cross-origin',
+      'X-Content-Type-Options': 'nosniff',
       'Cache-Control': 'public, max-age=604800, stale-while-revalidate=2592000', // 7 days browser cache, 30 days stale-while-revalidate
     });
 
@@ -96,8 +133,30 @@ app.get('/api/proxy-image', async (req: Request, res: Response) => {
   }
 });
 
+// ... existing code ...
+
+// Simple in-memory login rate limiting (per IP) to slow brute-force attempts
+const loginAttempts = new Map<string, { count: number; resetAt: number }>();
+function isLoginRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = loginAttempts.get(ip);
+  if (!entry || now > entry.resetAt) {
+    loginAttempts.set(ip, { count: 1, resetAt: now + 15 * 60 * 1000 });
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > 10;
+}
+
 // Admin Login endpoint
 app.post('/api/admin/login', async (req: Request, res: Response) => {
+  const clientIp = (req.ip || req.socket?.remoteAddress || 'unknown').toString();
+  if (isLoginRateLimited(clientIp)) {
+    return res.status(429).json({
+      success: false,
+      error: 'Previše pokušaja prijave. Pokušajte ponovo kasnije.',
+    });
+  }
   const { email, password } = req.body || {};
 
   if (!email || !password) {
@@ -107,49 +166,39 @@ app.post('/api/admin/login', async (req: Request, res: Response) => {
     });
   }
 
-  // Server-side authorized authentication
+  // Server-side authorized authentication — no fallback credentials.
+  // Admin access requires ADMIN_PASSWORD to be set in the server environment.
   const envAdminEmail = (process.env.ADMIN_EMAIL || 'admin@bh-assistant.ba').toLowerCase();
   const envAdminPassword = process.env.ADMIN_PASSWORD;
 
-  if (envAdminPassword) {
-    if (password === envAdminPassword && email.trim().toLowerCase() === envAdminEmail) {
-      const token = 'bh_sess_' + Buffer.from(Date.now() + ':' + email).toString('base64');
-      activeSessions.set(token, {
+  if (!envAdminPassword) {
+    console.error('[Admin Login] ADMIN_PASSWORD is not configured on the server. Admin login is disabled.');
+    return res.status(503).json({
+      success: false,
+      error: 'Administratorska prijava nije dostupna. Kontaktirajte administratora servera.',
+    });
+  }
+
+  const emailOk = email.trim().toLowerCase() === envAdminEmail;
+  const passwordOk = typeof password === 'string' && password === envAdminPassword;
+  if (emailOk && passwordOk) {
+    const { randomBytes } = await import('crypto');
+    const token = 'bh_sess_' + randomBytes(32).toString('hex');
+    activeSessions.set(token, {
+      email: email.trim(),
+      role: 'admin',
+      timestamp: Date.now(),
+    });
+
+    return res.json({
+      success: true,
+      token,
+      user: {
+        id: 'server-admin',
         email: email.trim(),
         role: 'admin',
-        timestamp: Date.now(),
-      });
-
-      return res.json({
-        success: true,
-        token,
-        user: {
-          id: 'server-admin',
-          email: email.trim(),
-          role: 'admin',
-        },
-      });
-    }
-  } else {
-    // Development / standard admin credentials when custom server password is not set
-    if (email.includes('@') && password.length >= 6) {
-      const token = 'bh_sess_' + Buffer.from(Date.now() + ':' + email).toString('base64');
-      activeSessions.set(token, {
-        email: email.trim(),
-        role: 'admin',
-        timestamp: Date.now(),
-      });
-
-      return res.json({
-        success: true,
-        token,
-        user: {
-          id: 'auth-admin',
-          email: email.trim(),
-          role: 'admin',
-        },
-      });
-    }
+      },
+    });
   }
 
   return res.status(401).json({
@@ -230,13 +279,8 @@ async function startServer() {
   const imagesPath = path.resolve(process.cwd(), 'public', 'images');
   if (fs.existsSync(imagesPath)) {
     app.use('/images', (req: Request, res: Response, next: NextFunction) => {
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
-      res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+      res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-      if (req.method === 'OPTIONS') {
-        return res.sendStatus(204);
-      }
       next();
     }, express.static(imagesPath, {
       maxAge: '1y',
@@ -262,7 +306,8 @@ async function startServer() {
     const url = req.originalUrl;
 
     // Skip API routes or static asset requests with extensions
-    if (url.startsWith('/api') || url.includes('.')) {
+    const pathname = url.split('?')[0];
+    if (pathname.startsWith('/api') || /\.[a-z0-9]{1,10}$/i.test(pathname)) {
       return next();
     }
 

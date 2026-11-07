@@ -434,6 +434,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenBojanka 
                       title={`${activeProjectModal.title} Video Prezentacija`}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      loading="lazy"
                     />
                   </div>
                 </div>

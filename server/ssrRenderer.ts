@@ -21,6 +21,31 @@ function escapeHtmlAttr(str: string): string {
 }
 
 /**
+ * Escapes characters for safe inclusion as element text (e.g. <title>)
+ */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+/**
+ * Escapes a string for safe inclusion inside a JSON string literal.
+ * Prevents breaking out of the JSON-LD script block.
+ */
+function escapeJsonString(str: string): string {
+  return str
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+}
+
+/**
  * Render complete semantic HTML markup for each route to satisfy search engines & crawlers
  */
 export function generateRouteHtml(pathname: string): { meta: RouteMetaConfig; html: string } {
@@ -432,7 +457,7 @@ export function injectSsrIntoTemplate(template: string, pathname: string): strin
 
   let result = template;
 
-  const escapedTitle = meta.title;
+  const escapedTitle = escapeHtmlAttr(meta.title);
   const escapedDesc = escapeHtmlAttr(meta.description);
   const escapedCanonical = escapeHtmlAttr(meta.canonical || 'https://bh-assistant.ba/');
 
@@ -515,7 +540,7 @@ export function injectSsrIntoTemplate(template: string, pathname: string): strin
     );
   }
 
-  // 6. Inject Structured Data JSON-LD Schema for the page
+  // 6. Inject Structured Data JSON-LD Schema for the page (JSON-escaped values)
   const jsonLd = `
   <script type="application/ld+json" id="bh-ssr-jsonld">
   {
@@ -527,8 +552,8 @@ export function injectSsrIntoTemplate(template: string, pathname: string): strin
         "name": "B&H Assistant d.o.o. Zenica",
         "url": "https://bh-assistant.ba",
         "logo": "https://i.imgur.com/cXebP1B.jpg",
-        "email": "${COMPANY_INFO.email}",
-        "telephone": "${COMPANY_INFO.phone}",
+        "email": "${escapeJsonString(COMPANY_INFO.email)}",
+        "telephone": "${escapeJsonString(COMPANY_INFO.phone)}",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Bulevar Ezhera Eze Arnautovića 8",
@@ -539,10 +564,10 @@ export function injectSsrIntoTemplate(template: string, pathname: string): strin
       },
       {
         "@type": "WebPage",
-        "@id": "${escapedCanonical}#webpage",
-        "url": "${escapedCanonical}",
-        "name": "${escapedTitle}",
-        "description": "${escapedDesc}",
+        "@id": "${escapeJsonString(escapedCanonical)}#webpage",
+        "url": "${escapeJsonString(escapedCanonical)}",
+        "name": "${escapeJsonString(escapedTitle)}",
+        "description": "${escapeJsonString(escapedDesc)}",
         "isPartOf": {
           "@id": "https://bh-assistant.ba/#website"
         },

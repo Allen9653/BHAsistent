@@ -84,7 +84,7 @@ export const signInAdmin = async (
           };
         }
       }
-    } else if (response && response.status === 401) {
+    } else if (response && (response.status === 401 || response.status === 429 || response.status === 503)) {
       const errData = await response.json().catch(() => ({}));
       return {
         success: false,
@@ -92,25 +92,12 @@ export const signInAdmin = async (
       };
     }
 
-    // 2. Static / Vercel frontend mode (when no backend server or /api route exists)
-    // Create an authenticated client-side session token
-    const timestamp = Date.now();
-    const payload = `${timestamp}:${cleanEmail}`;
-    const token = 'bh_client_sess_' + (typeof btoa !== 'undefined' ? btoa(payload) : Buffer.from(payload).toString('base64'));
-    const user = {
-      email: cleanEmail,
-      id: 'admin-' + timestamp,
-      role: 'admin',
-    };
-
-    const storage = remember ? localStorage : sessionStorage;
-    storage.setItem(TOKEN_STORAGE_KEY, token);
-    storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
-
+    // No client-side fallback: without a valid server session the user is NOT authenticated.
+    // Static deployments must either run the Express server (server.ts) or implement a
+    // proper server-side auth endpoint before admin access can be granted.
     return {
-      success: true,
-      user,
-      token,
+      success: false,
+      error: 'Administratorska prijava nije dostupna. Server za autentifikaciju nije dostupan.',
     };
   } catch (err: any) {
     return {
@@ -127,21 +114,14 @@ export const verifyAdminSession = async (): Promise<boolean> => {
   const token = getStoredToken();
   if (!token) return false;
 
-  try {
-    // If it's a client session token, verify local expiry (24 hours)
-    if (token.startsWith('bh_client_sess_')) {
-      const encoded = token.replace('bh_client_sess_', '');
-      const decoded = typeof atob !== 'undefined' ? atob(encoded) : Buffer.from(encoded, 'base64').toString('utf-8');
-      const [timeStr] = decoded.split(':');
-      const timestamp = parseInt(timeStr, 10);
-      if (!isNaN(timestamp) && Date.now() - timestamp < 24 * 60 * 60 * 1000) {
-        return true;
-      }
-      await signOutAdmin();
-      return false;
-    }
+  // Legacy client-generated tokens are never trusted.
+  if (token.startsWith('bh_client_sess_')) {
+    await signOutAdmin();
+    return false;
+  }
 
-    // If server session token, verify against backend
+  try {
+    // Verify against backend session store
     const res = await fetch('/api/admin/verify-session', {
       method: 'GET',
       headers: {
@@ -157,23 +137,7 @@ export const verifyAdminSession = async (): Promise<boolean> => {
       }
     }
 
-    // On static deployments (e.g. Vercel) where /api/admin/verify-session is 404,
-    // verify the encoded session timestamp without invalidating user session
-    if (token.startsWith('bh_sess_')) {
-      try {
-        const encoded = token.replace('bh_sess_', '');
-        const decoded = typeof atob !== 'undefined' ? atob(encoded) : Buffer.from(encoded, 'base64').toString('utf-8');
-        const [timeStr] = decoded.split(':');
-        const timestamp = parseInt(timeStr, 10);
-        if (!isNaN(timestamp) && Date.now() - timestamp < 24 * 60 * 60 * 1000) {
-          return true;
-        }
-      } catch {
-        // Fallthrough
-      }
-    }
-
-    // Invalid session - clear stored tokens
+    // Backend unavailable or token rejected — clear and deny.
     await signOutAdmin();
     return false;
   } catch {
@@ -193,7 +157,7 @@ export const signOutAdmin = async (): Promise<void> => {
     sessionStorage.removeItem(USER_STORAGE_KEY);
   }
 
-  if (token && !token.startsWith('bh_client_sess_')) {
+  if (token) {
     fetch('/api/admin/logout', {
       method: 'POST',
       headers: {

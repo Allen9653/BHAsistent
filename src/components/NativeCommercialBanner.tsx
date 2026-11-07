@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, type Variants } from 'motion/react';
 import { Link } from 'react-router-dom';
 import {
   Trophy,
@@ -111,7 +111,7 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
     }
   };
 
-  const slideVariants = {
+  const slideVariants: Variants = {
     enter: (dir: number) => ({
       x: dir > 0 ? 80 : -80,
       opacity: 0,
@@ -122,7 +122,7 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
       opacity: 1,
       scale: 1,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
         opacity: { duration: 0.35 },
         scale: { duration: 0.35 },
       },
@@ -132,7 +132,7 @@ export const NativeCommercialBanner: React.FC<NativeCommercialBannerProps> = ({
       opacity: 0,
       scale: 0.98,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
         opacity: { duration: 0.25 },
         scale: { duration: 0.25 },
       },

@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense, useCallback, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, type Variants } from 'motion/react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { BackToTop } from './BackToTop';
@@ -22,7 +22,7 @@ const AdminPortalModal = lazy(() =>
   import('./AdminPortalModal').then((m) => ({ default: m.AdminPortalModal }))
 );
 
-const pageTransitionVariants = {
+const pageTransitionVariants: Variants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 0.2, ease: 'easeOut' } },
   exit: { opacity: 0, transition: { duration: 0.15, ease: 'easeIn' } },
