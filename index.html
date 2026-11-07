@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="bs" class="scroll-smooth">
+  <head>
+    <!-- Google Consent Mode v2: dataLayer initialization & consent defaults BEFORE loading GTM -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+
+      // Establish consent defaults in the data layer (blocked by default)
+      gtag('consent', 'default', {
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500,
+      });
+      dataLayer.push({'gtm.start': new Date().getTime(), 'event': 'gtm.js'});
+
+      // If returning user already granted consent, update consent & load Tag Manager container immediately
+      (function() {
+        try {
+          var consentGranted = localStorage.getItem('consentGranted') === 'true';
+          if (!consentGranted) {
+            var saved = localStorage.getItem('bh_assistant_cookie_consent_v1');
+            if (saved) {
+              var parsed = JSON.parse(saved);
+              if (parsed && parsed.consented && (parsed.analytics || parsed.marketing)) {
+                consentGranted = true;
+              }
+            }
+          }
+          if (!consentGranted && document.cookie.indexOf('bh_assistant_consent_v2=granted') !== -1) {
+            consentGranted = true;
+          }
+
+          if (consentGranted) {
+            gtag('consent', 'update', {
+              'ad_user_data': 'granted',
+              'ad_personalization': 'granted',
+              'ad_storage': 'granted',
+              'analytics_storage': 'granted'
+            });
+
+            // Load Google Tag Manager container script for consented user
+            var gtmScript = document.createElement('script');
+            gtmScript.async = true;
+            gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MG545DQF';
+            var firstScript = document.getElementsByTagName('script')[0];
+            if (firstScript && firstScript.parentNode) {
+              firstScript.parentNode.insertBefore(gtmScript, firstScript);
+            } else {
+              document.head.appendChild(gtmScript);
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DS5DCM7Z7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4DS5DCM7Z7');
+    </script>
+    <!-- Google AdSense Official Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4192839247871586" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0" />
+    <meta name="theme-color" content="#0A1628" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="google-adsense-account" content="ca-pub-4192839247871586" />
+    <title>BH Assistant d.o.o. Zenica | Spajamo Kulture, Stvaramo Šanse</title>
+    <meta name="description" content="Zvanična web platforma IT firme BH Assistant d.o.o. Zenica. Istražite domaće digitalne alate BH Konver i BH PapirFinder, magazin SCENA+ i IT projekte." />
+    <link rel="canonical" href="https://bh-assistant.ba" />
+
+    <!-- Schema.org Structured Data (JSON-LD) for AdSense & Google Knowledge Graph Quality Standards -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://bh-assistant.ba/#organization",
+          "name": "B&H ASSISTANT d.o.o. Zenica",
+          "legalName": "B&H ASSISTANT društvo sa ograničenom odgovornošću Zenica",
+          "url": "https://bh-assistant.ba",
+          "logo": "https://i.imgur.com/cXebP1B.jpg",
+          "description": "Zvanična IT kompanija za razvoj softverskih rješenja, digitalnih alata i izdavanje magazina SCENA+ sa sjedištem u Zenici.",
+          "slogan": "SPAJAMO KULTURE - STVARAMO ŠANSE",
+          "taxID": "4219296620005",
+          "identifier": "43-01-0177-25",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bulevar Ezhera Eze Arnautovića 8",
+            "addressLocality": "Zenica",
+            "postalCode": "72000",
+            "addressCountry": "BA"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+387-62-580-207",
+            "contactType": "customer service",
+            "email": "info@bh-assistant.ba",
+            "areaServed": "BA",
+            "availableLanguage": ["Bosnian", "English", "German", "Turkish"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://bh-assistant.ba/#website",
+          "url": "https://bh-assistant.ba",
+          "name": "BH Assistant d.o.o. Zenica",
+          "publisher": { "@id": "https://bh-assistant.ba/#organization" },
+          "inLanguage": "bs"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "BH KONVER",
+          "operatingSystem": "Web, iOS, Android",
+          "applicationCategory": "BusinessApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BAM"
+          },
+          "description": "Nagrađivani bosanskohercegovački digitalni kalkulator za automatsko generisanje pravnih izjava, konverziju valuta i obračun poreza."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "BH PapirFinder",
+          "operatingSystem": "Web",
+          "applicationCategory": "GovernmentApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BAM"
+          },
+          "description": "Digitalni registar i vodič za općinske i kantonalne administrativne obrasce i e-upravu u Bosni i Hercegovini."
+        }
+      ]
+    }
+    </script>
+
+    <!-- Open Graph / Facebook / LinkedIn / Viber / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bh-assistant.ba" />
+    <meta property="og:site_name" content="BH Assistant d.o.o. Zenica" />
+    <meta property="og:title" content="BH Assistant d.o.o. Zenica | Spajamo Kulture, Stvaramo Šanse" />
+    <meta property="og:description" content="Zvanična web platforma IT firme BH Assistant d.o.o. Zenica. Istražite domaće digitalne alate BH Konver i BH PapirFinder, magazin SCENA+ i IT projekte." />
+    <meta property="og:image" content="https://i.imgur.com/cXebP1B.jpg" />
+    <meta property="og:image:secure_url" content="https://i.imgur.com/cXebP1B.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BH Assistant d.o.o. Zenica — Logo i brend" />
+    <meta property="og:locale" content="bs_BA" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://bh-assistant.ba" />
+    <meta name="twitter:title" content="BH Assistant d.o.o. Zenica | Spajamo Kulture, Stvaramo Šanse" />
+    <meta name="twitter:description" content="Zvanična web platforma IT firme BH Assistant d.o.o. Zenica. Istražite domaće digitalne alate BH Konver i BH PapirFinder, magazin SCENA+ i IT projekte." />
+    <meta name="twitter:image" content="https://i.imgur.com/cXebP1B.jpg" />
+    <meta name="twitter:image:alt" content="BH Assistant d.o.o. Zenica" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#0A1628] text-[#F5F0E8] font-sans antialiased selection:bg-[#00C9A7] selection:text-[#0A1628]">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MG545DQF"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Fallback Content for Search Crawlers and Users with JavaScript Disabled (AdSense/SEO crawler friendly) -->
+    <noscript>
+      <div style="max-width: 900px; margin: 2rem auto; padding: 2rem; font-family: system-ui, -apple-system, sans-serif; background-color: #0F2038; color: #F5F0E8; border-radius: 16px; border: 1px solid #1A3152;">
+        <h1 style="color: #00C9A7; font-size: 1.8rem; margin-bottom: 0.5rem;">B&H ASSISTANT d.o.o. Zenica</h1>
+        <p style="font-size: 1.1rem; color: #C9A84C; font-weight: bold; margin-bottom: 1rem;">SPAJAMO KULTURE - STVARAMO ŠANSE</p>
+        <p style="line-height: 1.6; margin-bottom: 1.5rem;">
+          Zvanična web platforma IT firme B&H Assistant d.o.o. Zenica (JIB: 4219296620005, MBS: 43-01-0177-25). Razvijamo autorska softverska rješenja i digitalne alate:
+        </p>
+        <ul style="line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+          <li><strong>BH Konverter (Konver):</strong> Univerzalni digitalni kalkulator poreza, valuta i generator ovjerenih pravnih izjava.</li>
+          <li><strong>BH PapirFinder:</strong> Centralni registar i vodič za besplatne općinske obrasce i e-Upravu u Bosni i Hercegovini.</li>
+          <li><strong>Ornamenti Bosne:</strong> Kodirani stećci i očuvanje kulturne baštine Bosne i Hercegovine.</li>
+          <li><strong>Magazin SCENA+:</strong> Urbani lifestyle magazin Zeničko-dobojskog kantona.</li>
+          <li><strong>ZENTAXI & GUMMI:</strong> Inovativni urbani projekti i edukativna bojanka za djecu.</li>
+          <li><strong>Usluge po mjeri:</strong> Profesionalna izrada modernih web stranica, hostinga i biznis e-mail sistema.</li>
+        </ul>
+        <div style="padding-top: 1rem; border-top: 1px solid #1A3152; font-size: 0.9rem; color: #a0aec0;">
+          <p>Sjedište: Ul. Bulevar Ezhera Eze Arnautovića 8, 72000 Zenica, Bosna i Hercegovina</p>
+          <p>Kontakt: info@bh-assistant.ba | Telefon: +387 62 580 207 | Web: www.bh-assistant.ba</p>
+          <p><a href="/politika-privatnosti" style="color: #00C9A7; margin-right: 1rem;">Politika Privatnosti</a> <a href="/uslovi-koristenja" style="color: #C9A84C;">Uslovi Korištenja</a></p>
+        </div>
+      </div>
+    </noscript>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
