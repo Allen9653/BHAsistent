@@ -20,10 +20,8 @@ import {
   Compass,
   CheckCircle2,
   Tv,
-  Briefcase,
   Layers,
-  GraduationCap,
-  ExternalLink
+  GraduationCap
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -164,19 +162,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
       badge: t('home.pillar.shop.badge', 'Edukativni Centar'),
       color: 'from-[#00C9A7]/20 to-[#C9A84C]/10 border-[#00C9A7]/40 text-[#00C9A7]',
       link: '/shop'
-    },
-    {
-      id: 'skilledbridge',
-      title: 'SkilledBridge d.o.o.',
-      subtitle: 'Uvoz Radne Snage & B2B Regrutacija',
-      desc: 'Rješenje za deficit radnika u BiH: regrutacija, uvoz i kompletna pravna dokumentacija za edukovanu radnu snagu iz Azije po modelu "ključ u ruke".',
-      icon: Briefcase,
-      image: IMAGES.skilledBridgeAdBanner,
-      logo: IMAGES.skilledBridgeLogoLocal,
-      badge: 'B2B PARTNER • RADNA SNAGA',
-      color: 'from-[#00C9A7]/20 to-[#C9A84C]/10 border-[#00C9A7]/40 text-[#00C9A7]',
-      link: '/novosti?clanak=rjesenje-za-nedostatak-radne-snage-skilledbridge',
-      externalUrl: 'https://www.skilledbridge.ba/kontakt'
     }
   ];
 
@@ -397,22 +382,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
                       fallbackTitle={p.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    {p.logo && (
-                      <div className="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-white/95 border border-[#00C9A7]/50 backdrop-blur-sm shadow-md flex items-center">
-                        <img
-                          src={p.logo}
-                          alt={`${p.title} Logo`}
-                          className="h-4 w-auto object-contain"
-                          onError={(e) => {
-                            e.currentTarget.onerror = null;
-                            if (p.id === 'skilledbridge') {
-                              e.currentTarget.src = IMAGES.skilledBridgeArchiveLogoDirect;
-                            }
-                          }}
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                    )}
                   </div>
 
                   {/* Title & Desc */}
@@ -435,20 +404,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
                     to={p.link}
                     className="flex-1 flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] border border-[#1A3152] hover:border-[#00C9A7] text-xs font-syne font-bold text-[#F5F0E8] hover:text-[#0A1628] transition-all group-hover:shadow-md"
                   >
-                    <span>{p.externalUrl ? 'Pročitaj Članak' : t('home.openPage', 'Otvori Stranicu')}</span>
+                    <span>{t('home.openPage', 'Otvori Stranicu')}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
-                  {p.externalUrl && (
-                    <a
-                      href={p.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Prijavite potrebe firme na SkilledBridge web stranici"
-                      className="px-3 py-2.5 rounded-xl bg-[#00C9A7]/15 hover:bg-[#00C9A7] border border-[#00C9A7]/40 text-[#00C9A7] hover:text-[#0A1628] text-xs font-syne font-bold transition-all flex items-center justify-center shrink-0"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
                 </div>
               </div>
             );

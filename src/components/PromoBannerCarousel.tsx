@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Pause, Play, Sparkles, ExternalLink, MessageSquare, Download, Layers, Briefcase, Plus, Image as ImageIcon, Globe, PhoneCall, Bot, Smartphone, ShieldCheck, X, Video } from 'lucide-react';
-import { SafeImage } from './SafeImage';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Pause, Play, Sparkles, X, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { IMAGES } from '../utils/images';
 
 export interface BannerSlide {
   id: string;
@@ -29,258 +27,66 @@ export interface BannerSlide {
 interface PromoBannerCarouselProps {
   onOpenContact?: () => void;
   onOpenBojanka?: () => void;
+  slides?: BannerSlide[];
 }
 
 export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
   onOpenContact,
   onOpenBojanka,
+  slides = [],
 }) => {
   const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState<{ url: string; title: string } | null>(null);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
 
-  const bannerSlides: BannerSlide[] = [
-    {
-      id: 'twnfz-affiliate',
-      badgeKey: 'banner.twnfz.badge',
-      badgeDefault: 'AFILIJIRANI BAŠTER • TWNFZ',
-      titleKey: 'banner.twnfz.title',
-      titleDefault: 'TWNFZ • Promovni Baner',
-      descKey: 'banner.twnfz.desc',
-      descDefault: 'Otkrijte nove mogućnosti kroz TWNFZ partnerski program i povećajte prihode vašeg biznisa.',
-      btnKey: 'banner.twnfz.btn',
-      btnDefault: 'Otvori TWNFZ Baner',
-      btnUrl: 'https://twnfz.com/g/vtnpdcgcecfe02eff231bef570c363/',
-      isExternal: true,
-      tagColor: 'bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] text-[#0A1628] font-extrabold',
-      accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
-      icon: Sparkles,
-      bannerImage: IMAGES.cloudtalkBanner
-    },
-    {
-      id: 'custom-tool',
-      badgeKey: 'banner.tool.badge',
-      badgeDefault: 'USLUGA PO MJERI • PAKET ZA 900 KM',
-      titleKey: 'banner.tool.title',
-      titleDefault: 'SPECIJALNA PONUDA!',
-      descKey: 'banner.tool.desc',
-      descDefault: 'Internet stranica Vašeg biznisa treba da radi za Vas! To je investicija koja se otplaćuje - BH Asistent Vam je kreira Vi odlučujete! Šta sve dobijate u paketu za 900 KM? Moderan i interaktivan website, domena i hosting, poslovni e-mail, sistem za zaradu i bonus marketing paket. Javite se sada i rezervišite svoj termin!',
-      btnKey: 'banner.tool.btn',
-      btnDefault: 'Javite Se i Rezervišite Termin',
-      btnUrl: '#usluga-po-mjeri',
-      onClickAction: onOpenContact,
-      tagColor: 'bg-[#00C9A7] text-[#0A1628]',
-      accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
-      icon: MessageSquare,
-      bannerImage: IMAGES.specijalnaPonudaBanner,
-      videoUrl: IMAGES.specijalnaPonudaVideo,
-      videoTitle: 'SPECIJALNA PONUDA — Video Prezentacija'
-    },
-    {
-      id: 'bh-konver-app',
-      badgeKey: 'banner.konver.badge',
-      badgeDefault: 'BH KONVER • AUTOMATIZACIJA DOKUMENATA',
-      titleKey: 'banner.konver.title',
-      titleDefault: 'BH KONVER – Kreira pravne dokumente, prevodi i konvertuje za Vas!',
-      descKey: 'banner.konver.desc',
-      descDefault: 'Zvanični bh. digitalni asistent za automatsku izradu, prevođenje i konverziju pravnih dokumenata, izjava, obrazaca i ugovora. Isprobajte besplatno na www.bh-konver.com!',
-      btnKey: 'banner.konver.btn',
-      btnDefault: 'Otvori BH KONVER Aplikaciju',
-      btnUrl: 'https://www.bh-konver.com/',
-      isExternal: true,
-      tagColor: 'bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] text-[#0A1628] font-extrabold',
-      accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
-      icon: Sparkles,
-      bannerImage: IMAGES.bhKonverBanner
-    },
-    {
-      id: 'bh-papirfinder-app',
-      badgeKey: 'banner.papirfinder.badge',
-      badgeDefault: 'BH PAPIRFINDER • E-UPRAVA ASISTENT',
-      titleKey: 'banner.papirfinder.title',
-      titleDefault: 'BH PapirFinder – Više ne ganjate papire, oni dolaze Vama!',
-      descKey: 'banner.papirfinder.desc',
-      descDefault: 'Pametna administracija bez čekanja u redovima! BH PapirFinder pronalazi, organizuje i priprema sve potrebne općinske i kantonalne papire, takse i obrasce direktno za Vas na bhpapirfinder.atoms.world.',
-      btnKey: 'banner.papirfinder.btn',
-      btnDefault: 'Pristupi BH PapirFinder-u',
-      btnUrl: 'https://bhpapirfinder.atoms.world',
-      isExternal: true,
-      tagColor: 'bg-gradient-to-r from-[#C9A84C] via-[#FFD700] to-[#00C9A7] text-[#0A1628] font-extrabold',
-      accentBg: 'from-[#0F2038] via-[#2A2A15] to-[#0A1628]',
-      icon: Layers,
-      bannerImage: IMAGES.bhPapirfinderBanner
-    },
-    {
-      id: 'lovable-bh-konver',
-      badgeKey: 'banner.lovable.badge',
-      badgeDefault: 'APLIKACIJA SEDMICE & LOVABLE',
-      titleKey: 'banner.lovable.title',
-      titleDefault: 'BH KONVER izglasana za Aplikaciju Sedmice! Lovable gradi i finansira iOS & Android app',
-      descKey: 'banner.lovable.desc',
-      descDefault: 'Sjajne vijesti za B&H Assistant d.o.o. Zenica! Naš autorski alat BH KONVER izglasan je za Aplikaciju Sedmice, te je osigurao podršku tima Lovable koji će u potpunosti izraditi i finansirati zvanične mobilne aplikacije za iOS i Android uređaje.',
-      btnKey: 'banner.lovable.btn',
-      btnDefault: 'Saznajte Više o BH KONVER-u',
-      btnUrl: 'https://www.bh-konver.com/',
-      isExternal: true,
-      tagColor: 'bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] text-[#0A1628] font-extrabold',
-      accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
-      icon: Sparkles,
-      bannerImage: IMAGES.bravoWinner
-    },
-    {
-      id: 'scena-magazine',
-      badgeKey: 'banner.scena.badge',
-      badgeDefault: 'MARKETING & MEDIJI',
-      titleKey: 'banner.scena.title',
-      titleDefault: 'Magazin SCENA+ • Oglašavajte Vaš Brend u Zeničko-dobojskom Kantonu',
-      descKey: 'banner.scena.desc',
-      descDefault: 'Promovišite vaše poslovanje kroz prvo fizičko i digitalno izdanje urbanog magazina za kulturu, umjetnost, kripto i privredu.',
-      btnKey: 'banner.scena.btn',
-      btnDefault: 'Prelistaj E-Izdanje SCENA+',
-      btnUrl: 'https://canva.link/vxekpnx0ow1xvt9',
-      isExternal: true,
-      tagColor: 'bg-[#C9A84C] text-[#0A1628]',
-      accentBg: 'from-[#1A3152] via-[#0F2038] to-[#0A1628]',
-      icon: Layers,
-      bannerImage: IMAGES.scenaCover
-    },
-    {
-      id: 'zentaxi-network',
-      badgeKey: 'banner.zentaxi.badge',
-      badgeDefault: 'STARTUP MREŽA',
-      titleKey: 'banner.zentaxi.title',
-      titleDefault: 'ZENTAXI - Pametna Taksi Mreža • Pridružite Se Mreži Vozača u Zenici!',
-      descKey: 'banner.zentaxi.desc',
-      descDefault: 'Pozivamo samostalne taksiste i prevoznike da se priključe novoj digitalnoj dispečerskoj platformi B&H Assistant-a.',
-      btnKey: 'banner.zentaxi.btn',
-      btnDefault: 'Saznajte Više o ZENTAXI-ju',
-      btnUrl: 'https://canva.link/xyqzerrxvkxbfy2',
-      isExternal: true,
-      tagColor: 'bg-[#00E5BE] text-[#0A1628]',
-      accentBg: 'from-[#0F2038] via-[#112847] to-[#0A1628]',
-      icon: Sparkles,
-      bannerImage: IMAGES.zentaxiLogo
-    },
-    {
-      id: 'gummi-bojanka',
-      badgeKey: 'banner.gummi.badge',
-      badgeDefault: 'BESPLATNA EDUKACIJA',
-      titleKey: 'banner.gummi.title',
-      titleDefault: 'GUMMI Bojanka • Besplatan Edukativni PDF Poklon za Djecu i Škole',
-      descKey: 'banner.gummi.desc',
-      descDefault: 'Preuzmite i odštampajte autorsku bojanku za predškolce i osnovce sa vježbama grafomotorike i učenjem slova.',
-      btnKey: 'banner.gummi.btn',
-      btnDefault: 'Preuzmi Bojanku PDF',
-      btnUrl: '#projekti',
-      onClickAction: onOpenBojanka,
-      tagColor: 'bg-[#C9A84C] text-[#0A1628]',
-      accentBg: 'from-[#1A3152] via-[#112847] to-[#0F2038]',
-      icon: Download,
-      bannerImage: IMAGES.gummiVasJaran
-    },
-    {
-      id: 'stecak-vector',
-      badgeKey: 'banner.stecak.badge',
-      badgeDefault: 'USB DOSTAVA & POUZEĆE 📦',
-      titleKey: 'banner.stecak.title',
-      titleDefault: 'Ornamenti Bosne • Jedini Digitalni Proizvod sa Dostavom na USB Memory Sticku',
-      descKey: 'banner.stecak.desc',
-      descDefault: 'Autentični vektorski motivi i kodovi sa bh. stećaka. Jedini digitalni proizvod koji se dostavlja direktno na Vašu adresu na USB sticku uz plaćanje po preuzimanju (pouzećem). Pogledajte i video prezentaciju!',
-      btnKey: 'banner.stecak.btn',
-      btnDefault: 'Istraži Kolekciju i Video',
-      btnUrl: '#alati',
-      tagColor: 'bg-gradient-to-r from-[#C9A84C] to-[#00C9A7] text-[#0A1628] font-bold',
-      accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
-      icon: ImageIcon,
-      bannerImage: IMAGES.ornamentiBosne
-    },
-    {
-      id: 'future-sponsor-slot',
-      badgeKey: 'banner.future.badge',
-      badgeDefault: 'REZERVIŠITE OGLAS',
-      titleKey: 'banner.future.title',
-      titleDefault: 'Vaš Oglas ili Partnerski Banner Ovdje • Postanite Sponzor B&H Assistant-a',
-      descKey: 'banner.future.desc',
-      descDefault: 'Rezervišite promotivni prostor u našem karuselu i predstavite Vaše usluge hiljadama posjetilaca naših platformi.',
-      btnKey: 'banner.future.btn',
-      btnDefault: 'Zakupite Oglasni Prostor',
-      btnUrl: '#kontakt',
-      onClickAction: onOpenContact,
-      tagColor: 'bg-[#C9A84C] text-[#0A1628]',
-      accentBg: 'from-[#1A3152] via-[#0F2038] to-[#0A1628]',
-      icon: Plus
-    }
-  ];
+  const bannerSlides = slides;
 
-  // Auto right-to-left slide rotation every 6 seconds (6000ms)
   useEffect(() => {
-    if (isPaused || selectedVideo) return;
+    if (isPaused || selectedVideo || bannerSlides.length === 0) return;
     const interval = setInterval(() => {
-      // Right to left increment
       setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
     }, 6000);
     return () => clearInterval(interval);
   }, [isPaused, selectedVideo, bannerSlides.length]);
 
-  // Close video modal on Escape key
   useEffect(() => {
     const onGlobalKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedVideo) {
-        setSelectedVideo(null);
-      }
+      if (e.key === 'Escape' && selectedVideo) setSelectedVideo(null);
     };
     window.addEventListener('keydown', onGlobalKeyDown);
     return () => window.removeEventListener('keydown', onGlobalKeyDown);
   }, [selectedVideo]);
 
-  const handleNext = () => {
-    // Right to left step (next slide moves in from right)
-    setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
-  };
+  const handleNext = () => bannerSlides.length && setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
+  const handlePrev = () => bannerSlides.length && setCurrentSlide((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length);
 
-  const handlePrev = () => {
-    setCurrentSlide((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length);
-  };
-
-  // Touch Swipe Handlers for mobile
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) {
-      handleNext(); // swipe left advances slide right-to-left
-    } else if (isRightSwipe) {
-      handlePrev();
-    }
-  };
-
-  // Keyboard navigation accessibility
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowRight') {
-      handleNext();
-    } else if (e.key === 'ArrowLeft') {
-      handlePrev();
-    } else if (e.key === ' ') {
-      setIsPaused(!isPaused);
-    }
+    if (e.key === 'ArrowRight') handleNext();
+    else if (e.key === 'ArrowLeft') handlePrev();
+    else if (e.key === ' ') setIsPaused((v) => !v);
   };
+
+  if (bannerSlides.length === 0) {
+    return (
+      <div
+        className="w-full my-8"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={t('carousel.title', 'Promotivni Karusel')}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+      >
+        {/* Prazan strukturalni wrapper — spreman za ubacivanje novog materijala */}
+        <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#1A3152] to-[#0A1628] border-2 border-dashed border-[#1A3152] p-10 sm:p-14 shadow-2xl relative overflow-hidden min-h-[220px] flex flex-col items-center justify-center text-center space-y-3">
+          <Sparkles className="w-8 h-8 text-[#00C9A7]/40" />
+          <p className="text-xs font-mono text-[#F5F0E8]/50">
+            {t('carousel.empty', 'Carousel je prazan — spreman za novi materijal')}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const slide = bannerSlides[currentSlide];
   const IconComponent = slide.icon;
@@ -290,315 +96,78 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
       className="w-full my-8"
       role="region"
       aria-roledescription="carousel"
-      aria-label="B&H Assistant Promotivni Karusel"
+      aria-label={t('carousel.title', 'Promotivni Karusel')}
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      {/* Carousel Wrapper Box */}
       <div
-        ref={carouselRef}
-        className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#1A3152] to-[#0A1628] border-2 border-[#00C9A7]/50 p-6 sm:p-10 shadow-2xl relative overflow-hidden group transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-[#00C9A7]"
+        className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#1A3152] to-[#0A1628] border-2 border-[#00C9A7]/50 p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-[#00C9A7]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
       >
-        {/* Top Animated Timer Progress Bar */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-[#1A3152]/80 z-20">
-          <div
-            key={currentSlide}
-            className="h-full bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] animate-[progress_6s_linear]"
-            style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
-          />
+          <div key={currentSlide} className="h-full bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] animate-[progress_6s_linear]" style={{ animationPlayState: isPaused ? 'paused' : 'running' }} />
         </div>
-
-        {/* Backdrop Ambient Glow */}
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#00C9A7]/10 rounded-full blur-3xl pointer-events-none" />
-
-        {/* Content Container with Smooth Right-To-Left Animation Key */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 min-h-[220px]">
-          
-          {/* Main Content Info (8 cols) */}
-          <div className="lg:col-span-8 space-y-4 text-left transition-all duration-500 transform animate-fadeIn">
-            
+          <div className="lg:col-span-8 space-y-4 text-left">
             <div className="flex flex-wrap items-center gap-2">
-              <span className={`px-3 py-1 rounded-full font-syne font-black text-xs uppercase tracking-wider shadow-md ${slide.tagColor}`}>
-                {t(slide.badgeKey, slide.badgeDefault)}
-              </span>
+              <span className={`px-3 py-1 rounded-full font-syne font-black text-xs uppercase tracking-wider shadow-md ${slide.tagColor}`}>{t(slide.badgeKey, slide.badgeDefault)}</span>
               <span className="px-3 py-1 rounded-full bg-[#0A1628]/80 border border-[#00C9A7]/30 text-[#00C9A7] text-[11px] font-mono font-bold flex items-center gap-1.5">
-                <Sparkles className="w-3 h-3 text-[#C9A84C]" />
-                <span>B&H ASSISTANT PROMOTIVNI BANER</span>
+                <Sparkles className="w-3 h-3 text-[#C9A84C]" /><span>B&H ASSISTANT PROMOTIVNI BANER</span>
               </span>
             </div>
-
-            <div>
-              <h3 className="font-syne font-extrabold text-xl sm:text-2xl lg:text-3xl text-[#F5F0E8] leading-tight">
-                {t(slide.titleKey, slide.titleDefault)}
-              </h3>
-            </div>
-
-            <p className="text-xs sm:text-sm text-[#F5F0E8]/85 font-sans leading-relaxed bg-[#0A1628]/70 p-4 rounded-2xl border border-[#1A3152]/80">
-              {t(slide.descKey, slide.descDefault)}
-            </p>
-
-            {/* Action Buttons */}
+            <div><h3 className="font-syne font-extrabold text-xl sm:text-2xl lg:text-3xl text-[#F5F0E8] leading-tight">{t(slide.titleKey, slide.titleDefault)}</h3></div>
+            <p className="text-xs sm:text-sm text-[#F5F0E8]/85 font-sans leading-relaxed bg-[#0A1628]/70 p-4 rounded-2xl border border-[#1A3152]/80">{t(slide.descKey, slide.descDefault)}</p>
             <div className="pt-2 flex flex-wrap items-center gap-3">
               {slide.onClickAction ? (
-                <button
-                  onClick={slide.onClickAction}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] hover:from-[#C9A84C] hover:to-[#00C9A7] text-[#0A1628] font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"
-                >
-                  <span>{t(slide.btnKey, slide.btnDefault)}</span>
-                  <ExternalLink className="w-4 h-4" />
-                </button>
+                <button onClick={slide.onClickAction} className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] hover:from-[#C9A84C] hover:to-[#00C9A7] text-[#0A1628] font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"><span>{t(slide.btnKey, slide.btnDefault)}</span><ExternalLink className="w-4 h-4" /></button>
               ) : slide.isExternal ? (
-                <a
-                  href={slide.btnUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] hover:from-[#C9A84C] hover:to-[#00C9A7] text-[#0A1628] font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"
-                >
-                  <span>{t(slide.btnKey, slide.btnDefault)}</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+                <a href={slide.btnUrl} target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] hover:from-[#C9A84C] hover:to-[#00C9A7] text-[#0A1628] font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"><span>{t(slide.btnKey, slide.btnDefault)}</span><ExternalLink className="w-4 h-4" /></a>
               ) : (
-                <a
-                  href={slide.btnUrl}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] hover:from-[#C9A84C] hover:to-[#00C9A7] text-[#0A1628] font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"
-                >
-                  <span>{t(slide.btnKey, slide.btnDefault)}</span>
-                  <ChevronRight className="w-4 h-4" />
-                </a>
+                <a href={slide.btnUrl} className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] hover:from-[#C9A84C] hover:to-[#00C9A7] text-[#0A1628] font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"><span>{t(slide.btnKey, slide.btnDefault)}</span><ChevronRight className="w-4 h-4" /></a>
               )}
-
-              {/* Video Presentation Action Button */}
               {slide.videoUrl && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedVideo({
-                      url: slide.videoUrl!,
-                      title: slide.videoTitle || t(slide.titleKey, slide.titleDefault)
-                    });
-                    setIsPaused(true);
-                  }}
-                  className="px-5 py-3 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] text-[#00E5BE] hover:text-[#C9A84C] border-2 border-[#00C9A7]/60 font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"
-                  title="Pogledaj video prezentaciju"
-                >
-                  <Play className="w-4 h-4 fill-current text-[#00E5BE]" />
-                  <span>{t('banner.tool.video', 'Video Prezentacija')}</span>
-                </button>
+                <button type="button" onClick={() => { setSelectedVideo({ url: slide.videoUrl!, title: slide.videoTitle || t(slide.titleKey, slide.titleDefault) }); setIsPaused(true); }} className="px-5 py-3 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] text-[#00E5BE] hover:text-[#C9A84C] border-2 border-[#00C9A7]/60 font-syne font-extrabold text-xs tracking-wider shadow-xl hover:scale-105 transition-all flex items-center gap-2 min-h-[44px]"><Play className="w-4 h-4 fill-current text-[#00E5BE]" /><span>{t('banner.tool.video', 'Video Prezentacija')}</span></button>
               )}
-
-              <span className="text-[11px] font-mono text-[#F5F0E8]/50 hidden sm:inline-block">
-                {t('carousel.pauseOnHover', 'Pređite mišem za pauziranje prelistavanja')}
-              </span>
             </div>
-
           </div>
-
-          {/* Right Visual Image / Icon Preview (4 cols) */}
           <div className="lg:col-span-4 flex flex-col justify-center items-center text-center">
-            {slide.bannerImage ? (
-              slide.videoUrl ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedVideo({
-                      url: slide.videoUrl!,
-                      title: slide.videoTitle || t(slide.titleKey, slide.titleDefault)
-                    });
-                    setIsPaused(true);
-                  }}
-                  className="w-full aspect-[16/10] rounded-2xl overflow-hidden border-2 border-[#00C9A7]/60 hover:border-[#C9A84C] bg-[#0A1628] shadow-2xl relative group/img cursor-pointer text-left transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#00C9A7]"
-                  title="Kliknite za pokretanje video prezentacije"
-                >
-                  <SafeImage
-                    src={slide.bannerImage}
-                    alt={slide.titleDefault}
-                    fallbackTitle={slide.titleDefault}
-                    fallbackSubtitle={slide.badgeDefault}
-                    fallbackIcon={<IconComponent className="w-6 h-6 text-[#00C9A7]" />}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent opacity-60 pointer-events-none" />
-                  
-                  {/* Play Overlay Button */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover/img:bg-black/15 transition-colors">
-                    <div className="w-14 h-14 rounded-full bg-[#00C9A7] text-[#0A1628] flex items-center justify-center shadow-2xl group-hover/img:scale-110 group-hover/img:bg-[#00E5BE] transition-all">
-                      <Play className="w-6 h-6 fill-current translate-x-0.5" />
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-[#00C9A7] pointer-events-none">
-                    <span className="bg-[#0A1628]/95 px-2 py-0.5 rounded border border-[#00C9A7]/30 flex items-center gap-1 font-bold">
-                      <Play className="w-3 h-3 fill-[#00C9A7]" /> Video Prezentacija
-                    </span>
-                    <span className="bg-[#C9A84C] text-[#0A1628] px-2 py-0.5 rounded font-extrabold shadow-sm">
-                      Pogledaj video
-                    </span>
-                  </div>
-                </button>
-              ) : (
-                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border-2 border-[#00C9A7]/40 bg-[#0A1628] shadow-xl relative group-hover:scale-[1.02] transition-transform">
-                  <SafeImage
-                    src={slide.bannerImage}
-                    alt={slide.titleDefault}
-                    fallbackTitle={slide.titleDefault}
-                    fallbackSubtitle={slide.badgeDefault}
-                    fallbackIcon={<IconComponent className="w-6 h-6 text-[#00C9A7]" />}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent opacity-60 pointer-events-none" />
-                  <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-[#00C9A7] pointer-events-none">
-                    <span className="bg-[#0A1628]/90 px-2 py-0.5 rounded border border-[#00C9A7]/30">
-                      B&H Assistant Media
-                    </span>
-                    <IconComponent className="w-4 h-4 text-[#C9A84C]" />
-                  </div>
-                </div>
-              )
-            ) : (
-              <div className="w-full py-10 px-6 rounded-2xl bg-[#0A1628]/90 border-2 border-[#00C9A7]/30 shadow-xl flex flex-col items-center justify-center space-y-3">
-                <div className="w-16 h-16 rounded-2xl bg-[#0F2038] border border-[#00C9A7]/40 flex items-center justify-center text-[#00C9A7]">
-                  <IconComponent className="w-8 h-8 animate-bounce" />
-                </div>
-                <span className="text-xs font-syne font-bold text-[#F5F0E8]">
-                  Oglasni Prostor Otvoren
-                </span>
-                <span className="text-[10px] font-mono text-[#C9A84C]">
-                  Kontaktirajte B&H Assistant
-                </span>
-              </div>
-            )}
+            <div className="w-full py-10 px-6 rounded-2xl bg-[#0A1628]/90 border-2 border-[#00C9A7]/30 shadow-xl flex flex-col items-center justify-center space-y-3">
+              <div className="w-16 h-16 rounded-2xl bg-[#0F2038] border border-[#00C9A7]/40 flex items-center justify-center text-[#00C9A7]"><IconComponent className="w-8 h-8 animate-bounce" /></div>
+              <span className="text-xs font-syne font-bold text-[#F5F0E8]">Oglasni Prostor Otvoren</span>
+              <span className="text-[10px] font-mono text-[#C9A84C]">Kontaktirajte B&H Assistant</span>
+            </div>
           </div>
-
         </div>
-
-        {/* Carousel Bottom Controls & Navigation Bar */}
         <div className="mt-8 pt-4 border-t border-[#1A3152] flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
-          
           <div className="flex items-center gap-3 text-xs font-mono text-[#F5F0E8]/70">
-            <span className="text-[#00C9A7] font-bold">
-              {t('carousel.slideNum', 'Baner')} {currentSlide + 1} {t('carousel.of', 'od')} {bannerSlides.length}
-            </span>
+            <span className="text-[#00C9A7] font-bold">{t('carousel.slideNum', 'Baner')} {currentSlide + 1} {t('carousel.of', 'od')} {bannerSlides.length}</span>
             <span>•</span>
-            <button
-              onClick={() => setIsPaused(!isPaused)}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#0A1628] hover:bg-[#1A3152] border border-[#1A3152] text-xs transition-colors"
-              title={isPaused ? "Pokreni automatsko prelistavanje" : "Pauziraj karusel"}
-            >
-              {isPaused ? <Play className="w-3.5 h-3.5 text-[#00C9A7]" /> : <Pause className="w-3.5 h-3.5 text-[#C9A84C]" />}
-              <span>{isPaused ? 'Nastavi' : 'Pauza'}</span>
-            </button>
+            <button onClick={() => setIsPaused(!isPaused)} className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#0A1628] hover:bg-[#1A3152] border border-[#1A3152] text-xs transition-colors">{isPaused ? <Play className="w-3.5 h-3.5 text-[#00C9A7]" /> : <Pause className="w-3.5 h-3.5 text-[#C9A84C]" />}<span>{isPaused ? 'Nastavi' : 'Pauza'}</span></button>
           </div>
-
-          {/* Slide Indicator Dots */}
           <div className="flex items-center gap-2">
             {bannerSlides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  currentSlide === idx
-                    ? 'w-8 bg-[#00C9A7] shadow-lg shadow-[#00C9A7]/40'
-                    : 'w-2.5 bg-[#1A3152] hover:bg-[#00C9A7]/40'
-                }`}
-                aria-label={`Prikaži baner ${idx + 1}`}
-              />
+              <button key={idx} onClick={() => setCurrentSlide(idx)} className={`h-2.5 rounded-full transition-all duration-300 ${currentSlide === idx ? 'w-8 bg-[#00C9A7] shadow-lg shadow-[#00C9A7]/40' : 'w-2.5 bg-[#1A3152] hover:bg-[#00C9A7]/40'}`} aria-label={`Prikaži baner ${idx + 1}`} />
             ))}
           </div>
-
-          {/* Directional Arrows (Right-To-Left Flow) */}
           <div className="flex items-center gap-2">
-            <button
-              onClick={handlePrev}
-              className="p-2.5 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] border border-[#1A3152] hover:border-[#00C9A7] text-[#F5F0E8] hover:text-[#0A1628] transition-all shadow-md min-h-[40px] min-w-[40px] flex items-center justify-center"
-              aria-label="Prethodni baner"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="p-2.5 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] border border-[#1A3152] hover:border-[#00C9A7] text-[#F5F0E8] hover:text-[#0A1628] transition-all shadow-md min-h-[40px] min-w-[40px] flex items-center justify-center"
-              aria-label="Sjedeći baner (desno na lijevo)"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+            <button onClick={handlePrev} className="p-2.5 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] border border-[#1A3152] hover:border-[#00C9A7] text-[#F5F0E8] hover:text-[#0A1628] transition-all shadow-md min-h-[40px] min-w-[40px] flex items-center justify-center" aria-label="Prethodni baner"><ChevronLeft className="w-4 h-4" /></button>
+            <button onClick={handleNext} className="p-2.5 rounded-xl bg-[#0A1628] hover:bg-[#00C9A7] border border-[#1A3152] hover:border-[#00C9A7] text-[#F5F0E8] hover:text-[#0A1628] transition-all shadow-md min-h-[40px] min-w-[40px] flex items-center justify-center" aria-label="Sjedeći baner"><ChevronRight className="w-4 h-4" /></button>
           </div>
-
         </div>
-
       </div>
-
-      {/* Video Presentation Modal */}
       {selectedVideo && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1628]/90 backdrop-blur-md animate-fadeIn"
-          onClick={() => setSelectedVideo(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={selectedVideo.title}
-        >
-          <div
-            className="relative w-full max-w-3xl rounded-3xl bg-[#0F2038] border-2 border-[#00C9A7] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1628]/90 backdrop-blur-md animate-fadeIn" onClick={() => setSelectedVideo(null)} role="dialog" aria-modal="true" aria-label={selectedVideo.title}>
+          <div className="relative w-full max-w-3xl rounded-3xl bg-[#0F2038] border-2 border-[#00C9A7] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#1A3152] bg-[#0A1628]">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-[#00C9A7]/20 text-[#00C9A7]">
-                  <Play className="w-5 h-5 fill-current" />
-                </div>
-                <div>
-                  <h3 className="font-syne font-extrabold text-base sm:text-lg text-[#F5F0E8] flex items-center gap-2">
-                    <span>{selectedVideo.title}</span>
-                  </h3>
-                  <p className="text-[11px] font-mono text-[#00C9A7]">
-                    B&H Assistant • Službena video prezentacija ponude
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setSelectedVideo(null)}
-                className="p-2 rounded-xl bg-[#1A3152]/80 hover:bg-rose-500/20 text-[#F5F0E8]/70 hover:text-rose-400 border border-[#1A3152] transition-colors"
-                aria-label="Zatvori video prezentaciju"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-3"><div className="p-2 rounded-xl bg-[#00C9A7]/20 text-[#00C9A7]"><Play className="w-5 h-5 fill-current" /></div><div><h3 className="font-syne font-extrabold text-base sm:text-lg text-[#F5F0E8]">{selectedVideo.title}</h3><p className="text-[11px] font-mono text-[#00C9A7]">B&H Assistant • Službena video prezentacija ponude</p></div></div>
+              <button onClick={() => setSelectedVideo(null)} className="p-2 rounded-xl bg-[#1A3152]/80 hover:bg-rose-500/20 text-[#F5F0E8]/70 hover:text-rose-400 border border-[#1A3152] transition-colors" aria-label="Zatvori video prezentaciju"><X className="w-5 h-5" /></button>
             </div>
-
-            {/* Video Player Container */}
-            <div className="p-3 sm:p-5 bg-black flex items-center justify-center">
-              <video
-                src={selectedVideo.url}
-                controls
-                autoPlay
-                playsInline
-                className="w-full max-h-[60vh] rounded-xl object-contain shadow-2xl"
-              >
-                Vaš internet preglednik ne podržava direktnu reprodukciju HTML5 videa.
-              </video>
-            </div>
-
-            {/* Modal Footer */}
+            <div className="p-3 sm:p-5 bg-black flex items-center justify-center"><video src={selectedVideo.url} controls autoPlay playsInline className="w-full max-h-[60vh] rounded-xl object-contain shadow-2xl">Vaš preglednik ne podržava HTML5 video.</video></div>
             <div className="p-4 bg-[#0A1628] border-t border-[#1A3152] flex flex-wrap items-center justify-between gap-3">
-              <a
-                href={selectedVideo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-[#00C9A7] hover:text-[#00E5BE] flex items-center gap-1.5 font-mono underline underline-offset-4"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>Otvori direktan link videa (.mp4)</span>
-              </a>
-              <button
-                onClick={() => setSelectedVideo(null)}
-                className="px-5 py-2 rounded-xl bg-[#1A3152] hover:bg-[#00C9A7] text-[#F5F0E8] hover:text-[#0A1628] font-syne font-bold text-xs transition-colors ml-auto"
-              >
-                Zatvori
-              </button>
+              <a href={selectedVideo.url} target="_blank" rel="noopener noreferrer" className="text-xs text-[#00C9A7] hover:text-[#00E5BE] flex items-center gap-1.5 font-mono underline underline-offset-4"><ExternalLink className="w-3.5 h-3.5" /><span>Otvori direktan link videa (.mp4)</span></a>
+              <button onClick={() => setSelectedVideo(null)} className="px-5 py-2 rounded-xl bg-[#1A3152] hover:bg-[#00C9A7] text-[#F5F0E8] hover:text-[#0A1628] font-syne font-bold text-xs transition-colors ml-auto">Zatvori</button>
             </div>
           </div>
         </div>
@@ -606,3 +175,5 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
     </div>
   );
 };
+
+export default PromoBannerCarousel;
