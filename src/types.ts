@@ -110,6 +110,8 @@ export interface SocialPost {
   location?: string;
   tags: string[];
   comments?: SocialComment[];
+  /** Affiliate reklama: prikazuje "Posjeti ponudu" dugme koje vodi na postUrl (CIA link) */
+  isAffiliate?: boolean;
 }
 
 export interface NewsArticle {

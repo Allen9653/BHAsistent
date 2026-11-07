@@ -369,275 +369,206 @@ export const AFFILIATE_COURSES: AffiliateCourse[] = [
   }
 ];
 
+/**
+ * AFFILIATE REKLAME — Zajednica (12 blokova: slika + PR txt + URL)
+ * ----------------------------------------------------------------
+ * Ukupno: 12 novih affiliate objava (zamjenjuju prethodnih 12 objava).
+ * Slike:   public/images/affiliate/ad-01.png ... ad-12.png
+ * PR tekst: caption (teksti sa "PR TEKST 01." ...)
+ * URL:      postUrl (CIA affiliate link — zamjenjujte "https://affiliate-link-01.example.com")
+ * Oznaka:   isAffiliate: true → prikazuje "Posjeti ponudu" dugme na postu.
+ */
 export const SOCIAL_POSTS: SocialPost[] = [
   {
-    id: "post-scena-1",
-    image: IMAGES.scenaCover,
-    caption: "Naslovnica I. izdanja magazina SCENA+! ✨ Istražujemo novu energiju Zenice i ZDK, od underground umjetnosti i vinila Danila Kese do digitalnih inovacija mladih. Čitajte potpuno besplatno na Canva linku! 📖🇧🇦",
+    id: "ad-01",
+    image: "/images/affiliate/ad-01.png",
+    caption: "PR TEKST 01 — [Unesite PR tekst za affiliate partnera 01 ovdje.]",
+    category: "alati",
+    categoryLabel: "Affiliate Partner 01",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-01.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner01"],
+    comments: [],
+    isAffiliate: true
+  },
+  {
+    id: "ad-02",
+    image: "/images/affiliate/ad-02.png",
+    caption: "PR TEKST 02 — [Unesite PR tekst za affiliate partnera 02 ovdje.]",
+    category: "alati",
+    categoryLabel: "Affiliate Partner 02",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-02.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner02"],
+    comments: [],
+    isAffiliate: true
+  },
+  {
+    id: "ad-03",
+    image: "/images/affiliate/ad-03.png",
+    caption: "PR TEKST 03 — [Unesite PR tekst za affiliate partnera 03 ovdje.]",
+    category: "projekti",
+    categoryLabel: "Affiliate Partner 03",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-03.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner03"],
+    comments: [],
+    isAffiliate: true
+  },
+  {
+    id: "ad-04",
+    image: "/images/affiliate/ad-04.png",
+    caption: "PR TEKST 04 — [Unesite PR tekst za affiliate partnera 04 ovdje.]",
+    category: "edukacija",
+    categoryLabel: "Affiliate Partner 04",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-04.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner04"],
+    comments: [],
+    isAffiliate: true
+  },
+  {
+    id: "ad-05",
+    image: "/images/affiliate/ad-05.png",
+    caption: "PR TEKST 05 — [Unesite PR tekst za affiliate partnera 05 ovdje.]",
     category: "scena",
-    categoryLabel: "Magazin SCENA+",
-    likes: 142,
+    categoryLabel: "Affiliate Partner 05",
+    likes: 0,
     initialLiked: false,
-    commentsCount: 18,
-    date: "Prije 2 dana",
-    postUrl: "https://www.instagram.com/bh.asst",
-    location: "Zenica, Bosna i Hercegovina",
-    tags: ["#SCENAPlus", "#ZenicaKultura", "#UrbaniMagazin", "#ZDK", "#BHAssistant"],
-    comments: [
-      {
-        id: "c1",
-        author: "zenica_creatives",
-        text: "Sjajan format i odličan izbor tema za prvo izdanje! Svaka čast ekipi.",
-        timeAgo: "1 dan"
-      },
-      {
-        id: "c2",
-        author: "haris_dev_ba",
-        text: "Konačno magazin koji spaja kulturu i IT u našem kantonu! 👏",
-        timeAgo: "18 sati"
-      }
-    ]
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-05.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner05"],
+    comments: [],
+    isAffiliate: true
   },
   {
-    id: "post-bravo-winner",
-    image: IMAGES.bravoWinner,
-    caption: "🏆 POBJEDA! BH KONVER je proglašen za pobjednika sedmice! Tim platforme Lovable preuzima kompletan razvoj i finansiranje zvaničnih mobilnih aplikacija za iOS i Android. Hvala svima na podršci! 📱🇧🇦",
-    category: "alati",
-    categoryLabel: "Priznanja & Nagrade",
-    likes: 340,
-    initialLiked: true,
-    commentsCount: 42,
-    date: "Prije 3 dana",
-    postUrl: "https://www.instagram.com/bh.asst",
-    location: "B&H Assistant Hub • Zenica",
-    tags: ["#BHKonver", "#BravoWinner", "#LovableApp", "#PobjednikSedmice", "#StartupZenica"],
-    comments: [
-      {
-        id: "c-bravo-1",
-        author: "amar_zenica",
-        text: "Ogroman uspjeh za domaći softver! Čestitke B&H Assistant timu.",
-        timeAgo: "2 dana"
-      }
-    ]
-  },
-  {
-    id: "post-konver-2",
-    image: IMAGES.bhKonverMockup,
-    caption: "Predstavljamo BH Konverter (Konver) ⚡ Vaš novi omiljeni alat za brze poslovne i devizne kalkulacije, prilagođen zakonima i valutama u BiH. Bez registracije, 100% besplatno i munjevito brzo. Isprobajte na www.bh-konver.com 💻🚀",
-    category: "alati",
-    categoryLabel: "BH Digitalni Alati",
-    likes: 215,
-    initialLiked: true,
-    commentsCount: 29,
-    date: "Prije 4 dana",
-    postUrl: "https://www.instagram.com/bh.asst",
-    location: "B&H Assistant Hub • Zenica",
-    tags: ["#BHKonver", "#BHTech", "#DigitalniAlati", "#FinansijeBiH", "#StartupZenica"],
-    comments: [
-      {
-        id: "c3",
-        author: "mirza_finansije",
-        text: "Ovo nam je nedostajalo za brze kalkulacije PDV-a i valuta u praksi.",
-        timeAgo: "3 dana"
-      }
-    ]
-  },
-  {
-    id: "post-zentaxi-reklama",
-    image: IMAGES.zentaxiBanner,
-    caption: "🚖 ZENTAXI — Spajamo vožnju, stvaramo udobnost! Nova pametna digitalna taksi platforma za grad Zenicu i Zeničko-dobojski kanton. Pozivamo licencirane taksi prevoznike i investitore na partnerstvo. 📍🚦",
-    category: "projekti",
-    categoryLabel: "Urbani Transport & Startup",
-    likes: 289,
-    initialLiked: false,
-    commentsCount: 37,
-    date: "Prije 5 dana",
-    postUrl: "https://canva.link/xyqzerrxvkxbfy2",
-    location: "Zenica • ZENTAXI Mreža",
-    tags: ["#ZenTaxi", "#ZenicaPrijevoz", "#SmartCity", "#TaksiZenica", "#Investicije"],
-    comments: [
-      {
-        id: "c-zt-1",
-        author: "edis_taxi",
-        text: "Odlična ideja za transparentan taksi prevoz u Zenici bez ogromnih provizija!",
-        timeAgo: "4 dana"
-      }
-    ]
-  },
-  {
-    id: "post-bojanka-3",
-    image: IMAGES.gummiBojanka,
-    caption: "🎨 Besplatna GUMMI Bojanka za najmlađe! Preuzmite PDF izdanje u 8 uzbudljivih ilustracija sa temom automobila, sigurnosti u saobraćaju i druženja. Razvijajte kreativnost svoje djece uz B&H Assistant tim! 🖍️🚙",
-    category: "projekti",
-    categoryLabel: "Projekti & Djeca",
-    likes: 184,
-    initialLiked: false,
-    commentsCount: 24,
-    date: "Prije 6 dana",
-    postUrl: "https://www.instagram.com/bh.asst",
-    location: "Zenica • ZEDP",
-    tags: ["#GUMMIBojanka", "#DjecaBiH", "#Kreativnost", "#BesplatnoPreuzimanje"],
-    comments: [
-      {
-        id: "c4",
-        author: "leila_mami_blog",
-        text: "Isprintali smo za vikend, djeca su oduševljena likom Gummia! ❤️",
-        timeAgo: "5 dana"
-      }
-    ]
-  },
-  {
-    id: "post-gummi-jaran",
-    image: IMAGES.gummiVasJaran,
-    caption: "📚 GUMMI VAŠ JARAN — 'Naučimo čitati i pisati latinicu i ćirilicu zajedno!' Originalni animirani i edukativni projekat za predškolce i školarce u Bosni i Hercegovini. 🧒🎈",
-    category: "projekti",
-    categoryLabel: "Edukacija & Djeca",
-    likes: 210,
-    initialLiked: true,
-    commentsCount: 19,
-    date: "Prije 7 dana",
-    postUrl: "https://canva.link/vens28es43srfdw",
-    location: "Zenica • Edukativni Centar",
-    tags: ["#GummiVasJaran", "#UcenjeSlova", "#EdukacijaBiH", "#Djeca", "#Bojanka"],
-    comments: [
-      {
-        id: "c-gj-1",
-        author: "nastavnica_maja",
-        text: "Prekrasan pristup učenju oba naša pisma kroz igru.",
-        timeAgo: "6 dana"
-      }
-    ]
-  },
-  {
-    id: "post-ornamenti-4",
-    image: IMAGES.ornamentiBosne,
-    caption: "Monumentalna baština srednjovjekovne Bosne u digitalnom kodu 🏛️✨ Digitalna kolekcija 'Ornamenti Bosne' donosi vektorske simbole stećaka za moderne dizajnere, veb projekte i edukaciju. Spoj tradicije i cyber tehnologije.",
+    id: "ad-06",
+    image: "/images/affiliate/ad-06.png",
+    caption: "PR TEKST 06 — [Unesite PR tekst za affiliate partnera 06 ovdje.]",
     category: "stecak",
-    categoryLabel: "Kultura & Stećci",
-    likes: 268,
-    initialLiked: true,
-    commentsCount: 35,
-    date: "Prije 1 sedmicu",
-    postUrl: "https://www.instagram.com/bh.asst",
-    location: "Radimlja & Zgošća • BiH",
-    tags: ["#OrnamentiBosne", "#Stećak", "#KulturnaBaština", "#WebDesign", "#BiHHistory"],
-    comments: [
-      {
-        id: "c5",
-        author: "tarik_arch",
-        text: "Fantastična inicijativa za očuvanje vizuelnog identiteta Bosne!",
-        timeAgo: "6 dana"
-      }
-    ]
+    categoryLabel: "Affiliate Partner 06",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-06.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner06"],
+    comments: [],
+    isAffiliate: true
   },
   {
-    id: "post-our-products",
-    image: IMAGES.ourProducts,
-    caption: "📱💻 Ekosistem B&H Assistant d.o.o. na svim uređajima! Naš suite obuhvata BH Konver, BH PapirFinder, Ornamente Bosne i SCENA+ magazin, optimizovane za računare, tablete i pametne telefone.",
+    id: "ad-07",
+    image: "/images/affiliate/ad-07.png",
+    caption: "PR TEKST 07 — [Unesite PR tekst za affiliate partnera 07 ovdje.]",
     category: "alati",
-    categoryLabel: "Digitalni Ekosistem",
-    likes: 312,
-    initialLiked: true,
-    commentsCount: 22,
-    date: "Prije 8 dana",
-    postUrl: "https://bh-assistant.ba",
-    location: "Zenica, BiH",
-    tags: ["#OurProducts", "#ResponsiveDesign", "#TechBiH", "#DigitalTransformation"],
-    comments: [
-      {
-        id: "c-op-1",
-        author: "vedran_ui",
-        text: "Svi proizvodi na jednom mjestu izgledaju vrlo ujednačeno i profesionalno.",
-        timeAgo: "7 dana"
-      }
-    ]
+    categoryLabel: "Affiliate Partner 07",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-07.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner07"],
+    comments: [],
+    isAffiliate: true
   },
   {
-    id: "post-gurushots-5",
-    image: IMAGES.digitalniSpavac,
-    caption: "Spavač iz kamena budi se u digitalnom dobu 🌌 Yusufowych fotografija na globalnoj GuruShots platformi. Ponosno predstavljamo bh. motive i konceptualnu umjetnost na svjetskim izložbama fotografije. 📸🌐",
+    id: "ad-08",
+    image: "/images/affiliate/ad-08.png",
+    caption: "PR TEKST 08 — [Unesite PR tekst za affiliate partnera 08 ovdje.]",
+    category: "alati",
+    categoryLabel: "Affiliate Partner 08",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-08.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner08"],
+    comments: [],
+    isAffiliate: true
+  },
+  {
+    id: "ad-09",
+    image: "/images/affiliate/ad-09.png",
+    caption: "PR TEKST 09 — [Unesite PR tekst za affiliate partnera 09 ovdje.]",
+    category: "projekti",
+    categoryLabel: "Affiliate Partner 09",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-09.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner09"],
+    comments: [],
+    isAffiliate: true
+  },
+  {
+    id: "ad-10",
+    image: "/images/affiliate/ad-10.png",
+    caption: "PR TEKST 10 — [Unesite PR tekst za affiliate partnera 10 ovdje.]",
+    category: "edukacija",
+    categoryLabel: "Affiliate Partner 10",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-10.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner10"],
+    comments: [],
+    isAffiliate: true
+  },
+  {
+    id: "ad-11",
+    image: "/images/affiliate/ad-11.png",
+    caption: "PR TEKST 11 — [Unesite PR tekst za affiliate partnera 11 ovdje.]",
+    category: "scena",
+    categoryLabel: "Affiliate Partner 11",
+    likes: 0,
+    initialLiked: false,
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-11.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner11"],
+    comments: [],
+    isAffiliate: true
+  },
+  {
+    id: "ad-12",
+    image: "/images/affiliate/ad-12.png",
+    caption: "PR TEKST 12 — [Unesite PR tekst za affiliate partnera 12 ovdje.]",
     category: "stecak",
-    categoryLabel: "Fotografija & Umjetnost",
-    likes: 197,
+    categoryLabel: "Affiliate Partner 12",
+    likes: 0,
     initialLiked: false,
-    commentsCount: 16,
-    date: "Prije 10 dana",
-    postUrl: "https://gurushots.com/yusufowych",
-    location: "GuruShots Global Exhibition",
-    tags: ["#GuruShots", "#Yusufowych", "#DigitalArt", "#BosnianArt", "#Photography"],
-    comments: [
-      {
-        id: "c6",
-        author: "photo_enthusiast_eu",
-        text: "Stunning composition and atmosphere! 🌟",
-        timeAgo: "8 dana"
-      }
-    ]
-  },
-  {
-    id: "post-papirfinder-6",
-    image: IMAGES.bhPapirfinderMockup,
-    caption: "Trebate općinski obrazac za Olovo, Gračanicu, Banja Luku ili Travnik? 📄🔍 BH PapirFinder štedi vaše vrijeme i novac — pronađite i preuzmite zvanične obrasce lokalne samouprave bez čekanja u redovima!",
-    category: "alati",
-    categoryLabel: "BH Digitalni Alati",
-    likes: 156,
-    initialLiked: false,
-    commentsCount: 12,
-    date: "Prije 2 sedmice",
-    postUrl: "https://www.instagram.com/bh.asst",
-    location: "Bosna i Hercegovina",
-    tags: ["#PapirFinder", "#eUprava", "#LokalnaSamouprava", "#BiHServisi"],
-    comments: [
-      {
-        id: "c7",
-        author: "dzenan_bih",
-        text: "Korisno i pregledno, posebno za ljude u dijaspori kojima trebaju formulari.",
-        timeAgo: "12 dana"
-      }
-    ]
-  },
-  {
-    id: "post-cloudtalk",
-    image: IMAGES.cloudtalkBanner,
-    caption: "🤖📞 CloudTalk AI — Vaš pametni asistent za pozive! Automatizujte korisničku podršku i prodaju uz naprednu AI telefoniju i VoIP sisteme. Isprobajte besplatno uz B&H Assistant partnerstvo.",
-    category: "alati",
-    categoryLabel: "AI & Tehnologija",
-    likes: 178,
-    initialLiked: false,
-    commentsCount: 15,
-    date: "Prije 2 sedmice",
-    postUrl: "https://cloudtalk.introw.io/r/bjT0sXh8",
-    location: "CloudTalk Partner Hub",
-    tags: ["#CloudTalk", "#AITelefonija", "#CallCenter", "#PoslovnaRjesenja"],
-    comments: [
-      {
-        id: "c-ct-1",
-        author: "samir_sales",
-        text: "Odličan alat za smanjenje propuštenih poziva u firmi.",
-        timeAgo: "13 dana"
-      }
-    ]
-  },
-  {
-    id: "post-tryhackme",
-    image: IMAGES.tryhackmeBanner,
-    caption: "🛡️💻 Jeste li spremni za karijeru u sajber sigurnosti? TryHackMe vam omogućava praktičan rad u virtuelnim laboratorijama direktno u pretraživaču. Učite etičko hakovanje od nule! 🚀",
-    category: "alati",
-    categoryLabel: "Sajber Sigurnost & Edukacija",
-    likes: 245,
-    initialLiked: true,
-    commentsCount: 31,
-    date: "Prije 2 sedmice",
-    postUrl: "https://tryhackme.com/",
-    location: "Global Cyber Lab",
-    tags: ["#TryHackMe", "#CyberSecurity", "#EtičkoHakovanje", "#ITObuka"],
-    comments: [
-      {
-        id: "c-thm-1",
-        author: "kenan_sec",
-        text: "Najbolja platforma za učenje pentestinga u praksi!",
-        timeAgo: "14 dana"
-      }
-    ]
+    commentsCount: 0,
+    date: "Danas",
+    postUrl: "https://affiliate-link-12.example.com",
+    location: "B&H Assistant Partneri",
+    tags: ["#Affiliate", "#Partner12"],
+    comments: [],
+    isAffiliate: true
   }
 ];
