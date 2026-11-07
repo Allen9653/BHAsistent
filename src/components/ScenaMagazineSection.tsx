@@ -5,6 +5,7 @@ import { ScenaVideoPromotionBox } from './ScenaVideoPromotionBox';
 import { BookOpen, ExternalLink, Sparkles, Layers, Disc, Flame, Shield, Award, Eye, X, Tv } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { IMAGES } from '../utils/images';
+import { SiteWideSearch } from './SiteWideSearch';
 
 export const ScenaMagazineSection: React.FC = () => {
   const [showReaderModal, setShowReaderModal] = useState(false);
@@ -276,6 +277,15 @@ export const ScenaMagazineSection: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Brza Pretraga Alata, Članaka & Projekata — ispod Vizuelnog Mozaika */}
+        <div className="mt-12">
+          <SiteWideSearch
+            variant="section"
+            title="Brza Pretraga Alata, Članaka & Projekata"
+            subtitle="Pronađite domaća IT rješenja (BH Konver, PapirFinder), najnovije tehnološke analize, magazin SCENA+ ili odgovore na česta pitanja."
+          />
         </div>
 
       </div>

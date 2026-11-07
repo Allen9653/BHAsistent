@@ -12,8 +12,7 @@ import { COMPANY_INFO } from '../data/companyData';
 import { SEOHead } from '../components/SEOHead';
 import { PageSeo } from '../components/PageSeo';
 import { NewsFeed } from '../components/NewsFeed';
-import { FAQ } from '../components/FAQ';
-import { SiteWideSearch } from '../components/SiteWideSearch';
+
 import {
   ArrowRight,
   Sparkles,
@@ -474,23 +473,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
         <PromoBannerCarousel onOpenBojanka={onOpenBojanka} />
       </section>
 
-      {/* 5. CENTRAL SITE-WIDE SEARCH (Instant discovery of tools, articles, magazine topics & projects) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SiteWideSearch
-          variant="section"
-          onOpenBojanka={onOpenBojanka}
-          title="Brza Pretraga Alata, Članaka & Projekata"
-          subtitle="Pronađite domaća IT rješenja (BH Konver, PapirFinder), najnovije tehnološke analize, magazin SCENA+ ili odgovore na česta pitanja."
-        />
-      </section>
-
-      {/* 6. DYNAMIC NEWSFEED (IT Trends, Company Achievements & Community Events) */}
+      {/* 5. DYNAMIC NEWSFEED (IT Trends, Company Achievements & Community Events) */}
       <NewsFeed />
 
-      {/* 6. STRUCTURED FAQ (Detailed Answers on Services, Tools, Legal & Mission) */}
-      <FAQ />
-
-      {/* 7. COMPANY STATS & TRUST BLOCK */}
+      {/* 6. COMPANY STATS & TRUST BLOCK */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#1A3152] border border-[#00C9A7]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center sm:text-left items-center">
