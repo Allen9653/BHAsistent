@@ -11,8 +11,6 @@ import { useLanguage } from '../context/LanguageContext';
 import { COMPANY_INFO } from '../data/companyData';
 import { SEOHead } from '../components/SEOHead';
 import { PageSeo } from '../components/PageSeo';
-import { NewsFeed } from '../components/NewsFeed';
-
 import {
   ArrowRight,
   Sparkles,
@@ -25,12 +23,6 @@ import {
   Briefcase,
   Layers,
   GraduationCap,
-  ShieldCheck,
-  Building2,
-  Mail,
-  ChevronRight,
-  Award,
-  Globe,
   ExternalLink
 } from 'lucide-react';
 
@@ -39,11 +31,10 @@ interface HomePageProps {
   onOpenAdmin: () => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }) => {
+export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: _onOpenAdmin }) => {
   const { t } = useLanguage();
   const [heroSlide, setHeroSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [showDetailedLegal, setShowDetailedLegal] = useState(false);
 
   const heroSlides = [
     {
@@ -474,16 +465,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
       </section>
 
       {/* 5. DYNAMIC NEWSFEED (IT Trends, Company Achievements & Community Events) */}
-      <NewsFeed />
+      {/* NewsFeed je premješten na /novosti (NewsPage) — na homepageu ostaje samo link ka stranici */}
 
-      {/* 6. COMPANY STATS & TRUST BLOCK */}
+      {/* 6. COMPANY REGISTRY TEASER (kompletni trust blok je na /o-nama) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#1A3152] border border-[#00C9A7]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center sm:text-left items-center">
-            
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center sm:text-left items-center">
+
             <div className="space-y-2 md:col-span-1">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00C9A7]/15 border border-[#00C9A7]/30 text-[#00C9A7] text-[11px] font-mono">
-                <ShieldCheck className="w-3.5 h-3.5" />
+                <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>{t('home.trust.badge', 'Zvanični Podaci')}</span>
               </div>
               <h3 className="font-syne font-extrabold text-2xl text-[#F5F0E8]">
@@ -506,50 +497,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin }
               <span className="text-[10px] text-[#F5F0E8]/50 block">{t('home.trust.court', 'Općinski Sud Zenica')}</span>
             </div>
 
-            <div className="flex flex-col gap-2.5 justify-center">
-              <Link
-                to="/kontakt"
-                className="w-full text-center px-4 py-3 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs shadow-lg transition-colors min-h-[44px] flex items-center justify-center gap-2"
-              >
-                <Mail className="w-4 h-4" />
-                <span>{t('home.trust.contactBtn', 'Kontaktirajte Nas')}</span>
-              </Link>
-              <button
-                onClick={() => setShowDetailedLegal(!showDetailedLegal)}
-                className="w-full text-center px-4 py-2.5 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] border border-[#1A3152] text-[#00C9A7] font-mono font-bold text-xs transition-colors flex items-center justify-center gap-1.5"
-              >
-                <Building2 className="w-3.5 h-3.5" />
-                <span>{showDetailedLegal ? 'Sakrij Bankovne Račune ▲' : 'Svi Registarski & Bankovni Podaci ▼'}</span>
-              </button>
-            </div>
-
           </div>
 
-          {/* Expandable Detailed Legal Registry & Banking Section */}
-          {showDetailedLegal && (
-            <div className="mt-8 pt-6 border-t border-[#1A3152] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono animate-fadeIn">
-              <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
-                <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Glavni Transakcijski Račun</span>
-                <span className="text-[#00C9A7] font-bold text-sm block mt-0.5">1610000305820078</span>
-                <span className="text-[10px] text-[#F5F0E8]/60">Raiffeisen Bank d.d. BiH</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
-                <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Puno Registrovano Ime</span>
-                <span className="text-[#F5F0E8] font-bold block mt-0.5">B&H ASSISTANT d.o.o. Zenica</span>
-                <span className="text-[10px] text-[#F5F0E8]/60">Društvo sa ograničenom odgovornošću</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
-                <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Zvanično Sjedište</span>
-                <span className="text-[#F5F0E8] font-bold block mt-0.5">{COMPANY_INFO.address}</span>
-                <span className="text-[10px] text-[#F5F0E8]/60">{COMPANY_INFO.city}, {COMPANY_INFO.postalCode}, BiH</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
-                <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Bonitet & Verifikacija</span>
-                <span className="text-[#C9A84C] font-bold block mt-0.5">CompanyWall Rejting</span>
-                <span className="text-[10px] text-[#00C9A7]">Verifikovan Poslovni Subjekt</span>
-              </div>
-            </div>
-          )}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#1A3152]">
+            <p className="text-xs text-[#F5F0E8]/60 text-center sm:text-left">
+              Registarski, bankovni i bonitetni podaci firme dostupni su na stranici <strong className="text-[#00C9A7]">O Nama</strong>.
+            </p>
+            <Link
+              to="/o-nama"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs shadow-lg transition-colors min-h-[44px]"
+            >
+              <span>O Nama & Registarski Podaci</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
 
         </div>
       </section>

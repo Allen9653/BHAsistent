@@ -311,7 +311,7 @@ export const NewsFeed: React.FC = () => {
             <SEOHead
               title={`${activeUpdate.title} | B&H Assistant Feed`}
               description={activeUpdate.summary}
-              canonical={`https://bh-assistant.ba/#newsfeed-${encodeURIComponent(activeUpdate.id)}`}
+              canonical={`https://bh-assistant.ba/novosti#newsfeed-${encodeURIComponent(activeUpdate.id)}`}
               ogType="article"
               author={activeUpdate.author}
               section={activeUpdate.categoryLabel}

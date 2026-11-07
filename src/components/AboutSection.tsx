@@ -29,6 +29,7 @@ import { useLanguage } from '../context/LanguageContext';
 export const AboutSection: React.FC = () => {
   const { t } = useLanguage();
   const [selectedVideo, setSelectedVideo] = useState<'bs' | 'en'>('bs');
+  const [showDetailedLegal, setShowDetailedLegal] = useState(false);
 
   const videos = {
     bs: {
@@ -475,6 +476,84 @@ export const AboutSection: React.FC = () => {
                 <span className="px-2 py-0.5 rounded bg-[#0A1628] text-[10px] font-mono text-[#00C9A7] border border-[#1A3152]">✓ Sajber Zaštita</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* COMPANY STATS & TRUST BLOCK (migrirano sa homepagea — registralski & bankovni podaci) */}
+        <div className="mt-20 pt-16 border-t border-[#1A3152]">
+          <div className="rounded-3xl bg-gradient-to-br from-[#0F2038] via-[#0A1628] to-[#1A3152] border border-[#00C9A7]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center sm:text-left items-center">
+
+              <div className="space-y-2 md:col-span-1">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00C9A7]/15 border border-[#00C9A7]/30 text-[#00C9A7] text-[11px] font-mono">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>{t('home.trust.badge', 'Zvanični Podaci')}</span>
+                </div>
+                <h3 className="font-syne font-extrabold text-2xl text-[#F5F0E8]">
+                  B&H Assistant
+                </h3>
+                <p className="text-xs text-[#F5F0E8]/70">
+                  {t('home.trust.entity', 'Pravni subjekt registrovan u Zenici, ZDK.')}
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0A1628]/60 border border-[#1A3152] space-y-1">
+                <span className="text-[11px] font-mono text-[#C9A84C] uppercase">{t('home.trust.jibLabel', 'Jedinstveni ID Broj')}</span>
+                <p className="font-mono font-bold text-base text-[#F5F0E8]">{COMPANY_INFO.jib}</p>
+                <span className="text-[10px] text-[#F5F0E8]/50 block">{t('home.trust.taxAuth', 'Poreska Uprava FBiH')}</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0A1628]/60 border border-[#1A3152] space-y-1">
+                <span className="text-[11px] font-mono text-[#00C9A7] uppercase">{t('home.trust.mbsLabel', 'Matični Broj Subjekta')}</span>
+                <p className="font-mono font-bold text-base text-[#F5F0E8]">{COMPANY_INFO.mbs}</p>
+                <span className="text-[10px] text-[#F5F0E8]/50 block">{t('home.trust.court', 'Općinski Sud Zenica')}</span>
+              </div>
+
+              <div className="flex flex-col gap-2.5 justify-center">
+                <a
+                  href="/kontakt"
+                  className="w-full text-center px-4 py-3 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs shadow-lg transition-colors min-h-[44px] flex items-center justify-center gap-2"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>{t('home.trust.contactBtn', 'Kontaktirajte Nas')}</span>
+                </a>
+                <button
+                  onClick={() => setShowDetailedLegal(!showDetailedLegal)}
+                  className="w-full text-center px-4 py-2.5 rounded-xl bg-[#0A1628] hover:bg-[#1A3152] border border-[#1A3152] text-[#00C9A7] font-mono font-bold text-xs transition-colors flex items-center justify-center gap-1.5"
+                >
+                  <Building2 className="w-3.5 h-3.5" />
+                  <span>{showDetailedLegal ? 'Sakrij Bankovne Račune ▲' : 'Svi Registarski & Bankovni Podaci ▼'}</span>
+                </button>
+              </div>
+
+            </div>
+
+            {/* Expandable Detailed Legal Registry & Banking Section */}
+            {showDetailedLegal && (
+              <div className="mt-8 pt-6 border-t border-[#1A3152] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono animate-fadeIn">
+                <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
+                  <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Glavni Transakcijski Račun</span>
+                  <span className="text-[#00C9A7] font-bold text-sm block mt-0.5">1610000305820078</span>
+                  <span className="text-[10px] text-[#F5F0E8]/60">Raiffeisen Bank d.d. BiH</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
+                  <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Puno Registrovano Ime</span>
+                  <span className="text-[#F5F0E8] font-bold block mt-0.5">B&H ASSISTANT d.o.o. Zenica</span>
+                  <span className="text-[10px] text-[#F5F0E8]/60">Društvo sa ograničenom odgovornošću</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
+                  <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Zvanično Sjedište</span>
+                  <span className="text-[#F5F0E8] font-bold block mt-0.5">{COMPANY_INFO.address}</span>
+                  <span className="text-[10px] text-[#F5F0E8]/60">{COMPANY_INFO.city}, {COMPANY_INFO.postalCode}, BiH</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-[#0A1628]/80 border border-[#1A3152]">
+                  <span className="text-[#F5F0E8]/40 block text-[10px] uppercase">Bonitet & Verifikacija</span>
+                  <span className="text-[#C9A84C] font-bold block mt-0.5">CompanyWall Rejting</span>
+                  <span className="text-[10px] text-[#00C9A7]">Verifikovan Poslovni Subjekt</span>
+                </div>
+              </div>
+            )}
+
           </div>
         </div>
 
