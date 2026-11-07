@@ -247,6 +247,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.cloudtalk.badge': 'AI TELEFONSKI ASISTENT',
     'banner.cloudtalk.btn': 'Preuzmite CloudTalk Besplatno',
 
+    // Banner 9 - TWNFZ Affiliate Banner
+    'banner.twnfz.title': 'TWNFZ • Promovni Baner',
+    'banner.twnfz.desc': 'Otkrijte nove mogućnosti kroz TWNFZ partnerski program i povećajte prihode vašeg biznisa.',
+    'banner.twnfz.badge': 'AFILIJIRANI BAŠTER • TWNFZ',
+    'banner.twnfz.btn': 'Otvori TWNFZ Baner',
+
     // Shop & Edukacijski Centar
     'shop.badge': 'DIGITALNI SHOP & EDUKACIJSKI CENTAR',
     'shop.title': 'Edukativni Centar & Digitalni Proizvodi',
@@ -555,6 +561,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.cloudtalk.desc': 'Speed up communication, automate calls, and close deals faster. CloudTalk provides an AI assistant for call centers, online sales, and support. Download and install for free via our link.',
     'banner.cloudtalk.badge': 'AI CALL ASSISTANT',
     'banner.cloudtalk.btn': 'Download CloudTalk Free',
+
+    // Banner 9 - TWNFZ Affiliate Banner
+    'banner.twnfz.title': 'TWNFZ • Promotional Banner',
+    'banner.twnfz.desc': 'Discover new opportunities through the TWNFZ partner program and increase your business revenue.',
+    'banner.twnfz.badge': 'TWNFZ AFFILIATE',
+    'banner.twnfz.btn': 'Open TWNFZ Banner',
 
     // Shop & Education Center
     'shop.badge': 'DIGITAL SHOP & EDUCATION CENTER',
@@ -865,6 +877,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.cloudtalk.badge': 'KI ANRUF-ASSISTENT',
     'banner.cloudtalk.btn': 'CloudTalk Gratis Herunterladen',
 
+    // Banner 9 - TWNFZ Affiliate Banner
+    'banner.twnfz.title': 'TWNFZ • Werbebanner',
+    'banner.twnfz.desc': 'Entdecken Sie neue Möglichkeiten über das TWNFZ-Partnerprogramm und steigern Sie Ihren Geschäftsumsatz.',
+    'banner.twnfz.badge': 'TWNFZ PARTNER',
+    'banner.twnfz.btn': 'TWNFZ Banner Öffnen',
+
     // Shop & Bildungszentrum
     'shop.badge': 'DIGITALER SHOP & BILDUNGSZENTRUM',
     'shop.title': 'Bildungszentrum & Digitale Produkte',
@@ -1173,6 +1191,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'banner.cloudtalk.desc': 'İletişimi hızlandırın, aramaları otomatikleştirin ve anlaşmaları daha hızlı kapatın. CloudTalk çağrı merkezleri, online satış ve müşteri desteği için yapay zeka asistanı sunar. Ücretsiz indirin ve kurun.',
     'banner.cloudtalk.badge': 'YAPAY ZEKA ARAMA ASİSTANI',
     'banner.cloudtalk.btn': 'CloudTalk\'u Ücretsiz İndirin',
+
+    // Banner 9 - TWNFZ Affiliate Banner
+    'banner.twnfz.title': 'TWNFZ • Tanıtım Bannerı',
+    'banner.twnfz.desc': 'TWNFZ ortağı programı üzerinden yeni fırsatları keşfedin ve işletmenizin gelirini artırın.',
+    'banner.twnfz.badge': 'TWNFZ ORTAKLIK',
+    'banner.twnfz.btn': 'TWNFZ Bannerı Aç',
 
     // Shop & Eğitim Merkezi
     'shop.badge': 'DİJİTAL MAĞAZA VE EĞİTİM MERKEZİ',

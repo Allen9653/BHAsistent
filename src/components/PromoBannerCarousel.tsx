@@ -45,6 +45,23 @@ export const PromoBannerCarousel: React.FC<PromoBannerCarouselProps> = ({
 
   const bannerSlides: BannerSlide[] = [
     {
+      id: 'twnfz-affiliate',
+      badgeKey: 'banner.twnfz.badge',
+      badgeDefault: 'AFILIJIRANI BAŠTER • TWNFZ',
+      titleKey: 'banner.twnfz.title',
+      titleDefault: 'TWNFZ • Promovni Baner',
+      descKey: 'banner.twnfz.desc',
+      descDefault: 'Otkrijte nove mogućnosti kroz TWNFZ partnerski program i povećajte prihode vašeg biznisa.',
+      btnKey: 'banner.twnfz.btn',
+      btnDefault: 'Otvori TWNFZ Baner',
+      btnUrl: 'https://twnfz.com/g/vtnpdcgcecfe02eff231bef570c363/',
+      isExternal: true,
+      tagColor: 'bg-gradient-to-r from-[#00C9A7] via-[#00E5BE] to-[#C9A84C] text-[#0A1628] font-extrabold',
+      accentBg: 'from-[#0F2038] via-[#1A3152] to-[#0A1628]',
+      icon: Sparkles,
+      bannerImage: IMAGES.cloudtalkBanner
+    },
+    {
       id: 'custom-tool',
       badgeKey: 'banner.tool.badge',
       badgeDefault: 'USLUGA PO MJERI • PAKET ZA 900 KM',
