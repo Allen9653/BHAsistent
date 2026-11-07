@@ -39,7 +39,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
   const heroSlides = [
     {
       type: 'brand',
-      badge: 'B&H ASSISTANT d.o.o.',
+      badge: t('hero.slide.brand.badge', 'B&H ASSISTANT d.o.o.'),
       badgeColor: 'bg-[#00C9A7]/20 border-[#00C9A7]/40 text-[#00C9A7]',
       title: t('hero.slide.brand.title', 'B&H ASSISTANT d.o.o.'),
       motto: t('hero.slide.brand.motto', COMPANY_INFO.motto),
@@ -53,7 +53,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
       type: 'tool',
       badge: t('hero.slide.konver.badge', 'PRVI BH ALAT • FINANSIJE'),
       badgeColor: 'bg-[#00C9A7]/20 border-[#00C9A7]/40 text-[#00C9A7]',
-      title: 'BH KONVER',
+      title: t('hero.slide.konver.title', 'BH KONVER'),
       motto: t('hero.slide.konver.motto', 'Sistem za konverziju i pravne izjave'),
       description: t('hero.slide.konver.desc', 'Brzi i precizni bh. digitalni kalkulator i konverter valuta, jedinica i kreiranje pravnih izjava pod materijalnom odgovornošću.'),
       image: IMAGES.bhKonverMockup,

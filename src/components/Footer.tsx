@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
               "{COMPANY_INFO.motto}"
             </p>
             <p className="text-xs text-[#F5F0E8]/70 leading-relaxed font-sans">
-              Mlada IT firma iz Zenice. Razvijamo autorske digitalne alate, urbani magazin SCENA+ i inovativne projekte.
+              {t('footer.desc', 'Mlada IT firma iz Zenice. Razvijamo autorske digitalne alate, urbani magazin SCENA+ i inovativne projekte.')}
             </p>
             <p className="text-[11px] font-mono text-[#C9A84C]">
               JIB: {COMPANY_INFO.jib} | MBS: {COMPANY_INFO.mbs}
@@ -65,13 +65,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/alati" className="hover:text-[#00C9A7] transition-colors py-1 inline-block font-semibold">
-                  Pregled Svih Alata →
+                  {t('footer.allTools', 'Pregled Svih Alata')} →
                 </Link>
               </li>
               <li>
                 <Link to="/pretraga" className="hover:text-[#00C9A7] transition-colors py-1 inline-flex items-center gap-1.5 text-[#00C9A7] font-semibold">
                   <Search className="w-3.5 h-3.5" />
-                  <span>Pretraga Platforme</span>
+                  <span>{t('footer.searchPlatform', 'Pretraga Platforme')}</span>
                 </Link>
               </li>
               <li>
@@ -100,37 +100,37 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/scena-magazin" className="hover:text-[#C9A84C] transition-colors py-1 inline-block font-semibold">
-                  SCENA+ Magazin ZDK →
+                  {t('footer.scena', 'SCENA+ Magazin ZDK')} →
                 </Link>
               </li>
               <li>
                 <Link to="/projekti" className="hover:text-[#C9A84C] transition-colors py-1 inline-block">
-                  ZENTAXI & GUMMI Projekti
+                  {t('footer.projects', 'ZENTAXI & GUMMI Projekti')}
                 </Link>
               </li>
               <li>
                 <Link to="/o-nama" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
-                  O Nama & Video Prezentacija
+                  {t('footer.aboutVideo', 'O Nama & Video Prezentacija')}
                 </Link>
               </li>
               <li>
                 <Link to="/kontakt#faq" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
-                  Česta Pitanja (FAQ)
+                  {t('nav.faq', 'Česta Pitanja (FAQ)')}
                 </Link>
               </li>
               <li>
                 <Link to="/zajednica" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
-                  Zajednica (@bh.asst)
+                  {t('footer.community', 'Zajednica (@bh.asst)')}
                 </Link>
               </li>
               <li>
                 <Link to="/novosti#news-feed" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
-                  IT Trendovi & NewsFeed
+                  {t('footer.newsFeed', 'IT Trendovi & NewsFeed')}
                 </Link>
               </li>
               <li>
                 <Link to="/shop" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
-                  Shop & Edukativni Centar
+                  {t('footer.shop', 'Shop & Edukativni Centar')}
                 </Link>
               </li>
             </ul>
@@ -139,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
           {/* Col 4: Legal & Social - Semantic Links */}
           <div className="space-y-3">
             <h4 className="font-syne font-bold text-sm text-[#F5F0E8] uppercase tracking-wider">
-              Pravno & Mreže
+              {t('footer.legalNetworks', 'Pravno & Mreže')}
             </h4>
             <div className="flex flex-col gap-2">
               <Link
@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
               >
                 <Shield className="w-3.5 h-3.5 text-[#00C9A7]" />
-                <span>Politika Privatnosti (GDPR)</span>
+                <span>{t('nav.privacyFull', 'Politika Privatnosti (GDPR)')}</span>
               </Link>
 
               <Link
@@ -155,7 +155,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
               >
                 <FileText className="w-3.5 h-3.5 text-[#C9A84C]" />
-                <span>Uslovi Korištenja</span>
+                <span>{t('nav.termsFull', 'Uslovi Korištenja')}</span>
               </Link>
 
               <button
@@ -163,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
               >
                 <Building2 className="w-3.5 h-3.5 text-[#00C9A7]" />
-                <span>Impressum & Baza Subjekta</span>
+                <span>{t('footer.impressum', 'Impressum & Baza Subjekta')}</span>
               </button>
 
               <button
@@ -171,7 +171,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
               >
                 <Cookie className="w-3.5 h-3.5 text-[#00C9A7]" />
-                <span>Postavke Kolačića</span>
+                <span>{t('footer.cookieSettings', 'Postavke Kolačića')}</span>
               </button>
 
               <button
@@ -179,7 +179,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
               >
                 <Mail className="w-3.5 h-3.5 text-[#00C9A7]" />
-                <span>Službeni E-mail & Setup</span>
+                <span>{t('footer.emailSetup', 'Službeni E-mail & Setup')}</span>
               </button>
 
               <Link
@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
               >
                 <ArrowRight className="w-3.5 h-3.5 text-[#00C9A7]" />
-                <span>Kontakt & Lokacija</span>
+                <span>{t('footer.contactLocation', 'Kontakt & Lokacija')}</span>
               </Link>
             </div>
 
@@ -227,10 +227,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
         {/* Bottom Credits */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#F5F0E8]/60">
           <p>
-            © {new Date().getFullYear()} B&H ASSISTANT d.o.o. Zenica. Sva prava zadržana.
+            © {new Date().getFullYear()} B&H ASSISTANT d.o.o. Zenica. {t('footer.rights', 'Sva prava zadržana.')}
           </p>
           <div className="flex items-center gap-2">
-            <span>Sjedište: Zenica, Bosna i Hercegovina</span>
+            <span>{t('footer.headquarters', 'Sjedište: Zenica, Bosna i Hercegovina')}</span>
             <span>•</span>
             <span className="text-[#00C9A7] font-mono">www.bh-assistant.ba</span>
           </div>
@@ -244,7 +244,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
           <div className="relative w-full max-w-lg rounded-3xl bg-[#0F2038] border border-[#00C9A7]/40 shadow-2xl p-6 sm:p-8 space-y-5 text-xs text-[#F5F0E8] font-sans">
             <div className="flex items-center justify-between border-b border-[#1A3152] pb-3">
               <h3 className="font-syne font-bold text-lg text-[#F5F0E8]">
-                Impressum & Podaci o Firmi
+                {t('footer.impressumTitle', 'Impressum & Podaci o Firmi')}
               </h3>
               <button onClick={() => setShowImpressum(false)} className="min-h-[44px] min-w-[44px] flex items-center justify-center p-1 rounded-xl bg-[#0A1628]">
                 <X className="w-5 h-5 text-[#F5F0E8]" />
@@ -269,7 +269,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 onClick={() => setShowImpressum(false)}
                 className="min-h-[44px] px-5 py-2 rounded-xl bg-[#00C9A7] text-[#0A1628] font-bold text-xs"
               >
-                Zatvori Impressum
+                {t('footer.closeImpressum', 'Zatvori Impressum')}
               </button>
             </div>
           </div>

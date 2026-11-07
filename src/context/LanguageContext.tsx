@@ -6,6 +6,7 @@ export const LANGUAGE_STORAGE_KEY = 'bh_assistant_language';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language, updateUrl?: boolean) => void;
+  changeLanguage: (lang: Language) => void;
   t: (key: string, fallback?: string) => string;
   languages: LanguageOption[];
 }
@@ -192,6 +193,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   }, []);
 
+  /**
+   * Alias for setLanguage (explicit signature demanded by i18n spec).
+   * Delegates to setLanguage so state, localStorage, <html lang> and URL stay in sync.
+   */
+  const changeLanguage = useCallback((newLang: Language) => {
+    setLanguage(newLang, true);
+  }, [setLanguage]);
+
   // Synchronize initial URL state on mount & monitor popstate (back/forward navigation)
   useEffect(() => {
     syncHtmlLanguageAttributes(language);
@@ -226,9 +235,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const contextValue = useMemo(() => ({
     language,
     setLanguage,
+    changeLanguage,
     t,
     languages: LANGUAGES
-  }), [language, setLanguage, t]);
+  }), [language, setLanguage, changeLanguage, t]);
 
   return (
     <LanguageContext.Provider value={contextValue}>

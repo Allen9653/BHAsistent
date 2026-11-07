@@ -12,7 +12,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   variant = 'navbar',
   className = '',
 }) => {
-  const { language, setLanguage, languages, t } = useLanguage();
+  const { language, changeLanguage, languages, t } = useLanguage();
 
   if (variant === 'mobile') {
     return (
@@ -23,7 +23,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             <span>{t('nav.language', 'Jezik / Language')}</span>
           </span>
           <span className="text-[10px] text-[#C9A84C] font-mono font-semibold">
-            {language.toUpperCase()} aktivan
+            {language.toUpperCase()} {t('nav.active', 'aktivan')}
           </span>
         </div>
 
@@ -35,7 +35,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
               <button
                 key={item.code}
                 type="button"
-                onClick={() => setLanguage(item.code)}
+                onClick={() => changeLanguage(item.code)}
                 className={`relative flex items-center justify-center gap-2 py-2 px-2.5 rounded-lg text-xs font-mono font-bold transition-all min-h-[44px] ${
                   isSelected
                     ? 'bg-[#00C9A7] text-[#0A1628] shadow-md shadow-[#00C9A7]/30'
@@ -65,9 +65,9 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             <button
               key={item.code}
               type="button"
-              onClick={() => setLanguage(item.code)}
+              onClick={() => changeLanguage(item.code)}
               title={item.name}
-              aria-label={`Prebaci jezik na ${item.name}`}
+              aria-label={t('nav.switchTo', 'Prebaci jezik na') + ' ' + item.name}
               className={`relative flex items-center gap-1 px-2 py-1 min-h-[34px] rounded-lg text-xs font-mono font-bold transition-all duration-200 ${
                 isSelected
                   ? 'bg-[#00C9A7] text-[#0A1628] shadow-sm scale-105'
@@ -90,7 +90,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
         id="navbar-language-switcher"
         className="flex items-center p-0.5 rounded-xl bg-[#0F2038] border border-[#00C9A7]/40 shadow-inner"
         role="group"
-        aria-label="Izbor jezika / Language selector"
+        aria-label={t('nav.language', 'Izbor jezika / Language selector')}
       >
         {languages.map((langItem) => {
           const isCurrent = language === langItem.code;
@@ -98,9 +98,9 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             <button
               key={langItem.code}
               type="button"
-              onClick={() => setLanguage(langItem.code)}
+              onClick={() => changeLanguage(langItem.code)}
               title={`${langItem.name} (${langItem.shortName})`}
-              aria-label={`Switch language to ${langItem.name}`}
+              aria-label={t('nav.switchTo', 'Prebaci jezik na') + ' ' + langItem.name}
               aria-pressed={isCurrent}
               className={`relative flex items-center gap-1 px-2 py-1.5 min-h-[34px] rounded-lg text-[11px] font-mono font-bold transition-all duration-200 z-10 ${
                 isCurrent

@@ -110,13 +110,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // 2. Secondary Items (Available in "Više" dropdown on Desktop & in Drawer on Mobile)
   const secondaryNavItems = [
-    { path: '/novosti', label: t('nav.novosti', 'Novosti & Najave'), desc: 'IT vijesti, projekti i saopštenja' },
-    { path: '/zajednica', label: t('nav.zajednica', 'Zajednica'), desc: 'Instagram feed pratitelja (@bh.asst)' },
-    { path: '/kontakt#faq', label: 'Česta Pitanja (FAQ)', desc: 'Strukturirani odgovori o alatima i firmi' },
-    { path: '/projekti', label: t('nav.projekti', 'Projekti & Partnerstva'), desc: 'ZENTAXI, GUMMI i inovacije' },
-    { path: '/shop', label: t('nav.shop', 'Resursi & Edukacija'), desc: 'Digitalni alati, edukativni vodiči i znanje' },
-    { path: '/politika-privatnosti', label: 'Politika Privatnosti (GDPR)', desc: 'Zaštita podataka i prava korisnika' },
-    { path: '/uslovi-koristenja', label: 'Uslovi Korištenja', desc: 'Pravni okvir i uslovi poslovanja' },
+    { path: '/novosti', label: t('nav.novosti', 'Novosti & Najave'), desc: t('nav.novostiDesc', 'IT vijesti, projekti i saopštenja') },
+    { path: '/zajednica', label: t('nav.zajednica', 'Zajednica'), desc: t('nav.zajednicaDesc', 'Instagram feed pratitelja (@bh.asst)') },
+    { path: '/kontakt#faq', label: t('nav.faq', 'Česta Pitanja (FAQ)'), desc: t('nav.faqDesc', 'Strukturirani odgovori o alatima i firmi') },
+    { path: '/projekti', label: t('nav.projekti', 'Projekti & Partnerstva'), desc: t('nav.projektiDesc', 'ZENTAXI, GUMMI i inovacije') },
+    { path: '/shop', label: t('nav.shop', 'Resursi & Edukacija'), desc: t('nav.shopDesc', 'Digitalni alati, edukativni vodiči i znanje') },
+    { path: '/politika-privatnosti', label: t('nav.privacyFull', 'Politika Privatnosti (GDPR)'), desc: t('nav.privacyFullDesc', 'Zaštita podataka i prava korisnika') },
+    { path: '/uslovi-koristenja', label: t('nav.termsFull', 'Uslovi Korištenja'), desc: t('nav.termsFullDesc', 'Pravni okvir i uslovi poslovanja') },
   ];
 
   const toggleTheme = () => {
@@ -141,17 +141,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
             <span className="hidden sm:inline text-[#1A3152]">|</span>
             <span className="text-[#F5F0E8]/60 text-[10.5px]">
-              Službena IT platforma • Zenica, BiH
+              {t('nav.officialPlatform', 'Službena IT platforma • Zenica, BiH')}
             </span>
           </div>
 
-          <nav aria-label="Pravni linkovi i postavke" className="flex items-center gap-3 sm:gap-4">
+          <nav aria-label={t('nav.legalLinks', 'Pravni linkovi i postavke')} className="flex items-center gap-3 sm:gap-4">
             <Link
               to="/politika-privatnosti"
               className="hover:text-[#00C9A7] transition-colors flex items-center gap-1 min-h-[24px] focus-visible:ring-1 focus-visible:ring-[#00C9A7] rounded"
             >
               <Shield className="w-3 h-3 text-[#00C9A7]" />
-              <span>Politika privatnosti</span>
+              <span>{t('nav.privacy', 'Politika privatnosti')}</span>
             </Link>
             <span className="text-[#1A3152]" aria-hidden="true">·</span>
             <Link
@@ -159,17 +159,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="hover:text-[#C9A84C] transition-colors flex items-center gap-1 min-h-[24px] focus-visible:ring-1 focus-visible:ring-[#C9A84C] rounded"
             >
               <FileText className="w-3 h-3 text-[#C9A84C]" />
-              <span>Uslovi korištenja</span>
+              <span>{t('nav.terms', 'Uslovi korištenja')}</span>
             </Link>
             <span className="text-[#1A3152]" aria-hidden="true">·</span>
             <button
               onClick={openCookieSettings}
               type="button"
               className="hover:text-[#00C9A7] transition-colors flex items-center gap-1 min-h-[24px] focus-visible:ring-1 focus-visible:ring-[#00C9A7] rounded"
-              aria-label="Otvori postavke kolačića"
+              aria-label={t('nav.openCookieSettings', 'Otvori postavke kolačića')}
             >
               <Cookie className="w-3 h-3 text-[#00C9A7]" />
-              <span>Kolačići</span>
+              <span>{t('nav.cookies', 'Kolačići')}</span>
             </button>
           </nav>
         </div>
@@ -250,14 +250,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     aria-expanded={isDropdownOpen}
                     aria-haspopup="true"
-                    aria-label="Prikaži dodatne rubrike i resurse"
+                    aria-label={t('nav.showMore', 'Prikaži dodatne rubrike i resurse')}
                     className={`flex items-center gap-1 px-3 py-2 min-h-[40px] rounded-xl text-xs font-syne font-semibold transition-all duration-200 ${
                       isDropdownOpen
                         ? 'bg-[#1A3152] text-[#00C9A7] border border-[#00C9A7]/40'
                         : 'text-[#F5F0E8]/85 hover:text-[#00C9A7] hover:bg-[#1A3152]/60'
                     }`}
                   >
-                    <span>Više</span>
+                    <span>{t('nav.more', 'Više')}</span>
                     <ChevronDown
                       className={`w-3.5 h-3.5 text-[#C9A84C] transition-transform duration-200 ${
                         isDropdownOpen ? 'rotate-180 text-[#00C9A7]' : ''
@@ -273,7 +273,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="absolute right-0 mt-2 w-64 rounded-2xl bg-[#0A1628] border border-[#1A3152] shadow-2xl p-2 z-50 space-y-1 animate-fadeIn backdrop-blur-xl"
                     >
                       <div className="px-3 py-1.5 text-[10px] font-mono text-[#00C9A7] uppercase tracking-wider font-semibold border-b border-[#1A3152]/60">
-                        Dodatne rubrike
+                        {t('nav.moreSections', 'Dodatne rubrike')}
                       </div>
                       {secondaryNavItems.map((item) => (
                         <Link
@@ -303,7 +303,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-[#0F2038] text-xs text-[#C9A84C] font-syne font-semibold flex items-center gap-2 transition-colors group"
                         >
                           <Download className="w-3.5 h-3.5 text-[#C9A84C] group-hover:scale-110 transition-transform" />
-                          <span>Besplatna Gummi Bojanka (PDF)</span>
+                          <span>{t('nav.freeBojanka', 'Besplatna Gummi Bojanka (PDF)')}</span>
                         </button>
                       </div>
                     </div>
@@ -318,12 +318,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(true)}
-                aria-label="Pretraži platformu (Ctrl+K)"
-                title="Pretraži alate, projekte, magazine i članke (Ctrl+K)"
+                aria-label={t('nav.searchPlatform', 'Pretraži platformu (Ctrl+K)')}
+                title={t('nav.searchTitle', 'Pretraži alate, projekte, magazine i članke (Ctrl+K)')}
                 className="flex items-center gap-2 px-3 py-2 min-h-[44px] rounded-xl bg-[#0F2038] hover:bg-[#1A3152] border border-[#1A3152] hover:border-[#00C9A7]/40 text-[#F5F0E8]/75 hover:text-[#00C9A7] transition-all text-xs font-mono group focus-visible:ring-2 focus-visible:ring-[#00C9A7]"
               >
                 <Search className="w-4 h-4 text-[#00C9A7] group-hover:scale-110 transition-transform" />
-                <span className="hidden xl:inline text-[#F5F0E8]/80 group-hover:text-[#F5F0E8]">Pretraga...</span>
+                <span className="hidden xl:inline text-[#F5F0E8]/80 group-hover:text-[#F5F0E8]">{t('nav.search', 'Pretraga...')}</span>
                 <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-[#0A1628] border border-[#1A3152] rounded text-[#F5F0E8]/50 group-hover:border-[#00C9A7]/40 group-hover:text-[#00C9A7]">
                   ⌘K
                 </kbd>
@@ -334,8 +334,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={toggleTheme}
-                  title={`Tema: ${theme || 'system'}`}
-                  aria-label="Promijeni temu (svijetla / tamna)"
+                  title={t('nav.theme', 'Tema:') + ' ' + (theme || 'system')}
+                  aria-label={t('nav.toggleTheme', 'Promijeni temu (svijetla / tamna)')}
                   className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-[#0F2038] hover:bg-[#1A3152] border border-[#1A3152] text-[#00C9A7] transition-all flex items-center justify-center focus-visible:ring-2 focus-visible:ring-[#00C9A7]"
                 >
                   {theme === 'dark' ? (
@@ -437,10 +437,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <div className="flex items-center gap-2.5 text-xs font-sans">
               <Search className="w-4 h-4 text-[#00C9A7]" />
-              <span>Pretraži alate, projekte, magazine...</span>
+              <span>{t('nav.searchPlaceholderMobile', 'Pretraži alate, projekte, magazine...')}</span>
             </div>
             <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-[#0A1628] border border-[#1A3152] rounded text-[#00C9A7]">
-              Traži
+              {t('nav.searchShort', 'Traži')}
             </kbd>
           </button>
 
@@ -450,9 +450,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Primary 5 Navigation Links */}
           <div className="space-y-1">
             <div className="px-2 pb-1 text-[11px] font-mono text-[#00C9A7] uppercase tracking-wider font-semibold">
-              Glavna navigacija
+              {t('nav.mainNavigation', 'Glavna navigacija')}
             </div>
-            <nav role="navigation" aria-label="Mobilna navigacija">
+            <nav role="navigation" aria-label={t('nav.mobileNavigation', 'Mobilna navigacija')}>
               <ul className="space-y-1.5 list-none p-0 m-0">
                 {primaryNavItems.map((item) => (
                   <li key={item.path}>
@@ -488,7 +488,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Secondary Links */}
           <div className="space-y-1 pt-2 border-t border-[#1A3152]/70">
             <div className="px-2 pb-1 text-[11px] font-mono text-[#C9A84C] uppercase tracking-wider font-semibold">
-              Dodatne rubrike
+              {t('nav.moreSections', 'Dodatne rubrike')}
             </div>
             <ul className="space-y-1.5 list-none p-0 m-0">
               {secondaryNavItems.map((item) => (
@@ -528,7 +528,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full flex items-center justify-center gap-2 px-4 py-3.5 min-h-[48px] rounded-xl bg-gradient-to-r from-[#00C9A7] to-[#00A88B] text-[#0A1628] font-syne font-bold text-sm shadow-lg shadow-[#00C9A7]/25 active:scale-[0.99] transition-transform"
             >
               <Users className="w-4 h-4" />
-              <span>Pridruži se Zajednici</span>
+              <span>{t('nav.joinCommunity', 'Pridruži se Zajednici')}</span>
               <Sparkles className="w-3.5 h-3.5 text-[#0A1628]" />
             </Link>
           </div>
@@ -543,7 +543,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#0F2038] border border-[#C9A84C]/40 text-[#C9A84C] font-syne font-semibold text-xs min-h-[44px] hover:bg-[#1A3152] transition-colors"
           >
             <Download className="w-4 h-4" />
-            <span>Besplatna Bojanka GUMMI (PDF)</span>
+            <span>{t('nav.freeBojankaPdf', 'Besplatna Bojanka GUMMI (PDF)')}</span>
           </button>
 
           {/* Legal Links below CTA */}
@@ -553,14 +553,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(false)}
               className="text-center py-2.5 px-2 rounded-xl bg-[#0F2038] border border-[#1A3152] text-[#00C9A7] min-h-[44px] flex items-center justify-center hover:border-[#00C9A7]/40"
             >
-              Privatnost
+              {t('nav.privacyShort', 'Privatnost')}
             </Link>
             <Link
               to="/uslovi-koristenja"
               onClick={() => setMobileMenuOpen(false)}
               className="text-center py-2.5 px-2 rounded-xl bg-[#0F2038] border border-[#1A3152] text-[#C9A84C] min-h-[44px] flex items-center justify-center hover:border-[#C9A84C]/40"
             >
-              Uslovi
+              {t('nav.termsShort', 'Uslovi')}
             </Link>
           </div>
         </div>
