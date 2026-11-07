@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-<<<<<<< HEAD
 import { SpeedInsights } from '@vercel/speed-insights/react';
-=======
->>>>>>> 5f4d35a (andromity: baseline snapshot)
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -24,10 +21,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-<<<<<<< HEAD
       <SpeedInsights />
-=======
->>>>>>> 5f4d35a (andromity: baseline snapshot)
       <Routes>
         <Route
           element={
