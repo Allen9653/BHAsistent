@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
 import { EmailConfigModal } from './EmailConfigModal';
+import { FAQ } from './FAQ';
 
 export const ContactAndImpressum: React.FC = () => {
   const { t } = useLanguage();
@@ -35,6 +36,7 @@ export const ContactAndImpressum: React.FC = () => {
   };
 
   return (
+    <>
     <section id="kontakt" className="py-24 bg-[#0A1628] relative overflow-hidden border-t border-[#1A3152]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -264,5 +266,7 @@ export const ContactAndImpressum: React.FC = () => {
         onClose={() => setShowEmailConfig(false)}
       />
     </section>
+    <FAQ />
+    </>
   );
 };
