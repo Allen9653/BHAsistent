@@ -29,7 +29,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({ onOpenBojanka }) => {
         {/* Quick Access Portals */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
           <Link
-            to="/alati"
+            to="/proizvodi-i-usluge"
             className="p-5 rounded-2xl bg-[#0F2038]/80 hover:bg-[#1A3152] border border-[#1A3152] hover:border-[#00C9A7]/50 transition-all group flex flex-col justify-between"
           >
             <div className="space-y-2">

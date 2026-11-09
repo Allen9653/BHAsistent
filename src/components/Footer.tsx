@@ -57,15 +57,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
             </p>
           </div>
 
-          {/* Col 2: Digital Alati Links */}
+          {/* Col 2: Proizvodi & Usluge Links */}
           <div className="space-y-3">
             <h4 className="font-syne font-bold text-sm text-[#F5F0E8] uppercase tracking-wider">
-              {t('nav.alati', 'BH DIGITALNI ALATI')}
+              Proizvodi & Usluge
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link to="/alati" className="hover:text-[#00C9A7] transition-colors py-1 inline-block font-semibold">
-                  {t('footer.allTools', 'Pregled Svih Alata')} →
+                <Link to="/proizvodi-i-usluge" className="hover:text-[#00C9A7] transition-colors py-1 inline-block font-semibold">
+                  Proizvodi & Usluge →
                 </Link>
               </li>
               <li>
@@ -92,20 +92,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
             </ul>
           </div>
 
-          {/* Col 3: Magazin & Projekti */}
+          {/* Col 3: Novosti & Projekti */}
           <div className="space-y-3">
             <h4 className="font-syne font-bold text-sm text-[#F5F0E8] uppercase tracking-wider">
-              {t('nav.magazin', 'Magazin SCENA+')} & Proizvodi i Usluge
+              Novosti & CMS
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link to="/scena-magazin" className="hover:text-[#C9A84C] transition-colors py-1 inline-block font-semibold">
-                  {t('footer.scena', 'SCENA+ Magazin ZDK')} →
-                </Link>
-              </li>
-              <li>
-                <Link to="/proizvodi-i-usluge" className="hover:text-[#00C9A7] transition-colors py-1 inline-block font-medium">
-                  Proizvodi & Usluge (8 IT usluga & Bojanka)
+                <Link to="/novosti" className="hover:text-[#C9A84C] transition-colors py-1 inline-block font-semibold">
+                  Novosti & CMS →
                 </Link>
               </li>
               <li>
@@ -128,11 +123,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                   {t('footer.newsFeed', 'IT Trendovi & NewsFeed')}
                 </Link>
               </li>
-              <li>
-                <Link to="/shop" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
-                  {t('footer.shop', 'Shop & Edukativni Centar')}
-                </Link>
-              </li>
+
             </ul>
           </div>
 

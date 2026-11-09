@@ -99,23 +99,20 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, []);
 
-  // 1. Primary 5 Desktop Navigation Items
+  // 1. Primary 4 Desktop Navigation Items (exact Top Header order: POČETNA / O NAMA / PROIZVODI & USLUGE / NOVOSTI & CMS / VIŠE)
   const primaryNavItems = [
-    { path: '/', label: t('nav.pocetna', 'Početna'), exact: true },
-    { path: '/alati', label: t('nav.alati', 'Alati') },
-    { path: '/scena-magazin', label: t('nav.scena', 'Magazin') },
-    { path: '/o-nama', label: t('nav.onama', 'O nama') },
-    { path: '/kontakt', label: t('nav.kontakt', 'Kontakt') },
+    { path: '/', label: 'POČETNA', exact: true },
+    { path: '/o-nama', label: 'O NAMA' },
+    { path: '/proizvodi-i-usluge', label: 'PROIZVODI & USLUGE' },
+    { path: '/novosti', label: 'NOVOSTI & CMS' },
   ];
 
-  // 2. Secondary Items (Available in "Više" dropdown on Desktop & in Drawer on Mobile)
+  // 2. Secondary Items (Available in "VIŠE" dropdown on Desktop & in Drawer on Mobile)
   const secondaryNavItems = [
-    { path: '/proizvodi-i-usluge', label: 'Proizvodi & Usluge', desc: '8 IT usluga, autorski softveri i free e-publikacije' },
-    { path: '/novosti', label: t('nav.novosti', 'Novosti & Najave'), desc: t('nav.novostiDesc', 'IT vijesti, projekti i saopštenja') },
+    { path: '/kontakt', label: t('nav.kontakt', 'Kontakt'), desc: t('nav.kontaktDesc', 'Javite nam se — adresa, telefon i e-mail') },
     { path: '/impresum', label: 'Impresum & Uredništvo', desc: 'Urednički kolegij, registracija i etički standardi' },
     { path: '/zajednica', label: t('nav.zajednica', 'Zajednica'), desc: t('nav.zajednicaDesc', 'Instagram feed pratitelja (@bh.asst)') },
-    { path: '/kontakt#faq', label: t('nav.faq', 'Česta Pitanja (FAQ)'), desc: t('nav.faqDesc', 'Strukturirani odgovori o alatima i firmi') },
-    { path: '/shop', label: t('nav.shop', 'Resursi & Edukacija'), desc: t('nav.shopDesc', 'Digitalni alati, edukativni vodiči i znanje') },
+    { path: '/kontakt#faq', label: t('nav.faq', 'Česta Pitanja (FAQ)'), desc: t('nav.faqDesc', 'Strukturirani odgovori o proizvodima i firmi') },
     { path: '/politika-privatnosti', label: t('nav.privacyFull', 'Politika Privatnosti (GDPR)'), desc: t('nav.privacyFullDesc', 'Zaštita podataka i prava korisnika') },
     { path: '/uslovi-koristenja', label: t('nav.termsFull', 'Uslovi Korištenja'), desc: t('nav.termsFullDesc', 'Pravni okvir i uslovi poslovanja') },
   ];
@@ -219,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </Link>
             </div>
 
-            {/* Center: Desktop Primary Navigation (5 Primary Items + "Više" Dropdown) */}
+            {/* Center: Desktop Primary Navigation (4 Primary Items + "VIŠE" Dropdown) */}
             <nav
               role="navigation"
               aria-label="Glavna navigacija"
@@ -244,7 +241,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </li>
                 ))}
 
-                {/* "Više" (More) Secondary Dropdown */}
+                {/* "VIŠE" (More) Secondary Dropdown */}
                 <li className="relative" ref={dropdownRef}>
                   <button
                     type="button"
@@ -448,7 +445,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Language Selector */}
           <LanguageSwitcher variant="mobile" />
 
-          {/* Primary 5 Navigation Links */}
+          {/* Primary 4 Navigation Links (POČETNA / O NAMA / PROIZVODI & USLUGE / NOVOSTI & CMS) */}
           <div className="space-y-1">
             <div className="px-2 pb-1 text-[11px] font-mono text-[#00C9A7] uppercase tracking-wider font-semibold">
               {t('nav.mainNavigation', 'Glavna navigacija')}

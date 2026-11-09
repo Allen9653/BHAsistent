@@ -59,7 +59,7 @@ B&H Assistant aktivno implementira najnovije programske paradigme kroz Vite, Rea
     timestamp: Date.now() - 1000 * 60 * 60 * 24, // 1 day ago
     author: "Redakcija B&H Assistant",
     readTime: "3 min",
-    linkUrl: "/alati",
+    linkUrl: "/proizvodi-i-usluge",
     linkText: "Pogledaj Naša Rješenja",
     tags: ["AI Agenti", "React 19", "Softverski Razvoj", "IT Trendovi"],
     source: "Tehnološki Osvrt"
@@ -101,8 +101,8 @@ Pozivamo mlade autore, fotografe, istoričare umjetnosti i studente da pošalju 
     timestamp: Date.now() - 1000 * 60 * 60 * 120,
     author: "Uredništvo SCENA+ Magazina",
     readTime: "3 min",
-    linkUrl: "/scena-magazin",
-    linkText: "Prelistaj Magazin SCENA+",
+    linkUrl: "/novosti",
+    linkText: "Čitaj Novosti & SCENA+",
     tags: ["SCENA+", "Kultura", "ZDK", "Urbani Magazin"],
     source: "Kulturna Redakcija"
   },
@@ -122,7 +122,7 @@ Nastavljamo sa redovnim ažuriranjem baze podataka u saradnji sa pravnim stručn
     timestamp: Date.now() - 1000 * 60 * 60 * 168,
     author: "Pravno-tehnički Desk",
     readTime: "3 min",
-    linkUrl: "/alati",
+    linkUrl: "/proizvodi-i-usluge",
     linkText: "Istraži BH PapirFinder",
     tags: ["BH PapirFinder", "e-Uprava", "Općinski Obrasci", "BiH"],
     source: "Istraživački Centar"
@@ -143,7 +143,7 @@ Izložba ostaje otvorena za posjetioce do kraja tekućeg mjeseca, a ulaz za stud
     timestamp: Date.now() - 1000 * 60 * 60 * 216,
     author: "Kulturni Desk Zenica",
     readTime: "2 min",
-    linkUrl: "/scena-magazin",
+    linkUrl: "/novosti",
     linkText: "Pročitaj Intervju u SCENI+",
     tags: ["Danilo Keso", "Izložba", "Zenica", "Umjetnost"],
     source: "Kulturni Vodič"
@@ -185,7 +185,7 @@ B&H Assistant je predstavio mogućnosti digitalne promocije kroz autorske report
     timestamp: Date.now() - 1000 * 60 * 60 * 350,
     author: "Privredni Desk SCENA+",
     readTime: "2 min",
-    linkUrl: "/scena-magazin",
+    linkUrl: "/novosti",
     linkText: "Čitaj Reportažu o Craft Sceni",
     tags: ["Craft Pivare", "Zanati", "Preduzetništvo", "ZDK"],
     source: "Privredni Forum"

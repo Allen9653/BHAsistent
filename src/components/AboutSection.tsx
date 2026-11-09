@@ -176,7 +176,7 @@ export const AboutSection: React.FC = () => {
               {/* Card 2: SCENA+ Magazin & BH PapirFinder */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <a
-                  href="/alati"
+                  href="/proizvodi-i-usluge"
                   className="p-3.5 rounded-2xl bg-[#0F2038] border border-[#1A3152] hover:border-[#00C9A7]/60 transition-all flex flex-col justify-between group shadow-md"
                 >
                   <div className="space-y-1">
@@ -197,7 +197,7 @@ export const AboutSection: React.FC = () => {
                 </a>
 
                 <a
-                  href="/scena-magazin"
+                  href="/novosti"
                   className="p-3.5 rounded-2xl bg-[#0F2038] border border-[#1A3152] hover:border-[#C9A84C]/60 transition-all flex flex-col justify-between group shadow-md"
                 >
                   <div className="space-y-1">

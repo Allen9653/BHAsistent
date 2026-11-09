@@ -4,11 +4,8 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
-import { ToolsPage } from './pages/ToolsPage';
-import { ScenaPage } from './pages/ScenaPage';
 import { NewsPage } from './pages/NewsPage';
 import { ProjectsPage } from './pages/ProjectsPage';
-import { ShopPage } from './pages/ShopPage';
 import { CommunityPage } from './pages/CommunityPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
@@ -57,17 +54,13 @@ export default function App() {
           <Route path="/o-nama" element={<AboutPage />} />
           <Route path="/about" element={<Navigate to="/o-nama" replace />} />
 
-          {/* BH Digital Tools & Services */}
-          <Route
-            path="/alati"
-            element={<ToolsPage onOpenBojanka={() => setIsBojankaOpen(true)} />}
-          />
-          <Route path="/usluge" element={<Navigate to="/alati" replace />} />
-          <Route path="/digitalni-alati" element={<Navigate to="/alati" replace />} />
+          {/* Legacy: Alati → Proizvodi & Usluge (canonical: /proizvodi-i-usluge) */}
+          <Route path="/alati" element={<Navigate to="/proizvodi-i-usluge" replace />} />
+          <Route path="/digitalni-alati" element={<Navigate to="/proizvodi-i-usluge" replace />} />
 
-          {/* SCENA+ Magazine */}
-          <Route path="/scena-magazin" element={<ScenaPage />} />
-          <Route path="/scena" element={<Navigate to="/scena-magazin" replace />} />
+          {/* Legacy: Magazin SCENA+ → Novosti (canonical: /novosti) */}
+          <Route path="/scena-magazin" element={<Navigate to="/novosti" replace />} />
+          <Route path="/scena" element={<Navigate to="/novosti" replace />} />
 
           {/* News & CMS */}
           <Route
@@ -88,9 +81,9 @@ export default function App() {
           <Route path="/proizvodi" element={<Navigate to="/proizvodi-i-usluge" replace />} />
           <Route path="/projekti" element={<Navigate to="/proizvodi-i-usluge" replace />} />
 
-          {/* Shop & Education Center */}
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/edukacija" element={<Navigate to="/shop" replace />} />
+          {/* Legacy: Shop (Edukacija) uklonjen — redirect na Novosti & CMS */}
+          <Route path="/shop" element={<Navigate to="/novosti" replace />} />
+          <Route path="/edukacija" element={<Navigate to="/novosti" replace />} />
 
           {/* Instagram Social Community */}
           <Route path="/zajednica" element={<CommunityPage />} />

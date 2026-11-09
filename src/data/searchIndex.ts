@@ -52,7 +52,7 @@ export function getAllSearchItems(): SearchItem[] {
       description: tool.description,
       category: 'tools',
       categoryLabel: 'Digitalni Alat',
-      route: '/alati',
+      route: '/proizvodi-i-usluge',
       externalUrl: tool.url,
       tags: [tool.category, tool.tagline, ...(tool.features || [])],
       badge: tool.badge,
@@ -159,30 +159,30 @@ export function getAllSearchItems(): SearchItem[] {
     });
   }
 
-  // 5. SCENA+ Magazine Topics
+  // 5. SCENA+ Magazine Topics (published under Novosti)
   for (const topic of SCENA_MAGAZINE.topics || []) {
     items.push({
       id: `scena-${topic.title.replace(/\s+/g, '-').toLowerCase()}`,
       title: `SCENA+: ${topic.title}`,
       description: topic.desc,
       category: 'articles',
-      categoryLabel: 'SCENA+ Magazin',
-      route: '/scena-magazin',
+      categoryLabel: 'Novosti & CMS',
+      route: '/novosti',
       tags: [topic.category, 'SCENA+ Magazin', 'Kultura ZDK', 'Umjetnost', 'Zenica'],
       badge: topic.category,
       image: topic.image || SCENA_MAGAZINE.coverImage,
     });
   }
 
-  // 6. Educational Courses & Shop Resources
+  // 6. Educational Courses & Shop Resources (published under Novosti)
   for (const course of AFFILIATE_COURSES) {
     items.push({
       id: `course-${course.id}`,
       title: course.title,
       description: course.description,
       category: 'education',
-      categoryLabel: 'Edukacija & Shop',
-      route: '/shop',
+      categoryLabel: 'Novosti & CMS',
+      route: '/novosti',
       externalUrl: course.affiliateUrl,
       tags: [course.provider, course.category, ...(course.bullets || [])],
       badge: course.badge,

@@ -169,17 +169,17 @@ export function generateRouteHtml(pathname: string): { meta: RouteMetaConfig; ht
         </div>
       </main>
     `;
-  } else if (resolvedPath === '/alati') {
+  } else if (resolvedPath === '/proizvodi-i-usluge') {
     contentHtml = `
       <main class="min-h-screen bg-[#0A1628] text-[#F5F0E8] pt-28 pb-20 px-4 sm:px-6 lg:px-8 font-sans">
         <div class="max-w-5xl mx-auto space-y-8">
           <nav aria-label="Breadcrumb" class="text-xs font-mono text-[#00C9A7]">
-            <a href="/" class="hover:underline">Početna</a> / <span class="text-[#F5F0E8]/70">Digitalni Alati</span>
+            <a href="/" class="hover:underline">Početna</a> / <span class="text-[#F5F0E8]/70">Proizvodi & Usluge</span>
           </nav>
 
           <header class="space-y-4 border-b border-[#1A3152] pb-6">
             <h1 class="font-syne font-extrabold text-3xl sm:text-5xl text-[#F5F0E8] tracking-tight">
-              BH Digitalni Alati & Softverska Rješenja
+              Proizvodi & Usluge — BH Digitalni Alati i IT Usluge
             </h1>
             <p class="text-base sm:text-lg text-[#F5F0E8]/80 leading-relaxed">
               ${meta.description}
@@ -206,32 +206,6 @@ export function generateRouteHtml(pathname: string): { meta: RouteMetaConfig; ht
                 Pokreni BH PapirFinder ↗
               </a>
             </article>
-          </section>
-        </div>
-      </main>
-    `;
-  } else if (resolvedPath === '/scena-magazin') {
-    contentHtml = `
-      <main class="min-h-screen bg-[#0A1628] text-[#F5F0E8] pt-28 pb-20 px-4 sm:px-6 lg:px-8 font-sans">
-        <div class="max-w-5xl mx-auto space-y-8">
-          <nav aria-label="Breadcrumb" class="text-xs font-mono text-[#00C9A7]">
-            <a href="/" class="hover:underline">Početna</a> / <span class="text-[#F5F0E8]/70">SCENA+ Magazin</span>
-          </nav>
-
-          <header class="space-y-4 border-b border-[#1A3152] pb-6">
-            <h1 class="font-syne font-extrabold text-3xl sm:text-5xl text-[#F5F0E8] tracking-tight">
-              SCENA+ Magazin — Kultura, Umjetnost & ZDK
-            </h1>
-            <p class="text-base sm:text-lg text-[#F5F0E8]/80 leading-relaxed">
-              ${meta.description}
-            </p>
-          </header>
-
-          <section class="p-6 rounded-2xl bg-[#0F2038] border border-[#1A3152] space-y-3">
-            <h2 class="font-syne font-bold text-xl text-[#00C9A7]">Kulturna Baština i Inovativni Glas Zenice</h2>
-            <p class="text-xs sm:text-sm text-[#F5F0E8]/85 leading-relaxed">
-              SCENA+ donosi ekskluzivne intervjue, kulturne reportaže, priče o uspješnim privrednicima, predstavljanje historijskih spomenika i digitalno čitanje e-izdanja.
-            </p>
           </section>
         </div>
       </main>
@@ -298,32 +272,6 @@ export function generateRouteHtml(pathname: string): { meta: RouteMetaConfig; ht
                 Edukativna interaktivna bojanka "Sretno djetinjstvo" za najmlađe.
               </p>
             </article>
-          </section>
-        </div>
-      </main>
-    `;
-  } else if (resolvedPath === '/shop') {
-    contentHtml = `
-      <main class="min-h-screen bg-[#0A1628] text-[#F5F0E8] pt-28 pb-20 px-4 sm:px-6 lg:px-8 font-sans">
-        <div class="max-w-5xl mx-auto space-y-8">
-          <nav aria-label="Breadcrumb" class="text-xs font-mono text-[#00C9A7]">
-            <a href="/" class="hover:underline">Početna</a> / <span class="text-[#F5F0E8]/70">Shop & Edukacija</span>
-          </nav>
-
-          <header class="space-y-4 border-b border-[#1A3152] pb-6">
-            <h1 class="font-syne font-extrabold text-3xl sm:text-5xl text-[#F5F0E8] tracking-tight">
-              Shop & Edukativni Centar
-            </h1>
-            <p class="text-base sm:text-lg text-[#F5F0E8]/80 leading-relaxed">
-              ${meta.description}
-            </p>
-          </header>
-
-          <section class="p-6 rounded-2xl bg-[#0F2038] border border-[#00C9A7]/30 space-y-3">
-            <h2 class="font-syne font-bold text-xl text-[#00C9A7]">Besplatni Alison Certifikovani Kursevi</h2>
-            <p class="text-xs sm:text-sm text-[#F5F0E8]/85 leading-relaxed">
-              Pristupite međunarodno priznatim online obukama iz IT-ja, menadžmenta, marketinga i stranih jezika prilagođenim polaznicima u Bosni i Hercegovini.
-            </p>
           </section>
         </div>
       </main>
@@ -419,7 +367,7 @@ export function generateRouteHtml(pathname: string): { meta: RouteMetaConfig; ht
               <p class="text-xs text-[#F5F0E8]/80 leading-relaxed">
                 Nagrađeni univerzalni kalkulator za poreze, valute i građevinske proračune u BiH, uz generisanje ovjerenih pravnih izjava. Pobjednik sedmice platforme Lovable.
               </p>
-              <a href="/alati" class="text-xs text-[#00C9A7] font-semibold inline-block">Detaljnije o alatu →</a>
+              <a href="/proizvodi-i-usluge" class="text-xs text-[#00C9A7] font-semibold inline-block">Detaljnije o alatu →</a>
             </article>
 
             <article class="p-6 rounded-2xl bg-[#0F2038] border border-[#1A3152] space-y-3">

@@ -8,7 +8,6 @@ import {
   Newspaper,
   Layers,
   FolderGit2,
-  GraduationCap,
   Users,
   Mail,
   Shield,
@@ -37,23 +36,14 @@ const ROUTE_BREADCRUMBS: Record<string, RouteBreadcrumbInfo> = {
     },
     icon: Building2,
   },
-  '/alati': {
+  '/proizvodi-i-usluge': {
     label: {
-      bs: 'Digitalni Alati',
-      en: 'Digital Tools',
-      de: 'Digitale Werkzeuge',
-      tr: 'Dijital Araçlar',
+      bs: 'Proizvodi & Usluge',
+      en: 'Products & Services',
+      de: 'Produkte & Dienstleistungen',
+      tr: 'Ürünler & Hizmetler',
     },
     icon: Wrench,
-  },
-  '/scena-magazin': {
-    label: {
-      bs: 'SCENA+ Magazin',
-      en: 'SCENA+ Magazine',
-      de: 'SCENA+ Magazin',
-      tr: 'SCENA+ Dergisi',
-    },
-    icon: Newspaper,
   },
   '/novosti': {
     label: {
@@ -72,15 +62,6 @@ const ROUTE_BREADCRUMBS: Record<string, RouteBreadcrumbInfo> = {
       tr: 'Projeler',
     },
     icon: FolderGit2,
-  },
-  '/shop': {
-    label: {
-      bs: 'Shop & Edukacija',
-      en: 'Shop & Education',
-      de: 'Shop & Weiterbildung',
-      tr: 'Mağaza & Eğitim',
-    },
-    icon: GraduationCap,
   },
   '/zajednica': {
     label: {

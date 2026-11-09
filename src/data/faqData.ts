@@ -67,7 +67,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     id: "faq-scena-magazine-access",
     question: "Gdje mogu prelistati magazin SCENA+ i kako autori mogu poslati radove?",
-    answer: "Magazin SCENA+ dostupan je besplatno u digitalnom interaktivnom formatu direktno preko naše stranice na sekciji /scena-magazin. Štampani primjerci distribuirani su kulturnim institucijama, bibliotekama i kafe-galerijama u Zenici i ZDK. Autori, novinari, fotografi i umjetnici koji žele objaviti esej, reportažu o kulturnoj baštini ili analizu privrednih kretanja mogu kontaktirati našu redakciju na email: info@bh-assistant.ba sa naznakom 'Za redakciju SCENA+'.",
+    answer: "Magazin SCENA+ dostupan je besplatno u digitalnom interaktivnom formatu direktno preko naše stranice u sekciji Novosti & CMS (/novosti). Štampani primjerci distribuirani su kulturnim institucijama, bibliotekama i kafe-galerijama u Zenici i ZDK. Autori, novinari, fotografi i umjetnici koji žele objaviti esej, reportažu o kulturnoj baštini ili analizu privrednih kretanja mogu kontaktirati našu redakciju na email: info@bh-assistant.ba sa naznakom 'Za redakciju SCENA+'.",
     category: "kultura",
     categoryLabel: "Kultura & Magazin",
     tags: ["SCENA+", "Magazin", "Redakcija", "Kulturna baština"],

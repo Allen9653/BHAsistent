@@ -21,7 +21,6 @@ import {
   CheckCircle2,
   Tv,
   Layers,
-  GraduationCap,
   Briefcase
 } from 'lucide-react';
 
@@ -57,20 +56,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
       description: t('hero.slide.konver.desc', 'Brzi i precizni bh. digitalni kalkulator i konverter valuta, jedinica i kreiranje pravnih izjava pod materijalnom odgovornošću.'),
       image: IMAGES.bhKonverMockup,
       tags: ['Konverzija', 'Pravne Izjave', 'PDF Izvoz'],
-      linkTo: '/alati',
+      linkTo: '/proizvodi-i-usluge',
       linkText: t('hero.slide.konver.btn', 'Otvori BH Konver →')
     },
     {
       type: 'magazine',
-      badge: t('hero.slide.scena.badge', 'SCENA+ MAGAZIN • ZDK'),
+      badge: t('hero.slide.scena.badge', 'NOVOSTI & CMS • ZDK'),
       badgeColor: 'bg-[#C9A84C]/20 border-[#C9A84C]/40 text-[#C9A84C]',
-      title: t('hero.slide.scena.title', 'SCENA+ Magazin'),
+      title: t('hero.slide.scena.title', 'Novosti & CMS'),
       motto: t('hero.slide.scena.motto', 'Spajamo kulture - stvaramo šanse'),
-      description: t('hero.slide.scena.desc', 'Prvo fizičko i e-izdanje urbanog magazina sa pričama o bh. arheologiji, umjetnosti, BCX kriptu i craft pivarstvu.'),
+      description: t('hero.slide.scena.desc', 'Zvanična saopštenja, novosti i CMS obavijesti iz B&H Assistant d.o.o. Zenica, grupa SCENA+ magazin i kulturne priče ZDK.'),
       image: IMAGES.scenaCover,
       tags: ['Urbana Kultura', 'Umjetnost', 'Print & Digital'],
-      linkTo: '/scena-magazin',
-      linkText: t('hero.slide.scena.btn', 'Prelistaj Magazin →')
+      linkTo: '/novosti',
+      linkText: t('hero.slide.scena.btn', 'Pročitaj Novosti →')
     },
     {
       type: 'heritage',
@@ -81,7 +80,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
       description: t('hero.slide.stecak.desc', 'Stilizirani motivi bh. baštine kodirani u SVG, PNG, HTML i CSS. Jedini digitalni proizvod sa dostavom na USB sticku i plaćanjem pouzećem.'),
       image: IMAGES.ornamentiBosne,
       tags: ['Stećci', 'Vektori (SVG/PNG)', 'USB Dostava'],
-      linkTo: '/alati',
+      linkTo: '/proizvodi-i-usluge',
       linkText: t('hero.slide.stecak.btn', 'Detalji i Narudžba →')
     }
   ];
@@ -99,26 +98,26 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
   // Core Pillars of the Platform
   const pillars = [
     {
-      id: 'alati',
-      title: t('home.pillar.alati.title', 'BH Digitalni Alati'),
-      subtitle: t('home.pillar.alati.subtitle', '3 Autorska Softvera'),
-      desc: t('home.pillar.alati.desc', 'BH Konver (konverzije i pravne izjave), BH PapirFinder (baza e-uprave) i Ornamenti Bosne (kodirani stećci).'),
+      id: 'proizvodi-i-usluge',
+      title: 'Proizvodi & Usluge',
+      subtitle: 'BH Digitalni Alati & 8 IT Usluga',
+      desc: 'BH Konver (konverzije i pravne izjave), BH PapirFinder (baza e-uprave), Ornamenti Bosne i 8 profesionalnih IT usluga.',
       icon: Compass,
       image: IMAGES.bhKonverMockup,
-      badge: t('home.pillar.alati.badge', 'Softver & Web'),
+      badge: 'Softver & IT Usluge',
       color: 'from-[#00C9A7]/20 to-[#00C9A7]/5 border-[#00C9A7]/40 text-[#00C9A7]',
-      link: '/alati'
+      link: '/proizvodi-i-usluge'
     },
     {
-      id: 'scena',
-      title: t('home.pillar.scena.title', 'Magazin SCENA+'),
-      subtitle: t('home.pillar.scena.subtitle', 'Urbano Izdanje ZDK'),
-      desc: t('home.pillar.scena.desc', 'Autorski tekstovi o arheologiji stećaka, BCX kripto tehnologijama, zanatskom pivarstvu i kulturi.'),
+      id: 'novosti',
+      title: 'Novosti & CMS',
+      subtitle: 'Zvanična Saopštenja & SCENA+',
+      desc: 'Novosti o razvoju kompanije, medijskim nastupima i kulturnim temama SCENA+ magazina ZDK.',
       icon: BookOpen,
       image: IMAGES.scenaCover,
-      badge: t('home.pillar.scena.badge', 'Izdavaštvo'),
+      badge: 'Press & Media',
       color: 'from-[#C9A84C]/20 to-[#C9A84C]/5 border-[#C9A84C]/40 text-[#C9A84C]',
-      link: '/scena-magazin'
+      link: '/novosti'
     },
     {
       id: 'onama',
@@ -152,17 +151,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
       badge: t('home.pillar.novosti.badge', 'Press & Media'),
       color: 'from-[#00C9A7]/20 to-[#0A1628] border-[#00C9A7]/40 text-[#00C9A7]',
       link: '/novosti'
-    },
-    {
-      id: 'shop',
-      title: t('home.pillar.shop.title', 'Resursi & Edukacija'),
-      subtitle: t('home.pillar.shop.subtitle', 'Edukativni Centar & Alati'),
-      desc: t('home.pillar.shop.desc', 'Pristupite besplatnim digitalnim resursima, interaktivnim edukacijama i softverskim alatima B&H Assistant ekosistema.'),
-      icon: GraduationCap,
-      image: IMAGES.ourProducts,
-      badge: t('home.pillar.shop.badge', 'Edukativni Centar'),
-      color: 'from-[#00C9A7]/20 to-[#C9A84C]/10 border-[#00C9A7]/40 text-[#00C9A7]',
-      link: '/shop'
     }
   ];
 
@@ -222,10 +210,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
                 className="flex flex-wrap items-center gap-3 pt-2"
               >
                 <Link
-                  to="/alati"
+                  to="/proizvodi-i-usluge"
                   className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#00C9A7] to-[#00A88B] text-[#0A1628] font-syne font-bold text-xs sm:text-sm tracking-wide shadow-xl shadow-[#00C9A7]/25 hover:shadow-[#00C9A7]/40 hover:scale-[1.02] transition-all flex items-center gap-2 min-h-[44px]"
                 >
-                  <span>{t('hero.btnTools', 'Istraži Digitalne Alate')}</span>
+                  <span>{t('hero.btnTools', 'Istraži Proizvode i Usluge')}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
@@ -355,7 +343,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
           </p>
         </div>
 
-        {/* 6 Grid Cards */}
+        {/* 5 Grid Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {pillars.map((p) => {
             const Icon = p.icon;

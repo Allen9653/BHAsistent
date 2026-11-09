@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
 
-# Dozvoljavamo indeksiranje svih alata, kategorija i blogova
-Allow: /alati/
+# Dozvoljavamo indeksiranje svih proizvoda, kategorija i blogova
+Allow: /proizvodi-i-usluge/
+Allow: /novosti/
 Allow: /category/
 Allow: /blog/
 

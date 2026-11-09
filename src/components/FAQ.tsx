@@ -286,7 +286,7 @@ export const FAQ: React.FC = () => {
                         {faq.id === 'faq-ornamenti-delivery' && (
                           <div className="pt-2">
                             <Link
-                              to="/alati"
+                              to="/proizvodi-i-usluge"
                               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#00C9A7]/15 border border-[#00C9A7]/40 text-[#00C9A7] font-mono text-xs font-semibold hover:bg-[#00C9A7]/25 transition-colors"
                             >
                               <span>Naruči Ornamenti Bosne USB Pakovanje</span>
