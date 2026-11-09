@@ -1,0 +1,288 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { COMPANY_INFO } from '../data/companyData';
+import { Facebook, Instagram, Shield, FileText, Heart, X, Lock, Key, Sliders, ArrowRight, Cookie, Mail, Server, Loader2, Building2, Search } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { SafeImage } from './SafeImage';
+import { IMAGES } from '../utils/images';
+import { EmailConfigModal } from './EmailConfigModal';
+import { FooterBackground } from './FooterBackground';
+
+interface FooterProps {
+  onOpenAdmin?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
+  const { t } = useLanguage();
+  const [showImpressum, setShowImpressum] = useState(false);
+  const [showEmailConfig, setShowEmailConfig] = useState(false);
+
+  const openCookieSettings = () => {
+    window.dispatchEvent(new CustomEvent('bh-open-cookie-settings'));
+  };
+
+  return (
+    <footer className="bg-[var(--brand-footer,#081120)] border-t border-[var(--brand-border,#1A3152)] pt-16 pb-[max(24px,env(safe-area-inset-bottom))] text-[#F5F0E8]/80 text-xs font-sans relative mt-12 overflow-hidden">
+      {/* Subtle Animated Background matching Hero Style */}
+      <FooterBackground />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+        
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-[#1A3152]/60">
+          
+          {/* Col 1: Brand */}
+          <div className="space-y-4 md:col-span-1">
+            <Link to="/" className="flex items-center gap-3 group inline-flex">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00C9A7] via-[#0F2038] to-[#C9A84C] p-[1.5px] overflow-hidden">
+                <SafeImage
+                  src={IMAGES.logo}
+                  alt="B&H Assistant Logotip"
+                  fallbackTitle="BH"
+                  className="w-full h-full object-cover rounded-[10px]"
+                />
+              </div>
+              <span className="font-syne font-extrabold text-lg text-[#F5F0E8] group-hover:text-[#00C9A7] transition-colors">
+                B&H ASSISTANT <span className="text-[#00C9A7]">d.o.o.</span>
+              </span>
+            </Link>
+            <p className="text-xs font-mono text-[#00C9A7] font-semibold">
+              "{COMPANY_INFO.motto}"
+            </p>
+            <p className="text-xs text-[#F5F0E8]/70 leading-relaxed font-sans">
+              {t('footer.desc', 'Mlada IT firma iz Zenice. Razvijamo autorske digitalne alate, urbani magazin SCENA+ i inovativne projekte.')}
+            </p>
+            <p className="text-[11px] font-mono text-[#C9A84C]">
+              JIB: {COMPANY_INFO.jib} | MBS: {COMPANY_INFO.mbs}
+            </p>
+          </div>
+
+          {/* Col 2: Digital Alati Links */}
+          <div className="space-y-3">
+            <h4 className="font-syne font-bold text-sm text-[#F5F0E8] uppercase tracking-wider">
+              {t('nav.alati', 'BH DIGITALNI ALATI')}
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link to="/alati" className="hover:text-[#00C9A7] transition-colors py-1 inline-block font-semibold">
+                  {t('footer.allTools', 'Pregled Svih Alata')} →
+                </Link>
+              </li>
+              <li>
+                <Link to="/pretraga" className="hover:text-[#00C9A7] transition-colors py-1 inline-flex items-center gap-1.5 text-[#00C9A7] font-semibold">
+                  <Search className="w-3.5 h-3.5" />
+                  <span>{t('footer.searchPlatform', 'Pretraga Platforme')}</span>
+                </Link>
+              </li>
+              <li>
+                <a href="https://www.bh-konver.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                  BH Konverter (Konver)
+                </a>
+              </li>
+              <li>
+                <a href="https://bhpapirfinder.atoms.world/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                  BH PapirFinder (e-Uprava)
+                </a>
+              </li>
+              <li>
+                <a href="https://canva.link/8dwxeack5cwn18l" target="_blank" rel="noopener noreferrer" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                  Ornamenti Bosne (Kodirani Stećci)
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Magazin & Projekti */}
+          <div className="space-y-3">
+            <h4 className="font-syne font-bold text-sm text-[#F5F0E8] uppercase tracking-wider">
+              {t('nav.magazin', 'Magazin SCENA+')} & Proizvodi i Usluge
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link to="/scena-magazin" className="hover:text-[#C9A84C] transition-colors py-1 inline-block font-semibold">
+                  {t('footer.scena', 'SCENA+ Magazin ZDK')} →
+                </Link>
+              </li>
+              <li>
+                <Link to="/proizvodi-i-usluge" className="hover:text-[#00C9A7] transition-colors py-1 inline-block font-medium">
+                  Proizvodi & Usluge (8 IT usluga & Bojanka)
+                </Link>
+              </li>
+              <li>
+                <Link to="/o-nama" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                  {t('footer.aboutVideo', 'O Nama & Video Prezentacija')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/kontakt#faq" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                  {t('nav.faq', 'Česta Pitanja (FAQ)')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/zajednica" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                  {t('footer.community', 'Zajednica (@bh.asst)')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/novosti#news-feed" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                  {t('footer.newsFeed', 'IT Trendovi & NewsFeed')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/shop" className="hover:text-[#00C9A7] transition-colors py-1 inline-block">
+                  {t('footer.shop', 'Shop & Edukativni Centar')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Legal & Social - Semantic Links */}
+          <div className="space-y-3">
+            <h4 className="font-syne font-bold text-sm text-[#F5F0E8] uppercase tracking-wider">
+              {t('footer.legalNetworks', 'Pravno & Mreže')}
+            </h4>
+            <div className="flex flex-col gap-2">
+              <Link
+                to="/politika-privatnosti"
+                className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
+              >
+                <Shield className="w-3.5 h-3.5 text-[#00C9A7]" />
+                <span>{t('nav.privacyFull', 'Politika Privatnosti (GDPR)')}</span>
+              </Link>
+
+              <Link
+                to="/uslovi-koristenja"
+                className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
+              >
+                <FileText className="w-3.5 h-3.5 text-[#C9A84C]" />
+                <span>{t('nav.termsFull', 'Uslovi Korištenja')}</span>
+              </Link>
+
+              <button
+                onClick={() => setShowImpressum(true)}
+                className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
+              >
+                <Building2 className="w-3.5 h-3.5 text-[#00C9A7]" />
+                <span>{t('footer.impressum', 'Impressum & Baza Subjekta')}</span>
+              </button>
+
+              <button
+                onClick={openCookieSettings}
+                className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
+              >
+                <Cookie className="w-3.5 h-3.5 text-[#00C9A7]" />
+                <span>{t('footer.cookieSettings', 'Postavke Kolačića')}</span>
+              </button>
+
+              <button
+                onClick={() => setShowEmailConfig(true)}
+                className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
+              >
+                <Mail className="w-3.5 h-3.5 text-[#00C9A7]" />
+                <span>{t('footer.emailSetup', 'Službeni E-mail & Setup')}</span>
+              </button>
+
+              <Link
+                to="/kontakt"
+                className="text-left hover:text-[#00C9A7] transition-colors flex items-center gap-1.5 min-h-[36px]"
+              >
+                <ArrowRight className="w-3.5 h-3.5 text-[#00C9A7]" />
+                <span>{t('footer.contactLocation', 'Kontakt & Lokacija')}</span>
+              </Link>
+            </div>
+
+            <div className="pt-2 flex items-center gap-3">
+              <a
+                href={COMPANY_INFO.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-[#0F2038] border border-[#1A3152] hover:border-[#1877F2] text-[#1877F2] transition-colors"
+                title="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+
+              <a
+                href={COMPANY_INFO.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-[#0F2038] border border-[#1A3152] hover:border-[#E4405F] text-[#E4405F] transition-colors"
+                title="Instagram (@bh.asst)"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+
+              {/* Admin Portal Trigger */}
+              <button
+                onClick={() => onOpenAdmin?.()}
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-[#0F2038] border border-[#1A3152] text-[#00C9A7] hover:border-[#00C9A7] transition-colors"
+                title="B&H Assistant In-App CMS & Administracija"
+              >
+                <Sliders className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Credits */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#F5F0E8]/60">
+          <p>
+            © {new Date().getFullYear()} B&H ASSISTANT d.o.o. Zenica. {t('footer.rights', 'Sva prava zadržana.')}
+          </p>
+          <div className="flex items-center gap-2">
+            <span>{t('footer.headquarters', 'Sjedište: Zenica, Bosna i Hercegovina')}</span>
+            <span>•</span>
+            <span className="text-[#00C9A7] font-mono">www.bh-assistant.ba</span>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Impressum Modal */}
+      {showImpressum && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1628]/90 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-full max-w-lg rounded-3xl bg-[#0F2038] border border-[#00C9A7]/40 shadow-2xl p-6 sm:p-8 space-y-5 text-xs text-[#F5F0E8] font-sans">
+            <div className="flex items-center justify-between border-b border-[#1A3152] pb-3">
+              <h3 className="font-syne font-bold text-lg text-[#F5F0E8]">
+                {t('footer.impressumTitle', 'Impressum & Podaci o Firmi')}
+              </h3>
+              <button onClick={() => setShowImpressum(false)} className="min-h-[44px] min-w-[44px] flex items-center justify-center p-1 rounded-xl bg-[#0A1628]">
+                <X className="w-5 h-5 text-[#F5F0E8]" />
+              </button>
+            </div>
+
+            <div className="space-y-2 bg-[#0A1628] p-4 rounded-xl border border-[#1A3152] font-mono text-[11px]">
+              <p><strong className="text-[#00C9A7]">Puni naziv:</strong> {COMPANY_INFO.fullLegalName}</p>
+              <p><strong className="text-[#00C9A7]">Adresa:</strong> {COMPANY_INFO.address}</p>
+              <p><strong className="text-[#C9A84C]">JIB:</strong> {COMPANY_INFO.jib}</p>
+              <p><strong className="text-[#C9A84C]">MBS:</strong> {COMPANY_INFO.mbs}</p>
+              <p><strong className="text-[#00C9A7]">Web domain:</strong> www.bh-assistant.ba</p>
+              <p><strong className="text-[#00C9A7]">Kontakt email:</strong> {COMPANY_INFO.email}</p>
+            </div>
+
+            <p className="text-[11px] text-[#F5F0E8]/70 leading-relaxed">
+              B&H Assistant d.o.o. je privatno društvo sa ograničenom odgovornošću registrovano za softversko inženjerstvo, obradu podataka, digitalno izdavaštvo i promidžbene djelatnosti u Zeničko-dobojskom kantonu.
+            </p>
+
+            <div className="flex justify-end">
+              <button
+                onClick={() => setShowImpressum(false)}
+                className="min-h-[44px] px-5 py-2 rounded-xl bg-[#00C9A7] text-[#0A1628] font-bold text-xs"
+              >
+                {t('footer.closeImpressum', 'Zatvori Impressum')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Email Client Manual Setup & Webmail Modal */}
+      <EmailConfigModal
+        isOpen={showEmailConfig}
+        onClose={() => setShowEmailConfig(false)}
+      />
+    </footer>
+  );
+};
+
+export default Footer;

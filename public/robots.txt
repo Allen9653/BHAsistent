@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Dozvoljavamo indeksiranje svih alata, kategorija i blogova
+Allow: /alati/
+Allow: /category/
+Allow: /blog/
+
+# Blokiramo samo privatne i administrativne stranice ako postoje
+Disallow: /auth
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://www.bh-konver.com/sitemap.xml
