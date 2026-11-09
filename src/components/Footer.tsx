@@ -95,7 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
           {/* Col 3: Magazin & Projekti */}
           <div className="space-y-3">
             <h4 className="font-syne font-bold text-sm text-[#F5F0E8] uppercase tracking-wider">
-              {t('nav.magazin', 'Magazin SCENA+')} & {t('nav.projekti', 'Projekti')}
+              {t('nav.magazin', 'Magazin SCENA+')} & Proizvodi i Usluge
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -104,8 +104,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/projekti" className="hover:text-[#C9A84C] transition-colors py-1 inline-block">
-                  {t('footer.projects', 'ZENTAXI & GUMMI Projekti')}
+                <Link to="/proizvodi-i-usluge" className="hover:text-[#00C9A7] transition-colors py-1 inline-block font-medium">
+                  Proizvodi & Usluge (8 IT usluga & Bojanka)
                 </Link>
               </li>
               <li>

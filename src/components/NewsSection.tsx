@@ -11,6 +11,7 @@ import { AuthorProfile } from './AuthorProfile';
 import { SEOHead } from './SEOHead';
 import { useLanguage } from '../context/LanguageContext';
 import { RadixCustomSelect } from './RadixCustomSelect';
+import { useAdminAuth } from '../context/AdminAuthContext';
 
 interface NewsSectionProps {
   onOpenAdmin?: () => void;
@@ -22,13 +23,13 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const { t } = useLanguage();
+  const { isAdmin } = useAdminAuth();
   
   // Modals
   const [activeArticle, setActiveArticle] = useState<NewsArticle | null>(null);
   const [isEditorModalOpen, setIsEditorModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [editingArticle, setEditingArticle] = useState<Partial<NewsArticle>>({});
-  const [isAdmin, setIsAdmin] = useState(false);
   const { slug: routeSlug } = useParams<{ slug?: string }>();
 
   useEffect(() => {
@@ -158,32 +159,34 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
             </p>
           </div>
 
-          {/* CMS Admin Tools & Joomla Export */}
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => {
-                setEditingArticle({
-                  category: 'BH KONVER & IT',
-                  author: 'Alen Jusufović, B&H Assistant',
-                  imageUrl: IMAGES.bhKonverMockup
-                });
-                setIsEditorModalOpen(true);
-              }}
-              className="px-4 py-2.5 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs tracking-wide flex items-center gap-2 shadow-lg shadow-[#00C9A7]/20 transition-all hover:scale-105 min-h-[44px]"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Dodaj Novi Članak (CMS)</span>
-            </button>
+          {/* CMS Admin Tools & Joomla Export - Visible ONLY to Authenticated Admin */}
+          {isAdmin && (
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => {
+                  setEditingArticle({
+                    category: 'BH KONVER & IT',
+                    author: 'Alen Jusufović, B&H Assistant',
+                    imageUrl: IMAGES.bhKonverMockup
+                  });
+                  setIsEditorModalOpen(true);
+                }}
+                className="px-4 py-2.5 rounded-xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-bold text-xs tracking-wide flex items-center gap-2 shadow-lg shadow-[#00C9A7]/20 transition-all hover:scale-105 min-h-[44px]"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Dodaj Novi Članak (CMS)</span>
+              </button>
 
-            <button
-              onClick={() => exportNewsForJoomla(articles)}
-              className="px-4 py-2.5 rounded-xl bg-[#0F2038] hover:bg-[#1A3152] border border-[#C9A84C]/50 text-[#C9A84C] font-syne font-bold text-xs tracking-wide flex items-center gap-2 transition-all hover:scale-105 min-h-[44px]"
-              title="Izvozi objave u JSON format spreman za Joomla CMS import"
-            >
-              <Download className="w-4 h-4" />
-              <span>Joomla CMS Export</span>
-            </button>
-          </div>
+              <button
+                onClick={() => exportNewsForJoomla(articles)}
+                className="px-4 py-2.5 rounded-xl bg-[#0F2038] hover:bg-[#1A3152] border border-[#C9A84C]/50 text-[#C9A84C] font-syne font-bold text-xs tracking-wide flex items-center gap-2 transition-all hover:scale-105 min-h-[44px]"
+                title="Izvozi objave u JSON format spreman za Joomla CMS import"
+              >
+                <Download className="w-4 h-4" />
+                <span>Joomla CMS Export</span>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Filter Toolbar & Search Bar */}
@@ -353,25 +356,28 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
                       </a>
                     )}
 
-                    <div className="flex items-center gap-1">
-                      <button
-                        onClick={() => {
-                          setEditingArticle(article);
-                          setIsEditorModalOpen(true);
-                        }}
-                        className="p-2 rounded-lg bg-[#0A1628] hover:bg-[#1A3152] text-[#F5F0E8]/70 hover:text-[#C9A84C] transition-colors"
-                        title="Uredi članak (CMS)"
-                      >
-                        <Edit2 className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteArticle(article.id)}
-                        className="p-2 rounded-lg bg-[#0A1628] hover:bg-red-950/40 text-[#F5F0E8]/70 hover:text-red-400 transition-colors"
-                        title="Obriši članak"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
+                    {/* Admin only Edit and Delete buttons */}
+                    {isAdmin && (
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => {
+                            setEditingArticle(article);
+                            setIsEditorModalOpen(true);
+                          }}
+                          className="p-2 rounded-lg bg-[#0A1628] hover:bg-[#1A3152] text-[#F5F0E8]/70 hover:text-[#C9A84C] transition-colors"
+                          title="Uredi članak (CMS)"
+                        >
+                          <Edit2 className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteArticle(article.id)}
+                          className="p-2 rounded-lg bg-[#0A1628] hover:bg-red-950/40 text-[#F5F0E8]/70 hover:text-red-400 transition-colors"
+                          title="Obriši članak"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </article>

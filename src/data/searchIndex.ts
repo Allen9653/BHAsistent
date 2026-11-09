@@ -1,4 +1,4 @@
-import { DIGITAL_TOOLS, DEVELOPMENT_PROJECTS, SCENA_MAGAZINE, AFFILIATE_COURSES } from './companyData';
+import { DIGITAL_TOOLS, DEVELOPMENT_PROJECTS, SCENA_MAGAZINE, AFFILIATE_COURSES, COMPANY_SERVICES } from './companyData';
 import { INITIAL_NEWS, getStoredNews } from './newsData';
 import { INITIAL_NEWS_FEED_UPDATES, getStoredNewsFeed } from './newsFeedData';
 import { FAQ_DATA } from './faqData';
@@ -67,12 +67,27 @@ export function getAllSearchItems(): SearchItem[] {
       title: proj.title,
       description: proj.description,
       category: 'projects',
-      categoryLabel: 'Inovativni Projekat',
-      route: '/projekti',
+      categoryLabel: 'Digitalni Proizvod',
+      route: '/proizvodi-i-usluge',
       externalUrl: proj.url,
       tags: [proj.subtitle, proj.targetAudience, ...(proj.highlights || [])],
       badge: proj.status,
       image: proj.image,
+    });
+  }
+
+  // 2b. 8 Professional IT Services
+  for (const srv of (COMPANY_SERVICES || [])) {
+    items.push({
+      id: `service-${srv.id}`,
+      title: srv.title,
+      description: srv.shortDescription || srv.description,
+      category: 'projects',
+      categoryLabel: 'IT Usluga',
+      route: '/proizvodi-i-usluge',
+      tags: [srv.category, srv.model, ...(srv.tags || []), ...(srv.features || [])],
+      badge: srv.model,
+      image: IMAGES.ourProducts,
     });
   }
 

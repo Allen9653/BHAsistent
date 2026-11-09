@@ -69,27 +69,36 @@ export const TermsPage: React.FC = () => {
           <section className="space-y-3">
             <h2 className="font-syne font-bold text-lg text-[#F5F0E8] flex items-center gap-2">
               <FileText className="w-4 h-4 text-[#00C9A7]" />
-              <span>2. Korištenje digitalnih alata i e-Usluga</span>
+              <span>2. Korištenje digitalnih alata, softvera i e-Usluga</span>
             </h2>
             <p>
               Korisnici mogu koristiti digitalne kalkulatore i vodiče u skladu sa njihovom namjenom. Dokumenti i obrasci preuzeti putem BH PapirFinder-a potiču iz javno dostupnih općinskih registara i namijenjeni su olakšavanju administrativnih procedura građanima i privredi.
             </p>
+            <p>
+              Naši komercijalni softverski proizvodi (BH KONVER na <a href="https://www.bh-konver.com/" target="_blank" rel="noopener noreferrer" className="text-[#00C9A7] underline">www.bh-konver.com</a>, Ornamenti Bosne, magazin SCENA+ i BH PapirFinder u razvoju na <a href="https://www.papir-finder.com/" target="_blank" rel="noopener noreferrer" className="text-[#00C9A7] underline">www.papir-finder.com</a>) te 8 profesionalnih IT usluga (B2B Lead Generation, Digital PR, Custom Web Setup, Lokalizacija, Vektorska baština, Web Performance/SEO revizija, Mobile App Development i Web-to-App transformacija) regulisani su specifičnim ugovorima i narudžbenicama.
+            </p>
             <div className="flex items-start gap-2 bg-[#0F2038] p-4 rounded-xl border border-[#1A3152]">
               <CheckCircle2 className="w-4 h-4 text-[#00C9A7] shrink-0 mt-0.5" />
-              <span>Edukativna bojanka Gummi je besplatno dostupna za privatnu i neprofitnu školsku ili porodičnu edukaciju.</span>
+              <span>Edukativna bojanka Gummi i prateće e-publikacije besplatno su dostupne za privatnu i neprofitnu školsku ili porodičnu edukaciju (Free Download).</span>
             </div>
           </section>
 
           <section className="space-y-3">
             <h2 className="font-syne font-bold text-lg text-[#F5F0E8] flex items-center gap-2">
               <AlertCircle className="w-4 h-4 text-[#C9A84C]" />
-              <span>3. Ograničenje odgovornosti</span>
+              <span>3. Izjava o odricanju pravne i finansijske odgovornosti (Legal & Financial Disclaimer)</span>
             </h2>
             <p>
-              B&H ASSISTANT d.o.o. Zenica ulaže maksimalne stručne napore kako bi osigurala tačnost, ažurnost i kontinuitet svih informacija i kalkulatora. Ipak, platforma se pruža po principu „viđeno-dostupno” (<em>as is</em>) bez implicitnih garancija za specifične poslovne odluke korisnika.
+              B&H ASSISTANT d.o.o. Zenica ulaže maksimalne stručne napore kako bi osigurala tačnost, ažurnost i matematičko-tehničku pouzdanost svih kalkulatora, poreznih algoritama i generatora obrazaca. Ipak, platforma i povezani alati pružaju se po principu „viđeno-dostupno” (<em>as is</em>) u svrhu tehničko-administrativne asistencije i informatičke automatizacije.
             </p>
-            <p>
-              Za pravne poslove sa trećim stranama (npr. vanjski partneri i eksterni edukativni servisi) važe uslovi korištenja tih eksternih servisa.
+            <div className="p-4 rounded-xl bg-[#0A1628] border border-[#C9A84C]/40 space-y-2 text-xs">
+              <p className="font-bold text-[#C9A84C] uppercase tracking-wider">Važna pravna napomena za korisnike digitalnih alata:</p>
+              <p className="text-[#F5F0E8]/80 leading-relaxed">
+                Generisane pravne izjave i kalkulatori unutar sistema BH KONVER i BH PapirFinder ne predstavljaju formalno advokatsko, notarsko, sudsko ili ovlašteno porezno savjetovanje. Korisnici su dužni prije podnošenja dokumenata nadležnim državnim ili kantonalnim organima provjeriti tačnost unesenih ličnih i materijalnih podataka. B&H ASSISTANT d.o.o. ne snosi materijalnu ni krivičnu odgovornost za eventualne propuste nastale usljed netačnog unosa podataka od strane korisnika ili izmjena propisa od strane zakonodavnih tijela.
+              </p>
+            </div>
+            <p className="text-xs text-[#F5F0E8]/70">
+              Za pravne poslove sa trećim stranama (npr. vanjski partneri, affiliate platforme i eksterni servisi) važe isključivo opći uslovi poslovanja tih eksternih subjekata.
             </p>
           </section>
 

@@ -1,4 +1,4 @@
-import { DigitalTool, DevelopmentProject, MagazineEdition, AffiliateCourse, CompanyDetails, SocialPost } from '../types';
+import { DigitalTool, DevelopmentProject, MagazineEdition, AffiliateCourse, CompanyDetails, SocialPost, CompanyService } from '../types';
 import { IMAGES } from '../utils/images';
 
 export const COMPANY_INFO: CompanyDetails = {
@@ -43,8 +43,8 @@ export const DIGITAL_TOOLS: DigitalTool[] = [
   {
     id: "bh-papirfinder",
     name: "BH PapirFinder",
-    tagline: "Centralni registar i vodič za besplatne općinske obrasce",
-    description: "Vaš centralni digitalni registar i pametni vodič za pronalaženje besplatnih obrazaca, zahtjeva i dokumenata lokalne samouprave u Bosni i Hercegovini. Pojednostavljuje i ubrzava administrativne procese za općine Olovo, Gračanica, Banja Luka, Jajce, Travnik i sve kantone u BiH.",
+    tagline: "Centralni registar i vodič za besplatne općinske obrasce (U razvoju)",
+    description: "Vaš centralni digitalni registar i pametni vodič za pronalaženje besplatnih obrazaca, zahtjeva i dokumenata lokalne samouprave u Bosni i Hercegovini. Alat je u fazi aktivnog razvoja (buduća zvanična javna adresa: www.papir-finder.com, trenutni radni prototip dostupan na bhpapirfinder.atoms.world). Pojednostavljuje i ubrzava administrativne procese za općine Olovo, Gračanica, Banja Luka, Jajce, Travnik i sve kantone u BiH.",
     url: "https://bhpapirfinder.atoms.world/",
     badge: "BESPLATNI OBRASCI & e-UPRAVA 🏛️",
     category: "Administracija & Javne Usluge",
@@ -52,13 +52,13 @@ export const DIGITAL_TOOLS: DigitalTool[] = [
     image: IMAGES.bhPapirfinderMockup,
     bannerImage: IMAGES.bhPapirfinderBanner,
     mockupImage: IMAGES.bhPapirfinderMockup,
-    deliveryBadge: "BESPLATNI OPĆINSKI OBRASCI & VODIČ",
-    deliveryNotice: "Direktan pristup i preuzimanje službenih općinskih zahtjeva, taksi i obrazaca — ušteda vremena građanima, privredi i dijaspori.",
+    deliveryBadge: "U RAZVOJU • BUDUĆA ADRESA: WWW.PAPIR-FINDER.COM",
+    deliveryNotice: "Direktan pristup i preuzimanje službenih općinskih zahtjeva, taksi i obrazaca — ušteda vremena građanima, privredi i dijaspori. Uskoro dostupno na zvaničnoj adresi www.papir-finder.com.",
     features: [
       "Baza besplatnih službenih općinskih obrazaca i upravnih zahtjeva 📄",
       "Pametna pretraga po gradovima (Olovo, Gračanica, BL, Travnik, Jajce...)",
+      "Zvanična adresa po završetku razvoja: www.papir-finder.com 🌐",
       "Pojednostavljeni e-Uprava koraci za fizička i pravna lica",
-      "Direktno preuzimanje pripremljenih dokumenata i uputstava",
       "Eliminacija čekanja na šalterima i administrativnih nejasnoća"
     ]
   },
@@ -572,3 +572,151 @@ export const SOCIAL_POSTS: SocialPost[] = [
     isAffiliate: true
   }
 ];
+
+export const COMPANY_SERVICES: CompanyService[] = [
+  {
+    id: "lead-generation-target-market-mapping",
+    number: 1,
+    title: "B2B Lead Generation & Target Market Mapping",
+    subtitle: "Izrada ciljnih baza i akvizicija klijenata",
+    shortDescription: "Istraživanje tržišta, izrada ciljnih baza i akvizicija B2B klijenata u BiH i regiji.",
+    description: "Istraživanje tržišta, mapiranje specifičnih industrija, kreiranje preciznih i ažurnih baza podataka potencijalnih klijenata i kupaca u BiH i regiji Zapadnog Balkana, te priprema personalizovanih direktnih B2B ponuda.",
+    model: "Remote (mjesečni retainer ili projektno)",
+    category: "B2B Marketing & Prodaja",
+    iconName: "Target",
+    tags: ["B2B", "Lead Generation", "Tržišne Baze", "Akvizicija", "Direktna Prodaja"],
+    features: [
+      "Dubinsko mapiranje industrijskih vertikala u BiH i regiji",
+      "Verifikovane kontakt baze donosilaca odluka (C-level, direktori, nabavka)",
+      "Kreiranje strategije direktnog outreach-a i priprema B2B ponuda",
+      "Redovni mjesečni izvještaji i analiza konverzije"
+    ]
+  },
+  {
+    id: "full-cycle-digital-pr-social-media",
+    number: 2,
+    title: "Full-Cycle Digital PR & Social Media Management",
+    subtitle: "Sveobuhvatno vođenje digitalnog prisustva i reputacije",
+    shortDescription: "Sveobuhvatno vođenje digitalnog PR-a, brendinga i višejezičnih društvenih mreža.",
+    description: "Sveobuhvatno vođenje digitalnog prisustva za firme, brendove i javne ličnosti. Uključuje kreiranje profesionalnih PR saopštenja, vizuelnog identiteta, višejezični copywriting (BHS + njemački i engleski jezik) i strateško vođenje društvenih mreža.",
+    model: "Remote / Hibridno",
+    category: "Digital PR & Komunikacije",
+    iconName: "Megaphone",
+    tags: ["Digital PR", "Social Media", "Copywriting", "Brending", "Višejezičnost"],
+    features: [
+      "Pisanje i distribucija novinarskih PR saopštenja za medije",
+      "Kreiranje vizuelnih objava i autorskog sadržaja za društvene mreže",
+      "Višejezični marketing: Bosanski/Hrvatski/Srpski, Njemački i Engleski",
+      "Upravljanje kriznim komunikacijama i jačanje online reputacije"
+    ]
+  },
+  {
+    id: "custom-web-digital-tool-setup",
+    number: 3,
+    title: "Custom Web & Digital Tool Setup",
+    subtitle: "Paketi za digitalizaciju poslovanja 'ključ u ruke'",
+    shortDescription: "Paketi za digitalizaciju poslovanja 'ključ u ruke' (od 900 KM) uz integraciju BH Konver alata.",
+    description: "Izrada brzih, modernih web rješenja (uključujući popularne startne pakete za digitalizaciju od 900 KM) uz integraciju naprednih alata poput BH Konvera, prilagođenih poslovnih kalkulatora i sistema za pravne izjave za mala i srednja preduzeća.",
+    model: "Projektni rad (ključ u ruke)",
+    category: "Web Razvoj & Alati",
+    iconName: "Code",
+    tags: ["Web Razvoj", "Digitalizacija", "BH Konver Integracija", "Kalkulatori", "Ključ u Ruke"],
+    features: [
+      "Brza izrada modernih responzivnih web stranica (od 900 KM)",
+      "Integracija interaktivnih kalkulatora poreza, valuta i mjernih jedinica",
+      "Automatizacija pravnih izjava i administrativnih obrazaca",
+      "Kompletno postavljanje domena, hostinga, SSL-a i korporativnih e-mailova"
+    ]
+  },
+  {
+    id: "multilingual-content-localization-copywriting",
+    number: 4,
+    title: "Multilingual Content Localization & Copywriting",
+    subtitle: "Stručni tekstovi i lokalizacija za DACH i regiju",
+    shortDescription: "Kreiranje i stručna lokalizacija softvera i tekstova za tržišta DACH i Zapadnog Balkana.",
+    description: "Kreiranje i profesionalno prevođenje stručnih tekstova, oglasa, tehničke dokumentacije i marketinških materijala prilagođenih tržištu Zapadnog Balkana i njemačkog govornog područja (Njemačka, Austrija, Švicarska).",
+    model: "Remote po projektu ili satu",
+    category: "Lokalizacija & Jezici",
+    iconName: "Globe",
+    tags: ["Lokalizacija", "Njemački Jezik", "Engleski", "DACH Tržište", "Tehnički Tekstovi"],
+    features: [
+      "Stručni prijevodi i lokalizacija na njemački i engleski jezik",
+      "SEO optimizirani članci i blog objave za inostrana tržišta",
+      "Lokalizacija softverskih interfejsa i e-commerce kataloga",
+      "Izrada prodajnih 'landing' stranica sa visokom stopom konverzije"
+    ]
+  },
+  {
+    id: "digitalizacija-arhive-poslovnih-dokumenata-saas",
+    number: 5,
+    title: "Digitalizacija Arhive i Poslovnih Dokumenta (SaaS)",
+    subtitle: "Prelazak papirne arhive na sigurne cloud servere",
+    shortDescription: "Digitalizacija stotina tona papirne arhive za firme i institucije i izrada SaaS pretrage.",
+    description: "Digitalizacija stotina tona papirne arhive za firme i institucije, prelazak na sigurne servere i izrada SaaS platforme za brzu pretragu dokumenata.",
+    model: "Projektno i SaaS pretplata (B2B i B2G – javni i privatni sektor)",
+    category: "SaaS & Digitalizacija Arhive",
+    iconName: "Archive",
+    tags: ["Digitalizacija Arhive", "SaaS", "Pretraga Dokumenata", "Arhiviranje", "Sigurni Serveri", "B2B & B2G"],
+    features: [
+      "Skeniranje i OCR digitalizacija stotina tona papirne dokumentacije",
+      "Pohrana na enkriptovanim, sigurnim serverima u skladu sa zakonom o arhivskoj građi",
+      "Izrada namjenske SaaS platforme sa instantnom full-text pretragom i filtriranjem",
+      "Strogo kontrolisana prava pristupa, revizioni trag (audit log) i redovni backup"
+    ]
+  },
+  {
+    id: "web-performance-seo-deep-dive",
+    number: 6,
+    title: "Web Performance Optimization & SEO Deep-Dive Analysis",
+    subtitle: "Optimizacija brzine, Core Web Vitals i tehnički SEO",
+    shortDescription: "Ubrzanje učitavanja stranica (Core Web Vitals), tehnički SEO auditi i jačanje sigurnosti.",
+    description: "Profesionalna revizija postojećih web stranica klijenata. Obuhvata detaljnu analizu brzine učitavanja (Core Web Vitals), tehničku SEO optimizaciju, jačanje sigurnosti, refaktorisanje koda i prilagođavanje korisničkog interfejsa (UI/UX) radi veće konverzije.",
+    model: "Jednokratna optimizacija ili mjesečni ugovor o održavanju",
+    category: "SEO & Tehnička Optimizacija",
+    iconName: "Zap",
+    tags: ["Core Web Vitals", "SEO Optimizacija", "Brzina Web Stranice", "UI/UX Audit", "Održavanje"],
+    features: [
+      "Postizanje 90+ rezultata na Google PageSpeed Insights i Lighthouse",
+      "Optimizacija LCP, FID/INP i CLS (nulti pomak rasporeda)",
+      "Tehnički SEO: robots.txt, sitemap.xml, Schema.org strukturirani podaci",
+      "Uklanjanje uskih grla u kodu i optimizacija multimedijalnih resursa"
+    ]
+  },
+  {
+    id: "custom-mobile-app-development",
+    number: 7,
+    title: "Custom Mobile App Development",
+    subtitle: "Izrada nativnih i hibridnih mobilnih aplikacija po mjeri",
+    shortDescription: "Razvoj namjenskih mobilnih aplikacija za iOS i Android od koncepta do objave na store-u.",
+    description: "Razvoj mobilnih aplikacija prilagođenih specifičnim poslovnim potrebama klijenata — e-commerce platforme, interni alati za upravljanje terenskim radom, aplikacije za rezervacije, transport ili servise (od koncepta do objave na store-ovima).",
+    model: "Projektni rad (od koncepta do Google Play & Apple App Store)",
+    category: "Mobilni Razvoj",
+    iconName: "Smartphone",
+    tags: ["Mobilne Aplikacije", "iOS", "Android", "React Native", "Google Play & App Store"],
+    features: [
+      "Razvoj modernih mobilnih aplikacija za iOS i Android",
+      "Integracija push notifikacija, geolokacije i sigurnih plaćanja",
+      "Povezivanje sa postojećim bazama podataka i ERP sistemima",
+      "Kompletno vođenje procesa certifikacije na App Store i Google Play"
+    ]
+  },
+  {
+    id: "web-to-app-transformation",
+    number: 8,
+    title: "Web-to-App Transformation",
+    subtitle: "Pretvaranje postojećih web stranica u mobilne aplikacije",
+    shortDescription: "Brza transformacija postojeće web stranice u instalabilnu mobilnu PWA aplikaciju.",
+    description: "Izuzetno tražena i isplativa usluga za vlasnike biznisa koji već posjeduju funkcionalnu web stranicu, a žele je pretvoriti u modernu mobilnu aplikaciju (PWA ili hibridnu aplikaciju) kako bi bili direktno na ekranu svojih kupaca uz minimalne troškove razvoja.",
+    model: "Projektni rad (brza i isplativa realizacija)",
+    category: "PWA & Mobilna Transformacija",
+    iconName: "Layers",
+    tags: ["Web-to-App", "PWA", "Mobilna Transformacija", "Optimizacija Troškova", "Offline Rad"],
+    features: [
+      "Brza transformacija postojeće web stranice u instalabilnu aplikaciju",
+      "Ikonica na ekranu telefona kupca bez potrebe za ponovnim razvojem koda",
+      "Podrška za rad bez interneta (Offline caching) i instantno pokretanje",
+      "Znatno niži troškovi u poređenju sa izradom zasebnog nativnog koda"
+    ]
+  }
+];
+

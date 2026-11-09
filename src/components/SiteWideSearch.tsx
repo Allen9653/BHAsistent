@@ -50,7 +50,7 @@ const CATEGORY_TABS: {
   { id: 'all', label: 'Sve', icon: Sparkles, color: '#00C9A7' },
   { id: 'tools', label: 'Digitalni Alati', icon: Wrench, color: '#00C9A7' },
   { id: 'articles', label: 'Članci & Magazin', icon: Newspaper, color: '#00E5BE' },
-  { id: 'projects', label: 'Projekti & Inovacije', icon: FolderGit2, color: '#C9A84C' },
+  { id: 'projects', label: 'Proizvodi & Usluge', icon: FolderGit2, color: '#C9A84C' },
   { id: 'faq', label: 'Česta Pitanja (FAQ)', icon: HelpCircle, color: '#00C9A7' },
   { id: 'education', label: 'Edukacija & Shop', icon: GraduationCap, color: '#C9A84C' },
   { id: 'company', label: 'O Kompaniji & Autori', icon: Building2, color: '#00C9A7' },

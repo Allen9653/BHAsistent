@@ -13,27 +13,36 @@ import { CommunityPage } from './pages/CommunityPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
+import { ImpressumPage } from './pages/ImpressumPage';
 import { SearchPage } from './pages/SearchPage';
+import { AdminPage } from './pages/AdminPage';
+import { AdminAuthProvider } from './context/AdminAuthContext';
+import { AdminBar } from './components/AdminBar';
 
 export default function App() {
   const [isBojankaOpen, setIsBojankaOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   return (
-    <BrowserRouter>
-      <SpeedInsights />
-      <Routes>
-        <Route
-          element={
-            <Layout
-              isBojankaOpen={isBojankaOpen}
-              setIsBojankaOpen={setIsBojankaOpen}
-              isAdminOpen={isAdminOpen}
-              setIsAdminOpen={setIsAdminOpen}
-            />
-          }
-        >
-          {/* Main Home Route */}
+    <AdminAuthProvider>
+      <BrowserRouter>
+        <SpeedInsights />
+        <AdminBar />
+        <Routes>
+          <Route
+            element={
+              <Layout
+                isBojankaOpen={isBojankaOpen}
+                setIsBojankaOpen={setIsBojankaOpen}
+                isAdminOpen={isAdminOpen}
+                setIsAdminOpen={setIsAdminOpen}
+              />
+            }
+          >
+            {/* Owner Admin Route */}
+            <Route path="/admin" element={<AdminPage />} />
+
+            {/* Main Home Route */}
           <Route
             path="/"
             element={
@@ -70,11 +79,14 @@ export default function App() {
             element={<NewsPage onOpenAdmin={() => setIsAdminOpen(true)} />}
           />
 
-          {/* Projects Seeking Partners & Kids Coloring Book */}
+          {/* Proizvodi & Usluge (Products & Services: 8 IT Services, Applications & Free Downloads) */}
           <Route
-            path="/projekti"
+            path="/proizvodi-i-usluge"
             element={<ProjectsPage onOpenBojanka={() => setIsBojankaOpen(true)} />}
           />
+          <Route path="/usluge" element={<Navigate to="/proizvodi-i-usluge" replace />} />
+          <Route path="/proizvodi" element={<Navigate to="/proizvodi-i-usluge" replace />} />
+          <Route path="/projekti" element={<Navigate to="/proizvodi-i-usluge" replace />} />
 
           {/* Shop & Education Center */}
           <Route path="/shop" element={<ShopPage />} />
@@ -83,8 +95,13 @@ export default function App() {
           {/* Instagram Social Community */}
           <Route path="/zajednica" element={<CommunityPage />} />
 
-          {/* Contact & Impressum */}
+          {/* Contact */}
           <Route path="/kontakt" element={<ContactPage />} />
+
+          {/* Impressum & Editorial Standards (E-E-A-T) */}
+          <Route path="/impresum" element={<ImpressumPage />} />
+          <Route path="/urednistvo" element={<Navigate to="/impresum" replace />} />
+          <Route path="/editorial" element={<Navigate to="/impresum" replace />} />
 
           {/* Site-Wide Search Route */}
           <Route
@@ -107,5 +124,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-  );
+  </AdminAuthProvider>
+);
 }

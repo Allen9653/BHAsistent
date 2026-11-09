@@ -119,7 +119,7 @@ Korištenje osnovnih funkcionalnosti aplikacije u potpunosti je besplatno za sve
     excerpt: "Pronađite sve potrebne općinske obrasce, takse i instrukcije za Zenicu, Sarajevo, Banja Luku, Tuzlu, Mostar i druge gradove u BiH bez lutanja po šalterima.",
     content: `Administrativni labirint i dugotrajna čekanja pred šalterima lokalnih samouprava u Bosni i Hercegovini godinama predstavljaju jedan od najvećih izvora frustracije za građane i preduzetnike. Da bi se izvadila obična građevinska dozvola, uvjerenje o slobodnom bračnom stanju ili registracija obrta, građani su često primorani višestruko posjećivati općinske zgrade samo da bi saznali koji im obrasci trebaju i na koji račun uplatiti administrativnu taksu.
 
-S ciljem sistematskog rješavanja ovog problema, B&H Assistant d.o.o. Zenica lansirao je BH PapirFinder — centralizovani registar i pametni vodič kroz e-upravu i općinsku dokumentaciju na web domeni bhpapirfinder.atoms.world.
+S ciljem sistematskog rješavanja ovog problema, B&H Assistant d.o.o. Zenica razvio je BH PapirFinder — centralizovani registar i pametni vodič kroz e-upravu i općinsku dokumentaciju koji se priprema za lansiranje na oficijelnoj domeni www.papir-finder.com (sa funkcionalnim prototipom dostupnim na bhpapirfinder.atoms.world).
 
 BH PapirFinder funkcioniše kao jedinstvena kontakt tačka koja objedinjuje službene obrasce, uputstva i tarifnike općinskih i kantonalnih organa. Platforma trenutno pokriva ključne gradove i administrativne centre u Bosni i Hercegovini, uključujući Zenicu, Sarajevo (općine Centar, Stari Grad, Novo Sarajevo, Novi Grad), Banja Luku, Tuzlu, Mostar, Bihać, kao i manje lokalne zajednice poput Olova, Travnika i Gračanice.
 
@@ -403,26 +403,37 @@ Prezentaciju i katalog možete naručiti ili pregledati putem našeg odjeljka za
   },
   {
     id: "news-our-products-suite",
-    title: "Naši Proizvodi – B&H Assistant predstavlja digitalni ekosistem",
-    slug: "nasi-proizvodi-bh-assistant-digitalni-ekosistem",
-    category: "BH Digitalni Alati",
+    title: "Proizvodi & Usluge – B&H Assistant predstavlja digitalni ekosistem i 8 IT usluga",
+    slug: "proizvodi-i-usluge-bh-assistant-digitalni-ekosistem",
+    category: "Proizvodi & Usluge",
     date: "8. August 2026.",
     author: "B&H Assistant Redakcija",
-    excerpt: "Kompletan suite modernih alata za privredu, građane i kulturu optimizovan za sve ekrane i uređaje.",
+    excerpt: "Kompletan suite modernih alata za privredu, građane i kulturu, uz 8 specijalizovanih IT usluga za domaće i inostrane kompanije.",
     content: `Kao mlada, inovativna i zvanično registrovana domaća IT firma u Zenici (JIB 4219296620005, MBS 43-01-0177-25), B&H Assistant d.o.o. izgradila je jedinstven digitalni ekosistem koji spaja privredni razvoj, praktičnu pomoć građanima, očuvanje kulturne baštine i nezavisno izdavaštvo.
 
-Naš suite trenutno obuhvata sljedeće integrisane platforme i usluge:
-1. BH KONVER (www.bh-konver.com): Nagrađivani kalkulator poreza, valuta i generator službenih pravnih izjava. Pobjednik Bravo takmičenja i Aplikacija Sedmice na Lovable platformi, sa predstojećim nativnim iOS i Android aplikacijama.
-2. BH PapirFinder (bhpapirfinder.atoms.world): Centralni registar i digitalni vodič za administrativne takse, obrasce i e-upravu koji štedi sate čekanja na općinskim šalterima.
-3. Ornamenti Bosne: Digitalizovana kolekcija stećaka i kulturne baštine na USB memorijskom sticku sa sigurnom dostavom na adresu i plaćanjem pouzećem.
-4. SCENA+ Magazin: Prvi urbani magazin Zeničko-dobojskog kantona sa printanim izdanjem (podijeljeno 300 besplatnih primjeraka) i interaktivnim e-čitačem.
-5. ZENTAXI & GUMMI: Inovativna gradska dispečerska mreža i besplatna edukativna bojanka za djecu.
-6. Usluge po mjeri: Profesionalna izrada modernih web stranica, optimizacija za pretraživače (SEO), hosting i korporativni e-mail sistemi.
+U skladu sa strateškim rastom kompanije i zahtjevima tržišta za visokokvalitetnim B2B rješenjima, naš portfolio je jasno strukturiran u dvije ključne cjeline: Naši Digitalni Proizvodi i 8 Specijalizovanih IT Usluga.
 
-Pozivamo domaće kompanije, općinske službe i omladinske organizacije da nam se jave za zajedničke projekte i digitalna partnerstva. Spajamo kulture — stvaramo šanse!`,
+--- NAŠI AUTORSKI PROIZVODI ---
+1. BH KONVER (https://www.bh-konver.com/): Vodeći softver za konverziju valuta prema zvaničnim kursnim listama CBBiH, preračun taksi i automatsko generisanje pravnih izjava spremnih za općinske šaltere i notare. Pobjednik Bravo takmičenja i Aplikacija Sedmice na Lovable platformi, sa predstojećim nativnim iOS i Android aplikacijama.
+2. BH PapirFinder (buduća zvanična domena www.papir-finder.com, funkcionalni prototip na bhpapirfinder.atoms.world): Centralizovani registar i digitalni vodič kroz općinske takse, obrasce i administrativne procedure za Zenicu, Sarajevo, Banja Luku, Tuzlu, Mostar i druge gradove u BiH.
+3. Ornamenti Bosne: Digitalizovana kolekcija kodiranih stećaka i kulturne baštine na zaštićenom USB sticku, uz brzu dostavu širom BiH i plaćanje pouzećem.
+4. SCENA+ Magazin: Prvi urbani magazin Zeničko-dobojskog kantona sa 300 podijeljenih besplatnih štampanih primjeraka i interaktivnim digitalnim izdanjem na globalnoj platformi Canva.
+5. ZENTAXI & GUMMI: Inovativna gradska dispečerska mreža u razvoju i besplatna edukativna bojanka za djecu i predškolske ustanove (slobodan download na Archive.org).
+
+--- NAŠIH 8 PROFESIONALNIH IT USLUGA ZA KOMPANIJE ---
+1. B2B Lead Generation & Target Market Mapping: Dubinsko mapiranje specifičnih industrija, izrada provjerenih baza potencijalnih klijenata u BiH i regiji, te priprema personalizovanih B2B ponuda (Remote model, mjesečni retainer ili po projektu).
+2. Full-Cycle Digital PR & Social Media Management: Sveobuhvatno vođenje digitalnog prisustva, kreiranje PR saopštenja, vizuelnog identiteta i višejezičnog copywritinga (BHS, engleski, njemački).
+3. Custom Web & Digital Tool Setup (Paketi od 900 KM): Izrada modernih web stranica po sistemu 'ključ u ruke' uz integraciju prilagođenih kalkulatora i sistema za pravne izjave za MSP sektor.
+4. Multilingual Content Localization & Copywriting: Stručna lokalizacija softvera i marketinških materijala za tržišta Zapadnog Balkana i DACH regije (njemačko govorno područje).
+5. Digitalizacija Arhive i Poslovnih Dokumenta (SaaS): Digitalizacija stotina tona papirne arhive za firme i institucije, prelazak na sigurne servere i izrada SaaS platforme za brzu pretragu dokumenata (B2B i B2G – javni i privatni sektor).
+6. Web Performance Optimization & SEO Deep-Dive Analysis: Ubrzanje učitavanja, Core Web Vitals optimizacija i tehnički SEO auditi za visoko rangiranje na Google pretraživaču.
+7. Custom Mobile App Development: Razvoj nativnih i hibridnih mobilnih aplikacija za iOS i Android sa integracijom pozadinskih API servisa i baza podataka.
+8. Web-to-App Transformation (PWA & Web-u-App): Brza i cjenovno efikasna transformacija postojećih web portala u instalabilne mobilne aplikacije sa offline podrškom i push notifikacijama.
+
+Pozivamo domaće i inostrane kompanije, općinske službe i organizacije da nam se jave putem kontakt forme ili na info@bh-assistant.ba za saradnju i digitalna partnerstva. Spajamo inovacije — stvaramo šanse!`,
     imageUrl: IMAGES.ourProducts,
     published: true,
-    tags: ["Our Products", "Digitalni Ekosistem", "Mobilne Aplikacije", "Zenica", "IT Usluge"]
+    tags: ["Proizvodi i Usluge", "Digitalni Ekosistem", "8 IT Usluga", "Mobilne Aplikacije", "Zenica", "B2B Rješenja"]
   }
 ];
 

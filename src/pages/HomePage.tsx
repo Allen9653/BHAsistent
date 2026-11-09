@@ -21,7 +21,8 @@ import {
   CheckCircle2,
   Tv,
   Layers,
-  GraduationCap
+  GraduationCap,
+  Briefcase
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -131,15 +132,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
       link: '/o-nama'
     },
     {
-      id: 'projekti',
-      title: t('home.pillar.projekti.title', 'Projekti & Bojanka'),
-      subtitle: t('home.pillar.projekti.subtitle', 'ZENTAXI & GUMMI'),
-      desc: t('home.pillar.projekti.desc', 'Investicijski projekti, saradnja za partnere i besplatna edukativna bojanka Gummi za djecu i škole.'),
-      icon: Sparkles,
-      image: IMAGES.gummiBojanka,
-      badge: t('home.pillar.projekti.badge', 'Društvena Odgovornost'),
-      color: 'from-[#C9A84C]/20 to-[#0F2038] border-[#C9A84C]/40 text-[#C9A84C]',
-      link: '/projekti'
+      id: 'proizvodi-i-usluge',
+      title: 'Proizvodi & Usluge',
+      subtitle: '8 IT Usluga & Aplikacije',
+      desc: 'Zvanična ponuda 8 profesionalnih IT usluga (B2B Lead Gen, Digital PR, Custom Web, SEO revizija, Mobile Apps), autorski softveri i besplatne e-publikacije.',
+      icon: Briefcase,
+      image: IMAGES.ourProducts,
+      badge: 'Portfolio & Usluge',
+      color: 'from-[#00C9A7]/20 to-[#0F2038] border-[#00C9A7]/40 text-[#00C9A7]',
+      link: '/proizvodi-i-usluge'
     },
     {
       id: 'novosti',

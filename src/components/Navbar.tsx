@@ -110,10 +110,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // 2. Secondary Items (Available in "Više" dropdown on Desktop & in Drawer on Mobile)
   const secondaryNavItems = [
+    { path: '/proizvodi-i-usluge', label: 'Proizvodi & Usluge', desc: '8 IT usluga, autorski softveri i free e-publikacije' },
     { path: '/novosti', label: t('nav.novosti', 'Novosti & Najave'), desc: t('nav.novostiDesc', 'IT vijesti, projekti i saopštenja') },
+    { path: '/impresum', label: 'Impresum & Uredništvo', desc: 'Urednički kolegij, registracija i etički standardi' },
     { path: '/zajednica', label: t('nav.zajednica', 'Zajednica'), desc: t('nav.zajednicaDesc', 'Instagram feed pratitelja (@bh.asst)') },
     { path: '/kontakt#faq', label: t('nav.faq', 'Česta Pitanja (FAQ)'), desc: t('nav.faqDesc', 'Strukturirani odgovori o alatima i firmi') },
-    { path: '/projekti', label: t('nav.projekti', 'Projekti & Partnerstva'), desc: t('nav.projektiDesc', 'ZENTAXI, GUMMI i inovacije') },
     { path: '/shop', label: t('nav.shop', 'Resursi & Edukacija'), desc: t('nav.shopDesc', 'Digitalni alati, edukativni vodiči i znanje') },
     { path: '/politika-privatnosti', label: t('nav.privacyFull', 'Politika Privatnosti (GDPR)'), desc: t('nav.privacyFullDesc', 'Zaštita podataka i prava korisnika') },
     { path: '/uslovi-koristenja', label: t('nav.termsFull', 'Uslovi Korištenja'), desc: t('nav.termsFullDesc', 'Pravni okvir i uslovi poslovanja') },

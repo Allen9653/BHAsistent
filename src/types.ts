@@ -191,3 +191,18 @@ export interface NewsFeedUpdate {
   source?: string;
   authorId?: string;
 }
+
+export interface CompanyService {
+  id: string;
+  number: number;
+  title: string;
+  subtitle: string;
+  shortDescription?: string;
+  description: string;
+  model: string;
+  category: string;
+  iconName: string;
+  tags: string[];
+  features?: string[];
+  image?: string;
+}
