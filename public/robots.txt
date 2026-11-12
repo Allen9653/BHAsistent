@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Dozvoljavamo indeksiranje svih proizvoda, kategorija i blogova
+Allow: /proizvodi-i-usluge/
+Allow: /novosti/
+Allow: /category/
+Allow: /blog/
+
+# Blokiramo samo privatne i administrativne stranice ako postoje
+Disallow: /auth
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://www.bh-konver.com/sitemap.xml
