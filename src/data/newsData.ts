@@ -1556,7 +1556,7 @@ B&H Assistant kroz partnerstvo sa globalnim audio platformama W. A. Production i
 
 Preuzmite paket i istražite najbolje zvukove i efekte za vaše projekte putem zvaničnog partnerskog linka:
 👉 https://www.waproduction.com/#x3a36xuougf0v`,
-    imageUrl: "https://archive.org/download/w.-a.-production-bh-assistant/W.A.Production_BH_Assistant.png",
+    imageUrl: "https://archive.org/download/vocal_shaper/vocal_shaper.png",
     externalUrl: "https://www.waproduction.com/#x3a36xuougf0v",
     ctaText: "Istražite W.A. Production i preuzmite pluginove ↗",
     published: true,

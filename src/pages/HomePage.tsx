@@ -167,7 +167,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBojanka, onOpenAdmin: 
         ogImageAlt="B&H Assistant d.o.o. Zenica — Logo i brend"
       />
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden">
+      <section className="relative min-h-[85vh] min-h-[85dvh] flex items-center pt-24 pb-12 overflow-x-clip">
         <StecakBackground />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

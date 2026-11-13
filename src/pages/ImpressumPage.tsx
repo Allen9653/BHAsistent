@@ -29,7 +29,7 @@ export const ImpressumPage: React.FC = () => {
   const editorialBoard = AUTHORS_DATA['redakcija-bh-assistant'];
 
   return (
-    <div className="min-h-screen bg-[#0A1628] text-[#F5F0E8] py-12 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen-mobile bg-transparent text-[#F5F0E8] py-12 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
       <PageSeo />
       <div className="max-w-4xl mx-auto space-y-10">
         
@@ -186,7 +186,7 @@ export const ImpressumPage: React.FC = () => {
         </section>
 
         {/* 4. Linkovi na Pravne Stranice i Kontakt */}
-        <section className="p-6 rounded-3xl bg-[#0A1628] border border-[#1A3152] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <section className="p-6 rounded-3xl bg-[#0F2038]/85 backdrop-blur-md border border-[#1A3152] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
             <h4 className="font-syne font-bold text-sm text-[#F5F0E8]">
               Povezani pravni dokumenti

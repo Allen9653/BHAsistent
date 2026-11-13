@@ -152,7 +152,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onOpenAdmin }) => {
   });
 
   return (
-    <section id="novosti" className="py-20 bg-[#0A1628] relative border-t border-[#1A3152]">
+    <section id="novosti" className="py-12 sm:py-16 bg-transparent relative border-t border-[#1A3152]/60">
       {/* Background Decor */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#00C9A7]/5 rounded-full blur-3xl pointer-events-none" />
 

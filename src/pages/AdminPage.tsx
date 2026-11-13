@@ -354,7 +354,7 @@ export const AdminPage: React.FC = () => {
 
   if (isChecking) {
     return (
-      <div className="min-h-screen bg-[#0A1628] flex items-center justify-center p-4">
+      <div className="min-h-screen-mobile bg-transparent flex items-center justify-center p-4">
         <div className="text-center space-y-3 font-mono text-[#00C9A7]">
           <div className="w-8 h-8 border-2 border-[#00C9A7] border-t-transparent rounded-full animate-spin mx-auto" />
           <p className="text-xs">Provjera administratorskih prava...</p>
@@ -368,7 +368,7 @@ export const AdminPage: React.FC = () => {
   // ---------------------------------------------------------------------------
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-[#0A1628] flex items-center justify-center py-16 px-4 sm:px-6 font-sans">
+      <div className="min-h-screen-mobile bg-transparent flex items-center justify-center py-16 px-4 sm:px-6 font-sans">
         <PageSeo title="Administratorski Pristup | B&H Assistant d.o.o." noIndex={true} />
         
         <div className="w-full max-w-md bg-[#0F2038] border border-[#1A3152] rounded-3xl p-7 sm:p-9 shadow-2xl space-y-6 relative overflow-hidden">
@@ -459,7 +459,7 @@ export const AdminPage: React.FC = () => {
   // VIEW 2: AUTHENTICATED ADMIN DASHBOARD
   // ---------------------------------------------------------------------------
   return (
-    <div className="min-h-screen bg-[#0A1628] text-[#F5F0E8] pt-24 pb-20 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen-mobile bg-transparent text-[#F5F0E8] pt-24 pb-20 px-4 sm:px-6 lg:px-8 font-sans">
       <PageSeo title="Admin Kontrolni Panel | B&H Assistant d.o.o." noIndex={true} />
 
       {/* Floating Save Toast */}

@@ -37,7 +37,7 @@ export const ContactAndImpressum: React.FC = () => {
 
   return (
     <>
-    <section id="kontakt" className="py-24 bg-[#0A1628] relative overflow-hidden border-t border-[#1A3152]">
+    <section id="kontakt" className="py-12 sm:py-16 bg-transparent relative overflow-x-clip border-t border-[#1A3152]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}

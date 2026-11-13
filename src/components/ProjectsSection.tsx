@@ -191,9 +191,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenBojanka 
   };
 
   return (
-    <section id="proizvodi-i-usluge" className="py-20 bg-[#0A1628] relative overflow-hidden border-t border-[#1A3152]">
+    <section id="proizvodi-i-usluge" className="py-16 bg-transparent relative overflow-x-clip border-t border-[#1A3152]/60">
       {/* HERO SEKCIJA: REDIZAJNIRANA SA NOVI TEKSTOM */}
-      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white py-20 px-6 rounded-3xl shadow-2xl my-8 border border-slate-800 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-slate-950/85 via-slate-900/80 to-indigo-950/85 backdrop-blur-md text-white py-20 px-6 rounded-3xl shadow-2xl my-8 border border-slate-800/80 overflow-hidden mx-4 sm:mx-6 lg:mx-8">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:20px_20px]" />
         <div className="relative max-w-4xl mx-auto text-center space-y-6">
           <span className="inline-flex items-center gap-2 bg-sky-500/10 text-sky-400 text-xs font-semibold px-4 py-1.5 rounded-full border border-sky-500/20 uppercase tracking-wider">

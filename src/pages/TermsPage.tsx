@@ -10,7 +10,7 @@ export const TermsPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A1628] text-[#F5F0E8] py-10 sm:py-12 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen-mobile bg-transparent text-[#F5F0E8] py-10 sm:py-12 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
       <PageSeo />
       <div className="max-w-4xl mx-auto space-y-10">
         

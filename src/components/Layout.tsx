@@ -15,6 +15,7 @@ import { COMPANY_INFO } from '../data/companyData';
 import { CompanyDetails } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { useAdminAuth } from '../context/AdminAuthContext';
+import { VideoBackground } from './VideoBackground';
 
 // Code-split dynamic modals
 const BojankaModal = lazy(() =>
@@ -186,10 +187,17 @@ export const Layout: React.FC<LayoutProps> = ({
   });
 
   const { isAdmin } = useAdminAuth();
+  const isHomePage = location.pathname === '/';
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--brand-navy,#0A1628)] text-[var(--brand-text,#F5F0E8)] font-sans overflow-x-hidden selection:bg-[var(--brand-teal,#00C9A7)] selection:text-[#0A1628]">
-      
+    <div
+      className={`min-h-screen-mobile relative flex flex-col ${
+        isHomePage ? 'bg-[var(--brand-navy,#0A1628)]' : 'bg-transparent'
+      } text-[var(--brand-text,#F5F0E8)] font-sans overflow-x-clip selection:bg-[var(--brand-teal,#00C9A7)] selection:text-[#0A1628]`}
+    >
+      {/* Pozadinski YouTube video na svim stranicama osim Homepage-a */}
+      {!isHomePage && <VideoBackground overlayOpacity={0.72} />}
+
       {/* Dynamic SEO Meta Tags Generator */}
       <MetaTagManager />
 
@@ -210,7 +218,7 @@ export const Layout: React.FC<LayoutProps> = ({
       />
 
       {/* Dynamic Route Content via Outlet */}
-      <main className={`flex-1 w-full pt-safe-top ${isAdmin ? 'pt-[38px] sm:pt-[42px]' : ''}`}>
+      <main className={`relative z-10 flex-1 w-full pt-safe-top ${isAdmin ? 'pt-[38px] sm:pt-[42px]' : ''}`}>
         {/* Dynamic Breadcrumbs Navigation (visible on all subpages, auto-hidden on homepage) */}
         <Breadcrumbs />
 
@@ -229,7 +237,9 @@ export const Layout: React.FC<LayoutProps> = ({
       </main>
 
       {/* Shared Footer across all pages */}
-      <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
+      <div className="relative z-10">
+        <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
+      </div>
 
       {/* Code-Split Lazy Loaded Modals wrapped in Suspense */}
       <Suspense fallback={null}>

@@ -158,7 +158,7 @@ export const SocialCommunitySection: React.FC = () => {
   };
 
   return (
-    <section id="zajednica" className="py-[105px] bg-[#0A1628] relative overflow-hidden border-t border-[#1A3152]">
+    <section id="zajednica" className="py-16 sm:py-24 bg-transparent relative overflow-x-clip border-t border-[#1A3152]/60">
       {/* Ambient background glow accents */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#00C9A7]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#C9A84C]/5 rounded-full blur-3xl pointer-events-none" />

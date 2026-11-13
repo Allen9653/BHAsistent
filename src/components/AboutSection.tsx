@@ -51,7 +51,7 @@ export const AboutSection: React.FC = () => {
   };
 
   return (
-    <section id="o-nama" className="py-24 bg-[#0A1628] relative overflow-hidden border-t border-[#1A3152]">
+    <section id="o-nama" className="py-12 sm:py-16 bg-transparent relative overflow-x-clip border-t border-[#1A3152]/60">
       {/* Ambient Backdrop */}
       <div className="absolute top-1/2 left-10 w-80 h-80 bg-[#00C9A7]/5 rounded-full blur-3xl pointer-events-none" />
 
