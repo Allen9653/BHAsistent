@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Play, MessageSquare, Sparkles, ExternalLink, X, CheckCircle2, ArrowRight, Video, Globe, Server, Mail, DollarSign, Share2, TrendingUp } from 'lucide-react';
+import { Play, MessageSquare, Sparkles, ExternalLink, X, ArrowRight, Video, Globe, Server, Mail, DollarSign, Share2, TrendingUp } from 'lucide-react';
 import { SafeImage } from './SafeImage';
 import { IMAGES } from '../utils/images';
+import { useLanguage } from '../context/LanguageContext';
 
 interface SpecialOfferSectionProps {
   className?: string;
@@ -12,6 +13,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
   className = '',
   onOpenContact,
 }) => {
+  const { t } = useLanguage();
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // Close modal on Escape
@@ -40,35 +42,35 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
   const packageItems = [
     {
       icon: Globe,
-      title: 'Moderan i interaktivan website',
-      desc: 'Multimedijalni sadržaj, višejezična podrška (BHS + strani jezici) i napredna SEO optimizacija za pretraživače.'
+      title: t('offer.item1.title', 'Moderan i interaktivan website'),
+      desc: t('offer.item1.desc', 'Multimedijalni sadržaj, višejezična podrška (BHS + strani jezici) i napredna SEO optimizacija za pretraživače.')
     },
     {
       icon: Server,
-      title: 'Domena i hosting',
-      desc: 'Izbor željene domene (.ba, .com ili druga) uz pouzdan, brz i stabilan hosting server.'
+      title: t('offer.item2.title', 'Domena i hosting'),
+      desc: t('offer.item2.desc', 'Izbor željene domene (.ba, .com ili druga) uz pouzdan, brz i stabilan hosting server.')
     },
     {
       icon: Mail,
-      title: 'Profesionalni privatni e-mail',
-      desc: 'Poslovna adresa sa vašim domenom (npr. info@vasbiznis.ba) za ozbiljnu i pouzdanu komunikaciju.'
+      title: t('offer.item3.title', 'Profesionalni privatni e-mail'),
+      desc: t('offer.item3.desc', 'Poslovna adresa sa vašim domenom (npr. info@vasbiznis.ba) za ozbiljnu i pouzdanu komunikaciju.')
     },
     {
       icon: DollarSign,
-      title: 'Sistem za zaradu',
-      desc: 'Ugrađene opcije za iznajmljivanje reklamnog prostora i plasiranje digitalnih ponuda i banera.'
+      title: t('offer.item4.title', 'Sistem za zaradu'),
+      desc: t('offer.item4.desc', 'Ugrađene opcije za iznajmljivanje reklamnog prostora i plasiranje digitalnih ponuda i banera.')
     },
     {
       icon: Share2,
-      title: 'Bonus marketing paket',
-      desc: 'Profesionalno kreirane reklame i vizuali prilagođeni za Facebook, Instagram i LinkedIn mreže.'
+      title: t('offer.item5.title', 'Bonus marketing paket'),
+      desc: t('offer.item5.desc', 'Profesionalno kreirane reklame i vizuali prilagođeni za Facebook, Instagram i LinkedIn mreže.')
     }
   ];
 
   return (
     <section
       id="usluga-po-mjeri"
-      aria-label="Usluga po mjeri - Specijalna ponuda"
+      aria-label={`${t('offer.badge', 'USLUGA PO MJERI')} - ${t('offer.title', 'SPECIJALNA PONUDA!')}`}
       className={`w-full max-w-7xl mx-auto my-8 sm:my-12 px-4 sm:px-6 lg:px-8 ${className}`}
     >
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B1E2E] via-[#0F2438] to-[#0A1628] border-2 border-[#00C9A7]/60 p-6 sm:p-8 lg:p-10 shadow-2xl transition-all duration-300 hover:border-[#00C9A7] group">
@@ -100,7 +102,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/85 via-[#0A1628]/25 to-transparent" />
 
-              {/* Play video button button overlay */}
+              {/* Play video button overlay */}
               <div
                 onClick={(e) => {
                   e.preventDefault();
@@ -108,7 +110,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
                   setIsVideoOpen(true);
                 }}
                 className="absolute inset-0 flex items-center justify-center cursor-pointer"
-                title="Pokreni video prezentaciju ponude"
+                title={t('offer.startVideo', 'Pokreni video prezentaciju')}
               >
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] flex items-center justify-center shadow-2xl group-hover/img:scale-110 transition-transform">
                   <Play className="w-8 h-8 fill-current translate-x-0.5 text-[#0A1628]" />
@@ -119,10 +121,10 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono pointer-events-none">
                 <span className="px-3 py-1 rounded-lg bg-[#0A1628]/95 border border-[#00C9A7]/50 text-[#00E5BE] font-bold flex items-center gap-1.5 shadow-md">
                   <Video className="w-3.5 h-3.5 text-[#00C9A7]" />
-                  <span>Video Prezentacija</span>
+                  <span>{t('offer.ctaVideo', 'Video Prezentacija')}</span>
                 </span>
                 <span className="px-3 py-1 rounded-lg bg-[#C9A84C] text-[#0A1628] font-extrabold shadow-md">
-                  Paket 900 KM ▶
+                  {t('offer.packageTag', 'Paket 900 KM ▶')}
                 </span>
               </div>
             </a>
@@ -134,7 +136,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
                 className="text-[#00E5BE] hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <Play className="w-3 h-3 fill-current" />
-                <span>Pokreni video prezentaciju</span>
+                <span>{t('offer.startVideo', 'Pokreni video prezentaciju')}</span>
               </button>
               <a
                 href="https://postimg.cc/cK52rgww"
@@ -142,7 +144,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
                 rel="noopener noreferrer"
                 className="text-[#C9A84C] hover:underline flex items-center gap-1"
               >
-                <span>Prikaži sliku (Postimg)</span>
+                <span>{t('offer.viewPostimg', 'Prikaži sliku (Postimg)')}</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
@@ -154,24 +156,24 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
             {/* Badges */}
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="px-3.5 py-1 rounded-full bg-[#00C9A7] text-[#0A1628] font-syne font-extrabold text-xs tracking-wider shadow-md uppercase">
-                USLUGA PO MJERI
+                {t('offer.badge', 'USLUGA PO MJERI')}
               </span>
               <span className="px-3 py-1 rounded-full bg-[#0F2038] border border-[#00C9A7]/40 text-[#00E5BE] font-mono text-xs font-semibold flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#C9A84C]" />
                 <span>B&H Assistant d.o.o. Zenica</span>
               </span>
               <span className="px-3 py-1 rounded-full bg-[#C9A84C]/20 border border-[#C9A84C]/60 text-[#C9A84C] font-mono text-xs font-bold">
-                Cijena paketa: 900 KM
+                {t('offer.priceBadge', 'Cijena paketa: 900 KM')}
               </span>
             </div>
 
             {/* Main Title & Catchphrase */}
             <div>
               <h2 className="font-syne font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#F5F0E8] tracking-tight leading-tight">
-                SPECIJALNA PONUDA!
+                {t('offer.title', 'SPECIJALNA PONUDA!')}
               </h2>
               <p className="text-base sm:text-lg text-[#00E5BE] font-medium mt-2 leading-snug">
-                Internet stranica Vašeg biznisa treba da radi za Vas! To je investicija koja se otplaćuje – BH Asistent Vam je kreira, Vi odlučujete!
+                {t('offer.subtitle', 'Internet stranica Vašeg biznisa treba da radi za Vas! To je investicija koja se otplaćuje – BH Asistent Vam je kreira, Vi odlučujete!')}
               </p>
             </div>
 
@@ -179,7 +181,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
             <div className="rounded-2xl bg-[#0A1628]/80 border border-[#00C9A7]/30 p-4 sm:p-5 space-y-3.5 shadow-inner">
               <h3 className="font-syne font-bold text-sm sm:text-base text-[#F5F0E8] flex items-center gap-2 border-b border-[#1A3152] pb-2">
                 <TrendingUp className="w-4 h-4 text-[#C9A84C]" />
-                <span>Šta sve dobijate u paketu za 900 KM?</span>
+                <span>{t('offer.listTitle', 'Šta sve dobijate u paketu za 900 KM?')}</span>
               </h3>
 
               <div className="space-y-3">
@@ -202,7 +204,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
 
             {/* Value Proposition */}
             <p className="text-xs sm:text-sm font-medium text-[#F5F0E8]/90 italic border-l-2 border-[#C9A84C] pl-3 py-1">
-              Pretvorite trošak izrade web stranice u pametnu investiciju koja radi za vas i vraća uloženi novac.
+              {t('offer.quote', 'Pretvorite trošak izrade web stranice u pametnu investiciju koja radi za vas i vraća uloženi novac.')}
             </p>
 
             {/* Action Buttons */}
@@ -214,7 +216,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
                 className="px-6 py-3.5 rounded-2xl bg-[#00C9A7] hover:bg-[#00E5BE] text-[#0A1628] font-syne font-extrabold text-xs sm:text-sm tracking-wider shadow-lg shadow-[#00C9A7]/30 transition-all hover:scale-105 flex items-center gap-2 min-h-[48px]"
               >
                 <MessageSquare className="w-4 h-4 text-[#0A1628]" />
-                <span>Javite se sada i rezervišite svoj termin!</span>
+                <span>{t('offer.ctaContact', 'Javite se sada i rezervišite svoj termin!')}</span>
                 <ArrowRight className="w-4 h-4 text-[#0A1628]" />
               </a>
 
@@ -225,7 +227,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
                 className="px-5 py-3.5 rounded-2xl bg-[#0F2038] hover:bg-[#1A3152] text-[#F5F0E8] border border-[#00C9A7]/40 hover:border-[#00C9A7] font-syne font-bold text-xs sm:text-sm tracking-wider transition-all hover:scale-105 flex items-center gap-2 min-h-[48px]"
               >
                 <Play className="w-4 h-4 fill-current text-[#00C9A7]" />
-                <span>Video Prezentacija</span>
+                <span>{t('offer.ctaVideo', 'Video Prezentacija')}</span>
               </button>
             </div>
 
@@ -255,17 +257,17 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
                 </div>
                 <div>
                   <h3 className="font-syne font-extrabold text-base sm:text-lg text-[#F5F0E8] flex items-center gap-2">
-                    <span>SPECIJALNA PONUDA — Video Prezentacija</span>
+                    <span>{t('offer.title', 'SPECIJALNA PONUDA!')} — {t('offer.ctaVideo', 'Video Prezentacija')}</span>
                   </h3>
                   <p className="text-[11px] font-mono text-[#00C9A7]">
-                    B&H Assistant d.o.o. Zenica • Paket izrade web stranice za 900 KM
+                    B&amp;H Assistant d.o.o. Zenica • {t('offer.priceBadge', 'Cijena paketa: 900 KM')}
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsVideoOpen(false)}
                 className="p-2 rounded-xl bg-[#1A3152]/80 hover:bg-rose-500/20 text-[#F5F0E8]/70 hover:text-rose-400 border border-[#1A3152] transition-colors"
-                aria-label="Zatvori video prezentaciju"
+                aria-label={t('common.close', 'Zatvori')}
               >
                 <X className="w-5 h-5" />
               </button>
@@ -299,7 +301,7 @@ export const SpecialOfferSection: React.FC<SpecialOfferSectionProps> = ({
                 onClick={() => setIsVideoOpen(false)}
                 className="px-5 py-2 rounded-xl bg-[#1A3152] hover:bg-[#00C9A7] text-[#F5F0E8] hover:text-[#0A1628] font-syne font-bold text-xs transition-colors ml-auto"
               >
-                Zatvori
+                {t('common.close', 'Zatvori')}
               </button>
             </div>
           </div>

@@ -28,8 +28,9 @@ export const EditableText: React.FC<EditableTextProps> = ({
   const [draftValue, setDraftValue] = useState<string>('');
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
 
-  // Sync stored value when external changes or storage events occur
+  // Sync stored value when external changes, storage events, or language defaultValue changes occur
   useEffect(() => {
+    setStoredValue(getTextBlock(contentKey, defaultValue));
     const unsub = onTextBlocksChange(() => {
       setStoredValue(getTextBlock(contentKey, defaultValue));
     });

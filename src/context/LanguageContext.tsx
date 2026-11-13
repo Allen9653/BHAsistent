@@ -12,7 +12,7 @@ import { Language, LANGUAGES, LanguageOption, TRANSLATIONS } from '../data/trans
 
 export const LANGUAGE_STORAGE_KEY = 'bh_assistant_language';
 export const DEFAULT_LANGUAGE: Language = 'bs';
-export const SUPPORTED_LANGUAGES: readonly Language[] = ['bs', 'en', 'de', 'tr'];
+export const SUPPORTED_LANGUAGES: readonly Language[] = ['bs', 'en', 'de', 'tr', 'nl'];
 
 export interface LanguageContextType {
   /** Aktivni jezik */
@@ -41,7 +41,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
  * Validates whether a value is one of our supported language codes
  */
 export function isValidLanguage(val: string | null | undefined): val is Language {
-  return val === 'bs' || val === 'en' || val === 'de' || val === 'tr';
+  return val === 'bs' || val === 'en' || val === 'de' || val === 'tr' || val === 'nl';
 }
 
 /**
@@ -77,6 +77,7 @@ export function detectBrowserLanguage(): Language {
       }
       if (clean.startsWith('de')) return 'de';
       if (clean.startsWith('tr')) return 'tr';
+      if (clean.startsWith('nl')) return 'nl';
       if (clean.startsWith('en')) return 'en';
     }
   } catch {
@@ -116,6 +117,7 @@ export function syncHtmlLanguageAttributes(lang: Language): void {
       en: 'en_US',
       de: 'de_DE',
       tr: 'tr_TR',
+      nl: 'nl_NL',
     };
     const ogLocale = localeMap[lang] || 'bs_BA';    let ogMeta = document.querySelector('meta[property="og:locale"]');
     if (ogMeta) {
@@ -285,6 +287,14 @@ export const FlagTR: React.FC<{ className?: string }> = ({ className = 'w-5 h-3.
     <polygon points="583,400 706,440 630,335 630,465 706,360" fill="#FFFFFF" transform="rotate(-15 630 400)" />  </svg>
 );
 
+export const FlagNL: React.FC<{ className?: string }> = ({ className = 'w-5 h-3.5' }) => (
+  <svg viewBox="0 0 9 6" className={`${className} rounded-sm shadow-sm shrink-0 inline-block align-middle`}>
+    <rect width="9" height="2" y="0" fill="#AE1C28" />
+    <rect width="9" height="2" y="2" fill="#FFFFFF" />
+    <rect width="9" height="2" y="4" fill="#21468B" />
+  </svg>
+);
+
 export const FlagIcon: React.FC<{ code: Language; className?: string }> = ({ code, className }) => {
   switch (code) {
     case 'bs':
@@ -295,6 +305,8 @@ export const FlagIcon: React.FC<{ code: Language; className?: string }> = ({ cod
       return <FlagDE className={className} />;
     case 'tr':
       return <FlagTR className={className} />;
+    case 'nl':
+      return <FlagNL className={className} />;
     default:
       return null;
   }

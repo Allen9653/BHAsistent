@@ -16,7 +16,7 @@ export const AboutPage: React.FC = () => {
             Inovacije, Tehnologija i Kulturna Baština
           </h1>
           <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-            Prva softverska i izdavačka kuća u Zenici koja spaja savremena digitalna rješenja, besplatne alate za građane, urbani magazin SCENA+ i očuvanje kulturne baštine stećaka.
+            Nova IT i Digital Marketing firma sa adresom u Zenici koja spaja savremena digitalna rješenja, digitalni marketing, besplatne alate za građane, urbani magazin SCENA+ i očuvanje kulturne baštine stećaka.
           </p>
         </div>
 

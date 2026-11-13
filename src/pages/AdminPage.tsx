@@ -45,7 +45,7 @@ import { PageSeo } from '../components/PageSeo';
 const DEFAULT_KNOWN_BLOCKS: Record<string, { label: string; defaultValue: string; page: string }> = {
   'home.hero.badge': {
     label: 'Početna • Hero Bedž na vrhu',
-    defaultValue: 'PRVA SOFTVERSKA I IZDAVAČKA KUĆA U ZENICI',
+    defaultValue: 'Nova IT i Digital Marketing firma sa adresom u Zenici!',
     page: 'Početna Stranica'
   },
   'home.hero.motto': {
@@ -55,7 +55,7 @@ const DEFAULT_KNOWN_BLOCKS: Record<string, { label: string; defaultValue: string
   },
   'home.hero.subtitle': {
     label: 'Početna • Hero Podnaslov i Uvod',
-    defaultValue: 'B&H Assistant d.o.o. Zenica spaja moderne IT tehnologije, besplatne alate za bh. građane, urbani magazin SCENA+ i kulturnu baštinu stećaka u jedinstven ekosistem.',
+    defaultValue: 'B&H Assistant d.o.o. iz Zenice spaja napredne IT tehnologije sa stvarnim preprekama u bh. društvu, gradeći digitalna rješenja za realne administrativne, edukativne i ekonomske izazove.\n\nKao mlada IT kompanija, cilj nam je da popunimo prazan prostor u domaćem sektoru kreirajući visokokorisne, isplative digitalne platforme i alate koji olakšavaju svakodnevicu građana i poslovanje firmi.',
     page: 'Početna Stranica'
   },
   'services.hero.title': {
@@ -115,7 +115,7 @@ const DEFAULT_KNOWN_BLOCKS: Record<string, { label: string; defaultValue: string
   },
   'about.hero.subtitle': {
     label: 'O Nama • Podnaslov Prezentacije',
-    defaultValue: 'Inovativna softverska i izdavačka kuća iz Zenice. Saznajte više o našoj viziji, pravnim podacima i misiji.',
+    defaultValue: 'Nova IT i Digital Marketing firma iz Zenice. Saznajte više o našoj viziji, pravnim podacima i misiji.',
     page: 'O Nama'
   }
 };

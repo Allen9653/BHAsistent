@@ -72,7 +72,7 @@ export const ZENTAXI_BANNER = 'https://i.imgur.com/9xHhYZJ.jpg';
 
 // Affiliate & Strategic Tech Partners (Archive.org Official Assets & Imgur Fallbacks)
 export const ATOMS_DEV_LOGO = 'https://archive.org/download/remote_rocketship_logo/atoms_dev_logo.png';
-export const ALISON_LOGO = 'https://archive.org/download/remote_rocketship_logo/alison_com_logo.png';
+export const ALISON_LOGO = 'https://archive.org/download/alison_com_logo/alison_com_logo.png';
 export const TRYHACKME_BANNER = 'https://archive.org/download/remote_rocketship_logo/try_hackMe_logo.png';
 export const MONDAY_LOGO = 'https://archive.org/download/remote_rocketship_logo/monday_com_logo.png';
 export const RZEKL_LOGO = 'https://archive.org/download/remote_rocketship_logo/rzekl.com_logo.png';
@@ -134,7 +134,7 @@ export const IMAGES = {
   kasperskyLogo: 'https://archive.org/download/kaspersky-affiliated-promo/Kaspersky_affiliated_promo.jpg',
   kasperskyBanner: 'https://archive.org/download/kaspersky-affiliated-promo/Kaspersky_affiliated_promo.jpg',
   atomsDev: 'https://archive.org/download/remote_rocketship_logo/atoms_dev_logo.png',
-  alisonLogo: 'https://archive.org/download/remote_rocketship_logo/alison_com_logo.png',
+  alisonLogo: 'https://archive.org/download/alison_com_logo/alison_com_logo.png',
   tryhackmeBanner: 'https://archive.org/download/remote_rocketship_logo/try_hackMe_logo.png',
   mondayLogo: 'https://archive.org/download/remote_rocketship_logo/monday_com_logo.png',
   rzeklLogo: 'https://archive.org/download/remote_rocketship_logo/rzekl.com_logo.png',
@@ -157,6 +157,9 @@ export const IMAGES = {
   bihPobjedaBanner: '/images/cestitka-zmajevi-2026.jpg',
   bihPobjedaArchiveDirect: 'https://archive.org/download/cestitka-za-nase-momke-2026/%C4%8Cestitka%20za%20na%C5%A1e%20momke%202026.jpg',
   bihPobjedaArchiveDetails: 'https://archive.org/details/cestitka-za-nase-momke-2026',
+
+  // Besplatni Digitalni Proizvodi PR Visual (Archive.org)
+  besplatniDigitalniProizvodi: 'https://archive.org/download/besplatni-digitalni-proizvodi/besplatni%20digitalni%20proizvodi.jpg',
 } as const;
 
 export type ImageKey = keyof typeof IMAGES;

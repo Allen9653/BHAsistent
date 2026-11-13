@@ -73,7 +73,16 @@ function updateJsonLd(config: RouteMetaConfig, pathname: string, language: Langu
     document.head.appendChild(script);
   }
 
-  const langCode = language === 'bs' ? 'bs-BA' : language === 'de' ? 'de-DE' : language === 'tr' ? 'tr-TR' : 'en-US';
+  const langCode =
+    language === 'bs'
+      ? 'bs-BA'
+      : language === 'de'
+        ? 'de-DE'
+        : language === 'tr'
+          ? 'tr-TR'
+          : language === 'nl'
+            ? 'nl-NL'
+            : 'en-US';
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -84,7 +93,7 @@ function updateJsonLd(config: RouteMetaConfig, pathname: string, language: Langu
         'name': 'B&H Assistant d.o.o. Zenica',
         'url': 'https://bh-assistant.ba',
         'logo': 'https://i.imgur.com/cXebP1B.jpg',
-        'description': 'Zvanična platforma IT firme B&H Assistant d.o.o. Zenica. Slogan: SPAJAMO KULTURE - STVARAMO ŠANSE. Digitalni alati, SCENA+ magazin i inovativni projekti.',
+        'description': 'B&H Assistant d.o.o. iz Zenice spaja napredne IT tehnologije sa stvarnim preprekama u bh. društvu, kreirajući visokokorisne, isplative digitalne platforme i alate za građane i firme.',
         'address': {
           '@type': 'PostalAddress',
           'streetAddress': 'Bulevar Ezhera Eze Arnautovića 8',
@@ -97,7 +106,7 @@ function updateJsonLd(config: RouteMetaConfig, pathname: string, language: Langu
           'telephone': '+387 62 580 207',
           'contactType': 'customer support',
           'email': 'info@bh-assistant.ba',
-          'availableLanguage': ['bs', 'en', 'de', 'tr'],
+          'availableLanguage': ['bs', 'en', 'de', 'tr', 'nl'],
         },
         'sameAs': [
           'https://www.facebook.com/SpajamoKultureStvaramoSanse',
@@ -178,7 +187,16 @@ export function useMetaTags(overrideConfig?: Partial<RouteMetaConfig>) {
     setOrCreateMetaTag('property', 'og:url', activeConfig.canonical || `https://bh-assistant.ba${resolvedPath}`);
     setOrCreateMetaTag('property', 'og:type', activeConfig.ogType || 'website');
     setOrCreateMetaTag('property', 'og:site_name', 'B&H Assistant d.o.o. Zenica');
-    const ogLocale = language === 'bs' ? 'bs_BA' : language === 'de' ? 'de_DE' : language === 'tr' ? 'tr_TR' : 'en_US';
+    const ogLocale =
+      language === 'bs'
+        ? 'bs_BA'
+        : language === 'de'
+          ? 'de_DE'
+          : language === 'tr'
+            ? 'tr_TR'
+            : language === 'nl'
+              ? 'nl_NL'
+              : 'en_US';
     setOrCreateMetaTag('property', 'og:locale', ogLocale);
     
     if (activeConfig.ogImage) {
@@ -211,6 +229,7 @@ export function useMetaTags(overrideConfig?: Partial<RouteMetaConfig>) {
     setOrCreateLinkTag('alternate', cleanCanonical, 'en');
     setOrCreateLinkTag('alternate', cleanCanonical, 'de');
     setOrCreateLinkTag('alternate', cleanCanonical, 'tr');
+    setOrCreateLinkTag('alternate', cleanCanonical, 'nl');
 
     // 7. Update Structured Data (Schema JSON-LD)
     updateJsonLd(activeConfig, resolvedPath, language);

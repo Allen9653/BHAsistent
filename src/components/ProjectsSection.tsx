@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { DEVELOPMENT_PROJECTS, COMPANY_SERVICES, DIGITAL_TOOLS } from '../data/companyData';
 import { DevelopmentProject, CompanyService } from '../types';
 import { SafeImage } from './SafeImage';
@@ -54,6 +54,7 @@ interface ProjectsSectionProps {
 
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenBojanka }) => {
   const { t, language } = useLanguage();
+  const location = useLocation();
   const localizedServices = getLocalizedServices(language);
   const localizedProjects = getLocalizedProjects(language);
   const { isAdmin } = useAdminAuth();
@@ -78,6 +79,25 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenBojanka 
     itemType: 'usluga',
     currentImage: null
   });
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tabParam = params.get('tab');
+    if (
+      location.hash === '#besplatni-proizvodi' ||
+      tabParam === 'besplatni' ||
+      tabParam === 'bojanka'
+    ) {
+      setActiveTab('bojanka');
+      const timer = setTimeout(() => {
+        const el = document.getElementById('besplatni-proizvodi');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash, location.search]);
 
   useEffect(() => {
     const unsubImages = onCustomImagesChange(() => {
@@ -953,7 +973,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenBojanka 
         {/* SEKCIJA: POKLON ZA POSJETIOCE (BESPLATNI RESURSI I PLUGINI) */}
         {/* ------------------------------------------------------------- */}
         {activeTab === 'bojanka' && (
-          <section className="max-w-6xl mx-auto my-16 px-4">
+          <section id="besplatni-proizvodi" className="max-w-6xl mx-auto my-16 px-4 scroll-mt-24">
             <div className="text-center mb-12">
               <span className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 text-xs font-semibold px-4 py-1.5 rounded-full border border-emerald-500/20 uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> 100% Besplatni Resursi & Alati

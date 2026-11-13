@@ -172,6 +172,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setLink('alternate', resolvedCanonical, 'en');
     setLink('alternate', resolvedCanonical, 'de');
     setLink('alternate', resolvedCanonical, 'tr');
+    setLink('alternate', resolvedCanonical, 'nl');
 
     // 6. Open Graph Meta Tags
     setMeta('property', 'og:title', activeTitle);
@@ -179,7 +180,16 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMeta('property', 'og:url', resolvedCanonical);
     setMeta('property', 'og:type', activeOgType);
     setMeta('property', 'og:site_name', 'B&H Assistant d.o.o. Zenica');
-    const ogLocale = language === 'bs' ? 'bs_BA' : language === 'de' ? 'de_DE' : language === 'tr' ? 'tr_TR' : 'en_US';
+    const ogLocale =
+      language === 'bs'
+        ? 'bs_BA'
+        : language === 'de'
+          ? 'de_DE'
+          : language === 'tr'
+            ? 'tr_TR'
+            : language === 'nl'
+              ? 'nl_NL'
+              : 'en_US';
     setMeta('property', 'og:locale', ogLocale);
 
     if (activeOgImage) {
@@ -213,7 +223,16 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMeta('name', 'twitter:creator', '@bh_assistant');
 
     // 8. Structured Data (Schema.org JSON-LD)
-    const langCode = language === 'bs' ? 'bs-BA' : language === 'de' ? 'de-DE' : language === 'tr' ? 'tr-TR' : 'en-US';
+    const langCode =
+      language === 'bs'
+        ? 'bs-BA'
+        : language === 'de'
+          ? 'de-DE'
+          : language === 'tr'
+            ? 'tr-TR'
+            : language === 'nl'
+              ? 'nl-NL'
+              : 'en-US';
 
     const defaultStructuredData = {
       '@context': 'https://schema.org',
@@ -224,7 +243,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
           name: 'B&H Assistant d.o.o. Zenica',
           url: baseUrl,
           logo: 'https://i.imgur.com/cXebP1B.jpg',
-          description: 'Zvanična IT kompanija B&H Assistant d.o.o. Zenica. Razvoj autorskih digitalnih alata BH KONVER i BH PapirFinder, magazin SCENA+ i e-uprava u BiH.',
+          description: 'B&H Assistant d.o.o. iz Zenice spaja napredne IT tehnologije sa stvarnim preprekama u bh. društvu, kreirajući visokokorisne, isplative digitalne platforme i alate za građane i firme.',
           address: {
             '@type': 'PostalAddress',
             streetAddress: 'Bulevar Ezhera Eze Arnautovića 8',
@@ -237,7 +256,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
             telephone: '+387 62 580 207',
             contactType: 'customer support',
             email: 'info@bh-assistant.ba',
-            availableLanguage: ['bs', 'en', 'de', 'tr'],
+            availableLanguage: ['bs', 'en', 'de', 'tr', 'nl'],
           },
           sameAs: [
             'https://www.facebook.com/SpajamoKultureStvaramoSanse',
